@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+	<version>1.2</version><!-- Dictionnary's description  -->
+	<dictionary>
+		<!-- Categories's description  -->
+		<categories>
+			<!-- Color Category  -->
+			<category name="Color">
+				<values>
+					<categoryValue value="WHITE" />
+					<categoryValue value="GREY" />
+					<categoryValue value="GREEN" />
+					<categoryValue value="YELLOW" />
+					<categoryValue value="RED" />
+					<categoryValue value="BLACK" />
+				</values>
+			</category>
+
+			<!-- Length Category  -->
+			<category name="Length">
+				<values>
+					<categoryValue value="SHORT" />
+					<categoryValue value="LONG" />
+				</values>
+			</category>
+
+			<!-- Pedigre Category -->
+			<category name="CAT_pedigre">
+				<values>
+					<categoryValue value="SIAMESE" />
+					<categoryValue value="PERSIAN" />
+					<categoryValue value="ANGORA" />
+					<categoryValue value="BIRMAN" />
+					<categoryValue value="ABYSSINIAN" />
+					<categoryValue value="UNUSEDCAT" />
+				</values>
+			</category>
+
+			<!-- Usage Category  -->
+			<category name="Usage">
+				<values>
+					<categoryValue value="Self Defense" />
+					<categoryValue value="Police" />
+					<categoryValue value="Children" />
+				</values>
+			</category>
+
+			<!-- Category modifiable by any user -->
+			<category name="ErrorLevel" access="User">
+				<values>
+					<categoryValue value="Fatal" />
+					<categoryValue value="Severe" />
+					<categoryValue value="Warning" />
+					<categoryValue value="Info" />
+				</values>
+			</category>
+			<category name="FILTER_TEST_SHEET_01_CHOICE_CATEGORY">
+				<values>
+					<categoryValue value="CHOICE_01" />
+					<categoryValue value="CHOICE_02" />
+					<categoryValue value="CHOICE_03" />
+				</values>
+			</category>
+			<category name="FILTER_TEST_SHEET_02_CHOICE_CATEGORY">
+				<values>
+					<categoryValue value="SELECT_01" />
+					<categoryValue value="SELECT_02" />
+					<categoryValue value="SELECT_03" />
+				</values>
+			</category>
+			<category name="Test_image_text_displayHint_01_CATEGORY">
+				<values>
+					<categoryValue value="image_text_01" />
+					<categoryValue value="image_text_02" />
+				</values>
+			</category>
+			<category name="CategoryDefinition">
+				<values>
+					<categoryValue value="Value1" />
+					<categoryValue value="Value4" />
+					<categoryValue value="Value2" />
+					<categoryValue value="Value3" />
+				</values>
+			</category>
+		</categories>
+
+		<!-- Environment's description  -->
+		<environments>
+			<!-- Professional Environment  -->
+			<environment name="Professional">
+				<categories>
+					<category name="Color">
+						<values>
+							<categoryValue value="WHITE" />
+							<categoryValue value="GREY" />
+							<categoryValue value="BLACK" />
+							<categoryValue value="RED" />
+						</values>
+					</category>
+					<category name="Length">
+						<values>
+							<categoryValue value="SHORT" />
+							<categoryValue value="LONG" />
+						</values>
+					</category>
+					<category name="Usage">
+						<values>
+							<categoryValue value="Self Defense" />
+							<categoryValue value="Police" />
+						</values>
+					</category>
+					<category name="FILTER_TEST_SHEET_01_CHOICE_CATEGORY">
+						<values>
+							<categoryValue value="CHOICE_01" />
+							<categoryValue value="CHOICE_02" />
+							<categoryValue value="CHOICE_03" />
+						</values>
+					</category>
+					<category name="Test_image_text_displayHint_01_CATEGORY">
+						<values>
+							<categoryValue value="image_text_01" />
+							<categoryValue value="image_text_02" />
+						</values>
+					</category>
+					<category name="CategoryDefinition">
+						<values>
+							<categoryValue value="Value1" />
+							<categoryValue value="Value4" />
+							<categoryValue value="Value2" />
+							<categoryValue value="Value3" />
+						</values>
+					</category>
+				</categories>
+			</environment>
+
+			<!-- Classical Environment  -->
+			<environment name="Classical">
+				<categories>
+					<category name="Color">
+						<values>
+							<categoryValue value="WHITE" />
+							<categoryValue value="GREY" />
+							<categoryValue value="BLACK" />
+							<categoryValue value="RED" />
+						</values>
+					</category>
+					<category name="Usage">
+						<values>
+							<categoryValue value="Self Defense" />
+							<categoryValue value="Children" />
+						</values>
+					</category>
+					<category name="CAT_pedigre">
+						<values>
+							<categoryValue value="SIAMESE" />
+							<categoryValue value="PERSIAN" />
+						</values>
+					</category>
+				</categories>
+			</environment>
+
+			<!-- Extravagant environment -->
+			<environment name="Classical_1" isPublic="false">
+				<categories>
+					<category name="CAT_pedigre">
+						<values>
+							<categoryValue value="ANGORA" />
+							<categoryValue value="BIRMAN" />
+							<categoryValue value="ABYSSINIAN" />
+						</values>
+					</category>
+					<category name="Length">
+						<values>
+							<categoryValue value="SHORT" />
+							<categoryValue value="LONG" />
+						</values>
+					</category>
+				</categories>
+			</environment>
+
+			<!-- Env1 Environment  -->
+			<environment name="Env1">
+				<categories>
+					<category name="Color">
+						<values>
+							<categoryValue value="BLACK" />
+							<categoryValue value="RED" />
+						</values>
+					</category>
+					<category name="Length">
+						<values>
+							<categoryValue value="SHORT" />
+							<categoryValue value="LONG" />
+						</values>
+					</category>
+					<category name="Usage">
+						<values>
+							<categoryValue value="Children" />
+						</values>
+					</category>
+					<category name="FILTER_TEST_SHEET_01_CHOICE_CATEGORY">
+						<values>
+							<categoryValue value="CHOICE_01" />
+						</values>
+					</category>
+					<category name="FILTER_TEST_SHEET_02_CHOICE_CATEGORY">
+						<values>
+							<categoryValue value="SELECT_01" />
+						</values>
+					</category>
+				</categories>
+			</environment>
+
+			<!-- Env2 Environment  -->
+			<environment name="Env2">
+				<categories>
+					<category name="Color">
+						<values>
+							<categoryValue value="WHITE" />
+						</values>
+					</category>
+					<category name="Length">
+						<values>
+							<categoryValue value="SHORT" />
+							<categoryValue value="LONG" />
+						</values>
+					</category>
+					<category name="Usage">
+						<values>
+							<categoryValue value="Police" />
+							<categoryValue value="Self Defense" />
+						</values>
+					</category>
+					<category name="FILTER_TEST_SHEET_01_CHOICE_CATEGORY">
+						<values>
+							<categoryValue value="CHOICE_02" />
+							<categoryValue value="CHOICE_03" />
+						</values>
+					</category>
+					<category name="FILTER_TEST_SHEET_02_CHOICE_CATEGORY">
+						<values>
+							<categoryValue value="SELECT_02" />
+							<categoryValue value="SELECT_03" />
+						</values>
+					</category>
+				</categories>
+			</environment>
+		</environments>
+	</dictionary>
+</gpm>

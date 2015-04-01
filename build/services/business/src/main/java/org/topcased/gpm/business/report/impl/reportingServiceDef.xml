@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <!--
+        Reporting service
+    -->
+
+    <bean id="reportingServiceImpl" parent="serviceImplBase" autowire="byName"
+        class="org.topcased.gpm.business.report.impl.ReportingServiceImpl">
+    </bean>
+
+    <bean id="reportingService"
+        class="org.springframework.aop.framework.ProxyFactoryBean"
+        parent="interceptedService">
+        <property name="target" ref="reportingServiceImpl" />
+
+        <property name="proxyInterfaces"
+            value="org.topcased.gpm.business.report.service.ReportingService" />
+    </bean>
+</beans>

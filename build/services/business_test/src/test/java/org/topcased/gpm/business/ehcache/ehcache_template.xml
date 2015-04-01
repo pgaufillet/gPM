@@ -1,0 +1,66 @@
+<!--
+    Copyright (c) 2012 AIRBUS FRANCE. All rights reserved. This
+    program and the accompanying materials are made available
+    under the terms of the Lesser Gnu Public License (LGPL) which
+    accompanies this distribution, and is available
+    at http://www.gnu.org/licenses/lgpl.html
+
+    Contributors: Olivier Juin (Atos Origin)
+-->
+
+<!--
+    EHCache configuration template file for EHCache tests
+    This file shall be reconfigured and put in the classpath
+    of test instances number 1, 2, 3, 5 and 6.
+    
+    Reminder:
+    Server 0: does not exist (in order to simulate a shut down server)
+    Server 1: on machine A
+    Server 2: on machine A
+    Server 3: on machine B
+    Server 4: on machine B: No EHCache configuration
+    Server 5: on machine C
+    Server 6: on machine D
+    
+    Please note that server 0 shall be referenced by other servers,
+    even if it does not exist.
+-->
+
+<ehcache>
+    <diskStore path="java.io.tmpdir" />
+
+	<!-- Create a provider for every peer (5 providers to create) -->
+    <cacheManagerPeerProviderFactory
+		    class="org.topcased.gpm.business.cache.distributed.GPMCachePeerProviderFactory"
+		    properties="urls=//AAAAAA:PPPP/gpm/ehcache" />
+    <cacheManagerPeerProviderFactory
+		    class="org.topcased.gpm.business.cache.distributed.GPMCachePeerProviderFactory"
+		    properties="urls=//AAAAAA:PPPP/gpm/ehcache" />
+    <cacheManagerPeerProviderFactory
+		    class="org.topcased.gpm.business.cache.distributed.GPMCachePeerProviderFactory"
+		    properties="urls=//AAAAAA:PPPP/gpm/ehcache" />
+    <cacheManagerPeerProviderFactory
+		    class="org.topcased.gpm.business.cache.distributed.GPMCachePeerProviderFactory"
+		    properties="urls=//AAAAAA:PPPP/gpm/ehcache" />
+    <cacheManagerPeerProviderFactory
+		    class="org.topcased.gpm.business.cache.distributed.GPMCachePeerProviderFactory"
+		    properties="urls=//AAAAAA:PPPP/gpm/ehcache" />
+
+	<!-- Create a single listener -->
+    <cacheManagerPeerListenerFactory
+        class="org.topcased.gpm.business.cache.distributed.GPMCachePeerListenerFactory"
+        properties="url=//AAAAAA:PPPP/gpm/ehcache" /> <!-- Local address  -->
+
+    <defaultCache maxElementsInMemory="100" eternal="false"
+        timeToIdleSeconds="120" timeToLiveSeconds="120"
+        overflowToDisk="false" />
+        
+    <!-- gpmGlobalCache -->
+    <cache name="org.topcased.gpm.business.ELEMENT_CACHE"
+    	   maxElementsInMemory="100" eternal="false"
+           timeToIdleSeconds="120" timeToLiveSeconds="120"
+           overflowToDisk="false" >
+        <cacheEventListenerFactory
+          class="org.topcased.gpm.business.cache.distributed.GPMReplicatorFactory" />
+    </cache>
+</ehcache>

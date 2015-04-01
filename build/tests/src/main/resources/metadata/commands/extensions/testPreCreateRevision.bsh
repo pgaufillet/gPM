@@ -1,0 +1,8 @@
+import org.topcased.gpm.business.revision.RevisionData;
+import org.topcased.gpm.business.attributes.AttributeData;
+
+RevisionData revisionData = context.get("revisionData");
+
+AttributeData attrData = new AttributeData("myAttr", new String[]{"myAttrValue"});
+
+revisionData.setAttributeDatas(new AttributeData[]{attrData});

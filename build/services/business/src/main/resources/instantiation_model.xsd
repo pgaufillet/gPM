@@ -1,0 +1,2280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.airbus.com/topcased/gPM" version="1.0"
+	xmlns="http://www.airbus.com/topcased/gPM">
+
+	<xs:annotation>
+		<xs:documentation>gPM resources definition.
+        </xs:documentation>
+	</xs:annotation>
+
+	<xs:import namespace="http://www.w3.org/XML/1998/namespace" />
+
+	<xs:element name="gpm">
+		<xs:annotation>
+			<xs:documentation>
+                <![CDATA[
+Root definition.
+]]>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence maxOccurs="1">
+				<xs:element ref="version" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+Version of the definition format.
+]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+
+				<!-- <xs:element ref="rule" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+Version of the definition format.
+]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>-->
+
+				<xs:element ref="options" minOccurs="0" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+Global options.
+]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+
+				<xs:element ref="attributes" minOccurs="0" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+Global attributes definition.
+These attributes are defined globally on the gPM server.
+]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="users" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+Definitions of all users.
+]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="roles" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+Definitions of the roles.
+]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+
+				<xs:element ref="translations" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+Definition of the translations of the labels & messages used in the process.
+<P>
+Several translations can be defined (to translate in several languages).
+]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+
+				<xs:element ref="commands" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+Definition of the commands. Commands defined here can then be referenced in the
+extension points.
+<P>
+A command is referenced by its name (which must be unique), and contains a script
+code, read from an external file.
+]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+
+				<xs:element minOccurs="0" maxOccurs="1" ref="extensionPoints" />
+
+				<xs:element ref="dictionary" minOccurs="0" />
+
+				<xs:element ref="productTypes" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+Definition of the product types.
+<P>
+<B>Note:</B> Currently only one product type per process is supported.
+]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="productLinkTypes" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+Definition of the product link types.
+]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+
+				<xs:element ref="products" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+Definition of the products.
+]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+
+				<xs:element ref="productLinks" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+Creation of links between products.
+]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+
+				<xs:element ref="userRoles" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+Assignments of roles to users.
+<P>
+Several roles can be assigned to a given user. Each role can be specific to
+a product only, or assigned for the process globally.
+<P>
+<B>Note:</B> Each user should have at least one assigned role.
+]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+
+
+				<xs:element ref="sheetTypes" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+Definition of the sheet types.
+]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="sheetLinkTypes" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+Definition of the sheet link types.
+]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+
+				<xs:element ref="accessControls" minOccurs="0" />
+				<xs:element ref="filterAccessConstraints" minOccurs="0" />
+				<xs:element ref="filterAccessControls" minOccurs="0" />
+
+				<xs:element ref="mapping" minOccurs="0" />
+
+				<xs:element ref="filters" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+Definition of search filters
+]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+
+				<xs:element ref="extendedActions" minOccurs="0"></xs:element>
+
+				<xs:element ref="reports" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+Definition of report models for export
+]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+
+				<xs:element ref="sheets" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+Creation of the sheets.
+]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+
+				<xs:element ref="sheetLinks" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+Creation of links between sheets.
+]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- definition of simple elements -->
+	<xs:element name="name" type="xs:string" />
+
+	<xs:element name="description" type="xs:string" />
+
+	<xs:element name="lifecycleResource" type="xs:string" />
+
+	<xs:element name="version" type="xs:decimal" />
+
+	<xs:element name="processName" type="xs:string" />
+
+	<xs:element name="productName" type="xs:string" />
+
+	<xs:element name="userLogin" type="xs:string" />
+
+	<xs:element name="attributeValue">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="value" type="xs:string" use="optional" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="attribute">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="attributeValue" maxOccurs="unbounded"
+					minOccurs="0" />
+			</xs:sequence>
+
+			<xs:attribute name="name" type="xs:string" use="required" />
+			<xs:attribute name="value" type="xs:string" use="optional" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="attributes">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="attribute" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="revisionAttributes">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="attribute" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="revision">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="fieldValues" minOccurs="0" />
+				<xs:element ref="revisionAttributes" minOccurs="0" />
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:NMTOKEN" use="optional" />
+			<xs:attribute name="label" type="xs:string" use="required" />
+			<xs:attribute name="author" type="xs:string" use="required" />
+			<xs:attribute name="date" type="xs:date" use="required" />
+			<xs:attribute name="time" type="xs:time" use="optional" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="revisions">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="revision" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="options">
+		<xs:complexType>
+			<xs:all maxOccurs="1">
+				<xs:element ref="authentication" minOccurs="0" />
+				<xs:element ref="userIdParamName" minOccurs="0" />
+				<xs:element ref="contactUrl" minOccurs="0" />
+				<xs:element ref="filterFieldsMaxDepth" minOccurs="0" />
+				<xs:element ref="maxExportableSheets" minOccurs="0" />
+				<xs:element ref="helpContentUrl" minOccurs="0" />
+				<xs:element ref="autolocking" minOccurs="0" />
+				<xs:element ref="loginCaseSensitive" minOccurs="0" />
+				<xs:element ref="sqlFunctionCaseSensitive" minOccurs="0" />
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="authentication">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="internal" />
+				<xs:enumeration value="external" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+
+	<xs:element name="userIdParamName" type="xs:string" />
+	<xs:element name="contactUrl" type="xs:string" />
+	<xs:element name="filterFieldsMaxDepth" type="xs:string" />
+	<xs:element name="maxExportableSheets" type="xs:int" />
+	<xs:element name="helpContentUrl" type="xs:string" />
+	<xs:element name="autolocking" type="lockTypeDefinition" />
+	<xs:element name="loginCaseSensitive" type="xs:boolean" />
+	<xs:element name="sqlFunctionCaseSensitive" type="xs:string" />
+
+	<xs:element name="user">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="attributes" maxOccurs="1" minOccurs="0" />
+			</xs:sequence>
+			<xs:attribute name="login" type="xs:string" use="required" />
+			<xs:attribute name="name" type="xs:string" use="required" />
+			<xs:attribute name="forname" type="xs:string" use="optional" />
+			<xs:attribute name="mail" type="xs:string" use="optional" />
+			<xs:attribute name="password" type="xs:string" use="required" />
+			<xs:attribute name="passwordEncoding" use="optional"
+				default="clear">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="clear" />
+						<xs:enumeration value="md5" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="users">
+
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="user" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+Definition of a user.
+<P>
+A user definition includes:
+<UL>
+ <LI>The login
+ <LI>The name of the user
+ <LI>The email address of this user
+ <LI>The password to assign to this user
+</UL>
+]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="role">
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="roles">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="role" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="userRole">
+		<xs:complexType>
+			<xs:attribute name="login" type="xs:string" use="required" />
+			<xs:attribute name="roleName" type="xs:string" use="required" />
+			<xs:attribute name="productName" type="xs:string" use="optional" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="userRoles">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="userRole" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="code">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="filename" type="xs:string" use="optional" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="script">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="code" maxOccurs="1" minOccurs="1">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+Actual code of the script
+]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:NMTOKEN" use="required">
+				<xs:annotation>
+					<xs:documentation>
+                        <![CDATA[
+Name of this script object.
+<P>
+This name is only used to reference this script in extension points  (different from the filename).
+]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="language" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="action">
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:NMTOKEN" use="required">
+				<xs:annotation>
+					<xs:documentation>
+                        <![CDATA[
+Name of this action object.
+<P>
+This name is only used to reference this action in extension points  (different from the classname).
+]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="classname" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>
+                        <![CDATA[
+Name of the Java class implementing the action.
+]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="commands">
+		<xs:complexType>
+			<xs:choice minOccurs="1" maxOccurs="unbounded">
+				<xs:element ref="script" />
+				<xs:element ref="action" />
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="message">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="key" type="xs:string" use="required" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="image">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="key" type="xs:string" use="required" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="defaultTranslation">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:choice maxOccurs="unbounded" minOccurs="1">
+					<xs:element ref="message" />
+					<xs:element ref="image" />
+				</xs:choice>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="translation">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:choice maxOccurs="unbounded" minOccurs="1">
+					<xs:element ref="message" />
+					<xs:element ref="image" />
+				</xs:choice>
+			</xs:sequence>
+			<xs:attribute name="lang" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="translations">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="defaultTranslation" maxOccurs="1"
+					minOccurs="0" />
+				<xs:element ref="translation" maxOccurs="unbounded"
+					minOccurs="0" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="dictionary">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="categories" minOccurs="0" />
+				<xs:element ref="environments" minOccurs="0" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="categories">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" ref="category" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="category">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="values" maxOccurs="1" minOccurs="1" />
+			</xs:sequence>
+			<xs:attribute name="name" use="required" type="xs:NCName" />
+			<xs:attribute name="access" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="Process" />
+						<xs:enumeration value="Product" />
+						<xs:enumeration value="User" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="values">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" ref="categoryValue" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="categoryValue">
+		<xs:complexType>
+			<xs:attribute name="value" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="environments">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="environment" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="environment">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="categories" maxOccurs="1" minOccurs="0" />
+			</xs:sequence>
+			<xs:attribute name="name" use="required" type="xs:string" />
+			<xs:attribute name="isPublic" use="optional" type="xs:boolean" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:attributeGroup name="fieldBaseAttrs">
+		<xs:attribute name="labelKey" use="required" type="xs:NCName" />
+		<xs:attribute name="description" use="optional" />
+		<xs:attribute name="confidential" use="optional" type="xs:boolean" />
+		<xs:attribute name="exportable" use="optional" type="xs:boolean" />
+		<xs:attribute name="multivalued" type="xs:boolean" use="optional" />
+		<xs:attribute name="mandatory" type="xs:boolean" use="optional" />
+		<xs:attribute name="updatable" use="optional" type="xs:boolean" />
+	</xs:attributeGroup>
+
+	<xs:attributeGroup name="fieldPointerAttrs">
+		<xs:attribute name="pointerField" use="optional" type="xs:boolean" />
+		<xs:attribute name="referencedLinkType" use="optional"
+			type="xs:string" />
+		<xs:attribute name="referencedFieldLabel" use="optional"
+			type="xs:string" />
+	</xs:attributeGroup>
+
+	<xs:element name="simpleField">
+		<xs:complexType>
+			<xs:all maxOccurs="1">
+				<xs:element ref="attributes" minOccurs="0" />
+			</xs:all>
+			<xs:attributeGroup ref="fieldBaseAttrs" />
+			<xs:attributeGroup ref="fieldPointerAttrs" />
+			<xs:attribute name="maxSize" type="xs:string" use="optional"
+				default="256" />
+			<xs:attribute name="valueType" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="String" />
+						<xs:enumeration value="Boolean" />
+						<xs:enumeration value="Integer" />
+						<xs:enumeration value="Real" />
+						<xs:enumeration value="Date" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="defaultValue" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="choiceField">
+		<xs:complexType>
+			<xs:all maxOccurs="1">
+				<xs:element ref="attributes" minOccurs="0" />
+			</xs:all>
+
+			<xs:attributeGroup ref="fieldBaseAttrs" />
+			<xs:attributeGroup ref="fieldPointerAttrs" />
+			<xs:attribute name="categoryName" use="required" type="xs:NCName" />
+			<xs:attribute name="defaultValue" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="attachedField">
+		<xs:complexType>
+			<xs:all maxOccurs="1">
+				<xs:element ref="attributes" minOccurs="0" />
+			</xs:all>
+			<xs:attributeGroup ref="fieldBaseAttrs" />
+			<xs:attributeGroup ref="fieldPointerAttrs" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="multipleField">
+		<xs:complexType>
+			<xs:all maxOccurs="1">
+				<xs:element ref="attributes" minOccurs="0" />
+				<xs:element ref="fields" />
+			</xs:all>
+			<xs:attributeGroup ref="fieldBaseAttrs" />
+			<xs:attribute name="fieldSeparator" use="optional" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="referenceField">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="fields" />
+			</xs:sequence>
+			<xs:attribute name="fieldSeparator" use="optional" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="fields">
+		<xs:complexType>
+			<xs:choice minOccurs="1" maxOccurs="unbounded">
+				<xs:element ref="simpleField" />
+				<xs:element ref="choiceField" />
+				<xs:element ref="attachedField" />
+				<xs:element ref="multipleField" />
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="productTypes">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="productType" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="productType">
+		<xs:complexType>
+			<xs:all maxOccurs="1">
+				<xs:element ref="description" minOccurs="0" />
+				<xs:element ref="fields" minOccurs="0" />
+				<xs:element ref="displayGroups" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+List of display groups, used to group fields logically, and to sort them.
+<P>
+<B>Note:</B> All fields defined in a product type must be associated to a group (and
+to one group only)
+                        ]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="attributes" minOccurs="0" />
+				<xs:element ref="extensionPoints" minOccurs="0" />
+			</xs:all>
+			<xs:attribute name="name" use="required" type="xs:NCName" />
+			<xs:attribute name="description" use="optional" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="state">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="1" maxOccurs="1" ref="extensionPoints" />
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string"></xs:attribute>
+		</xs:complexType>
+
+	</xs:element>
+
+	<xs:element name="states">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" ref="state" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="extendedActions">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" ref="extendedAction" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="guiContexts">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" ref="guiContext" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="extendedAction">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="menuEntry" minOccurs="1" />
+				<xs:element ref="guiContexts" minOccurs="0" />
+				<xs:element ref="inputDataType" minOccurs="0" />
+			</xs:all>
+			<xs:attribute name="name" use="required" type="xs:NCName" />
+			<xs:attribute name="extensionPointName" use="required"
+				type="xs:NCName" />
+			<xs:attribute name="confirmationMessage" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="menuEntry">
+		<xs:complexType>
+			<xs:attribute name="name" use="required" type="xs:string" />
+			<xs:attribute name="parentName" use="optional" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="guiContext">
+		<xs:complexType>
+			<xs:attribute name="name" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="ALWAYS" />
+						<xs:enumeration value="SHEET_LIST" />
+						<xs:enumeration value="CTX_VIEW_SHEET" />
+						<xs:enumeration value="CTX_CREATE_SHEET" />
+						<xs:enumeration value="CTX_EDIT_SHEET" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="inputDataType">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="fields" minOccurs="0" />
+				<xs:element ref="displayGroups" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+List of display groups, used to group fields logically.
+<P>
+<B>Note:</B> All fields defined in a type must be associated to a group (and
+to one group only)
+                        ]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="displayHints" minOccurs="0" />
+				<xs:element ref="extensionPoints" minOccurs="0" />
+			</xs:all>
+			<xs:attribute name="name" use="required" type="xs:NCName">
+				<xs:annotation>
+					<xs:documentation>
+                        <![CDATA[
+Name of this input data type.
+                        ]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="sheetTypes">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" ref="sheetType" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="sheetType">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="description" minOccurs="0" />
+				<xs:element ref="referenceField" />
+				<xs:element ref="fields" minOccurs="0" />
+				<xs:element ref="displayHints" minOccurs="0" />
+				<xs:element ref="displayGroups" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+List of display groups, used to group fields logically.
+<P>
+<B>Note:</B> All fields defined in a sheet type must be associated to a group (and
+to one group only)
+                        ]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+
+				<xs:element ref="extensionPoints" minOccurs="0" />
+
+				<xs:element ref="states" minOccurs="0" />
+
+				<xs:element ref="lifecycleResource" minOccurs="1">
+					<xs:annotation>
+						<xs:documentation>
+							Name of the file containing
+							the lifecycle
+							definition.
+                        </xs:documentation>
+					</xs:annotation>
+				</xs:element>
+
+				<xs:element ref="attributes" minOccurs="0" />
+				<xs:element ref="extendedActions" minOccurs="0" />
+			</xs:all>
+
+			<xs:attribute name="name" use="required" type="xs:NCName">
+				<xs:annotation>
+					<xs:documentation>
+                        <![CDATA[
+Name of this sheet type.
+                        ]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="description" type="xs:NCName" use="optional">
+				<xs:annotation>
+					<xs:documentation>
+                        <![CDATA[
+An optional text used to describe this sheet type.
+<P>
+This description is only used by the user interface, and may be defined freely.
+]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="selectable" type="xs:boolean" use="optional" />
+			<xs:attribute name="versionable" type="xs:boolean" use="optional"
+				default="false">
+				<xs:annotation>
+					<xs:documentation>
+                        <![CDATA[
+Specify if sheets defined from this type support versions
+management or not. (false by default)
+]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="autolocking" type="lockTypeDefinition"
+				use="optional" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="displayGroups">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" ref="displayGroup">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+A display group is defined by:
+<UL>
+  <LI> A name. This name is displayed as the group name in the user interface.
+  <LI> A list of field references, used to define the ordered list of fields that
+  belong to this group.
+</UL>
+]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="fieldRef">
+		<xs:complexType>
+			<xs:attribute name="name" use="required" type="xs:NCName" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="displayGroup">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="fieldRef" />
+			</xs:sequence>
+			<xs:attribute name="name" use="required" />
+			<xs:attribute name="isOpened" type="xs:boolean" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="textDisplayHint">
+		<xs:complexType>
+			<xs:attribute name="labelKey" use="required" type="xs:NCName" />
+			<xs:attribute name="height" use="optional" type="xs:positiveInteger" />
+			<xs:attribute name="width" use="optional" type="xs:positiveInteger" />
+			<xs:attribute name="multiline" use="optional" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>
+                        <![CDATA[
+Obsolete attribute. Use the <em>displayType</em> attribute to specify a multi-line text field.
+]]>
+
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="displayType" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="SINGLE_LINE" />
+						<xs:enumeration value="MULTI_LINE" />
+						<xs:enumeration value="URL" />
+						<xs:enumeration value="INTERNAL_URL" />
+						<xs:enumeration value="RICH_TEXT" />
+						<xs:enumeration value="EXTERNAL_WEB_CONTENT" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="choiceDisplayHint">
+		<xs:complexType>
+			<xs:attribute name="labelKey" use="required" type="xs:NCName" />
+			<xs:attribute name="list" use="required" type="xs:boolean" />
+			<xs:attribute name="imageType" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="IMAGE" />
+						<xs:enumeration value="IMAGE_TEXT" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="choiceTreeDisplayHint">
+		<xs:complexType>
+			<xs:attribute name="labelKey" use="required" type="xs:NCName" />
+			<xs:attribute name="separator" use="required" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="choiceStringDisplayHint">
+		<xs:complexType>
+			<xs:attribute name="labelKey" use="required" type="xs:NCName" />
+			<xs:attribute name="strict" use="optional" type="xs:boolean" />
+			<xs:attribute name="extensionPoint" use="required" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="attachedDisplayHint">
+		<xs:complexType>
+			<xs:attribute name="labelKey" use="required" type="xs:NCName" />
+			<xs:attribute name="height" use="optional" type="xs:positiveInteger" />
+			<xs:attribute name="width" use="optional" type="xs:positiveInteger" />
+			<xs:attribute name="displayType" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="IMAGE" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="gridColumn">
+		<xs:complexType>
+			<xs:attribute name="name" use="required" type="xs:string" />
+			<xs:attribute name="editorType" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="TEXT" />
+						<xs:enumeration value="DATE" />
+						<xs:enumeration value="BOOLEAN" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="gridDisplayHint">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="gridColumn" minOccurs="1" maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attribute name="labelKey" use="required" type="xs:NCName" />
+			<xs:attribute name="height" use="optional" type="xs:positiveInteger" />
+			<xs:attribute name="width" use="optional" type="xs:positiveInteger" />
+			<xs:attribute name="columnSeparator" use="required"
+				type="xs:string">
+				<xs:annotation>
+					<xs:documentation>
+    					<![CDATA[
+The characters sequence used to separate the colmuns values in each line (this sequence can be defined as a single character).
+]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="displayHint">
+		<xs:complexType>
+			<xs:all maxOccurs="1">
+				<xs:element ref="attributes" minOccurs="0" />
+			</xs:all>
+			<xs:attribute name="labelKey" use="required" type="xs:NCName" />
+			<xs:attribute name="type" use="required" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="dateDisplayHint">
+		<xs:complexType>
+			<xs:attribute name="labelKey" use="required" type="xs:NCName" />
+			<xs:attribute name="format" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="SHORT" />
+						<xs:enumeration value="MEDIUM" />
+						<xs:enumeration value="LONG" />
+						<xs:enumeration value="FULL" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="includeTime" type="xs:boolean" use="optional" />
+		</xs:complexType>
+	</xs:element>
+
+
+	<!--applet parameters-->
+	<xs:element name="appletParameter">
+		<xs:complexType>
+			<xs:attribute name="appletParamName" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<!--Java applet displayHint-->
+	<xs:element name="jAppletDisplayHint">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="appletParameter" />
+			</xs:sequence>
+			<xs:attribute name="appletCode" use="required" />
+			<xs:attribute name="appletCodeBase" use="required" />
+			<xs:attribute name="labelKey" use="required" />
+			<xs:attribute name="appletAlter" use="optional" />
+			<xs:attribute name="appletName" use="required" />
+			<xs:attribute name="appletArchive" use="optional" />
+			<xs:attribute name="displayType" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="APPLET" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="displayHints">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element ref="textDisplayHint" />
+				<xs:element ref="choiceDisplayHint" />
+				<xs:element ref="choiceTreeDisplayHint" />
+				<xs:element ref="displayHint" />
+				<xs:element ref="attachedDisplayHint" />
+				<xs:element ref="dateDisplayHint" />
+				<xs:element ref="gridDisplayHint" />
+				<xs:element ref="choiceStringDisplayHint" />
+				<xs:element ref="jAppletDisplayHint" />
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="linkType">
+		<xs:all maxOccurs="1">
+			<xs:element ref="description" minOccurs="0" />
+			<xs:element ref="fields" minOccurs="0" />
+			<xs:element ref="attributes" minOccurs="0" />
+			<xs:element ref="extensionPoints" minOccurs="0" />
+			<xs:element ref="displayHints" minOccurs="0" />
+			<xs:element ref="sorts" minOccurs="0" />
+		</xs:all>
+		<xs:attribute name="name" use="required" type="xs:NCName">
+			<xs:annotation>
+				<xs:documentation>
+                    <![CDATA[
+Name of this link type.
+                        ]]>
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="description" type="xs:NCName" use="optional">
+			<xs:annotation>
+				<xs:documentation>
+                    <![CDATA[
+An optional text used to describe this link type.
+<P>
+This description is only used by the user interface, and may be defined freely.
+]]>
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="originType" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>
+                    <![CDATA[
+Name of the origin type of this link definition. This name must reference an
+existing sheet type in the process.
+                        ]]>
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="destinationType" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>
+                    <![CDATA[
+Name of the destination type of this link definition. This name must reference an
+existing type in the process.
+                        ]]>
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+
+		<xs:attribute name="lowBound" use="optional" type="xs:nonNegativeInteger" />
+		<xs:attribute name="highBound" use="optional" type="xs:positiveInteger" />
+		<xs:attribute name="unidirectional" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="true" />
+					<xs:enumeration value="false" />
+					<xs:enumeration value="creation" />
+					<xs:enumeration value="navigation" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:element name="sorts">
+		<xs:annotation>
+			<xs:documentation>
+        		<![CDATA[
+Defined the filters used to displayed a list of links of the current type
+on the linked sheets
+				]]>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="2" ref="sort" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="sort">
+		<xs:annotation>
+			<xs:documentation>
+                    <![CDATA[
+Different methods of sorting can be defined for the link displaying on
+the origin and the destination sheet type
+						]]>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="filterName" use="required" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>
+	                    <![CDATA[
+Name of the filter: it must be a link filter whose the unique container
+is the current link type
+	                    ]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="sheetType" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="Both" />
+						<xs:enumeration value="Origin" />
+						<xs:enumeration value="Destination" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="productLinkType" type="linkType" />
+
+	<xs:element name="sheetLinkType" type="linkType" />
+
+	<xs:element name="productLinkTypes">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="productLinkType" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="sheetLinkTypes">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="sheetLinkType" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="command">
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="extensionPoint">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="attributes" minOccurs="0" maxOccurs="1" />
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="command" />
+			</xs:sequence>
+
+			<xs:attribute name="name" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="extensionPoints">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="extensionPoint" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:attributeGroup name="accessBaseAttrs">
+		<xs:attribute name="role" use="optional" type="xs:string" />
+		<xs:attribute name="productName" use="optional" type="xs:string" />
+		<xs:attribute name="stateName" use="optional" type="xs:string" />
+		<xs:attribute name="typeName" use="optional" type="xs:string" />
+	</xs:attributeGroup>
+
+	<xs:element name="fieldAccess">
+		<xs:complexType>
+			<xs:all minOccurs="0" maxOccurs="1">
+				<xs:element ref="attributes" />
+			</xs:all>
+			<xs:attributeGroup ref="accessBaseAttrs" />
+			<!-- sheetType is a legacy attribute kept for compatibility -->
+			<xs:attribute name="sheetType" type="xs:string" use="optional" />
+			<xs:attribute name="fieldKey" type="xs:string" use="required" />
+			<xs:attribute name="updatable" type="xs:boolean" use="optional" />
+			<xs:attribute name="confidential" type="xs:boolean" use="optional" />
+			<xs:attribute name="mandatory" type="xs:boolean" use="optional" />
+			<xs:attribute name="exportable" type="xs:boolean" use="optional" />
+			<xs:attribute name="visibleType" type="xs:string" use="optional" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="sheetTypeAccess">
+		<xs:complexType>
+			<xs:all minOccurs="0" maxOccurs="1">
+				<xs:element ref="attributes" />
+			</xs:all>
+			<xs:attributeGroup ref="accessBaseAttrs" />
+			<!-- sheetType is a legacy attribute kept for compatibility -->
+			<xs:attribute name="sheetType" type="xs:string" use="required" />
+			<xs:attribute name="updatable" type="xs:boolean" use="optional" />
+			<xs:attribute name="confidential" type="xs:boolean" use="optional" />
+			<xs:attribute name="creatable" type="xs:boolean" use="optional" />
+			<xs:attribute name="deletable" type="xs:boolean" use="optional" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="containerTypeAccess">
+		<xs:complexType>
+			<xs:all minOccurs="0" maxOccurs="1">
+				<xs:element ref="attributes" />
+			</xs:all>
+			<xs:attributeGroup ref="accessBaseAttrs" />
+			<xs:attribute name="updatable" type="xs:boolean" use="optional" />
+			<xs:attribute name="confidential" type="xs:boolean" use="optional" />
+			<xs:attribute name="creatable" type="xs:boolean" use="optional" />
+			<xs:attribute name="deletable" type="xs:boolean" use="optional" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="transitionAccess">
+		<xs:complexType>
+			<xs:all minOccurs="0" maxOccurs="1">
+				<xs:element ref="attributes" />
+			</xs:all>
+			<xs:attributeGroup ref="accessBaseAttrs" />
+			<!-- sheetType is a legacy attribute kept for compatibility -->
+			<xs:attribute name="sheetType" type="xs:string" use="required" />
+			<xs:attribute name="transitionName" type="xs:string"
+				use="required" />
+			<xs:attribute name="enabled" type="xs:boolean" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="actionAccess">
+		<xs:complexType>
+			<xs:all minOccurs="0" maxOccurs="1">
+				<xs:element ref="attributes" />
+			</xs:all>
+			<xs:attributeGroup ref="accessBaseAttrs" />
+			<xs:attribute name="actionKey" use="required" type="xs:string" />
+			<xs:attribute name="enabled" type="xs:boolean" use="optional" />
+			<xs:attribute name="confidential" type="xs:boolean" use="optional" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="adminAccess">
+		<xs:complexType>
+			<xs:all minOccurs="0" maxOccurs="1">
+				<xs:element ref="attributes" />
+			</xs:all>
+			<xs:attribute name="actionKey" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="gpm.administration.user.create" />
+						<xs:enumeration value="gpm.administration.user.modify" />
+						<xs:enumeration value="gpm.administration.user.modify.roles" />
+						<xs:enumeration value="gpm.administration.user.delete" />
+						<xs:enumeration value="gpm.administration.product.search.createAndEdit" />
+						<xs:enumeration value="gpm.administration.product.search.delete" />
+						<xs:enumeration value="gpm.administration.product.create" />
+						<xs:enumeration value="gpm.administration.product.view" />
+						<xs:enumeration value="gpm.administration.product.delete" />
+						<xs:enumeration value="gpm.administration.product.update" />
+						<xs:enumeration value="gpm.administration.product.export" />
+						<xs:enumeration value="gpm.administration.product.import" />
+						<xs:enumeration value="gpm.administration.dictionary.modify" />
+						<xs:enumeration value="gpm.administration.environment.modify" />
+						<xs:enumeration value="gpm.administration.environment.create" />
+						<xs:enumeration value="gpm.administration.user.current.modify" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="role" type="xs:string" use="optional" />
+			<xs:attribute name="productName" type="xs:string" use="optional" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="accessControls">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element ref="fieldAccess" />
+				<xs:element ref="sheetTypeAccess" />
+				<xs:element ref="containerTypeAccess" />
+				<xs:element ref="transitionAccess" />
+				<xs:element ref="actionAccess" />
+				<xs:element ref="adminAccess" />
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="parent">
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="parents">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="parent" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="products">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="product" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="product">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="environmentNames" minOccurs="0" />
+				<xs:element ref="fieldValues" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+Field values to set in this product.
+<P>
+The fields declared in the product type can be valued using
+<i>fieldValue</i> subtag.
+                        ]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="attributes" minOccurs="0" />
+				<xs:element ref="parents" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+Each of these parent products must be declared before the current product.
+                        ]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:all>
+
+			<xs:attribute name="id" type="xs:NMTOKEN" use="optional" />
+			<xs:attribute name="name" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>
+                        <![CDATA[
+Name of the product. All products defined in a process must have a unique name.
+                        ]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="type" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>
+                        <![CDATA[
+Type of the product. This type must already exist in the process, or
+created through a <i>productType</i> definition.
+                        ]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="productDescription" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>
+                        <![CDATA[
+Description of the product.
+                        ]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="envName" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>
+                        <![CDATA[
+Name of the environment associated with this product.
+                        ]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+
+			<xs:attribute name="parentName" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>
+                        <![CDATA[
+Name of the parent product.
+<P>
+<B>Note:</B> This parent product must be already defined in the instance.
+                        ]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="environmentName">
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="environmentNames">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="environmentName" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="productLinks">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="productLink" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="transition">
+		<xs:complexType>
+			<xs:attribute name="originState" type="xs:string" use="required" />
+			<xs:attribute name="finalState" type="xs:string" use="required" />
+			<xs:attribute name="name" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="exclude">
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="extensionPointsToExclude">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="exclude" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="rule">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="transition" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attribute name="type" type="xs:string" use="optional" />
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="sheets">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="rule" />
+				<xs:element minOccurs="0" maxOccurs="1" ref="extensionPointsToExclude" />
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="sheet" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="sheet">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="referenceValues" minOccurs="0"
+					maxOccurs="1" />
+				<xs:element ref="fieldValues" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="attributes" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="rule" minOccurs="0"
+					maxOccurs="1" />
+				<xs:element ref="extensionPointsToExclude" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="transitionsHistory" minOccurs="0"
+					maxOccurs="1" />
+				<xs:element ref="revisions" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="lock" minOccurs="0" maxOccurs="1" />
+			</xs:all>
+			<xs:attribute name="id" type="xs:NMTOKEN" use="optional" />
+			<xs:attribute name="type" type="xs:string" use="required" />
+			<xs:attribute name="productName" type="xs:string" use="required" />
+			<xs:attribute name="state" type="xs:string" use="optional" />
+			<xs:attribute name="reference" type="xs:string" use="optional" />
+			<xs:attribute name="version" type="xs:integer" use="optional" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="transitionsHistory">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="transitionData" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="transitionData">
+		<xs:complexType>
+			<xs:attribute name="login" type="xs:string" use="required" />
+			<xs:attribute name="originState" type="xs:string" use="required" />
+			<xs:attribute name="destinationState" type="xs:string" use="required" />
+			<xs:attribute name="date" type="xs:date" use="optional" />
+			<xs:attribute name="transitionName" type="xs:string" use="required" />
+			<xs:attribute name="time" type="xs:time" use="optional" />
+		</xs:complexType>
+	</xs:element>
+
+
+	<xs:simpleType name="lockTypeDefinition">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="WRITE" />
+			<xs:enumeration value="READ_WRITE" />
+			<xs:enumeration value="NONE" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:element name="lock">
+		<xs:complexType>
+			<xs:attribute name="owner" type="xs:string" use="required" />
+			<xs:attribute name="lockType" use="required" type="lockTypeDefinition" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="sheetLinks">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="1" ref="extensionPointsToExclude" />
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="sheetLink" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="sheetLink">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="1" ref="extensionPointsToExclude" />
+				<xs:element ref="fieldValues" minOccurs="0" />
+				<xs:element ref="attributes" minOccurs="0" />
+			</xs:sequence>
+
+			<xs:attribute name="type" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>
+	                    <![CDATA[
+	Name of link type definition to use to create this link.
+	                        ]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+
+			<xs:attribute name="id" type="xs:NMTOKEN" use="optional" />
+			<xs:attribute name="version" type="xs:integer" use="optional" />
+			<xs:attribute name="originId" type="xs:NMTOKEN" use="optional" />
+			<xs:attribute name="destinationId" type="xs:NMTOKEN"
+				use="optional" />
+			<xs:attribute name="originReference" type="xs:string"
+				use="optional" />
+			<xs:attribute name="destinationReference" type="xs:string"
+				use="optional" />
+			<xs:attribute name="originProductName" type="xs:string"
+				use="optional" />
+			<xs:attribute name="destinationProductName" type="xs:string"
+				use="optional" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="productLink">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="fieldValues" minOccurs="0" />
+				<xs:element ref="attributes" minOccurs="0" />
+			</xs:sequence>
+
+			<xs:attribute name="type" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>
+	                    <![CDATA[
+	Name of link type definition to use to create this link.
+	                        ]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+
+			<xs:attribute name="id" type="xs:NMTOKEN" use="optional" />
+			<xs:attribute name="version" type="xs:integer" use="optional" />
+			<xs:attribute name="originId" type="xs:NMTOKEN" use="optional" />
+			<xs:attribute name="destinationId" type="xs:NMTOKEN"
+				use="optional" />
+			<xs:attribute name="originProductName" type="xs:string"
+				use="optional" />
+			<xs:attribute name="destinationProductName" type="xs:string"
+				use="optional" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="referenceValues">
+		<xs:complexType>
+			<xs:choice minOccurs="1" maxOccurs="unbounded">
+				<xs:element ref="fieldValue" />
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="fieldValues">
+		<xs:complexType>
+			<xs:choice minOccurs="1" maxOccurs="unbounded">
+				<xs:element ref="fieldValue" />
+				<xs:element ref="attachedFieldValue" />
+				<xs:element ref="pointerFieldValue" />
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="fieldValue">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="fieldValues" minOccurs="0" maxOccurs="1" />
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="required" />
+			<xs:attribute name="value" type="xs:string" use="optional" />
+			<xs:attribute name="label" type="xs:string" use="optional" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="attachedFieldValue">
+		<xs:complexType>
+			<xs:attribute name="id" type="xs:NMTOKEN" use="optional" />
+			<xs:attribute name="name" type="xs:string" use="required" />
+			<xs:attribute name="value" type="xs:string" use="optional" />
+			<xs:attribute name="mimeType" type="xs:string" use="optional" />
+			<xs:attribute name="filename" type="xs:string" use="optional" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="pointerFieldValue">
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string" use="required" />
+			<xs:attribute name="referencedContainerId" type="xs:string"
+				use="optional">
+				<xs:annotation>
+					<xs:documentation>
+    					<![CDATA[
+Instanciation ID or technical ID of the pointed container
+]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="referencedContainerRef" type="xs:string"
+				use="optional">
+				<xs:annotation>
+					<xs:documentation>
+                        <![CDATA[
+functional reference of the pointed container
+]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="referencedProduct" type="xs:string"
+				use="optional">
+				<xs:annotation>
+					<xs:documentation>
+                        <![CDATA[
+product of the pointed container (necessary if referencedContainerRef is filled)
+]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="referencedFieldLabel" type="xs:string"
+				use="required">
+				<xs:annotation>
+					<xs:documentation>
+    					<![CDATA[
+Label key of pointed field
+]]>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="filters">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element ref="sheetFilter" />
+				<xs:element ref="linkFilter" />
+				<xs:element ref="productFilter" />
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:attributeGroup name="filterBaseAttrs">
+		<xs:attribute name="labelKey" use="required" type="xs:string" />
+		<xs:attribute name="description" use="optional" />
+		<xs:attribute name="hidden" use="optional" type="xs:boolean" />
+	</xs:attributeGroup>
+
+	<xs:element name="sheetFilter">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="description" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+Description of this filter
+]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="userLogin" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+Used to restrict this filter to the specified user login.
+]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="productName" minOccurs="0" />
+
+				<xs:element ref="containers">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+Product types applicable for this filter.
+<p>
+<B>Note:</B> Only <em>sheetTypeRef</em> elements can be used here.
+]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="resultSummary">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+Definition of the results to get from the filter.
+<p>
+The result summary is a list of fields (actual fields, and virtual fields),
+available in the selected sheet types (containers).
+]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+
+				<xs:element ref="scope" minOccurs="0" />
+				<xs:element ref="criteria" minOccurs="0" />
+			</xs:all>
+			<xs:attributeGroup ref="filterBaseAttrs" />
+			<xs:attribute name="filterUsage" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="table" />
+						<xs:enumeration value="tree" />
+						<xs:enumeration value="all" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="productFilter">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="description" minOccurs="0" />
+				<xs:element ref="userLogin" minOccurs="0" />
+				<xs:element ref="productName" minOccurs="0" />
+
+				<xs:element ref="containers">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+Product types applicable for this filter.
+<p>
+<B>Note:</B> Only <em>productTypeRef</em> elements can be used here.
+]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="resultSummary">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+Definition of the results to get from the filter.
+<p>
+The result summary is a list of fields (actual fields, and virtual fields), available
+in the product types (containers).
+]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+
+				<xs:element ref="criteria" minOccurs="0" />
+			</xs:all>
+			<xs:attributeGroup ref="filterBaseAttrs" />
+			<xs:attribute name="filterUsage" type="xs:string" use="optional" />
+		</xs:complexType>
+	</xs:element>
+
+
+	<xs:element name="linkFilter">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="description" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+Description of this filter
+]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="userLogin" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+Used to restrict this filter to the specified user login.
+]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="productName" minOccurs="0" />
+
+				<xs:element ref="containers">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+Product types applicable for this filter.
+<p>
+<B>Note:</B> Only <em>sheetTypeRef</em> elements can be used here.
+]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="resultSummary">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+Definition of the results to get from the filter.
+<p>
+The result summary is a list of fields (actual fields, and virtual fields),
+available in the selected sheet types (containers).
+]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="criteria" minOccurs="0" />
+			</xs:all>
+			<xs:attributeGroup ref="filterBaseAttrs" />
+			<xs:attribute name="filterUsage" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="table" />
+						<xs:enumeration value="tree" />
+						<xs:enumeration value="all" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="productTypeRef">
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="sheetTypeRef">
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="linkTypeRef">
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="containers">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element ref="sheetTypeRef" />
+				<xs:element ref="productTypeRef" />
+				<xs:element ref="linkTypeRef" />
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="resultSummary">
+		<xs:complexType>
+			<xs:sequence maxOccurs="unbounded">
+				<xs:element ref="fieldResult">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+Definition of an individual result. A result references a field, and can be
+optionally sorted  (in ascending or descending order).
+]]>
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="fieldResult">
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string" use="required" />
+			<xs:attribute name="label" type="xs:string" use="optional" />
+			<xs:attribute name="displayed" type="xs:string" use="optional"
+				default="true" />
+			<xs:attribute name="sort">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="asc" />
+						<xs:enumeration value="desc" />
+						<xs:enumeration value="def_asc" />
+						<xs:enumeration value="def_desc" />
+						<xs:enumeration value="none" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="scope">
+		<xs:complexType>
+			<xs:sequence maxOccurs="unbounded">
+				<xs:element ref="productScope" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="productScope">
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string" use="required" />
+			<xs:attribute name="includeSubProducts" type="xs:boolean"
+				use="optional" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="criteria">
+		<xs:complexType>
+			<xs:sequence maxOccurs="unbounded">
+				<xs:element ref="criteriaGroup" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="criteriaGroup">
+		<xs:complexType>
+			<xs:sequence maxOccurs="unbounded">
+				<xs:element ref="criterion">
+					<xs:annotation>
+						<xs:documentation>
+                            <![CDATA[
+Definition of an individual criterion. Each criterion is used as a comparator
+between a field and the specified value.
+<p>
+<B>Note:</B> As the bracket characters (&lt;, &gt;) are not easily usable in
+XML, they have been replaced by a text description of the operator.
+]]>
+
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="criterion">
+		<xs:complexType>
+			<xs:attribute name="fieldKey" type="xs:string" use="required" />
+			<xs:attribute name="operator" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="=" />
+						<xs:enumeration value="!=" />
+						<xs:enumeration value="notLike" />
+						<xs:enumeration value="like" />
+						<xs:enumeration value="greaterThan" />
+						<xs:enumeration value="greaterOrEqual" />
+						<xs:enumeration value="lessThan" />
+						<xs:enumeration value="lessOrEqual" />
+						<xs:enumeration value="since" />
+						<xs:enumeration value="other" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="optional" />
+			<xs:attribute name="caseSensitive" type="xs:boolean"
+				default="false" use="optional" />
+		</xs:complexType>
+	</xs:element>
+
+
+	<xs:element name="reports">
+		<xs:complexType>
+			<xs:sequence maxOccurs="unbounded">
+				<xs:element ref="reportModel" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="reportModel">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="containers" minOccurs="1" />
+				<xs:element ref="exportTypes" minOccurs="1" />
+			</xs:all>
+			<xs:attribute name="name" type="xs:string" use="required" />
+			<xs:attribute name="description" type="xs:string" use="optional" />
+			<xs:attribute name="path" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="exportTypes">
+		<xs:complexType>
+			<xs:sequence maxOccurs="unbounded">
+				<xs:element ref="exportType" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="exportType">
+		<xs:complexType>
+			<xs:attribute name="exportFormat" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="PDF" />
+						<xs:enumeration value="XLS" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="filterAccessConstraints">
+		<xs:complexType>
+			<xs:sequence minOccurs="1" maxOccurs="unbounded">
+				<xs:element ref="filterAccessConstraint" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="filterAccessControls">
+		<xs:complexType>
+			<xs:sequence minOccurs="1" maxOccurs="unbounded">
+				<xs:element ref="filterAccess" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="filterAccessConstraint">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="criteria" minOccurs="0" />
+				<xs:element ref="description" minOccurs="0" />
+			</xs:all>
+			<xs:attribute id="constraintName" name="constraintName"
+				type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="filterAccess">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded"
+					ref="filterAccessConstraintName" />
+			</xs:sequence>
+			<xs:attribute id="roleName" name="roleName" type="xs:string"
+				use="optional" />
+			<xs:attribute id="visibility" name="visibility" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="Process" />
+						<xs:enumeration value="Product" />
+						<xs:enumeration value="User" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute id="typeName" name="typeName" type="xs:string"
+				use="optional" />
+			<xs:attribute id="fieldName" name="fieldName" type="xs:string"
+				use="optional" />
+
+			<xs:attribute id="executable" name="executable" type="xs:boolean"
+				default="true" use="optional" />
+			<xs:attribute id="editable" name="editable" type="xs:boolean"
+				default="true" use="optional" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="filterAccessConstraintName">
+		<xs:complexType>
+			<xs:attribute id="filterAccessConstraintName.name" name="constraintName"
+				type="xs:string" use="optional" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="mapping">
+		<xs:complexType>
+			<xs:sequence minOccurs="1" maxOccurs="unbounded">
+				<xs:element ref="typeMapping" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="typeMapping">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="fieldMapping" />
+			</xs:sequence>
+			<xs:attribute name="originTypeName" type="xs:string"
+				use="required" />
+			<xs:attribute name="destinationTypeName" type="xs:string"
+				use="required" />
+			<xs:attribute name="originProcessName" type="xs:string"
+				use="optional" />
+			<xs:attribute name="destinationProcessName" type="xs:string"
+				use="optional" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="fieldMapping">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="valueMapping" />
+			</xs:sequence>
+			<xs:attribute name="originLabelKey" type="xs:string"
+				use="required" />
+			<xs:attribute name="destinationLabelKey" type="xs:string"
+				use="required" />
+			<xs:attribute name="extensionPointName" type="xs:NCName"
+				use="optional" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="valueMapping">
+		<xs:complexType>
+			<xs:attribute name="originValue" type="xs:string" use="required" />
+			<xs:attribute name="destinationValue" type="xs:string"
+				use="required" />
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

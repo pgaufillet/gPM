@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <!-- Use to add automagically all the JARs found in GPM_HOME
+        'lib' dir
+    -->
+    <bean id="classpathAppender"
+        class="org.topcased.gpm.util.config.ClassPathAppender">
+        <property name="dirs">
+            <list>
+                <value>${gpmLibsDir}</value>
+                <value>${extLibsDir}</value>
+            </list>
+        </property>
+
+        <property name="jars">
+            <list>
+                <value>file:${jdbc.driverJarResource}</value>
+            </list>
+        </property>
+    </bean>
+</beans>

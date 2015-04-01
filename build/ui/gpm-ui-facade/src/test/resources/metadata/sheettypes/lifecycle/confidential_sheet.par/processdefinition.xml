@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition  xmlns="urn:jbpm.org:jpdl-3.2"  name="CONFIDENTIAL_SHEET">
+
+	<start-state name="INIT">
+      <transition to="CREATED" name="TO CREATE"></transition>
+    </start-state>
+    
+    <state name="CREATED">
+		<transition name="TO CLOSE" to="CLOSED"/>
+	</state>
+	
+	<state name="CLOSED">
+    </state>
+    
+  </process-definition>

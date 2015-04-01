@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!--
+        Dictionary Facade
+    -->
+
+	<!-- Implementation bean -->
+	<bean id="dictionaryFacadeImpl" parent="abstractFacade"
+		class="org.topcased.gpm.ui.facade.server.dictionary.impl.DictionaryFacadeImpl"
+		autowire="byName" />
+
+	<!-- Visible interface of the service  -->
+	<bean id="dictionaryFacade" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedFacade">
+		<property name="target" ref="dictionaryFacadeImpl" />
+		<property name="proxyInterfaces"
+			value="org.topcased.gpm.ui.facade.server.dictionary.DictionaryFacade" />
+	</bean>
+
+</beans>

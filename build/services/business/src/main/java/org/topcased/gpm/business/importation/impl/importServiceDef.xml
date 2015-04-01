@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <!--
+        Import service
+    -->
+
+    <!-- Implementation bean -->
+    <bean id="importServiceImpl" parent="serviceImplBase"
+        class="org.topcased.gpm.business.importation.impl.ImportServiceImpl"
+        autowire="byName"/>
+
+    <!-- Visible interface of the service  -->
+    <bean id="importService"
+        class="org.springframework.aop.framework.ProxyFactoryBean"
+        parent="interceptedService">
+        <property name="target" ref="importServiceImpl" />
+
+        <property name="proxyInterfaces"
+            value="org.topcased.gpm.business.importation.service.ImportService" />
+    </bean>
+    
+    <!-- Import manager -->
+    <bean id="sheetImportManager" autowire="byName"
+        class="org.topcased.gpm.business.importation.impl.sheet.SheetImportManager" />
+    <bean id="sheetLinkImportManager" autowire="byName"
+        class="org.topcased.gpm.business.importation.impl.sheet.SheetLinkImportManager" />
+    <bean id="productImportManager" autowire="byName"
+        class="org.topcased.gpm.business.importation.impl.product.ProductImportManager" />
+    <bean id="productLinkImportManager" autowire="byName"
+        class="org.topcased.gpm.business.importation.impl.product.ProductLinkImportManager" />
+    <bean id="filterImportManager" autowire="byName"
+        class="org.topcased.gpm.business.importation.impl.FilterImportManager" />
+    <bean id="userImportManager" autowire="byName"
+        class="org.topcased.gpm.business.importation.impl.UserImportManager" />
+    <bean id="userRoleImportManager" autowire="byName"
+        class="org.topcased.gpm.business.importation.impl.UserRoleImportManager" />
+    <bean id="categoryImportManager" autowire="byName"
+        class="org.topcased.gpm.business.importation.impl.dictionary.CategoryImportManager" />
+    <bean id="environmentImportManager" autowire="byName"
+        class="org.topcased.gpm.business.importation.impl.dictionary.EnvironmentImportManager" />
+</beans>

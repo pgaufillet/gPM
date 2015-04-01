@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<assembly>
+    <id>javadoc</id>
+    <formats>
+        <format>zip</format>
+    </formats>
+
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <includeSiteDirectory>false</includeSiteDirectory>
+
+    <fileSets>
+        <fileSet>
+            <directory>../services/business/target/site/apidocs</directory>
+            <outputDirectory>gPM-${gpm.version}/javadoc/API</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>../client/webservices/v1/target/site/apidocs</directory>
+            <outputDirectory>gPM-${gpm.version}/javadoc/WebServices/v1</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>../client/webservices/v2/target/site/apidocs</directory>
+            <outputDirectory>gPM-${gpm.version}/javadoc/WebServices/v2</outputDirectory>
+        </fileSet>
+    </fileSets>
+</assembly>
+

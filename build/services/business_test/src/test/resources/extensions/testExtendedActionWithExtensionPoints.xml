@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<gpm xmlns="http://www.airbus.com/topcased/gPM"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+
+    <version>1.2</version>
+
+    <!--  Define commands -->
+    <commands>
+       <script name="testExtendedActionWithExtensionPointsScript" language="beanshell">
+            <code filename="metadata/commands/extensions/getChoiceStrings3.bsh" />
+        </script>
+    </commands>
+
+    <extendedActions>
+        <extendedAction name="testExtendedActionWithExtensionPoints"
+            extensionPointName="testExtendedActionWithExtensionPoints">
+            <guiContexts>
+                <guiContext name="ALWAYS" />
+            </guiContexts>
+            <menuEntry name="testExtendedActionWithExtensionPoints" parentName="Interface" />
+            <inputDataType name="testExtendedActionWithExtensionPoints_InputDataTypeTest">
+                <displayGroups>
+                    <displayGroup name="testExtendedActionWithExtensionPoints_Group">
+                        <fieldRef name="testExtendedActionWithExtensionPoints_ref" />
+                        <fieldRef name="testExtendedActionWithExtensionPoints_Field1" />
+                    </displayGroup>
+                </displayGroups>
+                <fields>
+                    <simpleField labelKey="testExtendedActionWithExtensionPoints_ref"
+                        valueType="String" />
+                    <simpleField labelKey="testExtendedActionWithExtensionPoints_Field1"
+                        valueType="String" />
+                </fields>
+                <displayHints>
+                    <choiceStringDisplayHint labelKey="testExtendedActionWithExtensionPoints_Field1" extensionPoint="testExtendedActionWithExtensionPoints_inputDataExtPt" />
+                </displayHints>
+                <extensionPoints>
+                    <extensionPoint name="testExtendedActionWithExtensionPoints_inputDataExtPt">
+                        <command name="testExtendedActionWithExtensionPointsScript" />
+                    </extensionPoint>
+                </extensionPoints>
+            </inputDataType>
+        </extendedAction>
+    </extendedActions>
+</gpm>
+
+
+
+
+
+
+

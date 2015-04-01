@@ -1,0 +1,19 @@
+import org.topcased.gpm.business.fields.*;
+import org.topcased.gpm.business.sheet.service.SheetData;
+import org.topcased.gpm.business.sheet.service.SheetService;
+import org.topcased.gpm.business.ServiceLocator;
+
+/** The Name of a field. */
+private static final String FIELD_NAME = "Félix";
+
+ServiceLocator serviceLocator = ServiceLocator.instance();
+SheetService sheetService = serviceLocator.getSheetService();
+SheetData lSheetData = sheetService.getSheetByKey(context.get("roleToken"), context.get("valuesContainerId"));
+
+LineFieldData lLFD = lSheetData.getReference();
+        String[] lValues = { FIELD_NAME };
+        FieldData[] lFieldDatas = lLFD.getFieldDatas();
+        lFieldDatas[0].setValues(new FieldValueData(lValues));
+        lLFD.setFieldDatas(lFieldDatas);
+
+sheetService.updateSheet(context.get("roleToken"), lSheetData, null);

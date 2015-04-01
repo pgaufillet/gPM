@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<gpm xmlns="http://www.airbus.com/topcased/gPM"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+
+    <version>1.2</version>
+    
+    <!-- Products's definition  -->
+    <products>
+        <product name="gPM" type="Store"
+            envName="Professional">
+        </product>
+        <product name="Vigile" type="Store"
+            envName="Professional">
+        </product>
+    </products>
+    
+    <sheets>
+        <sheet id="gPM_sheet1" type="SheetType1" productName="gPM">
+            <referenceValues>
+                <fieldValue name="ref" value="gPM_sheet1" />
+            </referenceValues>
+        </sheet>
+        <sheet id="gPM_sheet1" type="SheetType1" productName="gPM">
+            <referenceValues>
+                <fieldValue name="ref" value="gPM_sheet2" />
+            </referenceValues>
+        </sheet>
+    </sheets>
+</gpm>

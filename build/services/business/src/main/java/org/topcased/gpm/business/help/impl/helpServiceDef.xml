@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <!--
+        Help service
+    -->
+
+    <bean id="helpServiceImpl" parent="serviceImplBase" autowire="byName"
+        class="org.topcased.gpm.business.help.impl.HelpServiceImpl">
+
+        <property name="helpContentUrl" value="${helpContentUrl}" />
+    </bean>
+
+    <bean id="helpService"
+        class="org.springframework.aop.framework.ProxyFactoryBean"
+        parent="interceptedService">
+        <property name="target" ref="helpServiceImpl" />
+
+        <property name="proxyInterfaces"
+            value="org.topcased.gpm.business.help.service.HelpService" />
+    </bean>
+</beans>

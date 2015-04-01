@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<gpm xmlns="http://www.airbus.com/topcased/gPM"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+
+    <version>1.2</version>
+    
+    <roles>
+        <role name="actionRole"/>
+    </roles>
+	    
+     <accessControls>
+        <actionAccess actionKey="testApplicationAction_action1" role="actionRole" enabled="false">
+            <attributes>
+                <attribute name="actionOn" value="sheet type" />
+                <attribute name="mode" value="visualization" />
+            </attributes>
+        </actionAccess>
+     </accessControls>
+</gpm>

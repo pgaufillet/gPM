@@ -1,0 +1,1872 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<!--
+		========================= GENERAL DEFINITIONS
+		=========================
+	-->
+
+	<!--
+		Message source for this context, loaded from localized "messages_xx"
+		files
+	-->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="messages" />
+	</bean>
+
+	<!-- applicationContext merge-point -->
+
+	<!--
+		Hibernate SessionFactory (abstract definition used by the actual
+		session factory bean)
+	-->
+	<bean id="abstractSessionFactory" abstract="true">
+
+		<property name="annotatedClasses">
+			<list>
+				<value>org.topcased.gpm.domain.process.ProcessDefinition</value>
+				<value>org.topcased.gpm.domain.process.Transition</value>
+				<value>org.topcased.gpm.domain.process.Node</value>
+				<value>org.topcased.gpm.domain.product.Product</value>
+				<value>org.topcased.gpm.domain.product.ProductType</value>
+				<value>org.topcased.gpm.domain.sheet.SheetType</value>
+				<value>org.topcased.gpm.domain.sheet.Sheet</value>
+				<value>org.topcased.gpm.domain.sheet.SheetHistory</value>
+				<value>org.topcased.gpm.domain.dictionary.Dictionary</value>
+				<value>org.topcased.gpm.domain.dictionary.CategoryValue</value>
+				<value>org.topcased.gpm.domain.dictionary.Category</value>
+				<value>org.topcased.gpm.domain.dictionary.Environment</value>
+				<value>org.topcased.gpm.domain.accesscontrol.Role</value>
+				<value>org.topcased.gpm.domain.accesscontrol.EndUser</value>
+				<value>org.topcased.gpm.domain.accesscontrol.TransitionAccessControl</value>
+				<value>org.topcased.gpm.domain.accesscontrol.TypeAccessControl</value>
+				<value>org.topcased.gpm.domain.accesscontrol.AccessControl</value>
+				<value>org.topcased.gpm.domain.accesscontrol.RolesForProduct</value>
+				<value>org.topcased.gpm.domain.accesscontrol.FieldAccessControl</value>
+				<value>org.topcased.gpm.domain.accesscontrol.AppliActionAccessControl</value>
+				<value>org.topcased.gpm.domain.accesscontrol.AdminAccessControl</value>
+				<value>org.topcased.gpm.domain.accesscontrol.OverriddenRole</value>
+				<value>org.topcased.gpm.domain.accesscontrol.FilterAccess</value>
+				<value>org.topcased.gpm.domain.accesscontrol.FilterAccessConstraint</value>
+				<value>org.topcased.gpm.domain.businessProcess.BusinessProcess</value>
+				<value>org.topcased.gpm.domain.facilities.FieldGroup</value>
+				<value>org.topcased.gpm.domain.facilities.DisplayGroup</value>
+				<value>org.topcased.gpm.domain.facilities.FilterGroup</value>
+				<value>org.topcased.gpm.domain.facilities.LinkSheetSummaryGroup</value>
+				<value>org.topcased.gpm.domain.facilities.FieldDisplayHint</value>
+				<value>org.topcased.gpm.domain.facilities.ChoiceFieldDisplayHint</value>
+				<value>org.topcased.gpm.domain.facilities.JAppletDisplayHint</value>
+				<value>org.topcased.gpm.domain.facilities.AppletParameter</value>
+				<value>org.topcased.gpm.domain.facilities.TextFieldDisplayHint</value>
+				<value>org.topcased.gpm.domain.facilities.ListDisplayHint</value>
+				<value>org.topcased.gpm.domain.facilities.DisplayHint</value>
+				<value>org.topcased.gpm.domain.facilities.AttachedDisplayHint</value>
+				<value>org.topcased.gpm.domain.facilities.DateDisplayHint</value>
+				<value>org.topcased.gpm.domain.facilities.GridColumn</value>
+				<value>org.topcased.gpm.domain.facilities.GridDisplayHint</value>
+				<value>org.topcased.gpm.domain.facilities.ChoiceTreeDisplayHint</value>
+				<value>org.topcased.gpm.domain.extensions.ExtensionPoint</value>
+				<value>org.topcased.gpm.domain.extensions.Command</value>
+				<value>org.topcased.gpm.domain.extensions.Action</value>
+				<value>org.topcased.gpm.domain.extensions.Script</value>
+				<value>org.topcased.gpm.domain.extensions.ExtensionsContainer</value>
+				<value>org.topcased.gpm.domain.extensions.ExtendedAction</value>
+				<value>org.topcased.gpm.domain.extensions.Context</value>
+				<value>org.topcased.gpm.domain.i18n.I18nValue</value>
+				<value>org.topcased.gpm.domain.fields.Field</value>
+				<value>org.topcased.gpm.domain.fields.ChoiceField</value>
+				<value>org.topcased.gpm.domain.fields.AttachedFieldValue</value>
+				<value>org.topcased.gpm.domain.fields.AttachedField</value>
+				<value>org.topcased.gpm.domain.fields.SimpleField</value>
+				<value>org.topcased.gpm.domain.fields.MultipleField</value>
+				<value>org.topcased.gpm.domain.fields.ValuesContainer</value>
+				<value>org.topcased.gpm.domain.fields.BooleanValue</value>
+				<value>org.topcased.gpm.domain.fields.IntegerValue</value>
+				<value>org.topcased.gpm.domain.fields.RealValue</value>
+				<value>org.topcased.gpm.domain.fields.StringValue</value>
+				<value>org.topcased.gpm.domain.fields.DateValue</value>
+				<value>org.topcased.gpm.domain.fields.ScalarValue</value>
+				<value>org.topcased.gpm.domain.fields.InputDataType</value>
+				<value>org.topcased.gpm.domain.fields.Lock</value>
+				<value>org.topcased.gpm.domain.fields.FieldsContainer</value>
+				<value>org.topcased.gpm.domain.fields.PointerFieldValue</value>
+				<value>org.topcased.gpm.domain.fields.PointerFieldAttributes</value>
+				<value>org.topcased.gpm.domain.fields.AttachedFieldContentValue</value>
+				<value>org.topcased.gpm.domain.search.Filter</value>
+				<value>org.topcased.gpm.domain.search.result.sorter.ResultField</value>
+				<value>org.topcased.gpm.domain.search.result.sorter.ResultSorter</value>
+				<value>org.topcased.gpm.domain.search.result.summary.SummaryField</value>
+				<value>org.topcased.gpm.domain.search.result.summary.ResultSummary</value>
+				<value>org.topcased.gpm.domain.search.FilterElement</value>
+				<value>org.topcased.gpm.domain.search.Operation</value>
+				<value>org.topcased.gpm.domain.search.Criteria</value>
+				<value>org.topcased.gpm.domain.search.FilterWithResult</value>
+				<value>org.topcased.gpm.domain.search.FilterField</value>
+				<value>org.topcased.gpm.domain.search.FieldsContainerId</value>
+				<value>org.topcased.gpm.domain.search.FilterComponent</value>
+				<value>org.topcased.gpm.domain.search.ProductScope</value>
+				<value>org.topcased.gpm.domain.attributes.AttributesContainer</value>
+				<value>org.topcased.gpm.domain.attributes.Attribute</value>
+				<value>org.topcased.gpm.domain.attributes.AttributeValue</value>
+				<value>org.topcased.gpm.domain.attributes.Gpm</value>
+				<value>org.topcased.gpm.domain.export.ExportType</value>
+				<value>org.topcased.gpm.domain.export.ReportModel</value>
+				<value>org.topcased.gpm.domain.link.LinkType</value>
+				<value>org.topcased.gpm.domain.link.Link</value>
+				<value>org.topcased.gpm.domain.revision.Revision</value>
+				<value>org.topcased.gpm.domain.mapping.TypeMap</value>
+				<value>org.topcased.gpm.domain.mapping.FieldMap</value>
+				<value>org.topcased.gpm.domain.mapping.ValueMap</value>
+			</list>
+		</property>
+		<!--
+			<property name="mappingLocations"> <list> jBPM Mapping Merged in the
+			generated 'daoContext.xml' file. identity mapping files
+			<value>classpath:org/jbpm/identity/User.hbm.xml</value>
+			<value>classpath:org/jbpm/identity/Group.hbm.xml</value>
+			<value>classpath:org/jbpm/identity/Membership.hbm.xml</value>
+			graph.def mapping files
+			<value>classpath:org/jbpm/graph/def/ProcessDefinition.hbm.xml</value>
+			<value>classpath:org/jbpm/graph/def/Node.hbm.xml</value>
+			<value>classpath:org/jbpm/graph/def/Transition.hbm.xml</value>
+			<value>classpath:org/jbpm/graph/def/Event.hbm.xml</value>
+			<value>classpath:org/jbpm/graph/def/Action.hbm.xml</value>
+			<value>classpath:org/jbpm/graph/def/SuperState.hbm.xml</value>
+			<value>classpath:org/jbpm/graph/def/ExceptionHandler.hbm.xml</value>
+			<value>classpath:org/jbpm/instantiation/Delegation.hbm.xml</value>
+			graph.node mapping files
+			<value>classpath:org/jbpm/graph/node/StartState.hbm.xml</value>
+			<value>classpath:org/jbpm/graph/node/EndState.hbm.xml</value>
+			<value>classpath:org/jbpm/graph/node/ProcessState.hbm.xml</value>
+			<value>classpath:org/jbpm/graph/node/Decision.hbm.xml</value>
+			<value>classpath:org/jbpm/graph/node/Fork.hbm.xml</value>
+			<value>classpath:org/jbpm/graph/node/Join.hbm.xml</value>
+			<value>classpath:org/jbpm/graph/node/State.hbm.xml</value>
+			<value>classpath:org/jbpm/graph/node/TaskNode.hbm.xml</value>
+			graph.action mapping files
+			<value>classpath:org/jbpm/graph/action/Script.hbm.xml</value>
+			context.def mapping files
+			<value>classpath:org/jbpm/context/def/ContextDefinition.hbm.xml</value>
+			<value>classpath:org/jbpm/context/def/VariableAccess.hbm.xml</value>
+			taskmgmt.def mapping files
+			<value>classpath:org/jbpm/taskmgmt/def/TaskMgmtDefinition.hbm.xml</value>
+			<value>classpath:org/jbpm/taskmgmt/def/Swimlane.hbm.xml</value>
+			<value>classpath:org/jbpm/taskmgmt/def/Task.hbm.xml</value>
+			<value>classpath:org/jbpm/taskmgmt/def/TaskController.hbm.xml</value>
+			module.def mapping files
+			<value>classpath:org/jbpm/module/def/ModuleDefinition.hbm.xml</value>
+			bytes mapping files
+			<value>classpath:org/jbpm/bytes/ByteArray.hbm.xml</value> file.def
+			mapping files
+			<value>classpath:org/jbpm/file/def/FileDefinition.hbm.xml</value>
+			scheduler.def mapping files
+			<value>classpath:org/jbpm/scheduler/def/CreateTimerAction.hbm.xml</value>
+			<value>classpath:org/jbpm/scheduler/def/CancelTimerAction.hbm.xml</value>
+			graph.exe mapping files
+			<value>classpath:org/jbpm/graph/exe/Comment.hbm.xml</value>
+			<value>classpath:org/jbpm/graph/exe/ProcessInstance.hbm.xml</value>
+			<value>classpath:org/jbpm/graph/exe/Token.hbm.xml</value>
+			<value>classpath:org/jbpm/graph/exe/RuntimeAction.hbm.xml</value>
+			module.exe mapping files
+			<value>classpath:org/jbpm/module/exe/ModuleInstance.hbm.xml</value>
+			context.exe mapping files
+			<value>classpath:org/jbpm/context/exe/ContextInstance.hbm.xml</value>
+			<value>classpath:org/jbpm/context/exe/TokenVariableMap.hbm.xml</value>
+			<value>classpath:org/jbpm/context/exe/VariableInstance.hbm.xml</value>
+			<value>classpath:org/jbpm/context/exe/variableinstance/ByteArrayInstance.hbm.xml</value>
+			<value>classpath:org/jbpm/context/exe/variableinstance/DateInstance.hbm.xml</value>
+			<value>classpath:org/jbpm/context/exe/variableinstance/DoubleInstance.hbm.xml</value>
+			<value>classpath:org/jbpm/context/exe/variableinstance/HibernateLongInstance.hbm.xml</value>
+			<value>classpath:org/jbpm/context/exe/variableinstance/HibernateStringInstance.hbm.xml</value>
+			<value>classpath:org/jbpm/context/exe/variableinstance/LongInstance.hbm.xml</value>
+			<value>classpath:org/jbpm/context/exe/variableinstance/StringInstance.hbm.xml</value>
+			taskmgmt.exe mapping files
+			<value>classpath:org/jbpm/taskmgmt/exe/TaskMgmtInstance.hbm.xml</value>
+			<value>classpath:org/jbpm/taskmgmt/exe/TaskInstance.hbm.xml</value>
+			<value>classpath:org/jbpm/taskmgmt/exe/PooledActor.hbm.xml</value>
+			<value>classpath:org/jbpm/taskmgmt/exe/SwimlaneInstance.hbm.xml</value>
+			scheduler.exe mapping files
+			<value>classpath:org/jbpm/scheduler/exe/Timer.hbm.xml</value> logging
+			mapping files
+			<value>classpath:org/jbpm/logging/log/ProcessLog.hbm.xml</value>
+			<value>classpath:org/jbpm/logging/log/MessageLog.hbm.xml</value>
+			<value>classpath:org/jbpm/logging/log/CompositeLog.hbm.xml</value>
+			<value>classpath:org/jbpm/graph/log/ActionLog.hbm.xml</value>
+			<value>classpath:org/jbpm/graph/log/NodeLog.hbm.xml</value>
+			<value>classpath:org/jbpm/graph/log/ProcessInstanceCreateLog.hbm.xml</value>
+			<value>classpath:org/jbpm/graph/log/ProcessInstanceEndLog.hbm.xml</value>
+			<value>classpath:org/jbpm/graph/log/SignalLog.hbm.xml</value>
+			<value>classpath:org/jbpm/graph/log/TokenCreateLog.hbm.xml</value>
+			<value>classpath:org/jbpm/graph/log/TokenEndLog.hbm.xml</value>
+			<value>classpath:org/jbpm/graph/log/TransitionLog.hbm.xml</value>
+			<value>classpath:org/jbpm/context/log/VariableLog.hbm.xml</value>
+			<value>classpath:org/jbpm/context/log/VariableCreateLog.hbm.xml</value>
+			<value>classpath:org/jbpm/context/log/VariableDeleteLog.hbm.xml</value>
+			<value>classpath:org/jbpm/context/log/VariableUpdateLog.hbm.xml</value>
+			<value>classpath:org/jbpm/context/log/variableinstance/ByteArrayUpdateLog.hbm.xml</value>
+			<value>classpath:org/jbpm/context/log/variableinstance/DateUpdateLog.hbm.xml</value>
+			<value>classpath:org/jbpm/context/log/variableinstance/DoubleUpdateLog.hbm.xml</value>
+			<value>classpath:org/jbpm/context/log/variableinstance/HibernateLongUpdateLog.hbm.xml</value>
+			<value>classpath:org/jbpm/context/log/variableinstance/HibernateStringUpdateLog.hbm.xml</value>
+			<value>classpath:org/jbpm/context/log/variableinstance/LongUpdateLog.hbm.xml</value>
+			<value>classpath:org/jbpm/context/log/variableinstance/StringUpdateLog.hbm.xml</value>
+			<value>classpath:org/jbpm/taskmgmt/log/TaskLog.hbm.xml</value>
+			<value>classpath:org/jbpm/taskmgmt/log/TaskCreateLog.hbm.xml</value>
+			<value>classpath:org/jbpm/taskmgmt/log/TaskAssignLog.hbm.xml</value>
+			<value>classpath:org/jbpm/taskmgmt/log/TaskEndLog.hbm.xml</value>
+			<value>classpath:org/jbpm/taskmgmt/log/SwimlaneLog.hbm.xml</value>
+			<value>classpath:org/jbpm/taskmgmt/log/SwimlaneCreateLog.hbm.xml</value>
+			<value>classpath:org/jbpm/taskmgmt/log/SwimlaneAssignLog.hbm.xml</value>
+			End of jBPM Hibernate mappings </list> </property>
+		-->
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+				<prop key="hibernate.cache.query_cache_factory">org.hibernate.cache.StandardQueryCacheFactory</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- The actual session factory bean -->
+	<!-- (Can be override in the business services if needed) -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"
+		parent="abstractSessionFactory" />
+
+	<!-- The Hibernate interceptor -->
+	<bean id="hibernateInterceptor" class="org.springframework.orm.hibernate3.HibernateInterceptor">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<!-- Definition of dao's interceptors -->
+	<!-- All dao interface must use this base definitions -->
+	<bean id="interceptedDao" abstract="true">
+		<property name="interceptorNames">
+			<list>
+				<value>domainPerformanceInterceptor</value>
+				<value>hibernateInterceptor</value>
+			</list>
+		</property>
+	</bean>
+
+	<!--
+		ProcessDefinition Entity Proxy with inner ProcessDefinition Entity
+		implementation
+	-->
+	<bean id="processDefinitionDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.process.ProcessDefinitionDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.process.ProcessDefinitionDao</value>
+		</property>
+	</bean>
+
+	<!--
+		Transition Entity Proxy with inner transition Entity implementation
+	-->
+	<bean id="transitionDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.process.TransitionDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.process.TransitionDao</value>
+		</property>
+	</bean>
+
+	<!-- Node Entity Proxy with inner Node Entity implementation -->
+	<bean id="nodeDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.process.NodeDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.process.NodeDao</value>
+		</property>
+	</bean>
+
+	<!-- Product Entity Proxy with inner Product Entity implementation -->
+	<bean id="productDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.product.ProductDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.product.ProductDao</value>
+		</property>
+	</bean>
+
+	<!--
+		ProductType Entity Proxy with inner ProductType Entity implementation
+	-->
+	<bean id="productTypeDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.product.ProductTypeDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.product.ProductTypeDao</value>
+		</property>
+	</bean>
+
+	<!--
+		SheetType Entity Proxy with inner SheetType Entity implementation
+	-->
+	<bean id="sheetTypeDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.sheet.SheetTypeDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.sheet.SheetTypeDao</value>
+		</property>
+	</bean>
+
+	<!-- Sheet Entity Proxy with inner Sheet Entity implementation -->
+	<bean id="sheetDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.sheet.SheetDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.sheet.SheetDao</value>
+		</property>
+	</bean>
+
+	<!--
+		SheetHistory Entity Proxy with inner SheetHistory Entity
+		implementation
+	-->
+	<bean id="sheetHistoryDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.sheet.SheetHistoryDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.sheet.SheetHistoryDao</value>
+		</property>
+	</bean>
+
+	<!--
+		Dictionary Entity Proxy with inner Dictionary Entity implementation
+	-->
+	<bean id="dictionaryDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.dictionary.DictionaryDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.dictionary.DictionaryDao</value>
+		</property>
+	</bean>
+
+	<!--
+		CategoryValue Entity Proxy with inner CategoryValue Entity
+		implementation
+	-->
+	<bean id="categoryValueDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.dictionary.CategoryValueDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.dictionary.CategoryValueDao</value>
+		</property>
+	</bean>
+
+	<!-- Category Entity Proxy with inner Category Entity implementation -->
+	<bean id="categoryDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.dictionary.CategoryDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.dictionary.CategoryDao</value>
+		</property>
+	</bean>
+
+	<!--
+		Environment Entity Proxy with inner Environment Entity implementation
+	-->
+	<bean id="environmentDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.dictionary.EnvironmentDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.dictionary.EnvironmentDao</value>
+		</property>
+	</bean>
+
+	<!-- Role Entity Proxy with inner Role Entity implementation -->
+	<bean id="roleDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.accesscontrol.RoleDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.accesscontrol.RoleDao</value>
+		</property>
+	</bean>
+
+	<!-- EndUser Entity Proxy with inner EndUser Entity implementation -->
+	<bean id="endUserDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.accesscontrol.EndUserDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.accesscontrol.EndUserDao</value>
+		</property>
+	</bean>
+
+	<!--
+		TransitionAccessControl Entity Proxy with inner
+		TransitionAccessControl Entity implementation
+	-->
+	<bean id="transitionAccessControlDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean
+				class="org.topcased.gpm.domain.accesscontrol.TransitionAccessControlDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.accesscontrol.TransitionAccessControlDao</value>
+		</property>
+	</bean>
+
+	<!--
+		TypeAccessControl Entity Proxy with inner TypeAccessControl Entity
+		implementation
+	-->
+	<bean id="typeAccessControlDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean
+				class="org.topcased.gpm.domain.accesscontrol.TypeAccessControlDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.accesscontrol.TypeAccessControlDao</value>
+		</property>
+	</bean>
+
+	<!--
+		AccessControl Entity Proxy with inner AccessControl Entity
+		implementation
+	-->
+	<bean id="accessControlDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.accesscontrol.AccessControlDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.accesscontrol.AccessControlDao</value>
+		</property>
+	</bean>
+
+	<!--
+		RolesForProduct Entity Proxy with inner RolesForProduct Entity
+		implementation
+	-->
+	<bean id="rolesForProductDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.accesscontrol.RolesForProductDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.accesscontrol.RolesForProductDao</value>
+		</property>
+	</bean>
+
+	<!--
+		FieldAccessControl Entity Proxy with inner FieldAccessControl Entity
+		implementation
+	-->
+	<bean id="fieldAccessControlDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean
+				class="org.topcased.gpm.domain.accesscontrol.FieldAccessControlDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.accesscontrol.FieldAccessControlDao</value>
+		</property>
+	</bean>
+
+	<!--
+		AppliActionAccessControl Entity Proxy with inner
+		AppliActionAccessControl Entity implementation
+	-->
+	<bean id="appliActionAccessControlDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean
+				class="org.topcased.gpm.domain.accesscontrol.AppliActionAccessControlDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.accesscontrol.AppliActionAccessControlDao</value>
+		</property>
+	</bean>
+
+	<!--
+		AdminAccessControl Entity Proxy with inner AdminAccessControl Entity
+		implementation
+	-->
+	<bean id="adminAccessControlDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean
+				class="org.topcased.gpm.domain.accesscontrol.AdminAccessControlDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.accesscontrol.AdminAccessControlDao</value>
+		</property>
+	</bean>
+
+	<!--
+		OverriddenRole Entity Proxy with inner OverriddenRole Entity
+		implementation
+	-->
+	<bean id="overriddenRoleDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.accesscontrol.OverriddenRoleDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.accesscontrol.OverriddenRoleDao</value>
+		</property>
+	</bean>
+
+	<!--
+		FilterAccess Entity Proxy with inner FilterAccess Entity
+		implementation
+	-->
+	<bean id="filterAccessDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.accesscontrol.FilterAccessDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.accesscontrol.FilterAccessDao</value>
+		</property>
+	</bean>
+
+	<!--
+		FilterAccessConstraint Entity Proxy with inner FilterAccessConstraint
+		Entity implementation
+	-->
+	<bean id="filterAccessConstraintDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean
+				class="org.topcased.gpm.domain.accesscontrol.FilterAccessConstraintDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.accesscontrol.FilterAccessConstraintDao</value>
+		</property>
+	</bean>
+
+	<!--
+		BusinessProcess Entity Proxy with inner BusinessProcess Entity
+		implementation
+	-->
+	<bean id="businessProcessDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean
+				class="org.topcased.gpm.domain.businessProcess.BusinessProcessDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.businessProcess.BusinessProcessDao</value>
+		</property>
+	</bean>
+
+	<!--
+		FieldGroup Entity Proxy with inner FieldGroup Entity implementation
+	-->
+	<bean id="fieldGroupDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.facilities.FieldGroupDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.facilities.FieldGroupDao</value>
+		</property>
+	</bean>
+
+	<!--
+		DisplayGroup Entity Proxy with inner DisplayGroup Entity
+		implementation
+	-->
+	<bean id="displayGroupDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.facilities.DisplayGroupDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.facilities.DisplayGroupDao</value>
+		</property>
+	</bean>
+
+	<!--
+		FilterGroup Entity Proxy with inner FilterGroup Entity implementation
+	-->
+	<bean id="filterGroupDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.facilities.FilterGroupDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.facilities.FilterGroupDao</value>
+		</property>
+	</bean>
+
+	<!--
+		LinkSheetSummaryGroup Entity Proxy with inner LinkSheetSummaryGroup
+		Entity implementation
+	-->
+	<bean id="linkSheetSummaryGroupDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean
+				class="org.topcased.gpm.domain.facilities.LinkSheetSummaryGroupDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.facilities.LinkSheetSummaryGroupDao</value>
+		</property>
+	</bean>
+
+	<!--
+		FieldDisplayHint Entity Proxy with inner FieldDisplayHint Entity
+		implementation
+	-->
+	<bean id="fieldDisplayHintDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.facilities.FieldDisplayHintDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.facilities.FieldDisplayHintDao</value>
+		</property>
+	</bean>
+
+	<!--
+		ChoiceFieldDisplayHint Entity Proxy with inner ChoiceFieldDisplayHint
+		Entity implementation
+	-->
+	<bean id="choiceFieldDisplayHintDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean
+				class="org.topcased.gpm.domain.facilities.ChoiceFieldDisplayHintDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.facilities.ChoiceFieldDisplayHintDao</value>
+		</property>
+	</bean>
+	<!--
+		JAppletDisplayHint Entity Proxy with inner JAppletDisplayHint Entity
+		implementation
+	-->
+	<bean id="jAppletDisplayHintDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.facilities.JAppletDisplayHintDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.facilities.JAppletDisplayHintDao</value>
+		</property>
+	</bean>
+
+	<!--
+		AppletParameter Entity Proxy with inner AppletParameter Entity
+		implementation
+	-->
+	<bean id="appletParameterDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.facilities.AppletParameterDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.facilities.AppletParameterDao</value>
+		</property>
+	</bean>
+
+	<!--
+		TextFieldDisplayHint Entity Proxy with inner TextFieldDisplayHint
+		Entity implementation
+	-->
+	<bean id="textFieldDisplayHintDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean
+				class="org.topcased.gpm.domain.facilities.TextFieldDisplayHintDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.facilities.TextFieldDisplayHintDao</value>
+		</property>
+	</bean>
+
+	<!--
+		ListDisplayHint Entity Proxy with inner ListDisplayHint Entity
+		implementation
+	-->
+	<bean id="listDisplayHintDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.facilities.ListDisplayHintDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.facilities.ListDisplayHintDao</value>
+		</property>
+	</bean>
+
+	<!--
+		DisplayHint Entity Proxy with inner DisplayHint Entity implementation
+	-->
+	<bean id="displayHintDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.facilities.DisplayHintDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.facilities.DisplayHintDao</value>
+		</property>
+	</bean>
+
+	<!--
+		AttachedDisplayHint Entity Proxy with inner AttachedDisplayHint Entity
+		implementation
+	-->
+	<bean id="attachedDisplayHintDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.facilities.AttachedDisplayHintDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.facilities.AttachedDisplayHintDao</value>
+		</property>
+	</bean>
+
+	<!--
+		DateDisplayHint Entity Proxy with inner DateDisplayHint Entity
+		implementation
+	-->
+	<bean id="dateDisplayHintDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.facilities.DateDisplayHintDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.facilities.DateDisplayHintDao</value>
+		</property>
+	</bean>
+
+	<!--
+		GridColumn Entity Proxy with inner GridColumn Entity implementation
+	-->
+	<bean id="gridColumnDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.facilities.GridColumnDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.facilities.GridColumnDao</value>
+		</property>
+	</bean>
+
+	<!--
+		GridDisplayHint Entity Proxy with inner GridDisplayHint Entity
+		implementation
+	-->
+	<bean id="gridDisplayHintDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.facilities.GridDisplayHintDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.facilities.GridDisplayHintDao</value>
+		</property>
+	</bean>
+
+	<!--
+		ChoiceTreeDisplayHint Entity Proxy with inner ChoiceTreeDisplayHint
+		Entity implementation
+	-->
+	<bean id="choiceTreeDisplayHintDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean
+				class="org.topcased.gpm.domain.facilities.ChoiceTreeDisplayHintDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.facilities.ChoiceTreeDisplayHintDao</value>
+		</property>
+	</bean>
+
+	<!--
+		ExtensionPoint Entity Proxy with inner ExtensionPoint Entity
+		implementation
+	-->
+	<bean id="extensionPointDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.extensions.ExtensionPointDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.extensions.ExtensionPointDao</value>
+		</property>
+	</bean>
+
+	<!-- Command Entity Proxy with inner Command Entity implementation -->
+	<bean id="commandDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.extensions.CommandDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.extensions.CommandDao</value>
+		</property>
+	</bean>
+
+	<!-- Action Entity Proxy with inner Action Entity implementation -->
+	<bean id="actionDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.extensions.ActionDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.extensions.ActionDao</value>
+		</property>
+	</bean>
+
+	<!-- Script Entity Proxy with inner Script Entity implementation -->
+	<bean id="scriptDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.extensions.ScriptDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.extensions.ScriptDao</value>
+		</property>
+	</bean>
+
+	<!--
+		ExtensionsContainer Entity Proxy with inner ExtensionsContainer Entity
+		implementation
+	-->
+	<bean id="extensionsContainerDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.extensions.ExtensionsContainerDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.extensions.ExtensionsContainerDao</value>
+		</property>
+	</bean>
+
+	<!--
+		ExtendedAction Entity Proxy with inner ExtendedAction Entity
+		implementation
+	-->
+	<bean id="extendedActionDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.extensions.ExtendedActionDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.extensions.ExtendedActionDao</value>
+		</property>
+	</bean>
+
+	<!-- Context Entity Proxy with inner Context Entity implementation -->
+	<bean id="contextDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.extensions.ContextDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.extensions.ContextDao</value>
+		</property>
+	</bean>
+
+	<!--
+		I18nValue Entity Proxy with inner I18nValue Entity implementation
+	-->
+	<bean id="i18nValueDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.i18n.I18nValueDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.i18n.I18nValueDao</value>
+		</property>
+	</bean>
+
+	<!-- Field Entity Proxy with inner Field Entity implementation -->
+	<bean id="fieldDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.fields.FieldDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.fields.FieldDao</value>
+		</property>
+	</bean>
+
+	<!--
+		ChoiceField Entity Proxy with inner ChoiceField Entity implementation
+	-->
+	<bean id="choiceFieldDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.fields.ChoiceFieldDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.fields.ChoiceFieldDao</value>
+		</property>
+	</bean>
+
+	<!--
+		AttachedFieldValue Entity Proxy with inner AttachedFieldValue Entity
+		implementation
+	-->
+	<bean id="attachedFieldValueDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.fields.AttachedFieldValueDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.fields.AttachedFieldValueDao</value>
+		</property>
+	</bean>
+
+	<!--
+		AttachedField Entity Proxy with inner AttachedField Entity
+		implementation
+	-->
+	<bean id="attachedFieldDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.fields.AttachedFieldDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.fields.AttachedFieldDao</value>
+		</property>
+	</bean>
+
+	<!--
+		SimpleField Entity Proxy with inner SimpleField Entity implementation
+	-->
+	<bean id="simpleFieldDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.fields.SimpleFieldDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.fields.SimpleFieldDao</value>
+		</property>
+	</bean>
+
+	<!--
+		MultipleField Entity Proxy with inner MultipleField Entity
+		implementation
+	-->
+	<bean id="multipleFieldDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.fields.MultipleFieldDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.fields.MultipleFieldDao</value>
+		</property>
+	</bean>
+
+	<!--
+		ValuesContainer Entity Proxy with inner ValuesContainer Entity
+		implementation
+	-->
+	<bean id="valuesContainerDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.fields.ValuesContainerDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.fields.ValuesContainerDao</value>
+		</property>
+	</bean>
+
+	<!--
+		BooleanValue Entity Proxy with inner BooleanValue Entity
+		implementation
+	-->
+	<bean id="booleanValueDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.fields.BooleanValueDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.fields.BooleanValueDao</value>
+		</property>
+	</bean>
+
+	<!--
+		IntegerValue Entity Proxy with inner IntegerValue Entity
+		implementation
+	-->
+	<bean id="integerValueDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.fields.IntegerValueDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.fields.IntegerValueDao</value>
+		</property>
+	</bean>
+
+	<!--
+		RealValue Entity Proxy with inner RealValue Entity implementation
+	-->
+	<bean id="realValueDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.fields.RealValueDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.fields.RealValueDao</value>
+		</property>
+	</bean>
+
+	<!--
+		StringValue Entity Proxy with inner StringValue Entity implementation
+	-->
+	<bean id="stringValueDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.fields.StringValueDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.fields.StringValueDao</value>
+		</property>
+	</bean>
+
+	<!--
+		DateValue Entity Proxy with inner DateValue Entity implementation
+	-->
+	<bean id="dateValueDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.fields.DateValueDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.fields.DateValueDao</value>
+		</property>
+	</bean>
+
+	<!--
+		ScalarValue Entity Proxy with inner ScalarValue Entity implementation
+	-->
+	<bean id="scalarValueDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.fields.ScalarValueDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.fields.ScalarValueDao</value>
+		</property>
+	</bean>
+
+	<!--
+		InputDataType Entity Proxy with inner InputDataType Entity
+		implementation
+	-->
+	<bean id="inputDataTypeDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.fields.InputDataTypeDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.fields.InputDataTypeDao</value>
+		</property>
+	</bean>
+
+	<!-- Lock Entity Proxy with inner Lock Entity implementation -->
+	<bean id="lockDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.fields.LockDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.fields.LockDao</value>
+		</property>
+	</bean>
+
+	<!--
+		FieldsContainer Entity Proxy with inner FieldsContainer Entity
+		implementation
+	-->
+	<bean id="fieldsContainerDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.fields.FieldsContainerDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.fields.FieldsContainerDao</value>
+		</property>
+	</bean>
+
+	<!--
+		PointerFieldValue Entity Proxy with inner PointerFieldValue Entity
+		implementation
+	-->
+	<bean id="pointerFieldValueDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.fields.PointerFieldValueDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.fields.PointerFieldValueDao</value>
+		</property>
+	</bean>
+
+	<!--
+		PointerFieldAttributes Entity Proxy with inner PointerFieldAttributes
+		Entity implementation
+	-->
+	<bean id="pointerFieldAttributesDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.fields.PointerFieldAttributesDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.fields.PointerFieldAttributesDao</value>
+		</property>
+	</bean>
+
+	<!--
+		AttachedFieldContentValue Entity Proxy with inner
+		AttachedFieldContentValue Entity implementation
+	-->
+	<bean id="attachedFieldContentValueDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean
+				class="org.topcased.gpm.domain.fields.AttachedFieldContentValueDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.fields.AttachedFieldContentValueDao</value>
+		</property>
+	</bean>
+
+	<!-- Filter Entity Proxy with inner Filter Entity implementation -->
+	<bean id="filterDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.search.FilterDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.search.FilterDao</value>
+		</property>
+	</bean>
+
+	<!--
+		ResultField Entity Proxy with inner ResultField Entity implementation
+	-->
+	<bean id="resultFieldDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean
+				class="org.topcased.gpm.domain.search.result.sorter.ResultFieldDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.search.result.sorter.ResultFieldDao</value>
+		</property>
+	</bean>
+
+	<!--
+		ResultSorter Entity Proxy with inner ResultSorter Entity
+		implementation
+	-->
+	<bean id="resultSorterDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean
+				class="org.topcased.gpm.domain.search.result.sorter.ResultSorterDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.search.result.sorter.ResultSorterDao</value>
+		</property>
+	</bean>
+
+	<!--
+		SummaryField Entity Proxy with inner SummaryField Entity
+		implementation
+	-->
+	<bean id="summaryFieldDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean
+				class="org.topcased.gpm.domain.search.result.summary.SummaryFieldDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.search.result.summary.SummaryFieldDao</value>
+		</property>
+	</bean>
+
+	<!--
+		ResultSummary Entity Proxy with inner ResultSummary Entity
+		implementation
+	-->
+	<bean id="resultSummaryDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean
+				class="org.topcased.gpm.domain.search.result.summary.ResultSummaryDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.search.result.summary.ResultSummaryDao</value>
+		</property>
+	</bean>
+
+	<!--
+		FilterElement Entity Proxy with inner FilterElement Entity
+		implementation
+	-->
+	<bean id="filterElementDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.search.FilterElementDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.search.FilterElementDao</value>
+		</property>
+	</bean>
+
+	<!--
+		Operation Entity Proxy with inner Operation Entity implementation
+	-->
+	<bean id="operationDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.search.OperationDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.search.OperationDao</value>
+		</property>
+	</bean>
+
+	<!-- Criteria Entity Proxy with inner Criteria Entity implementation -->
+	<bean id="criteriaDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.search.CriteriaDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.search.CriteriaDao</value>
+		</property>
+	</bean>
+
+	<!--
+		FilterWithResult Entity Proxy with inner FilterWithResult Entity
+		implementation
+	-->
+	<bean id="filterWithResultDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.search.FilterWithResultDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.search.FilterWithResultDao</value>
+		</property>
+	</bean>
+
+	<!--
+		FilterField Entity Proxy with inner FilterField Entity implementation
+	-->
+	<bean id="filterFieldDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.search.FilterFieldDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.search.FilterFieldDao</value>
+		</property>
+	</bean>
+
+	<!--
+		FieldsContainerId Entity Proxy with inner FieldsContainerId Entity
+		implementation
+	-->
+	<bean id="fieldsContainerIdDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.search.FieldsContainerIdDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.search.FieldsContainerIdDao</value>
+		</property>
+	</bean>
+
+	<!--
+		FilterComponent Entity Proxy with inner FilterComponent Entity
+		implementation
+	-->
+	<bean id="filterComponentDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.search.FilterComponentDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.search.FilterComponentDao</value>
+		</property>
+	</bean>
+
+	<!--
+		ProductScope Entity Proxy with inner ProductScope Entity
+		implementation
+	-->
+	<bean id="productScopeDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.search.ProductScopeDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.search.ProductScopeDao</value>
+		</property>
+	</bean>
+
+	<!--
+		AttributesContainer Entity Proxy with inner AttributesContainer Entity
+		implementation
+	-->
+	<bean id="attributesContainerDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.attributes.AttributesContainerDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.attributes.AttributesContainerDao</value>
+		</property>
+	</bean>
+
+	<!--
+		Attribute Entity Proxy with inner Attribute Entity implementation
+	-->
+	<bean id="attributeDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.attributes.AttributeDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.attributes.AttributeDao</value>
+		</property>
+	</bean>
+
+	<!--
+		AttributeValue Entity Proxy with inner AttributeValue Entity
+		implementation
+	-->
+	<bean id="attributeValueDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.attributes.AttributeValueDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.attributes.AttributeValueDao</value>
+		</property>
+	</bean>
+
+	<!-- Gpm Entity Proxy with inner Gpm Entity implementation -->
+	<bean id="gpmDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.attributes.GpmDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.attributes.GpmDao</value>
+		</property>
+	</bean>
+
+	<!--
+		ExportType Entity Proxy with inner ExportType Entity implementation
+	-->
+	<bean id="exportTypeDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.export.ExportTypeDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.export.ExportTypeDao</value>
+		</property>
+	</bean>
+
+	<!--
+		ReportModel Entity Proxy with inner ReportModel Entity implementation
+	-->
+	<bean id="reportModelDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.export.ReportModelDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.export.ReportModelDao</value>
+		</property>
+	</bean>
+
+	<!-- LinkType Entity Proxy with inner LinkType Entity implementation -->
+	<bean id="linkTypeDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.link.LinkTypeDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.link.LinkTypeDao</value>
+		</property>
+	</bean>
+
+	<!-- Link Entity Proxy with inner Link Entity implementation -->
+	<bean id="linkDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.link.LinkDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.link.LinkDao</value>
+		</property>
+	</bean>
+
+	<!-- Revision Entity Proxy with inner Revision Entity implementation -->
+	<bean id="revisionDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.revision.RevisionDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.revision.RevisionDao</value>
+		</property>
+	</bean>
+
+	<!-- TypeMap Entity Proxy with inner TypeMap Entity implementation -->
+	<bean id="typeMapDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.mapping.TypeMapDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.mapping.TypeMapDao</value>
+		</property>
+	</bean>
+
+	<!-- FieldMap Entity Proxy with inner FieldMap Entity implementation -->
+	<bean id="fieldMapDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.mapping.FieldMapDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.mapping.FieldMapDao</value>
+		</property>
+	</bean>
+
+	<!-- ValueMap Entity Proxy with inner ValueMap Entity implementation -->
+	<bean id="valueMapDao" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedDao">
+		<property name="target">
+			<bean class="org.topcased.gpm.domain.mapping.ValueMapDaoImpl">
+				<property name="sessionFactory">
+					<ref local="sessionFactory" />
+				</property>
+			</bean>
+		</property>
+		<property name="proxyInterfaces">
+			<value>org.topcased.gpm.domain.mapping.ValueMapDao</value>
+		</property>
+	</bean>
+
+	<!--
+		========================= Start of SERVICE DEFINITIONS
+		=========================
+	-->
+
+	<!--
+		========================= End of SERVICE DEFINITIONS
+		=========================
+	-->
+
+</beans>

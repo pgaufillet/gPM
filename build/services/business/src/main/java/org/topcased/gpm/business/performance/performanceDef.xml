@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- Performance analyzer -->
+	<bean id="performanceAnalyzer"
+		class="org.topcased.gpm.business.performance.PerformanceAnalyzer"
+		autowire="byName">
+		<property name="performanceAnalyzeLevel" value="${performanceAnalyzeLevel}" />
+	</bean>
+	<!-- Performance interceptor for business layer -->
+	<bean id="businessPerformanceInterceptor"
+		class="org.topcased.gpm.business.performance.PerformanceBusinessInterceptor"
+		autowire="byName" />
+	<!-- Performance interceptor for domain layer -->
+	<bean id="domainPerformanceInterceptor"
+		class="org.topcased.gpm.business.performance.PerformanceDomainInterceptor"
+		autowire="byName" />
+</beans>

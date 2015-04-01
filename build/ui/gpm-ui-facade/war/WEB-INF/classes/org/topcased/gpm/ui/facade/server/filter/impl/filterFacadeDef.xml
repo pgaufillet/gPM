@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!--
+        Filter Facade
+    -->
+
+	<!-- Implementation bean -->
+	<bean id="filterFacadeImpl" parent="abstractFacade"
+		class="org.topcased.gpm.ui.facade.server.filter.impl.FilterFacadeImpl"
+		autowire="byName" />
+
+	<!-- Visible interface of the service  -->
+	<bean id="filterFacade" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedFacade">
+		<property name="target" ref="filterFacadeImpl" />
+		<property name="proxyInterfaces"
+			value="org.topcased.gpm.ui.facade.server.filter.FilterFacade" />
+	</bean>
+
+</beans>

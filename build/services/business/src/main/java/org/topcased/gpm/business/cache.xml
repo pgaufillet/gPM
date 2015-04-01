@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- Global definition of the EhCache manager factory -->
+	<bean id="cacheManager"
+		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+		<property name="configLocation" value="classpath:ehcache.xml" />
+		<property name="shared" value="true" />
+	</bean>
+
+	<!-- Base configuration for all cache factory beans -->
+	<bean id="cacheFactoryBase" abstract="true">
+		<property name="cacheManager" ref="cacheManager" />
+		<property name="overflowToDisk" value="false" />
+		<property name="diskPersistent" value="false" />
+		<property name="timeToLive" value="${cache.timeToLive}" />
+		<property name="timeToIdle" value="${cache.timeToIdle}" />
+		<property name="maxElementsInMemory" value="1000" />
+	</bean>
+	<bean id="constMethodCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean"
+		parent="cacheFactoryBase">
+		<property name="cacheManager" ref="cacheManager" />
+		<property name="cacheName" value="org.topcased.gpm.business.CONST_METHOD_CACHE" />
+	</bean>
+	<bean id="constMethodCacheInterceptor"
+		class="org.topcased.gpm.util.interceptor.ConstMethodResultCacheInterceptor">
+		<property name="cache" ref="constMethodCache" />
+	</bean>
+
+	<bean id="gpmGlobalCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean"
+		parent="cacheFactoryBase">
+		<property name="cacheManager" ref="cacheManager" />
+		<property name="cacheName" value="org.topcased.gpm.business.ELEMENT_CACHE" />
+		<property name="maxElementsInMemory" value="${cache.global.maxElements}" />
+	</bean>
+
+	<!--  Available products cache definition  -->
+	<bean id="availableProductsCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean"
+		parent="cacheFactoryBase">
+		<property name="cacheManager" ref="cacheManager" />
+		<property name="cacheName"
+			value="org.topcased.gpm.business.product.AVAILABLE_PRODUCTS_CACHE" />
+		<property name="maxElementsInMemory" value="${cache.users.maxElements}" />
+	</bean>
+
+	<!--  Product hierarchy cache definition  -->
+	<bean id="productHierarchyCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean"
+		parent="cacheFactoryBase">
+		<property name="cacheManager" ref="cacheManager" />
+		<property name="cacheName"
+			value="org.topcased.gpm.business.product.PRODUCT_HIERARCHY_CACHE" />
+		<property name="maxElementsInMemory" value="${cache.products.maxElements}" />
+	</bean>
+
+	<!--  Filter data cache definition  -->
+	<bean id="filterDataCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean"
+		parent="cacheFactoryBase">
+		<property name="cacheManager" ref="cacheManager" />
+		<property name="cacheName"
+			value="org.topcased.gpm.business.search.FILTER_DATA_CACHE" />
+		<property name="maxElementsInMemory" value="${cache.filters.maxElements}" />
+	</bean>
+
+	<!--  Type mapping cache definition  -->
+	<bean id="typeMappingCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean"
+		parent="cacheFactoryBase">
+		<property name="cacheManager" ref="cacheManager" />
+		<property name="cacheName"
+			value="org.topcased.gpm.business.values.TYPE_MAPPING_CACHE" />
+		<property name="maxElementsInMemory" value="${cache.mapping.maxElements}" />
+	</bean>
+
+	<bean id="cacheableObjectFactories"
+		class="org.topcased.gpm.business.cache.CacheableObjectFactoriesMgr" />
+</beans>

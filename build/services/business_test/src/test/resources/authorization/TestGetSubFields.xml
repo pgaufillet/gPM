@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<gpm xmlns="http://www.airbus.com/topcased/gPM"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+
+    <version>1.2</version>
+	<!-- Use to test access controls over sub-field of multiple fields -->
+	
+	<users>
+	   <user login="user10" password="pwd10" name="User 10" />
+	</users>
+	
+	<roles>
+		<role name="confidential"/>
+		<role name="notExportable"/>
+		<role name="notUpdatable"/>
+		<role name="mandatory"/>
+		<role name="notMultiple"/>
+	</roles>
+	
+	<userRoles>
+	   <userRole roleName="confidential" login="user10"/>
+	   <userRole roleName="notExportable" login="user10"/>
+	   <userRole roleName="notUpdatable" login="user10"/>
+	   <userRole roleName="mandatory" login="user10"/>
+	   <userRole roleName="notMultiple" login="user10"/>
+	</userRoles>
+	
+	<accessControls>
+	   <fieldAccess fieldKey="SHEETTYPE1_simpleStringM" typeName="SheetType1" role="confidential" confidential="true" />
+	   <fieldAccess fieldKey="SHEETTYPE1_simpleIntegerM" typeName="SheetType1" role="notExportable" exportable="false" />
+	   <fieldAccess fieldKey="SHEETTYPE1_simpleRealM" typeName="SheetType1" role="notUpdatable" updatable="false" />
+	   <fieldAccess fieldKey="SHEETTYPE1_simpleBooleanM" typeName="SheetType1" role="mandatory" mandatory="true" />
+	   <fieldAccess fieldKey="SHEETTYPE1_multiple1" typeName="SheetType1" role="notMultiple" confidential="true" exportable="false" updatable="false" />
+	   <fieldAccess fieldKey="SHEETTYPE1_simpleStringMM" typeName="SheetType1" role="confidential" confidential="true" />
+       <fieldAccess fieldKey="SHEETTYPE1_simpleIntegerMM" typeName="SheetType1" role="notExportable" exportable="false" />
+       <fieldAccess fieldKey="SHEETTYPE1_simpleRealMM" typeName="SheetType1" role="notUpdatable" updatable="false" />
+       <fieldAccess fieldKey="SHEETTYPE1_simpleBooleanMM" typeName="SheetType1" role="mandatory" mandatory="true" />
+       <fieldAccess fieldKey="SHEETTYPE1_multiple1M" typeName="SheetType1" role="notMultiple" confidential="true" exportable="false" updatable="false" />
+	</accessControls>
+	
+	<sheets>
+	   <sheet type="SheetType1" productName="product1">
+        <referenceValues>
+                <fieldValue name="typeName" value="accessControlMultiple_1" />
+            </referenceValues>
+            
+           <fieldValues>
+                <fieldValue name="SHEETTYPE1_multiple1">
+                   <fieldValues>
+                   <fieldValue name="SHEETTYPE1_simpleStringM" value="value1" />
+                   <fieldValue name="SHEETTYPE1_simpleIntegerM" value="1" />
+                   <fieldValue name="SHEETTYPE1_simpleRealM" value="1.1" />
+                   <fieldValue name="SHEETTYPE1_simpleBooleanM" value="true" />
+                   </fieldValues>
+                </fieldValue>
+                <fieldValue name="SHEETTYPE1_multiple1M">
+                    <fieldValues>
+                        <fieldValue name="SHEETTYPE1_simpleStringMM" value="value1" />
+                        <fieldValue name="SHEETTYPE1_simpleIntegerMM" value="1" />
+                       <fieldValue name="SHEETTYPE1_simpleRealMM" value="1.1" />
+                       <fieldValue name="SHEETTYPE1_simpleBooleanMM" value="true" />
+                   </fieldValues>
+               </fieldValue>
+               <fieldValue name="SHEETTYPE1_multiple1M">
+                    <fieldValues>
+                        <fieldValue name="SHEETTYPE1_simpleStringMM" value="value2" />
+                        <fieldValue name="SHEETTYPE1_simpleIntegerMM" value="2" />
+                       <fieldValue name="SHEETTYPE1_simpleRealMM" value="2.2" />
+                       <fieldValue name="SHEETTYPE1_simpleBooleanMM" value="false" />
+                   </fieldValues>
+               </fieldValue>
+           </fieldValues>
+       </sheet>
+	</sheets>
+</gpm>

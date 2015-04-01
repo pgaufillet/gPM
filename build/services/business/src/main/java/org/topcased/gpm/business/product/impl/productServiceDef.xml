@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!--
+        Product service
+    -->
+	<bean id="productServiceImpl" parent="serviceImplBase" autowire="byName"
+		class="org.topcased.gpm.business.product.impl.ProductServiceImpl">
+		<property name="nonAssignableRolesForNonAdmins" value="${nonAssignableRolesForNonAdmins}" />
+    </bean>
+    
+	<bean id="productService" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedService">
+		<property name="target" ref="productServiceImpl" />
+
+		<property name="proxyInterfaces"
+			value="org.topcased.gpm.business.product.service.ProductService" />
+	</bean>
+	
+	<!--
+        Product managers
+    -->
+	<bean id="availableProductsManager" parent="serviceImplBase"
+		autowire="byName"
+		class="org.topcased.gpm.business.product.impl.AvailableProductsManager" />
+	<bean id="productHierarchyManager" parent="serviceImplBase"
+		autowire="byName"
+		class="org.topcased.gpm.business.product.impl.ProductHierarchyManager" />
+</beans>

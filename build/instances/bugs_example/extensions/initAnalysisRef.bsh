@@ -1,0 +1,22 @@
+// Initialize the reference field of an Analysis
+
+import org.topcased.gpm.business.sheet.service.SheetData;
+import org.topcased.gpm.business.sheet.service.sheetAccess.MultiLineFieldDataAccess;
+import org.topcased.gpm.business.sheet.service.sheetAccess.MultipleFieldDataAccess;
+import org.topcased.gpm.business.sheet.service.sheetAccess.SheetDataAccess;
+import org.topcased.gpm.business.sheet.service.sheetAccess.SimpleFieldDataAccess;
+
+// Récupération de la sheetData
+
+SheetData sheetData = context.get("sheetData");
+
+// récupération de la sheetDataAccess(permettant d'accéder aux champs de la sheetdata)
+SheetDataAccess sheetDataAccess = new SheetDataAccess(sheetData);
+
+// récupération de l'acces au champ multiple Reference
+MultipleFieldDataAccess referenceFieldDataAccess = new MultipleFieldDataAccess(sheetData.getReference());
+
+// reference.name <- ref
+String refString = ((SimpleFieldDataAccess)sheetDataAccess.getField("ANALYSIS_reference")).getValue();
+
+referenceFieldDataAccess.getField("ANALYSIS_ref").setValue(refString);

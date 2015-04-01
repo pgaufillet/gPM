@@ -1,0 +1,30 @@
+// Initialize the reference field
+
+import org.topcased.gpm.business.sheet.service.sheetAccess.MultipleFieldDataAccess;
+import org.topcased.gpm.business.sheet.service.sheetAccess.SheetDataAccess;
+import org.topcased.gpm.business.sheet.service.SheetService;
+import org.topcased.gpm.business.ServiceLocator;
+
+ServiceLocator serviceLocator = ServiceLocator.instance();
+SheetService sheetService = serviceLocator.getSheetService();
+
+// Récupération de la sheetData
+sheetData = context.get("sheetData");
+
+// récupération de la sheetDataAccess(permettant d'accéder aux champs de la sheetdata)
+sheetDataAccess = new SheetDataAccess(sheetData);
+
+// récupération de l'acces au champ multiple Reference
+referenceFieldDataAccess = new MultipleFieldDataAccess(sheetData.getReference());
+
+ref = sheetService.getSheetsCount(sheetData.getSheetTypeId());
+
+// reference.ref <- sheets count
+referenceFieldDataAccess.getField("ref").setValue(ref.toString());
+
+// If the reference.typeName is empty, value it to the type name
+typeName = referenceFieldDataAccess.getField("typeName").getValue();
+if (typeName == null || typeName.length() == 0) {
+  // ref.typeName not valued. Set it as the type name.
+  referenceFieldDataAccess.getField("typeName").setValue(sheetData.getSheetTypeName());
+}

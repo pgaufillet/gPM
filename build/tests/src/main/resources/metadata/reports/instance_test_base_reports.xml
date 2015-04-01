@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+	<version>1.2</version>
+	<reports>
+		<reportModel name="monRapport" path="blablab/fl/fli.jasper"
+			description="gfd">
+			<containers>
+				<sheetTypeRef name="Cat" />
+			</containers>
+			<exportTypes>
+				<exportType exportFormat="PDF" />
+			</exportTypes>
+		</reportModel>
+		<reportModel name="myPDFReport" path="report/generateReport/myReport.jasper"
+			description="PDF report for cats">
+			<containers>
+				<sheetTypeRef name="Cat" />
+			</containers>
+			<exportTypes>
+				<exportType exportFormat="PDF" />
+			</exportTypes>
+		</reportModel>
+		<reportModel name="allSheets" path="generateReport/myReport.jasper"
+			description="Export all sheets in this process">
+			<containers>
+				<sheetTypeRef name="Cat" />
+				<sheetTypeRef name="Dog" />
+				<sheetTypeRef name="Price" />
+			</containers>
+			<exportTypes>
+				<exportType exportFormat="PDF" />
+				<exportType exportFormat="XLS" />
+			</exportTypes>
+		</reportModel>
+		<reportModel name="Dogs" path="report/generateReport/myReport.jasper"
+			description="PDF report for dogs">
+			<containers>
+				<sheetTypeRef name="Dog" />
+			</containers>
+			<exportTypes>
+				<exportType exportFormat="XLS" />
+			</exportTypes>
+		</reportModel>
+	</reports>
+</gpm>

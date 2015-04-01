@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<gpm xmlns="http://www.airbus.com/topcased/gPM"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+
+	<version>1.2</version>
+
+	<!--  Define commands -->
+	<commands>
+		<script language="beanshell" name="initRef_exception">
+			<code filename="InitRef_Exception.bsh" />
+		</script>
+		
+	</commands>
+
+	<sheetTypes>
+		
+		<sheetType name="Dog" description="sheetTypedog"
+			selectable="true">
+
+			<displayGroups>
+				<displayGroup name="Identity">
+					<fieldRef name="DOG_ref" />
+					<fieldRef name="DOG_birthdate" />
+					<fieldRef name="DOG_pedigre" />
+					<fieldRef name="DOG_usage" />
+				</displayGroup>
+			</displayGroups>
+
+			<referenceField>
+				<fields>
+					<simpleField labelKey="DOG_name" valueType="String" />
+				</fields>
+			</referenceField>
+
+			<fields>
+				<simpleField labelKey="DOG_ref" valueType="String"
+					mandatory="false" updatable="true" confidential="false"
+					exportable="true" />
+
+				<simpleField labelKey="DOG_birthdate" valueType="Date"
+					mandatory="false" updatable="true" confidential="false"
+					exportable="true" />
+
+				<choiceField labelKey="DOG_pedigre"
+					description="Pet pedigre" categoryName="Color" multivalued="true"
+					mandatory="false" updatable="true" confidential="false"
+					exportable="true" />
+
+				<choiceField labelKey="DOG_usage"
+					description="Pet primary usage" categoryName="Usage"
+					mandatory="false" updatable="true" multivalued="true"
+					confidential="false" exportable="true" />
+			</fields>
+
+			<extensionPoints>
+				<extensionPoint name="preCreate">
+					<command name="initRef_exception" />
+				</extensionPoint>
+								
+			</extensionPoints>
+
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/dog.par/processdefinition.xml
+			</lifecycleResource>
+
+		</sheetType>
+
+	</sheetTypes>
+</gpm>
+
+
+
+
+
+
+

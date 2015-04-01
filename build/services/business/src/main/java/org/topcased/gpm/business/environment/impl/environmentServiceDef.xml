@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <!--
+        Environment service
+    -->
+
+    <!-- Implementation bean -->
+    <bean id="environmentServiceImpl" parent="serviceImplBase"
+        class="org.topcased.gpm.business.environment.impl.EnvironmentServiceImpl"
+        autowire="byName"/>
+
+    <!-- Visible interface of the service  -->
+    <bean id="environmentService"
+        class="org.springframework.aop.framework.ProxyFactoryBean"
+        parent="interceptedService">
+        <property name="target" ref="environmentServiceImpl" />
+
+        <property name="proxyInterfaces"
+            value="org.topcased.gpm.business.environment.service.EnvironmentService" />
+    </bean>
+</beans>

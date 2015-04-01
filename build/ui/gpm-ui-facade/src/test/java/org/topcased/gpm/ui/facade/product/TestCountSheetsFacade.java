@@ -1,0 +1,50 @@
+/***************************************************************
+ * Copyright (c) 2010 AIRBUS FRANCE. All rights reserved. This 
+ * program and the accompanying materials are made available
+ * under the terms of the Lesser Gnu Public License (LGPL) which
+ * accompanies this distribution, and is available
+ * at http://www.gnu.org/licenses/lgpl.html
+ *
+ * Contributors: Julien LOUISY (Atos Origin)
+ ******************************************************************/
+package org.topcased.gpm.ui.facade.product;
+
+import org.topcased.gpm.business.product.service.ProductService;
+import org.topcased.gpm.ui.facade.AbstractFacadeTestCase;
+import org.topcased.gpm.ui.facade.server.authorization.UiSession;
+import org.topcased.gpm.ui.facade.server.product.ProductFacade;
+
+/**
+ * ProductFacade.getProduct test
+ * 
+ * @author jlouisy
+ */
+public class TestCountSheetsFacade extends AbstractFacadeTestCase {
+
+    private static final String PRODUCT_NAME = "ROOT_PRODUCT";
+
+    /**
+     * Normal case
+     */
+    public void testNormalCase() {
+
+        UiSession lUiSession =
+                adminUserSession.getSession(DEFAULT_PRODUCT_NAME);
+        ProductFacade lProductFacade = getFacadeLocator().getProductFacade();
+
+        // Get product Id
+        ProductService lProductService = getProductService();
+        String lProductId =
+                lProductService.getProductId(lUiSession.getRoleToken(),
+                        PRODUCT_NAME);
+
+        // Count sheets
+        if (LOGGER.isInfoEnabled()) {
+            LOGGER.info("Count sheets in Product.");
+        }
+        int lSheetCount = lProductFacade.countSheets(lUiSession, lProductId);
+
+        assertEquals(3, lSheetCount);
+    }
+
+}

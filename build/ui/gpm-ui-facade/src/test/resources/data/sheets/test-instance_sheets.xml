@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+	<version>1.2</version>
+	<sheets>
+		<sheet id="9b20908e-d9b6-4f18-8ba6-89a04514e6b7" type="SHEET_1"
+			productName="ROOT_PRODUCT" reference="REF_2010.07.01-11.38.00"
+			version="4" state="INIT">
+			<referenceValues>
+				<fieldValue name="REF_id" value="REF_Origin_Sheet" />
+			</referenceValues>
+			<fieldValues>
+				<fieldValue name="SHEET_NAME" value="Origin Sheet" />
+				<attachedFieldValue name="ATTACHED_DISPLAY_HINT"
+					value="src/test/resources/data/resource/file2.xml" mimeType="text/xml"
+					id="939ee875-8ef0-4d8d-a870-f713cea974bf" filename="src/test/resources/data/resource/file2.xml" />
+				<attachedFieldValue name="ATTACHED_FIELD"
+					value="src/test/resources/data/resource/file1.txt" mimeType="text/plain"
+					id="40bdaf3b-5652-4275-a8ec-76a29f7b0d96" filename="src/test/resources/data/resource/file1.txt" />
+				<fieldValue name="BOOLEAN_SIMPLE_FIELD" value="true" />
+				<fieldValue name="CHOICE_FIELD" value="CHOICE 3" />
+				<fieldValue name="CHOICE_STRING_DISPLAY_HINT" value="CHOICE_STRING_DISPLAY_HINT - 4" />
+				<fieldValue name="DATE_SIMPLE_FIELD" value="2010-07-20" />
+				<fieldValue name="EXTERNAL_WEB_CONTENT_DISPLAY_HINT"
+					value="http://www.google.fr" />
+				<fieldValue name="FILTER_RESULT_FIELD_1" value="FILTER_F1_0" />
+				<fieldValue name="FILTER_RESULT_FIELD_2" value="FILTER_F2_0" />
+				<fieldValue name="FULL_DISPLAY_HINT" value="2010-07-01T09:30:00" />
+				<fieldValue name="INTEGER_SIMPLE_FIELD" value="843" />
+				<fieldValue name="LIST_DISPLAY_HINT" value="CHOICE 3" />
+				<fieldValue name="LONG_DISPLAY_HINT" value="2010-07-01T09:15:00" />
+				<fieldValue name="MEDIUM_DISPLAY_HINT" value="2010-07-01" />
+				<fieldValue name="MULTI_LINE_DISPLAY_HINT"
+					value="multiline&#x0D;&#x0A;text&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;plop&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;here&apos;s the end" />
+				<fieldValue name="MULTIPLE_FIELD">
+					<fieldValues>
+						<attachedFieldValue name="SUB_ATTACHED_FIELD"
+							value="src/test/resources/data/resource/file2.xml" mimeType="text/xml"
+							id="c54f0d43-f7b4-4cc7-95b4-4abd780f793e" filename="src/test/resources/data/resource/file2.xml" />
+						<fieldValue name="SUB_BOOLEAN_SIMPLE_FIELD" value="true" />
+						<fieldValue name="SUB_CHOICE_FIELD" value="CHOICE 4" />
+						<fieldValue name="SUB_DATE_SIMPLE_FIELD" value="2010-07-12" />
+						<fieldValue name="SUB_INTEGER_SIMPLE_FIELD" value="843" />
+						<fieldValue name="SUB_MULTIVALUED_CHOICE_FIELD" value="CHOICE 2" />
+						<fieldValue name="SUB_MULTIVALUED_CHOICE_FIELD" value="CHOICE 4" />
+						<fieldValue name="SUB_MULTIVALUED_CHOICE_FIELD" value="CHOICE 5" />
+						<fieldValue name="SUB_REAL_SIMPLE_FIELD" value="87.32" />
+						<fieldValue name="SUB_STRING_SIMPLE_FIELD" value="str" />
+					</fieldValues>
+				</fieldValue>
+				<attachedFieldValue name="MULTIVALUED_ATTACHED_DISPLAY_HINT"
+					value="src/test/resources/data/resource/file2.xml" mimeType="text/xml"
+					id="a76da066-105f-4c2a-bed1-d41da155ad2d" filename="src/test/resources/data/resource/file2.xml" />
+				<attachedFieldValue name="MULTIVALUED_ATTACHED_DISPLAY_HINT"
+					value="src/test/resources/data/resource/file2.xml" mimeType="text/xml"
+					id="2d26ff7d-0a06-40df-ae43-a23534ed241c" filename="src/test/resources/data/resource/file2.xml" />
+				<attachedFieldValue name="MULTIVALUED_ATTACHED_FIELD"
+					value="src/test/resources/data/resource/file1.txt" mimeType="text/plain"
+					id="45f9a039-2082-400a-a4aa-8565c00ffb53" filename="src/test/resources/data/resource/file1.txt" />
+				<attachedFieldValue name="MULTIVALUED_ATTACHED_FIELD"
+					value="src/test/resources/data/resource/file1.txt" mimeType="text/plain"
+					id="517c3334-10df-46f5-8736-87e47f822aa2" filename="src/test/resources/data/resource/file1.txt" />
+				<attachedFieldValue name="MULTIVALUED_ATTACHED_FIELD"
+					value="src/test/resources/data/resource/file2.xml" mimeType="text/xml"
+					id="2e963f67-6b28-4109-b8e7-8dde9bb0cc62" filename="src/test/resources/data/resource/file2.xml" />
+				<fieldValue name="MULTIVALUED_BOOLEAN_SIMPLE_FIELD"
+					value="true" />
+				<fieldValue name="MULTIVALUED_BOOLEAN_SIMPLE_FIELD"
+					value="false" />
+				<fieldValue name="MULTIVALUED_CHOICE_FIELD" value="CHOICE 1" />
+				<fieldValue name="MULTIVALUED_CHOICE_FIELD" value="CHOICE 3" />
+				<fieldValue name="MULTIVALUED_CHOICE_FIELD" value="CHOICE 5" />
+				<fieldValue name="MULTIVALUED_CHOICE_FIELD" value="CHOICE 6" />
+				<fieldValue name="MULTIVALUED_CHOICE_STRING_DISPLAY_HINT"
+					value="MULTIVALUED_CHOICE_STRING_DISPLAY_HINT - 6" />
+				<fieldValue name="MULTIVALUED_CHOICE_STRING_DISPLAY_HINT"
+					value="MULTIVALUED_CHOICE_STRING_DISPLAY_HINT - 8" />
+				<fieldValue name="MULTIVALUED_DATE_SIMPLE_FIELD" value="2010-07-01" />
+				<fieldValue name="MULTIVALUED_DATE_SIMPLE_FIELD" value="2010-07-02" />
+				<fieldValue name="MULTIVALUED_EXTERNAL_WEB_CONTENT_DISPLAY_HINT"
+					value="http://www.google.fr" />
+				<fieldValue name="MULTIVALUED_EXTERNAL_WEB_CONTENT_DISPLAY_HINT"
+					value="http://www.google.com" />
+				<fieldValue name="MULTIVALUED_FULL_DISPLAY_HINT" value="2010-07-19" />
+				<fieldValue name="MULTIVALUED_INTEGER_SIMPLE_FIELD"
+					value="78" />
+				<fieldValue name="MULTIVALUED_INTEGER_SIMPLE_FIELD"
+					value="89" />
+				<fieldValue name="MULTIVALUED_LIST_DISPLAY_HINT" value="CHOICE 2" />
+				<fieldValue name="MULTIVALUED_LIST_DISPLAY_HINT" value="CHOICE 3" />
+				<fieldValue name="MULTIVALUED_LIST_DISPLAY_HINT" value="CHOICE 5" />
+				<fieldValue name="MULTIVALUED_LONG_DISPLAY_HINT" value="2010-07-12" />
+				<fieldValue name="MULTIVALUED_LONG_DISPLAY_HINT" value="2010-07-13" />
+				<fieldValue name="MULTIVALUED_MEDIUM_DISPLAY_HINT" value="2010-07-20" />
+				<fieldValue name="MULTIVALUED_MEDIUM_DISPLAY_HINT" value="2010-07-21" />
+				<fieldValue name="MULTIVALUED_MEDIUM_DISPLAY_HINT" value="2010-07-01" />
+				<fieldValue name="MULTIVALUED_MULTI_LINE_DISPLAY_HINT"
+					value="m&#x0D;&#x0A;u&#x0D;&#x0A;l&#x0D;&#x0A;t&#x0D;&#x0A;i&#x0D;&#x0A;l&#x0D;&#x0A;i&#x0D;&#x0A;n&#x0D;&#x0A;e&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;1" />
+				<fieldValue name="MULTIVALUED_MULTI_LINE_DISPLAY_HINT"
+					value="m&#x0D;&#x0A;u&#x0D;&#x0A;l&#x0D;&#x0A;t&#x0D;&#x0A;i&#x0D;&#x0A;l&#x0D;&#x0A;i&#x0D;&#x0A;n&#x0D;&#x0A;e&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;2" />
+				<fieldValue name="MULTIVALUED_MULTI_LINE_DISPLAY_HINT"
+					value="m&#x0D;&#x0A;u&#x0D;&#x0A;l&#x0D;&#x0A;t&#x0D;&#x0A;i&#x0D;&#x0A;l&#x0D;&#x0A;i&#x0D;&#x0A;n&#x0D;&#x0A;e&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;3" />
+				<fieldValue name="MULTIVALUED_MULTIPLE_FIELD">
+					<fieldValues>
+						<attachedFieldValue name="MULTIVAL_SUB_ATTACHED_FIELD"
+							value="src/test/resources/data/resource/file2.xml" mimeType="text/xml"
+							id="60f503ea-d013-4271-9bdc-1613b543d461" filename="src/test/resources/data/resource/file2.xml" />
+						<fieldValue name="MULTIVAL_SUB_BOOLEAN_SIMPLE_FIELD"
+							value="false" />
+						<fieldValue name="MULTIVAL_SUB_CHOICE_FIELD" value="CHOICE 4" />
+						<fieldValue name="MULTIVAL_SUB_DATE_SIMPLE_FIELD"
+							value="2010-07-04" />
+						<fieldValue name="MULTIVAL_SUB_INTEGER_SIMPLE_FIELD"
+							value="843" />
+						<fieldValue name="MULTIVAL_SUB_MULTIVALUED_CHOICE_FIELD"
+							value="CHOICE 2" />
+						<fieldValue name="MULTIVAL_SUB_MULTIVALUED_CHOICE_FIELD"
+							value="CHOICE 3" />
+						<fieldValue name="MULTIVAL_SUB_MULTIVALUED_CHOICE_FIELD"
+							value="CHOICE 5" />
+						<fieldValue name="MULTIVAL_SUB_REAL_SIMPLE_FIELD"
+							value="6563.164" />
+						<fieldValue name="MULTIVAL_SUB_STRING_SIMPLE_FIELD"
+							value="str1" />
+					</fieldValues>
+				</fieldValue>
+				<fieldValue name="MULTIVALUED_MULTIPLE_FIELD">
+					<fieldValues>
+						<attachedFieldValue name="MULTIVAL_SUB_ATTACHED_FIELD"
+							value="src/test/resources/data/resource/file1.txt" mimeType="text/plain"
+							id="c6779dd5-b9ab-4f9f-95e5-826d95c030bb" filename="src/test/resources/data/resource/file1.txt" />
+						<fieldValue name="MULTIVAL_SUB_BOOLEAN_SIMPLE_FIELD"
+							value="true" />
+						<fieldValue name="MULTIVAL_SUB_CHOICE_FIELD" value="CHOICE 3" />
+						<fieldValue name="MULTIVAL_SUB_DATE_SIMPLE_FIELD"
+							value="2010-07-21" />
+						<fieldValue name="MULTIVAL_SUB_INTEGER_SIMPLE_FIELD"
+							value="84384" />
+						<fieldValue name="MULTIVAL_SUB_MULTIVALUED_CHOICE_FIELD"
+							value="CHOICE 2" />
+						<fieldValue name="MULTIVAL_SUB_MULTIVALUED_CHOICE_FIELD"
+							value="CHOICE 4" />
+						<fieldValue name="MULTIVAL_SUB_REAL_SIMPLE_FIELD"
+							value="85.23" />
+						<fieldValue name="MULTIVAL_SUB_STRING_SIMPLE_FIELD"
+							value="str2" />
+					</fieldValues>
+				</fieldValue>
+				<fieldValue name="MULTIVALUED_MULTIPLE_FIELD">
+					<fieldValues>
+						<attachedFieldValue name="MULTIVAL_SUB_ATTACHED_FIELD"
+							value="src/test/resources/data/resource/file2.xml" mimeType="text/xml"
+							id="ef453fe3-c3ea-4a1f-b500-fb7807d0a4d0" filename="src/test/resources/data/resource/file2.xml" />
+						<fieldValue name="MULTIVAL_SUB_BOOLEAN_SIMPLE_FIELD"
+							value="false" />
+						<fieldValue name="MULTIVAL_SUB_CHOICE_FIELD" value="CHOICE 5" />
+						<fieldValue name="MULTIVAL_SUB_DATE_SIMPLE_FIELD"
+							value="2010-07-23" />
+						<fieldValue name="MULTIVAL_SUB_INTEGER_SIMPLE_FIELD"
+							value="785222" />
+						<fieldValue name="MULTIVAL_SUB_MULTIVALUED_CHOICE_FIELD"
+							value="CHOICE 2" />
+						<fieldValue name="MULTIVAL_SUB_MULTIVALUED_CHOICE_FIELD"
+							value="CHOICE 5" />
+						<fieldValue name="MULTIVAL_SUB_REAL_SIMPLE_FIELD"
+							value="896.32" />
+						<fieldValue name="MULTIVAL_SUB_STRING_SIMPLE_FIELD"
+							value="str3" />
+					</fieldValues>
+				</fieldValue>
+				<fieldValue name="MULTIVALUED_NOT_LIST_DISPLAY_HINT"
+					value="CHOICE 2" />
+				<fieldValue name="MULTIVALUED_NOT_LIST_DISPLAY_HINT"
+					value="CHOICE 4" />
+				<fieldValue name="MULTIVALUED_NOT_LIST_DISPLAY_HINT"
+					value="CHOICE 5" />
+				<fieldValue name="MULTIVALUED_NOT_LIST_DISPLAY_HINT"
+					value="CHOICE 6" />
+				<fieldValue name="MULTIVALUED_REAL_SIMPLE_FIELD" value="85.36" />
+				<fieldValue name="MULTIVALUED_REAL_SIMPLE_FIELD" value="2.565" />
+				<fieldValue name="MULTIVALUED_REAL_SIMPLE_FIELD" value="89.0" />
+				<fieldValue name="MULTIVALUED_RICH_TEXT_DISPLAY_HINT"
+					value="&lt;hr /&gt;&#x0D;&#x0A;&lt;p&gt;&lt;b&gt;DEFAULT &lt;/b&gt;&lt;i&gt;TEXT&lt;/i&gt;&lt;/p&gt;" />
+				<fieldValue name="MULTIVALUED_RICH_TEXT_DISPLAY_HINT"
+					value="&lt;hr /&gt;&#x0D;&#x0A;&lt;p&gt;&lt;del&gt;&lt;u&gt;&lt;i&gt;&lt;b&gt;DEFAULT &lt;/b&gt;TEXT&lt;/i&gt;&lt;/u&gt;&lt;/del&gt;&lt;/p&gt;" />
+				<fieldValue name="MULTIVALUED_SHORT_DISPLAY_HINT" value="2010-07-01T11:00:00" />
+				<fieldValue name="MULTIVALUED_SHORT_DISPLAY_HINT" value="2010-07-22" />
+				<fieldValue name="MULTIVALUED_SINGLE_LINE_DISPLAY_HINT"
+					value="plop" />
+				<fieldValue name="MULTIVALUED_SINGLE_LINE_DISPLAY_HINT"
+					value="plop2" />
+				<fieldValue name="MULTIVALUED_STRING_SIMPLE_FIELD" value="str1" />
+				<fieldValue name="MULTIVALUED_STRING_SIMPLE_FIELD" value="sr2" />
+				<fieldValue name="MULTIVALUED_URL_DISPLAY_HINT" value="http://www.google.fr" />
+				<fieldValue name="MULTIVALUED_URL_DISPLAY_HINT" value="http://www.google2.fr" />
+				<fieldValue name="NOT_LIST_DISPLAY_HINT" value="CHOICE 3" />
+				<fieldValue name="POINTED_MULTIVALUED_SIMPLE_FIELD"
+					value="Pointed Field Origin Sheet 1" />
+				<fieldValue name="POINTED_MULTIVALUED_SIMPLE_FIELD"
+					value="Pointed Field Origin Sheet 2" />
+				<fieldValue name="POINTED_SIMPLE_FIELD" value="Pointed Field Origin Sheet" />
+				<fieldValue name="REAL_SIMPLE_FIELD" value="89.36" />
+				<fieldValue name="RICH_TEXT_DISPLAY_HINT"
+					value="&lt;table cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; align=&quot;left&quot; style=&quot;width: 149px; height: 19px;&quot;&gt;&#x0D;&#x0A;    &lt;tbody&gt;&#x0D;&#x0A;        &lt;tr&gt;&#x0D;&#x0A;            &lt;td&gt;&lt;strong&gt;z;jbvazjlchabzlc&lt;/strong&gt;&lt;/td&gt;&#x0D;&#x0A;        &lt;/tr&gt;&#x0D;&#x0A;    &lt;/tbody&gt;&#x0D;&#x0A;&lt;/table&gt;" />
+				<fieldValue name="SHORT_DISPLAY_HINT" value="2010-07-01" />
+				<fieldValue name="SINGLE_LINE_DISPLAY_HINT" value="text on a single line" />
+				<fieldValue name="STRING_SIMPLE_FIELD" value="plop" />
+				<fieldValue name="URL_DISPLAY_HINT" value="http://www.google.fr" />
+			</fieldValues>
+		</sheet>
+		<sheet id="9b20908e-d9b6-4f18-8ba6-89a04514e600" type="SHEET_1"
+			productName="ROOT_PRODUCT" reference="REF_2010.07.01-9.00.00"
+			version="4" state="INIT">
+			<referenceValues>
+				<fieldValue name="REF_id" value="REF_Destination_Sheet" />
+			</referenceValues>
+			<fieldValues>
+				<fieldValue name="SHEET_NAME" value="Destination Sheet" />
+				<attachedFieldValue name="ATTACHED_DISPLAY_HINT"
+					value="src/test/resources/data/resource/file2.xml" mimeType="text/xml"
+					id="939ee875-8ef0-4d8d-a870-f713cea974bf" filename="src/test/resources/data/resource/file2.xml" />
+				<attachedFieldValue name="ATTACHED_FIELD"
+					value="src/test/resources/data/resource/file2.xml" mimeType="text/xml"
+					id="40bdaf3b-5652-4275-a8ec-76a29f7b0d96" filename="src/test/resources/data/resource/file2.xml" />
+				<fieldValue name="BOOLEAN_SIMPLE_FIELD" value="true" />
+				<fieldValue name="CHOICE_FIELD" value="CHOICE 3" />
+				<fieldValue name="CHOICE_STRING_DISPLAY_HINT" value="CHOICE_STRING_DISPLAY_HINT - 4" />
+				<fieldValue name="DATE_SIMPLE_FIELD" value="2010-07-20" />
+				<fieldValue name="EXTERNAL_WEB_CONTENT_DISPLAY_HINT"
+					value="http://www.google.fr" />
+				<fieldValue name="FILTER_RESULT_FIELD_1" value="FILTER_F1_1" />
+				<fieldValue name="FILTER_RESULT_FIELD_2" value="FILTER_F2_1" />
+				<fieldValue name="FULL_DISPLAY_HINT" value="2010-07-01T09:30:00" />
+				<fieldValue name="INTEGER_SIMPLE_FIELD" value="843" />
+				<fieldValue name="LIST_DISPLAY_HINT" value="CHOICE 3" />
+				<fieldValue name="LONG_DISPLAY_HINT" value="2010-07-01T09:15:00" />
+				<fieldValue name="MEDIUM_DISPLAY_HINT" value="2010-07-01" />
+				<fieldValue name="MULTI_LINE_DISPLAY_HINT"
+					value="multiline&#x0D;&#x0A;text&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;plop&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;here&apos;s the end" />
+				<fieldValue name="MULTIPLE_FIELD">
+					<fieldValues>
+						<attachedFieldValue name="SUB_ATTACHED_FIELD"
+							value="src/test/resources/data/resource/file2.xml" mimeType="text/xml"
+							id="c54f0d43-f7b4-4cc7-95b4-4abd780f793e" filename="src/test/resources/data/resource/file2.xml" />
+						<fieldValue name="SUB_BOOLEAN_SIMPLE_FIELD" value="true" />
+						<fieldValue name="SUB_CHOICE_FIELD" value="CHOICE 4" />
+						<fieldValue name="SUB_DATE_SIMPLE_FIELD" value="2010-07-12" />
+						<fieldValue name="SUB_INTEGER_SIMPLE_FIELD" value="843" />
+						<fieldValue name="SUB_MULTIVALUED_CHOICE_FIELD" value="CHOICE 2" />
+						<fieldValue name="SUB_MULTIVALUED_CHOICE_FIELD" value="CHOICE 4" />
+						<fieldValue name="SUB_MULTIVALUED_CHOICE_FIELD" value="CHOICE 5" />
+						<fieldValue name="SUB_REAL_SIMPLE_FIELD" value="87.32" />
+						<fieldValue name="SUB_STRING_SIMPLE_FIELD" value="str" />
+					</fieldValues>
+				</fieldValue>
+				<attachedFieldValue name="MULTIVALUED_ATTACHED_DISPLAY_HINT"
+					value="src/test/resources/data/resource/file2.xml" mimeType="text/xml"
+					id="a76da066-105f-4c2a-bed1-d41da155ad2d" filename="src/test/resources/data/resource/file2.xml" />
+				<attachedFieldValue name="MULTIVALUED_ATTACHED_DISPLAY_HINT"
+					value="src/test/resources/data/resource/file2.xml" mimeType="text/xml"
+					id="2d26ff7d-0a06-40df-ae43-a23534ed241c" filename="src/test/resources/data/resource/file2.xml" />
+				<attachedFieldValue name="MULTIVALUED_ATTACHED_FIELD"
+					value="src/test/resources/data/resource/file2.xml" mimeType="text/xml"
+					id="45f9a039-2082-400a-a4aa-8565c00ffb53" filename="src/test/resources/data/resource/file2.xml" />
+				<attachedFieldValue name="MULTIVALUED_ATTACHED_FIELD"
+					value="src/test/resources/data/resource/file2.xml" mimeType="text/plain"
+					id="517c3334-10df-46f5-8736-87e47f822aa2" filename="src/test/resources/data/resource/file2.xml" />
+				<attachedFieldValue name="MULTIVALUED_ATTACHED_FIELD"
+					value="src/test/resources/data/resource/file2.xml" mimeType="text/xml"
+					id="2e963f67-6b28-4109-b8e7-8dde9bb0cc62" filename="src/test/resources/data/resource/file2.xml" />
+				<fieldValue name="MULTIVALUED_BOOLEAN_SIMPLE_FIELD"
+					value="true" />
+				<fieldValue name="MULTIVALUED_BOOLEAN_SIMPLE_FIELD"
+					value="false" />
+				<fieldValue name="MULTIVALUED_CHOICE_FIELD" value="CHOICE 1" />
+				<fieldValue name="MULTIVALUED_CHOICE_FIELD" value="CHOICE 3" />
+				<fieldValue name="MULTIVALUED_CHOICE_FIELD" value="CHOICE 5" />
+				<fieldValue name="MULTIVALUED_CHOICE_FIELD" value="CHOICE 6" />
+				<fieldValue name="MULTIVALUED_CHOICE_STRING_DISPLAY_HINT"
+					value="MULTIVALUED_CHOICE_STRING_DISPLAY_HINT - 6" />
+				<fieldValue name="MULTIVALUED_CHOICE_STRING_DISPLAY_HINT"
+					value="MULTIVALUED_CHOICE_STRING_DISPLAY_HINT - 8" />
+				<fieldValue name="MULTIVALUED_DATE_SIMPLE_FIELD" value="2010-07-01" />
+				<fieldValue name="MULTIVALUED_DATE_SIMPLE_FIELD" value="2010-07-02" />
+				<fieldValue name="MULTIVALUED_EXTERNAL_WEB_CONTENT_DISPLAY_HINT"
+					value="http://www.google.fr" />
+				<fieldValue name="MULTIVALUED_EXTERNAL_WEB_CONTENT_DISPLAY_HINT"
+					value="http://www.google.com" />
+				<fieldValue name="MULTIVALUED_FULL_DISPLAY_HINT" value="2010-07-19" />
+				<fieldValue name="MULTIVALUED_INTEGER_SIMPLE_FIELD"
+					value="78" />
+				<fieldValue name="MULTIVALUED_INTEGER_SIMPLE_FIELD"
+					value="89" />
+				<fieldValue name="MULTIVALUED_LIST_DISPLAY_HINT" value="CHOICE 2" />
+				<fieldValue name="MULTIVALUED_LIST_DISPLAY_HINT" value="CHOICE 3" />
+				<fieldValue name="MULTIVALUED_LIST_DISPLAY_HINT" value="CHOICE 5" />
+				<fieldValue name="MULTIVALUED_LONG_DISPLAY_HINT" value="2010-07-12" />
+				<fieldValue name="MULTIVALUED_LONG_DISPLAY_HINT" value="2010-07-13" />
+				<fieldValue name="MULTIVALUED_MEDIUM_DISPLAY_HINT" value="2010-07-20" />
+				<fieldValue name="MULTIVALUED_MEDIUM_DISPLAY_HINT" value="2010-07-21" />
+				<fieldValue name="MULTIVALUED_MEDIUM_DISPLAY_HINT" value="2010-07-01" />
+				<fieldValue name="MULTIVALUED_MULTI_LINE_DISPLAY_HINT"
+					value="m&#x0D;&#x0A;u&#x0D;&#x0A;l&#x0D;&#x0A;t&#x0D;&#x0A;i&#x0D;&#x0A;l&#x0D;&#x0A;i&#x0D;&#x0A;n&#x0D;&#x0A;e&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;1" />
+				<fieldValue name="MULTIVALUED_MULTI_LINE_DISPLAY_HINT"
+					value="m&#x0D;&#x0A;u&#x0D;&#x0A;l&#x0D;&#x0A;t&#x0D;&#x0A;i&#x0D;&#x0A;l&#x0D;&#x0A;i&#x0D;&#x0A;n&#x0D;&#x0A;e&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;2" />
+				<fieldValue name="MULTIVALUED_MULTI_LINE_DISPLAY_HINT"
+					value="m&#x0D;&#x0A;u&#x0D;&#x0A;l&#x0D;&#x0A;t&#x0D;&#x0A;i&#x0D;&#x0A;l&#x0D;&#x0A;i&#x0D;&#x0A;n&#x0D;&#x0A;e&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;3" />
+				<fieldValue name="MULTIVALUED_MULTIPLE_FIELD">
+					<fieldValues>
+						<attachedFieldValue name="MULTIVAL_SUB_ATTACHED_FIELD"
+							value="src/test/resources/data/resource/file2.xml" mimeType="text/xml"
+							id="60f503ea-d013-4271-9bdc-1613b543d461" filename="src/test/resources/data/resource/file2.xml" />
+						<fieldValue name="MULTIVAL_SUB_BOOLEAN_SIMPLE_FIELD"
+							value="false" />
+						<fieldValue name="MULTIVAL_SUB_CHOICE_FIELD" value="CHOICE 4" />
+						<fieldValue name="MULTIVAL_SUB_DATE_SIMPLE_FIELD"
+							value="2010-07-04" />
+						<fieldValue name="MULTIVAL_SUB_INTEGER_SIMPLE_FIELD"
+							value="843" />
+						<fieldValue name="MULTIVAL_SUB_MULTIVALUED_CHOICE_FIELD"
+							value="CHOICE 2" />
+						<fieldValue name="MULTIVAL_SUB_MULTIVALUED_CHOICE_FIELD"
+							value="CHOICE 3" />
+						<fieldValue name="MULTIVAL_SUB_MULTIVALUED_CHOICE_FIELD"
+							value="CHOICE 5" />
+						<fieldValue name="MULTIVAL_SUB_REAL_SIMPLE_FIELD"
+							value="6563.164" />
+						<fieldValue name="MULTIVAL_SUB_STRING_SIMPLE_FIELD"
+							value="str1" />
+					</fieldValues>
+				</fieldValue>
+				<fieldValue name="MULTIVALUED_MULTIPLE_FIELD">
+					<fieldValues>
+						<attachedFieldValue name="MULTIVAL_SUB_ATTACHED_FIELD"
+							value="src/test/resources/data/resource/file2.xml" mimeType="text/xml"
+							id="c6779dd5-b9ab-4f9f-95e5-826d95c030bb" filename="src/test/resources/data/resource/file2.xml" />
+						<fieldValue name="MULTIVAL_SUB_BOOLEAN_SIMPLE_FIELD"
+							value="true" />
+						<fieldValue name="MULTIVAL_SUB_CHOICE_FIELD" value="CHOICE 3" />
+						<fieldValue name="MULTIVAL_SUB_DATE_SIMPLE_FIELD"
+							value="2010-07-21" />
+						<fieldValue name="MULTIVAL_SUB_INTEGER_SIMPLE_FIELD"
+							value="84384" />
+						<fieldValue name="MULTIVAL_SUB_MULTIVALUED_CHOICE_FIELD"
+							value="CHOICE 2" />
+						<fieldValue name="MULTIVAL_SUB_MULTIVALUED_CHOICE_FIELD"
+							value="CHOICE 4" />
+						<fieldValue name="MULTIVAL_SUB_REAL_SIMPLE_FIELD"
+							value="85.23" />
+						<fieldValue name="MULTIVAL_SUB_STRING_SIMPLE_FIELD"
+							value="str2" />
+					</fieldValues>
+				</fieldValue>
+				<fieldValue name="MULTIVALUED_MULTIPLE_FIELD">
+					<fieldValues>
+						<attachedFieldValue name="MULTIVAL_SUB_ATTACHED_FIELD"
+							value="src/test/resources/data/resource/file2.xml" mimeType="text/xml"
+							id="ef453fe3-c3ea-4a1f-b500-fb7807d0a4d0" filename="src/test/resources/data/resource/file2.xml" />
+						<fieldValue name="MULTIVAL_SUB_BOOLEAN_SIMPLE_FIELD"
+							value="false" />
+						<fieldValue name="MULTIVAL_SUB_CHOICE_FIELD" value="CHOICE 5" />
+						<fieldValue name="MULTIVAL_SUB_DATE_SIMPLE_FIELD"
+							value="2010-07-23" />
+						<fieldValue name="MULTIVAL_SUB_INTEGER_SIMPLE_FIELD"
+							value="785222" />
+						<fieldValue name="MULTIVAL_SUB_MULTIVALUED_CHOICE_FIELD"
+							value="CHOICE 2" />
+						<fieldValue name="MULTIVAL_SUB_MULTIVALUED_CHOICE_FIELD"
+							value="CHOICE 5" />
+						<fieldValue name="MULTIVAL_SUB_REAL_SIMPLE_FIELD"
+							value="896.32" />
+						<fieldValue name="MULTIVAL_SUB_STRING_SIMPLE_FIELD"
+							value="str3" />
+					</fieldValues>
+				</fieldValue>
+				<fieldValue name="MULTIVALUED_NOT_LIST_DISPLAY_HINT"
+					value="CHOICE 2" />
+				<fieldValue name="MULTIVALUED_NOT_LIST_DISPLAY_HINT"
+					value="CHOICE 4" />
+				<fieldValue name="MULTIVALUED_NOT_LIST_DISPLAY_HINT"
+					value="CHOICE 5" />
+				<fieldValue name="MULTIVALUED_NOT_LIST_DISPLAY_HINT"
+					value="CHOICE 6" />
+				<fieldValue name="MULTIVALUED_REAL_SIMPLE_FIELD" value="85.36" />
+				<fieldValue name="MULTIVALUED_REAL_SIMPLE_FIELD" value="2.565" />
+				<fieldValue name="MULTIVALUED_REAL_SIMPLE_FIELD" value="89.0" />
+				<fieldValue name="MULTIVALUED_RICH_TEXT_DISPLAY_HINT"
+					value="&lt;hr /&gt;&#x0D;&#x0A;&lt;p&gt;&lt;b&gt;DEFAULT &lt;/b&gt;&lt;i&gt;TEXT&lt;/i&gt;&lt;/p&gt;" />
+				<fieldValue name="MULTIVALUED_RICH_TEXT_DISPLAY_HINT"
+					value="&lt;hr /&gt;&#x0D;&#x0A;&lt;p&gt;&lt;del&gt;&lt;u&gt;&lt;i&gt;&lt;b&gt;DEFAULT &lt;/b&gt;TEXT&lt;/i&gt;&lt;/u&gt;&lt;/del&gt;&lt;/p&gt;" />
+				<fieldValue name="MULTIVALUED_SHORT_DISPLAY_HINT" value="2010-07-01T11:00:00" />
+				<fieldValue name="MULTIVALUED_SHORT_DISPLAY_HINT" value="2010-07-22" />
+				<fieldValue name="MULTIVALUED_SINGLE_LINE_DISPLAY_HINT"
+					value="plop" />
+				<fieldValue name="MULTIVALUED_SINGLE_LINE_DISPLAY_HINT"
+					value="plop2" />
+				<fieldValue name="MULTIVALUED_STRING_SIMPLE_FIELD" value="str1" />
+				<fieldValue name="MULTIVALUED_STRING_SIMPLE_FIELD" value="sr2" />
+				<fieldValue name="MULTIVALUED_URL_DISPLAY_HINT" value="http://www.google.fr" />
+				<fieldValue name="MULTIVALUED_URL_DISPLAY_HINT" value="http://www.google2.fr" />
+				<fieldValue name="NOT_LIST_DISPLAY_HINT" value="CHOICE 3" />
+				<fieldValue name="POINTED_MULTIVALUED_SIMPLE_FIELD"
+					value="Pointed Field Destination Sheet 1" />
+				<fieldValue name="POINTED_MULTIVALUED_SIMPLE_FIELD"
+					value="Pointed Field Destination Sheet 2" />
+				<fieldValue name="POINTED_SIMPLE_FIELD" value="Pointed Field Destination Sheet" />
+				<fieldValue name="REAL_SIMPLE_FIELD" value="89.36" />
+				<fieldValue name="RICH_TEXT_DISPLAY_HINT"
+					value="&lt;table cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; align=&quot;left&quot; style=&quot;width: 149px; height: 19px;&quot;&gt;&#x0D;&#x0A;    &lt;tbody&gt;&#x0D;&#x0A;        &lt;tr&gt;&#x0D;&#x0A;            &lt;td&gt;&lt;strong&gt;z;jbvazjlchabzlc&lt;/strong&gt;&lt;/td&gt;&#x0D;&#x0A;        &lt;/tr&gt;&#x0D;&#x0A;    &lt;/tbody&gt;&#x0D;&#x0A;&lt;/table&gt;" />
+				<fieldValue name="SHORT_DISPLAY_HINT" value="2010-07-01" />
+				<fieldValue name="SINGLE_LINE_DISPLAY_HINT" value="text on a single line" />
+				<fieldValue name="STRING_SIMPLE_FIELD" value="plop" />
+				<fieldValue name="URL_DISPLAY_HINT" value="http://www.google.fr" />
+			</fieldValues>
+		</sheet>
+		<sheet type="CONFIDENTIAL_SHEET" productName="ROOT_PRODUCT"
+			state="CREATED">
+			<referenceValues>
+				<fieldValue name="REF_id" value="REF_Confidential_sheet" />
+			</referenceValues>
+		</sheet>
+	</sheets>
+</gpm>

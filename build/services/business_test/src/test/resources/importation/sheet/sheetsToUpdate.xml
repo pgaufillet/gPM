@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF8"?>
+
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+
+<version>1.2</version>
+<sheets>
+  <sheet type="testExportSheet" productName="product1" reference="testExportSheet_10" version="0" state="Temporary">
+    <fieldValues>
+      <fieldValue name="testExportSheet_field1" value="testExportSheet_field1_UPDATED"/>
+      <fieldValue name="testExportSheet_field2" value="testExportSheet_field2_UPDATED"/>
+      <fieldValue name="testExportSheet_field3" value="testExportSheet_field3_UPDATED"/>
+      <fieldValue name="testExportSheet_field4" value="testExportSheet_field4_UPDATED"/>
+      <fieldValue name="testExportSheet_field5" value="testExportSheet_field5_UPDATED"/>
+      <pointerFieldValue name="testExportSheet_field6" referencedContainerRef="Garfield" referencedProduct="Happy Mouse" referencedFieldLabel="$SHEET_TYPE"/>
+    </fieldValues>
+    <referenceValues>
+      <fieldValue name="testExportSheet_ref" value="testExportSheet_10"/>
+    </referenceValues>
+  </sheet>
+  <sheet type="testExportSheet" productName="product1" reference="testExportSheet_11" version="0" state="Temporary">
+    <fieldValues>
+      <fieldValue name="testExportSheet_field1" value="testExportSheet_field1_UPDATED"/>
+      <fieldValue name="testExportSheet_field2" value="testExportSheet_field2_UPDATED"/>
+      <fieldValue name="testExportSheet_field3" value="testExportSheet_field3_UPDATED"/>
+      <fieldValue name="testExportSheet_field4" value="testExportSheet_field4_UPDATED"/>
+      <fieldValue name="testExportSheet_field5" value="testExportSheet_field5_UPDATED"/>
+      <pointerFieldValue name="testExportSheet_field6" referencedContainerRef="Medor" referencedProduct="Bernard&apos;s store" referencedFieldLabel="$SHEET_TYPE"/>
+    </fieldValues>
+    <referenceValues>
+      <fieldValue name="testExportSheet_ref" value="testExportSheet_11"/>
+    </referenceValues>
+  </sheet>
+  <sheet type="TestPointerFields1" productName="product1" reference="pointer:2" version="1" state="Open">
+    <fieldValues>
+      <pointerFieldValue name="TestPointerFields1_field1" referencedContainerRef="pointed:2" referencedProduct="product1" referencedFieldLabel="TestPointerFields2_field1"/>
+      <pointerFieldValue name="TestPointerFields1_link_confidential_to_not_confidential" referencedContainerRef="pointed:2" referencedProduct="product1" referencedFieldLabel="TestPointerFields2_monovalued_simple_string"/>
+      <pointerFieldValue name="TestPointerFields1_link_exportable_to_not_exportable" referencedContainerRef="pointed:2" referencedProduct="product1" referencedFieldLabel="TestPointerFields2_access_controls"/>
+      <pointerFieldValue name="TestPointerFields1_link_monovalued_attached" referencedContainerRef="pointed:2" referencedProduct="product1" referencedFieldLabel="TestPointerFields2_monovalued_attached"/>
+      <pointerFieldValue name="TestPointerFields1_link_monovalued_choice" referencedContainerRef="pointed:2" referencedProduct="product1" referencedFieldLabel="TestPointerFields2_monovalued_choice"/>
+      <pointerFieldValue name="TestPointerFields1_link_monovalued_simple_boolean" referencedContainerRef="pointed:2" referencedProduct="product1" referencedFieldLabel="TestPointerFields2_monovalued_simple_boolean"/>
+      <pointerFieldValue name="TestPointerFields1_link_monovalued_simple_date" referencedContainerRef="pointed:2" referencedProduct="product1" referencedFieldLabel="TestPointerFields2_monovalued_simple_date"/>
+      <pointerFieldValue name="TestPointerFields1_link_monovalued_simple_integer" referencedContainerRef="pointed:2" referencedProduct="product1" referencedFieldLabel="TestPointerFields2_monovalued_simple_integer"/>
+      <pointerFieldValue name="TestPointerFields1_link_monovalued_simple_real" referencedContainerRef="pointed:2" referencedProduct="product1" referencedFieldLabel="TestPointerFields2_monovalued_simple_real"/>
+      <pointerFieldValue name="TestPointerFields1_link_monovalued_simple_string" referencedContainerRef="pointed:2" referencedProduct="product1" referencedFieldLabel="TestPointerFields2_monovalued_simple_string"/>
+      <pointerFieldValue name="TestPointerFields1_link_monovalued_to_monovalued" referencedContainerRef="pointed:2" referencedProduct="product1" referencedFieldLabel="TestPointerFields2_monovalued_simple_string"/>
+      <pointerFieldValue name="TestPointerFields1_link_monovalued_to_multivalued" referencedContainerRef="pointed:2" referencedProduct="product1" referencedFieldLabel="TestPointerFields2_multivalued_simple_string"/>
+      <pointerFieldValue name="TestPointerFields1_link_multivalued_attached" referencedContainerRef="pointed:2" referencedProduct="product1" referencedFieldLabel="TestPointerFields2_multivalued_attached"/>
+      <pointerFieldValue name="TestPointerFields1_link_multivalued_choice" referencedContainerRef="pointed:2" referencedProduct="product1" referencedFieldLabel="TestPointerFields2_multivalued_choice"/>
+      <pointerFieldValue name="TestPointerFields1_link_multivalued_simple_boolean" referencedContainerRef="pointed:2" referencedProduct="product1" referencedFieldLabel="TestPointerFields2_multivalued_simple_boolean"/>
+      <pointerFieldValue name="TestPointerFields1_link_multivalued_simple_date" referencedContainerRef="pointed:2" referencedProduct="product1" referencedFieldLabel="TestPointerFields2_multivalued_simple_date"/>
+      <pointerFieldValue name="TestPointerFields1_link_multivalued_simple_integer" referencedContainerRef="pointed:2" referencedProduct="product1" referencedFieldLabel="TestPointerFields2_multivalued_simple_integer"/>
+      <pointerFieldValue name="TestPointerFields1_link_multivalued_simple_real" referencedContainerRef="pointed:2" referencedProduct="product1" referencedFieldLabel="TestPointerFields2_multivalued_simple_real"/>
+      <pointerFieldValue name="TestPointerFields1_link_multivalued_simple_string" referencedContainerRef="pointed:2" referencedProduct="product1" referencedFieldLabel="TestPointerFields2_multivalued_simple_string"/>
+      <pointerFieldValue name="TestPointerFields1_link_multivalued_to_monovalued" referencedContainerRef="pointed:2" referencedProduct="product1" referencedFieldLabel="TestPointerFields2_monovalued_simple_string"/>
+      <pointerFieldValue name="TestPointerFields1_link_multivalued_to_multivalued" referencedContainerRef="pointed:2" referencedProduct="product1" referencedFieldLabel="TestPointerFields2_multivalued_simple_string"/>
+      <pointerFieldValue name="TestPointerFields1_link_not_confidential_to_confidential" referencedContainerRef="pointed:2" referencedProduct="product1" referencedFieldLabel="TestPointerFields2_access_controls"/>
+      <pointerFieldValue name="TestPointerFields1_link_not_exportable_to_exportable" referencedContainerRef="pointed:2" referencedProduct="product1" referencedFieldLabel="TestPointerFields2_monovalued_simple_string"/>
+      <pointerFieldValue name="TestPointerFields1_link_not_updatable_to_updatable" referencedContainerRef="pointed:2" referencedProduct="product1" referencedFieldLabel="TestPointerFields2_monovalued_simple_string"/>
+      <pointerFieldValue name="TestPointerFields1_link_updatable_to_not_updatable" referencedContainerRef="pointed:2" referencedProduct="product1" referencedFieldLabel="TestPointerFields2_access_controls"/>
+      <fieldValue name="TestPointerFields1_multiple">
+        <fieldValues>
+          <pointerFieldValue name="TestPointerFields1_integer_in_multiple" referencedContainerRef="pointed:2" referencedProduct="product1" referencedFieldLabel="TestPointerFields2_multivalued_simple_integer"/>
+          <pointerFieldValue name="TestPointerFields1_link_in_multiple" referencedContainerRef="pointed:2" referencedProduct="product1" referencedFieldLabel="TestPointerFields2_field1"/>
+        </fieldValues>
+      </fieldValue>
+      <pointerFieldValue name="TestPointerFields1_simple_link_to_multiple" referencedContainerRef="pointed:2" referencedProduct="product1" referencedFieldLabel="TestPointerFields2_in_multiple"/>
+    </fieldValues>
+    <referenceValues>
+      <fieldValue name="TestPointerFields1_ref1" value="pointer"/>
+      <fieldValue name="TestPointerFields1_ref2" value="2"/>
+    </referenceValues>
+  </sheet>
+</sheets>
+</gpm>

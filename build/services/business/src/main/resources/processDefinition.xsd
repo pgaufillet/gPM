@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.airbus.com/topcased/gPM/ProcessDefinition" version="1.0"
+	xmlns="http://www.airbus.com/topcased/gPM/ProcessDefinition">
+
+	<xs:annotation>
+		<xs:documentation>gPM sheet life cycle process definition.
+        </xs:documentation>
+	</xs:annotation>
+
+	<xs:import namespace="http://www.w3.org/XML/1998/namespace" />
+	
+	<!--	*************** sheet type live cycle ************************** -->
+	
+		<!-- sheet life cycle process definition -->
+	<xs:element name="process-definition">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="1" maxOccurs="1" ref="start-state" />
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="state" />
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="end-state" />
+			</xs:sequence>
+			<xs:attribute name="name" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	
+	<!--	transition element-->
+	<xs:element name="transition">
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="to" type="xs:string" use="required"/>
+			<xs:attribute name="confirmationMessage" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	
+	<!--	start state element-->
+	<xs:element name="start-state">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="transition" />
+			</xs:sequence>
+			<xs:attribute name="name" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	
+	<!--	end state element-->
+	<xs:element name="end-state">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="transition" />
+			</xs:sequence>
+			<xs:attribute name="name" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	
+	<!--	state element-->
+	<xs:element name="state">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="transition" />
+			</xs:sequence>
+			<xs:attribute name="name" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

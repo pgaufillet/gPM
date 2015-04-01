@@ -1,0 +1,14 @@
+## gPM Data source parameters ##
+
+# JDBC connection properties
+
+# JDBC driver & URL
+jdbc.driverClassName=oracle.jdbc.OracleDriver
+jdbc.url=jdbc:oracle:thin:@//**DB_server**:1521/**DB_name**
+
+# jdbc.driverClassName=org.postgresql.Driver
+# jdbc.url=jdbc:postgresql://**DB_server**:5432/**DB_name**
+
+# JDBC username & password
+jdbc.username=**DB_UserName**
+jdbc.password=**DB_Passwd**

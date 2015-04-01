@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+	<!-- edited with XMLSpy v2005 rel. 3 U (http://www.altova.com) by _AIRBUS FRANCE (AIRBUS FRANCE)-->
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+	<version>1.2</version>
+	<products>
+		<!-- A350 product list-->
+		<product name="ROOT_PRODUCT" type="PRODUCT" envName="default" productDescription="Root product test description">
+			<fieldValues>
+				<fieldValue name="PRODUCT_NAME" value="Root Product" />
+				<fieldValue name="PRODUCT_MULTI">
+					<fieldValues>
+						<fieldValue name="PRODUCT_FIELD_1" value="field 1" />
+						<fieldValue name="PRODUCT_FIELD_2" value="2010-06-23" />
+					</fieldValues>
+				</fieldValue>
+				<fieldValue name="PRODUCT_MULTI">
+					<fieldValues>
+						<fieldValue name="PRODUCT_FIELD_1" value="field 1 bis" />
+						<fieldValue name="PRODUCT_FIELD_2" value="2010-06-24" />
+					</fieldValues>
+				</fieldValue>
+				<fieldValue name="PRODUCT_MULTI">
+					<fieldValues>
+						<fieldValue name="PRODUCT_FIELD_1" value="field 1 ter" />
+						<fieldValue name="PRODUCT_FIELD_2" value="2019-06-23" />
+					</fieldValues>
+				</fieldValue>
+			</fieldValues>
+			<attributes>
+				<attribute name="product_url" value="http://www.topcased.org/" />
+				<attribute name="ROOT_PRODUCT_ATTRIBUTE">
+					<attributeValue>ROOT_PRODUCT_ATTRIBUTE VAL1</attributeValue>
+					<attributeValue>ROOT_PRODUCT_ATTRIBUTE VAL2</attributeValue>
+					<attributeValue>ROOT_PRODUCT_ATTRIBUTE VAL3</attributeValue>
+				</attribute>
+                <attribute name="ROOT_PRODUCT_ATTRIBUTE_NO_VALUE" />
+			</attributes>
+		</product>
+		<product name="EMPTY_ROOT_PRODUCT" type="PRODUCT" envName="default"  productDescription="Empty root product test description"/>
+		<product name="EMPTY_CHILD_PRODUCT_1" type="PRODUCT" envName="default">
+			<parents>
+				<parent name="EMPTY_ROOT_PRODUCT" />
+				<parent name="ROOT_PRODUCT" />
+			</parents>
+		</product>
+		<product name="EMPTY_CHILD_PRODUCT_2" type="PRODUCT" parentName="EMPTY_CHILD_PRODUCT_1"
+			envName="default" />
+		<product name="CHILD_PRODUCT_1" type="PRODUCT" parentName="ROOT_PRODUCT" envName="default">
+			<fieldValues>
+				<fieldValue name="PRODUCT_NAME" value="Child Product 1" />
+			</fieldValues>
+		</product>
+		<product name="CHILD_PRODUCT_2" type="PRODUCT" parentName="ROOT_PRODUCT" envName="default">
+			<fieldValues>
+				<fieldValue name="PRODUCT_NAME" value="Child Product 2" />
+			</fieldValues>
+		</product>
+	</products>
+</gpm>

@@ -1,0 +1,106 @@
+<web-app id="WebApp_ID" version="2.4"
+	xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+
+	<display-name>gPM</display-name>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+            classpath:facadeContext.xml
+            classpath:cxf-config.xml
+        </param-value>
+	</context-param>
+
+	<resource-ref>
+		<description>Data source for the application</description>
+		<res-ref-name>gPM/dataSource</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+
+	<resource-ref>
+		<description>Mail session for the application</description>
+		<res-ref-name>gPM/mailSession</res-ref-name>
+		<res-type>javax.mail.MailSession</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+
+	<!-- Filter to analyze performance   -->
+	<filter>
+		<filter-name>performanceFilter</filter-name>
+		<filter-class>org.topcased.gpm.business.performance.PerformanceFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>performanceFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- Guice filter -->
+	<filter>
+		<filter-name>guiceFilter</filter-name>
+		<filter-class>com.google.inject.servlet.GuiceFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>guiceFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<listener>
+		<listener-class>org.topcased.gpm.ui.application.server.listener.GpmContextLoaderListener</listener-class>
+	</listener>
+
+	<listener>
+		<listener-class>org.topcased.gpm.ui.application.server.config.GuiceServletConfig</listener-class>
+	</listener>
+
+	<servlet>
+		<servlet-name>CXFServlet</servlet-name>
+		<servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>jUnitHostImpl</servlet-name>
+		<servlet-class>com.google.gwt.junit.server.JUnitHostImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CXFServlet</servlet-name>
+		<url-pattern>/services/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>jUnitHostImpl</servlet-name>
+		<url-pattern>/gpm/junithost</url-pattern>
+	</servlet-mapping>
+
+	<!-- Ehcache distributed component -->
+	<servlet>
+		<servlet-name>EHCache</servlet-name>
+		<servlet-class>org.topcased.gpm.business.cache.distributed.ListenerServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EHCache</servlet-name>
+		<url-pattern>/gpm/ehcache</url-pattern>
+	</servlet-mapping>
+
+	<!-- Entry point, dispatching to desired permutation -->
+	<servlet>
+		<servlet-name>RedirectServlet</servlet-name>
+		<servlet-class>org.topcased.gpm.ui.application.RedirectServlet</servlet-class>
+	</servlet>
+
+    <!-- Map RedirectServlet to all other request in the domain -->
+	<servlet-mapping>
+		<servlet-name>RedirectServlet</servlet-name>
+		<url-pattern>/index.html</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>RedirectServlet</servlet-name>
+		<url-pattern>/gpm/index.html</url-pattern>
+	</servlet-mapping>
+
+	<session-config>
+		<session-timeout>60</session-timeout>
+	</session-config>
+</web-app>

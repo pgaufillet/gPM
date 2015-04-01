@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!--
+        Sheet service
+    -->
+
+	<!--  Cache definition  -->
+	<bean id="sheetHistoryCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean"
+		parent="cacheFactoryBase">
+		<property name="cacheName"
+			value="org.topcased.gpm.business.sheet.SHEET_HISTORY_CACHE" />
+	</bean>
+
+	<!-- Implementation bean -->
+	<bean id="sheetServiceImpl" class="org.topcased.gpm.business.sheet.impl.SheetServiceImpl"
+		parent="serviceImplBase" autowire="byName">
+		<property name="maxAttachedFileSize" value="${maxAttachedFileSize}" />
+	</bean>
+
+	<!-- Visible interface of the service  -->
+	<bean id="sheetService" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedService">
+		<property name="target" ref="sheetServiceImpl" />
+
+		<property name="proxyInterfaces"
+			value="org.topcased.gpm.business.sheet.service.SheetService" />
+	</bean>
+
+	<!--
+        Sheet helper fcts
+    -->
+	<bean id="sheetUtils" parent="serviceImplBase" autowire="byName"
+		class="org.topcased.gpm.business.sheet.impl.SheetUtils">
+	</bean>
+
+	<!-- Clean session lock with Quartz  -->
+	<bean id="sessionLockCleaner" class="org.topcased.gpm.util.job.JobSessionLockCleaner"
+		autowire="byName" />
+
+	<bean id="sessionLockCleanerProxy" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedService">
+		<property name="target" ref="sessionLockCleaner" />
+		<property name="proxyInterfaces" value="org.topcased.gpm.util.job.GpmJob" />
+	</bean>
+
+	<bean id="cleanSessionLockJobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="sessionLockCleanerProxy" />
+		</property>
+		<property name="targetMethod">
+			<value>execute</value>
+		</property>
+	</bean>
+
+	<bean id="cleanSessionLockTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+		<property name="jobDetail">
+			<ref bean="cleanSessionLockJobDetail" />
+		</property>
+		<property name="repeatInterval">
+			<value>1</value>
+		</property>
+		<property name="repeatCount">
+			<value>0</value>
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF8"?>
+
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+
+<version>1.2</version>
+<filters>
+    <sheetFilter labelKey="filterImport_01">
+        <containers>
+            <sheetTypeRef name="Cat"/>
+        </containers>
+        <criteria>
+            <criteriaGroup>
+                <criterion fieldKey="$SHEET_REFERENCE" operator="=" value="test_value"/>
+            </criteriaGroup>
+            <criteriaGroup>
+                <criterion fieldKey="$SHEET_STATE" operator="=" value="open"/>
+            </criteriaGroup>
+        </criteria>
+        <resultSummary>
+            <fieldResult name="$PRODUCT_NAME"/>
+            <fieldResult name="Cat-Cat|$SHEET_REFERENCE"/>
+        </resultSummary>
+    </sheetFilter>
+    
+    <sheetFilter labelKey="filterImport_01">
+        <containers>
+            <sheetTypeRef name="Cat"/>
+        </containers>
+        <productName>productFilterTestImport_01</productName>
+        <criteria>
+            <criteriaGroup>
+                <criterion fieldKey="$SHEET_REFERENCE" operator="=" value="test_value"/>
+            </criteriaGroup>
+            <criteriaGroup>
+                <criterion fieldKey="$SHEET_STATE" operator="=" value="open"/>
+            </criteriaGroup>
+        </criteria>
+        <resultSummary>
+            <fieldResult name="$PRODUCT_NAME"/>
+            <fieldResult name="Cat-Cat|$SHEET_REFERENCE"/>
+        </resultSummary>
+    </sheetFilter>
+</filters>
+</gpm>

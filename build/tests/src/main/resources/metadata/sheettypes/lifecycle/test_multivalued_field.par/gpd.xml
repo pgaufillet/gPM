@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root-container name="test_multivalued_field" width="737" height="592">
+  <node name="Udatable_Extensible" x="245" y="51" width="140" height="40">
+    <edge>
+      <label x="8" y="-8"/>
+    </edge>
+  </node>
+  <node name="Inextensible" x="244" y="161" width="140" height="40">
+    <edge>
+      <label x="8" y="-13"/>
+    </edge>
+  </node>
+  <node name="Un-updatable" x="249" y="280" width="132" height="36"/>
+</root-container>

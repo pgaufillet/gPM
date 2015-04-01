@@ -1,0 +1,90 @@
+<!--  Header Part : project name, project module... -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.topcased.gpm</groupId>
+    <artifactId>gPM-dist</artifactId>
+    <packaging>pom</packaging>
+    <parent>
+        <groupId>org.topcased.gpm</groupId>
+        <artifactId>gPM</artifactId>
+        <version>1</version>
+    </parent>
+
+    <version>${gpm.version}</version>
+
+    <name>Airbus gPM</name>
+    <url>/</url>
+
+    <organization>
+        <name>AIRBUS France</name>
+        <url>www.airbus.com</url>
+    </organization>
+
+    <build>
+        <defaultGoal>package</defaultGoal>
+        <plugins>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>${maven.assembly.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>attached</goal>
+                            <goal>directory-inline</goal>
+                            <!-- <goal>assembly</goal> -->
+                        </goals>
+                        <phase>package</phase>
+                    </execution>
+                </executions>
+                <configuration>
+                    <finalName>gPM-${gpm.version}</finalName>
+                    <descriptors>                       
+                        <descriptor>
+                            src/main/assembly/javadoc.xml
+                        </descriptor>
+                        <descriptor>
+                            src/main/assembly/src.xml
+                        </descriptor>
+                        <descriptor>
+                            src/main/assembly/tools.xml
+                        </descriptor>
+                        
+                        <descriptor>
+                            src/main/assembly/reset_instance.xml
+                        </descriptor>
+                        <descriptor>
+                            src/main/assembly/war.xml
+                        </descriptor>
+                        <descriptor>
+                            src/main/assembly/instances.xml
+                        </descriptor>
+			                  <descriptor>
+			                      src/main/assembly/webservice_client.xml
+			                  </descriptor>
+                    </descriptors>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>${groupId}</groupId>
+            <artifactId>gPM-tools-instantiation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${groupId}</groupId>
+            <artifactId>gPM-tools-serialization</artifactId>
+        </dependency>
+	      <dependency>
+            <groupId>${groupId}</groupId>
+            <artifactId>gPM-tools-dbUtils</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${groupId}</groupId>
+            <artifactId>gPM-tools-resetinstance</artifactId>
+        </dependency>
+    </dependencies>
+</project>

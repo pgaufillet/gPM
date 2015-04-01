@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+	<version>1.2</version>
+
+	<userRoles>
+		<!-- Viewer1 & Viewer2 have access to resp. product1 & product2 -->
+		<userRole login="viewer1" roleName="viewer" productName="product1" />
+		<userRole login="viewer2" roleName="viewer" productName="product2" />
+
+		<!-- Viewer 3 has access to both product1 & product2 (only !) -->
+		<userRole login="viewer3" roleName="viewer" productName="product1" />
+		<userRole login="viewer3" roleName="viewer" productName="product2" />
+
+		<!-- Viewer 4 as a global 'viewer' role (on all products) -->
+		<userRole login="viewer4" roleName="viewer" />
+
+		<!-- Define role for user1  -->
+		<userRole login="user1" roleName="viewer" productName="Happy Mouse" />
+		<userRole login="user1" roleName="admin" />
+
+		<!-- Define role for user2  -->
+		<userRole login="user2" roleName="notadmin" productName="Bernard's store" />
+		<userRole login="user2" roleName="notadmin" productName="Happy Mouse" />
+		<userRole login="user2" roleName="notadmin" productName="product1" />
+
+		<!--  Define role for user3 -->
+		<userRole login="user3" roleName="notadmin" productName="store1_1" />
+		<userRole login="user3" roleName="notadmin" productName="store2" />
+		<!--  Define role for user4 -->
+		<userRole login="user4" roleName="notadmin" productName="Bernard's store" />
+		<userRole login="user4" roleName="notadmin" productName="store1" />
+		<!-- Define role for user5  -->
+		<userRole login="user5" roleName="viewer" />
+		<!-- Define role for user6 -->
+		<userRole login="user6" roleName="viewer" productName="product1" />
+		<userRole login="user6" roleName="reporter" productName="product2" />
+
+		<!-- Define role for admin3 as admin of product3 and product1 -->
+		<userRole login="admin3" roleName="admin" productName="product3" />
+		<userRole login="admin3" roleName="admin" productName="product1" />
+
+		<!--  Define role for adminInstance -->
+		<userRole login="adminInstance" roleName="administrator" />
+
+		<!--  Define role for adminProduct -->
+		<userRole login="adminProduct" roleName="administrator"
+			productName="product1" />
+		<userRole login="adminProduct" roleName="viewer" />
+	</userRoles>
+</gpm>

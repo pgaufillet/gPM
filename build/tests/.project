@@ -1,0 +1,17 @@
+<projectDescription>
+  <name>gPM-tests-framework-3.3.0-SNAPSHOT</name>
+  <comment>NO_M2ECLIPSE_SUPPORT: Project files created with the maven-eclipse-plugin are not supported in M2Eclipse.</comment>
+  <projects>
+    <project>gpm-commons-bean-3.3.0-SNAPSHOT</project>
+    <project>gPM-services-business-3.3.0-SNAPSHOT</project>
+    <project>gPM-services-dao-3.3.0-SNAPSHOT</project>
+  </projects>
+  <buildSpec>
+    <buildCommand>
+      <name>org.eclipse.jdt.core.javabuilder</name>
+    </buildCommand>
+  </buildSpec>
+  <natures>
+    <nature>org.eclipse.jdt.core.javanature</nature>
+  </natures>
+</projectDescription>

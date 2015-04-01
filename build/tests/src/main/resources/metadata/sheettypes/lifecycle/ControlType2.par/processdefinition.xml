@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition
+  xmlns="http://jbpm.org/3/jpdl"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://jbpm.org/3/jpdl http://jbpm.org/xsd/jpdl-3.0.xsd"
+  name="ControlType2">
+   <start-state name="Temporary">
+      <transition name="Delete" to="Deleted"></transition>
+      <transition name="Validate" to="Open">
+      </transition>
+   </start-state>
+   <state name="Open">
+      <transition name="Abort" to="NoAction"></transition>
+      <transition name="Close" to="Closed"></transition>
+   </state>
+   <end-state name="Closed"></end-state>
+   <end-state name="NoAction"></end-state>
+   <end-state name="Deleted"></end-state>
+</process-definition>

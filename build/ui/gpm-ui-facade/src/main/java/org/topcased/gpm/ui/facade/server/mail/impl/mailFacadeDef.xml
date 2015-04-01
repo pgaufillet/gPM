@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!--
+        Mail Facade
+    -->
+
+	<!-- Implementation bean -->
+	<bean id="mailFacadeImpl" parent="abstractFacade"
+		class="org.topcased.gpm.ui.facade.server.mail.impl.MailFacadeImpl"
+		autowire="byName" />
+
+	<!-- Visible interface of the service  -->
+	<bean id="mailFacade" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedFacade">
+		<property name="target" ref="mailFacadeImpl" />
+		<property name="proxyInterfaces"
+			value="org.topcased.gpm.ui.facade.server.mail.MailFacade" />
+	</bean>
+
+</beans>

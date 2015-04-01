@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+	<version>1.2</version>
+
+	<!-- Product Types's description  -->
+	<productTypes>
+		<!-- Store description  -->
+		<productType name="Store">
+			<description>Product type</description>
+			<fields>
+				<simpleField labelKey="product_name" valueType="String"
+					description="Name of the product" maxSize="255" />
+				<simpleField labelKey="product_location" multivalued="true"
+					valueType="String" defaultValue="Toulouse" />
+				<choiceField labelKey="product_storetype" categoryName="Usage" />
+				<simpleField valueType="String" labelKey="Store_Field3"
+					confidential="true" />
+				<simpleField labelKey="postGetModelOK" valueType="Boolean"
+					defaultValue="false" description="Test if postGetModel has been launched" />
+				<simpleField labelKey="preCreateOK" valueType="Boolean"
+					defaultValue="false" description="Test if preCreate has been launched" />
+				<simpleField labelKey="postCreateOK" valueType="Boolean"
+					defaultValue="false" description="Test if postCreate has been launched" />
+				<simpleField labelKey="preUpdateOK" valueType="Boolean"
+					defaultValue="false" description="Test if preUpdate has been launched" />
+				<simpleField labelKey="postUpdateOK" valueType="Boolean"
+					defaultValue="false" description="Test if postUpdate has been launched" />
+			</fields>
+			<attributes>
+				<attribute name="productTypeAttr1" value="val" />
+			</attributes>
+			<extensionPoints>
+				<extensionPoint name="postGetModel">
+					<command name="productExtensionPointTest" />
+				</extensionPoint>
+				<extensionPoint name="preCreate">
+					<command name="productExtensionPointTest" />
+				</extensionPoint>
+				<extensionPoint name="postCreate">
+					<command name="productExtensionPointTest" />
+				</extensionPoint>
+				<extensionPoint name="preUpdate">
+					<command name="productExtensionPointTest" />
+				</extensionPoint>
+				<extensionPoint name="postUpdate">
+					<command name="productExtensionPointTest" />
+				</extensionPoint>
+				<extensionPoint name="preDelete">
+					<command name="productExtensionPointTest" />
+				</extensionPoint>
+				<extensionPoint name="postDelete">
+					<command name="productExtensionPointTest" />
+				</extensionPoint>
+			</extensionPoints>
+		</productType>
+	</productTypes>
+</gpm>

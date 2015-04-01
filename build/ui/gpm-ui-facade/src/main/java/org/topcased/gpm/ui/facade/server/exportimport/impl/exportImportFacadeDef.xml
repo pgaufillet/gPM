@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!--
+        Export/Import Facade
+    -->
+
+	<!-- Implementation bean -->
+	<bean id="exportImportFacadeImpl" parent="abstractFacade"
+		class="org.topcased.gpm.ui.facade.server.exportimport.impl.ExportImportFacadeImpl"
+		autowire="byName" />
+
+	<!-- Visible interface of the service  -->
+	<bean id="exportImportFacade" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedFacade">
+		<property name="target" ref="exportImportFacadeImpl" />
+		<property name="proxyInterfaces"
+			value="org.topcased.gpm.ui.facade.server.exportimport.ExportImportFacade" />
+	</bean>
+
+</beans>

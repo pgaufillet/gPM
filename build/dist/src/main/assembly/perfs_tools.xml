@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<assembly>
+    <id>perfs_tools</id>
+    <formats>
+        <format>zip</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <files>
+        <!-- JAR file -->
+        <file>
+            <source>../perf/instances/perf_sheets/createPerfsConfigFiles/target/gPM-perf-createConfig-${gpm.version}.jar</source>
+            <outputDirectory>gPM-${gpm.version}/lib
+            </outputDirectory>
+        </file>
+        
+        <!-- JMeter file -->
+        <file>
+            <source>../perf/test/jmeter/scenarii.jmx</source>
+            <outputDirectory>gPM-${gpm.version}
+            </outputDirectory>
+        </file>
+    </files>
+    <fileSets>
+        <fileSet>
+            <!-- Launch scripts -->
+            <directory>
+                ../perf/instances/perf_sheets/createPerfsConfigFiles/src/main/scripts
+            </directory>
+            <outputDirectory>gPM-${gpm.version}
+            </outputDirectory>
+            <includes>
+                <include>**</include>
+            </includes>
+            <filtered>true</filtered>
+        </fileSet>
+        
+        <fileSet>            
+            <directory>
+                ../perf/instances/perf_sheets/instantiation
+            </directory>
+            <outputDirectory>gPM-${gpm.version}/instances/perfs/instantiation
+            </outputDirectory>
+            <includes>
+                <include>**</include>
+            </includes>
+        </fileSet>
+        <fileSet>            
+            <directory>
+                ../perf/instances/perf_sheets/lifecycle
+            </directory>
+            <outputDirectory>gPM-${gpm.version}/instances/perfs/lifecycle
+            </outputDirectory>
+            <includes>
+                <include>**</include>
+            </includes>
+        </fileSet>
+        <fileSet>            
+            <directory>
+                ../perf/instances/perf_sheets
+            </directory>
+            <outputDirectory>gPM-${gpm.version}/instances/perfs/
+            </outputDirectory>
+            <includes>
+                <include>*.properties</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+</assembly>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<import>
+  <!--
+      Products
+  -->
+  <products>
+  	<product name="Happy Mouse" environment="Classical">
+  		<lines>
+		  	<field name="product_location" value="Toulouse"/>
+		  	<field name="product_location" value="Lund"/>
+	  	</lines>
+  	</product>
+  </products>
+
+
+  <!-- 
+      Sheets to Import 
+  -->
+  <sheets>
+
+    <!-- Cat : Tom in Happy Mouse -->
+    <sheet type="Cat" product="Happy Mouse">
+      <field name="CAT_ref" value="Tom"/>
+      <field name="CAT_color">
+      	<element value="WHITE"/>
+      	<element value="GREY"/>
+      </field>
+      <field name="CAT_furlength" value="SHORT"/>
+      <field name="CAT_description" value="Gentle famous little cat. Loves Jerry."/>
+    </sheet>
+
+    <!-- Cat : Gros Minet in Happy Mouse -->
+    <sheet type="Cat" product="Happy Mouse">
+	  <field name="CAT_ref" value="Gros Minet"/>
+      <field name="CAT_color">
+      	<element value="WHITE"/>
+      	<element value="BLACK"/>
+      </field>
+      <field name="CAT_furlength" value="LONG"/>
+      <field name="CAT_description" value="Gentle famous little cat. Loves Titi."/>
+    </sheet>
+
+    <!-- Cat : Garfield in Happy Mouse -->
+    <sheet type="Cat" product="Happy Mouse">
+      <field name="CAT_ref" value="Garfield"/>
+      <field name="CAT_color">
+      	<element value="RED"/>
+      	<element value="BLACK"/>
+      </field>
+      <field name="CAT_furlength" value="LONG"/>
+      <field name="CAT_description" value="Huge cat that sleeps 23 hour a day, and eats rest of the time"/>
+    </sheet>
+    
+    <!-- Price : Famous Cat in Happy Mouse -->
+    <sheet type="Price" product="Happy Mouse">
+		<field name="PRICE_ref" value="Famous Cat"/>
+		<field name="PRICE_price" value="1800"/>
+		<field name="PRICE_credit" value="false"/>
+    </sheet>    
+    
+    <!-- Price : Famous Cat  with credit -->
+    <sheet type="Price" product="Happy Mouse">
+        <field name="PRICE_ref" value="Famous Cat with credit"/>
+        <field name="PRICE_price" value="2300"/>
+        <field name="PRICE_credit" value="yes"/>
+        <lines>
+		<field name="PRICE_creditlength" value="6 MONTHS"/>
+		<field name="PRICE_creditlength" value="9 MONTHS"/>
+		<field name="PRICE_creditlength" value="12 MONTHS"/>
+        </lines>		
+    </sheet>    
+    
+    <sheet type="Dog" product="Bernard's store">
+	  <field name="DOG_ref" value="Medor"/>
+      <field name="DOG_datebirth" value="04/08/89"/>
+    </sheet>
+
+    <sheet type="Dog" product="Bernard's store">
+	  <field name="DOG_ref" value="Lassie"/>
+      <field name="DOG_datebirth" value="04/08/89"/>
+    </sheet>
+
+    <sheet type="Dog" product="Bernard's store">
+	  <field name="DOG_ref" value="Rantanplan"/>
+      <field name="DOG_datebirth" value="04/08/89"/>
+    </sheet>
+
+    <!--  ***  There MUST be only one Mouse sheet defined ***  -->
+
+    <sheet type="Mouse" product="Bernard's store">
+      <field name="MOUSE_ref" value="Mickey"/>
+      <multipleField name="MOUSE_identification">
+        <field name="MOUSE_mousename" value="Mickey"/>
+      </multipleField>
+	  <lines>
+	      <multipleField name="MOUSE_owner">
+	      	<field name="MOUSE_firstname" value="Walt"/>
+	      	<field name="MOUSE_lastname" value="Disney"/>
+	      </multipleField>
+	      <multipleField name="MOUSE_owner">
+	      	<field name="MOUSE_firstname" value="My"/>
+	      	<field name="MOUSE_lastname" value="Me"/>
+	      	<field name="MOUSE_numberofchilds" value="3"/>
+	      </multipleField>
+	  </lines>
+    </sheet>
+
+
+   	<!-- Price : Dob in Bernard's store -->
+	<sheet type="Price" product="Bernard's store">
+		<field name="PRICE_ref" value="Dog 500"/>
+		<field name="PRICE_price" value="500"/>
+		<field name="PRICE_credit" value="false"/>
+	</sheet>    
+
+	<sheet type="Price" product="Bernard's store">
+		<field name="PRICE_ref" value="Dog 800"/>
+		<field name="PRICE_price" value="800"/>
+		<field name="PRICE_credit" value="false"/>
+	</sheet> 
+  </sheets>
+</import>

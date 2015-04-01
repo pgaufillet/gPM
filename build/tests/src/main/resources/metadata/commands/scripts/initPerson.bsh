@@ -1,0 +1,14 @@
+// Initialize the reference field of a PERSON
+
+import org.topcased.gpm.business.sheet.service.sheetAccess.MultipleFieldDataAccess;
+
+// Create an access wrapper for the sheet reference
+sheetData = context.get("sheetData");
+dataAccess = new MultipleFieldDataAccess(sheetData.getReference());
+
+dataAccess.getField("Ref_type").setValue("PERSON");
+
+int id = (Integer) (context.get("sheetsCount"));
+id++;
+
+dataAccess.getField("Ref_id").setValue((new Integer(id)).toString());

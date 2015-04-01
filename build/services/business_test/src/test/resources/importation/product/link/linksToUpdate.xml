@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF8"?>
+
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+
+<version>1.2</version>
+<productLinks>
+    <productLink type="testExportProductLink" originProductName="productTestImport_03" destinationProductName="productTestImport_04">
+        <fieldValues>
+            <fieldValue name="testExportProductLink_field1" value="testExportProductLink_field1_UPDATED"/>
+            <fieldValue name="testExportProductLink_field2" value="testExportProductLink_field2_UPDATED"/>
+            <fieldValue name="testExportProductLink_field3" value="testExportProductLink_field3_UPDATED"/>
+            <fieldValue name="testExportProductLink_field4" value="testExportProductLink_field4_UPDATED"/>
+            <fieldValue name="testExportProductLink_field5" value="testExportProductLink_field5_UPDATED"/>
+            <pointerFieldValue name="testExportProductLink_field6" referencedContainerRef="Medor" referencedProduct="Bernard&apos;s store" referencedFieldLabel="$Link_TYPE"/>
+        </fieldValues>
+    </productLink>
+    <productLink type="testExportProductLink" originProductName="productTestImport_04" destinationProductName="productTestImport_03">
+        <fieldValues>
+            <fieldValue name="testExportProductLink_field1" value="testExportProductLink_field1_UPDATED"/>
+            <fieldValue name="testExportProductLink_field2" value="testExportProductLink_field2_UPDATED"/>
+            <fieldValue name="testExportProductLink_field3" value="testExportProductLink_field3_UPDATED"/>
+            <fieldValue name="testExportProductLink_field4" value="testExportProductLink_field4_UPDATED"/>
+            <fieldValue name="testExportProductLink_field5" value="testExportProductLink_field5_UPDATED"/>
+            <pointerFieldValue name="testExportProductLink_field6" referencedContainerRef="Medor" referencedProduct="Bernard&apos;s store" referencedFieldLabel="$Link_TYPE"/>
+        </fieldValues>
+    </productLink>
+</productLinks>
+</gpm>

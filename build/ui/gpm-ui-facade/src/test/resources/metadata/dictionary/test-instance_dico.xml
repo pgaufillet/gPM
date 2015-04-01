@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+	<!-- edited with XMLSpy v2005 rel. 3 U (http://www.altova.com) by _AIRBUS FRANCE (AIRBUS FRANCE) -->
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+	<version>1.2</version>
+
+	<!-- Dictionnary's categories - PROCESS LEVEL-->
+	<dictionary>
+		<!-- Categories's description  -->
+		<categories>
+			<category name="CHOICE_CAT_1">
+				<values>
+					<categoryValue value="CHOICE 1" />
+					<categoryValue value="CHOICE 2" />
+					<categoryValue value="CHOICE 3" />
+					<categoryValue value="CHOICE 4" />
+					<categoryValue value="CHOICE 5" />
+					<categoryValue value="CHOICE 6" />
+					<categoryValue value="CHOICE 7" />
+					<categoryValue value="CHOICE 8" />
+					<categoryValue value="CHOICE 9" />
+					<categoryValue value="CHOICE 10" />
+				</values>
+			</category>
+			<category name="CAT_2">
+				<values>
+					<categoryValue value="CAT_2/CHOICE 1" />
+					<categoryValue value="CAT_2/CHOICE 2" />
+				</values>
+			</category>
+			<category name="CAT_3">
+				<values>
+					<categoryValue value="CAT_3/CHOICE 1" />
+					<categoryValue value="CAT_3/CHOICE 2" />
+					<categoryValue value="CAT_3/CHOICE 3" />
+					<categoryValue value="CAT_3/CHOICE 4" />
+				</values>
+			</category>
+			<category name="CAT_4">
+				<values>
+					<categoryValue value="CAT_4/CHOICE 1" />
+					<categoryValue value="CAT_4/CHOICE 2" />
+					<categoryValue value="CAT_4/CHOICE 3" />
+				</values>
+			</category>
+			<category name="CHOICE_TREE">
+				<values>
+					<categoryValue value="ROOT_1" />
+					<categoryValue value="ROOT_1/NODE_1/LEAF_1_1" />
+					<categoryValue value="ROOT_1/NODE_1/LEAF_1_2" />
+					<categoryValue value="ROOT_1/NODE_2" />
+					<categoryValue value="ROOT_1/NODE_2/LEAF_2_1" />
+					<categoryValue value="ROOT_1/NODE_2/LEAF_2_2" />
+					<categoryValue value="ROOT_1/NODE_3" />
+					<categoryValue value="ROOT_2" />
+					<categoryValue value="ROOT_2/NODE_1/LEAF_1_1" />
+					<categoryValue value="ROOT_2/NODE_1/LEAF_1_2" />
+					<categoryValue value="ROOT_2/NODE_2" />
+					<categoryValue value="ROOT_2/NODE_2/LEAF_2_1" />
+					<categoryValue value="ROOT_2/NODE_2/LEAF_2_2" />
+					<categoryValue value="ROOT_2/NODE_3" />
+				</values>
+			</category>
+		</categories>
+		<!-- Environment's description  -->
+		<environments>
+			<environment name="default">
+				<categories>
+					<category name="CHOICE_CAT_1">
+						<values>
+							<categoryValue value="CHOICE 1" />
+							<categoryValue value="CHOICE 2" />
+							<categoryValue value="CHOICE 3" />
+							<categoryValue value="CHOICE 4" />
+							<categoryValue value="CHOICE 5" />
+							<categoryValue value="CHOICE 6" />
+						</values>
+					</category>
+					<category name="CHOICE_TREE">
+						<values>
+							<categoryValue value="ROOT_1" />
+							<categoryValue value="ROOT_1/NODE_1/LEAF_1_1" />
+							<categoryValue value="ROOT_1/NODE_1/LEAF_1_2" />
+							<categoryValue value="ROOT_1/NODE_2" />
+							<categoryValue value="ROOT_1/NODE_2/LEAF_2_1" />
+							<categoryValue value="ROOT_1/NODE_2/LEAF_2_2" />
+							<categoryValue value="ROOT_1/NODE_3" />
+							<categoryValue value="ROOT_2/NODE_1/LEAF_1_1" />
+							<categoryValue value="ROOT_2/NODE_1/LEAF_1_2" />
+							<categoryValue value="ROOT_2/NODE_2/LEAF_2_1" />
+							<categoryValue value="ROOT_2/NODE_3" />
+						</values>
+					</category>
+				</categories>
+			</environment>
+		</environments>
+	</dictionary>
+</gpm>

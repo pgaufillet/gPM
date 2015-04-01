@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+
+	<version>1.2</version>
+
+	<sheetTypes>
+		<!-- Sheet Type -->
+		<sheetType name="SHEET_1" description="Sheet_type_1" selectable="true">
+			<displayGroups>
+				<displayGroup name="USEFULL FIELDS">
+					<fieldRef name="SHEET_NAME" />
+					<fieldRef name="EXTENSION_POINT_FIELD" />
+					<fieldRef name="EXTENDED_ACTION_FIELD" />
+					<fieldRef name="FILTER_RESULT_FIELD_1" />
+					<fieldRef name="FILTER_RESULT_FIELD_2" />
+					<fieldRef name="POINTED_SIMPLE_FIELD" />
+					<fieldRef name="POINTED_MULTIVALUED_SIMPLE_FIELD" />
+				</displayGroup>
+				<displayGroup name="SIMPLE FIELDS TEST">
+					<fieldRef name="INTEGER_SIMPLE_FIELD" />
+					<fieldRef name="REAL_SIMPLE_FIELD" />
+					<fieldRef name="BOOLEAN_SIMPLE_FIELD" />
+					<fieldRef name="DATE_SIMPLE_FIELD" />
+					<fieldRef name="STRING_SIMPLE_FIELD" />
+					<fieldRef name="MULTIVALUED_INTEGER_SIMPLE_FIELD" />
+					<fieldRef name="MULTIVALUED_REAL_SIMPLE_FIELD" />
+					<fieldRef name="MULTIVALUED_BOOLEAN_SIMPLE_FIELD" />
+					<fieldRef name="MULTIVALUED_DATE_SIMPLE_FIELD" />
+					<fieldRef name="MULTIVALUED_STRING_SIMPLE_FIELD" />
+				</displayGroup>
+				<displayGroup name="CHOICE FIELDS TEST">
+					<fieldRef name="CHOICE_FIELD" />
+					<fieldRef name="MULTIVALUED_CHOICE_FIELD" />
+				</displayGroup>
+				<displayGroup name="ATTACHED FIELDS TEST">
+					<fieldRef name="ATTACHED_FIELD" />
+					<fieldRef name="MULTIVALUED_ATTACHED_FIELD" />
+				</displayGroup>
+				<displayGroup name="MULTIPLE FIELDS TEST">
+					<fieldRef name="MULTIPLE_FIELD" />
+					<fieldRef name="MULTIVALUED_MULTIPLE_FIELD" />
+				</displayGroup>
+				<displayGroup name="POINTER FIELDS TEST">
+					<fieldRef name="POINTER_FIELD_AUTO" />
+					<fieldRef name="MULTIVALUED_POINTER_FIELD_AUTO" />
+					<fieldRef name="POINTER_FIELD_EP" />
+					<fieldRef name="MULTIVALUED_POINTER_FIELD_EP" />
+				</displayGroup>
+				<displayGroup name="TEXT DISPLAY HINT">
+					<fieldRef name="SINGLE_LINE_DISPLAY_HINT" />
+					<fieldRef name="MULTI_LINE_DISPLAY_HINT" />
+					<fieldRef name="URL_DISPLAY_HINT" />
+					<fieldRef name="EXTERNAL_WEB_CONTENT_DISPLAY_HINT" />
+					<fieldRef name="RICH_TEXT_DISPLAY_HINT" />
+					<fieldRef name="INTERNAL_URL_DISPLAY_HINT" />
+					<fieldRef name="MULTIVALUED_SINGLE_LINE_DISPLAY_HINT" />
+					<fieldRef name="MULTIVALUED_MULTI_LINE_DISPLAY_HINT" />
+					<fieldRef name="MULTIVALUED_URL_DISPLAY_HINT" />
+					<fieldRef name="MULTIVALUED_EXTERNAL_WEB_CONTENT_DISPLAY_HINT" />
+					<fieldRef name="MULTIVALUED_RICH_TEXT_DISPLAY_HINT" />
+					<fieldRef name="MULTIVALUED_INTERNAL_URL_DISPLAY_HINT" />
+				</displayGroup>
+				<displayGroup name="CHOICE DISPLAY HINT">
+					<fieldRef name="LIST_DISPLAY_HINT" />
+					<fieldRef name="NOT_LIST_DISPLAY_HINT" />
+					<fieldRef name="TREE_DISPLAY_HINT" />
+					<fieldRef name="MULTIVALUED_LIST_DISPLAY_HINT" />
+					<fieldRef name="MULTIVALUED_NOT_LIST_DISPLAY_HINT" />
+					<fieldRef name="MULTIVALUED_TREE_DISPLAY_HINT" />
+				</displayGroup>
+				<displayGroup name="CHOICE STRING DISPLAY HINT">
+					<fieldRef name="CHOICE_STRING_DISPLAY_HINT_STRICT" />
+					<fieldRef name="CHOICE_STRING_DISPLAY_HINT_NOT_STRICT" />
+					<fieldRef name="MULTIVALUED_CHOICE_STRING_DISPLAY_HINT_STRICT" />
+					<fieldRef name="MULTIVALUED_CHOICE_STRING_DISPLAY_HINT_NOT_STRICT" />
+				</displayGroup>
+				<displayGroup name="DATE DISPLAY HINT">
+					<fieldRef name="SHORT_DISPLAY_HINT" />
+					<fieldRef name="MEDIUM_DISPLAY_HINT" />
+					<fieldRef name="LONG_DISPLAY_HINT" />
+					<fieldRef name="FULL_DISPLAY_HINT" />
+					<fieldRef name="MULTIVALUED_SHORT_DISPLAY_HINT" />
+					<fieldRef name="MULTIVALUED_MEDIUM_DISPLAY_HINT" />
+					<fieldRef name="MULTIVALUED_LONG_DISPLAY_HINT" />
+					<fieldRef name="MULTIVALUED_FULL_DISPLAY_HINT" />
+				</displayGroup>
+				<displayGroup name="ATTACHED DISPLAY HINT">
+					<fieldRef name="ATTACHED_DISPLAY_HINT" />
+					<fieldRef name="MULTIVALUED_ATTACHED_DISPLAY_HINT" />
+				</displayGroup>
+			</displayGroups>
+			<referenceField fieldSeparator="-">
+				<fields>
+					<simpleField labelKey="REF_id" valueType="String" maxSize="100" />
+				</fields>
+			</referenceField>
+			<fields>
+
+				<!-- USEFULL FIELDS -->
+				<simpleField labelKey="SHEET_NAME" valueType="String" updatable="false" mandatory="true" />
+				<simpleField labelKey="CONFIDENTIAL_FIELD_IN_AUTHORIZATION" valueType="String" updatable="false" exportable="false" />
+				<simpleField labelKey="CONFIDENTIAL_FIELD_IN_SHEET_TYPE" valueType="String" confidential="true" />
+				<simpleField labelKey="EXTENSION_POINT_FIELD" valueType="String" updatable="false" maxSize="400" multivalued="true" />
+				<simpleField labelKey="EXTENDED_ACTION_FIELD" valueType="String" updatable="false" maxSize="400" multivalued="true" />
+				<simpleField labelKey="FILTER_RESULT_FIELD_1" valueType="String" description="Filter Result field" defaultValue="FILTER DEFAULT VALUE" />
+				<simpleField labelKey="FILTER_RESULT_FIELD_2" valueType="String" description="Filter Result field" defaultValue="FILTER DEFAULT VALUE" />
+				<simpleField labelKey="POINTED_SIMPLE_FIELD" valueType="String" description="Pointed field" defaultValue="pointed field DEFAULT VALUE" />
+				<simpleField labelKey="POINTED_MULTIVALUED_SIMPLE_FIELD" valueType="String" description="multivalued Pointed field" multivalued="true" defaultValue="multivalued_pointed field DEFAULT VALUE" />
+
+				<!-- SIMPLE FIELDS -->
+
+				<simpleField labelKey="INTEGER_SIMPLE_FIELD" valueType="Integer" description="INTEGER simple field DEFAULT=843" defaultValue="843" />
+				<simpleField labelKey="REAL_SIMPLE_FIELD" valueType="Real" description="REAL simple field" />
+				<simpleField labelKey="BOOLEAN_SIMPLE_FIELD" valueType="Boolean" description="BOOLEAN simple field" />
+				<simpleField labelKey="DATE_SIMPLE_FIELD" valueType="Date" description="DATE simple field" />
+				<simpleField labelKey="STRING_SIMPLE_FIELD" valueType="String" description="STRING simple field MAX_SIZE=20" maxSize="20" />
+				<simpleField labelKey="MULTIVALUED_INTEGER_SIMPLE_FIELD" valueType="Integer" description="INTEGER multivalued simple field" multivalued="true" />
+				<simpleField labelKey="MULTIVALUED_REAL_SIMPLE_FIELD" valueType="Real" description="REAL multivalued simple field" multivalued="true" />
+				<simpleField labelKey="MULTIVALUED_BOOLEAN_SIMPLE_FIELD" valueType="Boolean" description="BOOLEAN multivalued simple field" multivalued="true" />
+				<simpleField labelKey="MULTIVALUED_DATE_SIMPLE_FIELD" valueType="Date" description="DATE multivalued simple field" multivalued="true" />
+				<simpleField labelKey="MULTIVALUED_STRING_SIMPLE_FIELD" valueType="String" description="STRING multivalued simple field MAX_SIZE=20" maxSize="20" multivalued="true" />
+
+				<!-- CHOICE FIELDS -->
+
+				<choiceField labelKey="CHOICE_FIELD" categoryName="CHOICE_CAT_1" description="CAT_1 choice field" />
+				<choiceField labelKey="MULTIVALUED_CHOICE_FIELD" categoryName="CHOICE_CAT_1" description="CAT_1 multivalued choice field" multivalued="true" />
+
+				<!-- ATTACHED FIELDS -->
+
+				<attachedField labelKey="ATTACHED_FIELD" description="attached field" />
+				<attachedField labelKey="MULTIVALUED_ATTACHED_FIELD" description="multivalued attached field" multivalued="true" />
+
+				<!-- MULTIPLE FIELDS -->
+
+				<multipleField labelKey="MULTIPLE_FIELD">
+					<fields>
+						<simpleField labelKey="SUB_INTEGER_SIMPLE_FIELD" valueType="Integer" description="INTEGER simple field DEFAULT=843" defaultValue="843" />
+						<simpleField labelKey="SUB_REAL_SIMPLE_FIELD" valueType="Real" description="REAL simple field" />
+						<simpleField labelKey="SUB_BOOLEAN_SIMPLE_FIELD" valueType="Boolean" description="BOOLEAN simple field" />
+						<simpleField labelKey="SUB_DATE_SIMPLE_FIELD" valueType="Date" description="DATE simple field" />
+						<simpleField labelKey="SUB_STRING_SIMPLE_FIELD" valueType="String" description="STRING simple field MAX_SIZE=20" maxSize="20" />
+						<choiceField labelKey="SUB_CHOICE_FIELD" categoryName="CHOICE_CAT_1" description="CAT_1 choice field" />
+						<choiceField labelKey="SUB_MULTIVALUED_CHOICE_FIELD" categoryName="CHOICE_CAT_1" description="CAT_1 multivalued choice field" multivalued="true" />
+						<attachedField labelKey="SUB_ATTACHED_FIELD" description="attached field" />
+					</fields>
+				</multipleField>
+				<multipleField labelKey="MULTIVALUED_MULTIPLE_FIELD" multivalued="true" exportable="false">
+					<fields>
+						<simpleField labelKey="MULTIVAL_SUB_INTEGER_SIMPLE_FIELD" valueType="Integer" description="INTEGER simple field DEFAULT=843" defaultValue="843" />
+						<simpleField labelKey="MULTIVAL_SUB_REAL_SIMPLE_FIELD" valueType="Real" description="REAL simple field" />
+						<simpleField labelKey="MULTIVAL_SUB_BOOLEAN_SIMPLE_FIELD" valueType="Boolean" description="BOOLEAN simple field" />
+						<simpleField labelKey="MULTIVAL_SUB_DATE_SIMPLE_FIELD" valueType="Date" description="DATE simple field" />
+						<simpleField labelKey="MULTIVAL_SUB_STRING_SIMPLE_FIELD" valueType="String" description="STRING simple field MAX_SIZE=20" maxSize="20" />
+						<choiceField labelKey="MULTIVAL_SUB_CHOICE_FIELD" categoryName="CHOICE_CAT_1" description="CAT_1 choice field" />
+						<choiceField labelKey="MULTIVAL_SUB_MULTIVALUED_CHOICE_FIELD" categoryName="CHOICE_CAT_1" description="CAT_1 multivalued choice field" multivalued="true" />
+						<attachedField labelKey="MULTIVAL_SUB_ATTACHED_FIELD" description="attached field" />
+					</fields>
+				</multipleField>
+
+				<!-- POINTER FIELDS -->
+
+				<simpleField labelKey="POINTER_FIELD_AUTO" valueType="String" description="POINTER field => POINTED_SIMPLE_FIELD" pointerField="true" referencedLinkType="Sheet1Sheet1Link" referencedFieldLabel="POINTED_SIMPLE_FIELD" />
+				<simpleField labelKey="MULTIVALUED_POINTER_FIELD_AUTO" valueType="String" description="POINTER field => POINTED_MULTIVALUED_SIMPLE_FIELD" pointerField="true" referencedLinkType="Sheet1Sheet1Link" referencedFieldLabel="POINTED_MULTIVALUED_SIMPLE_FIELD" />
+
+				<simpleField labelKey="POINTER_FIELD_EP" valueType="String" description="POINTER field => POINTED_SIMPLE_FIELD" pointerField="true" />
+				<simpleField labelKey="MULTIVALUED_POINTER_FIELD_EP" valueType="String" description="POINTER field => POINTED_SIMPLE_FIELD" pointerField="true" multivalued="true" />
+
+				<!-- TEXT HINTS -->
+
+				<simpleField labelKey="SINGLE_LINE_DISPLAY_HINT" valueType="String" description="Single line display hint" />
+				<simpleField labelKey="MULTI_LINE_DISPLAY_HINT" valueType="String" description="Multiline line display hint" />
+				<simpleField labelKey="URL_DISPLAY_HINT" valueType="String" description="URL display hint" />
+				<simpleField labelKey="EXTERNAL_WEB_CONTENT_DISPLAY_HINT" valueType="String" description="WEB CONTENT display hint" />
+				<simpleField labelKey="RICH_TEXT_DISPLAY_HINT" valueType="String" description="Rich text display hint" defaultValue="&lt;hr/&gt;&lt;b&gt;DEFAULT &lt;/b&gt;&lt;i&gt;TEXT&lt;/i&gt;" />
+				<simpleField labelKey="INTERNAL_URL_DISPLAY_HINT" valueType="String" description="Internal URL display hint" />
+				<simpleField labelKey="MULTIVALUED_SINGLE_LINE_DISPLAY_HINT" valueType="String" description="Single line display hint" multivalued="true" />
+				<simpleField labelKey="MULTIVALUED_MULTI_LINE_DISPLAY_HINT" valueType="String" description="Multiline line display hint" multivalued="true" />
+				<simpleField labelKey="MULTIVALUED_URL_DISPLAY_HINT" valueType="String" description="URL display hint" multivalued="true" />
+				<simpleField labelKey="MULTIVALUED_EXTERNAL_WEB_CONTENT_DISPLAY_HINT" valueType="String" description="WEB CONTENT display hint" multivalued="true" />
+				<simpleField labelKey="MULTIVALUED_RICH_TEXT_DISPLAY_HINT" valueType="String" description="Rich text display hint" defaultValue="&lt;hr/&gt;&lt;b&gt;DEFAULT &lt;/b&gt;&lt;i&gt;TEXT&lt;/i&gt;" multivalued="true" />
+				<simpleField labelKey="MULTIVALUED_INTERNAL_URL_DISPLAY_HINT" valueType="String" description="Internal URL display hint" multivalued="true" />
+
+				<!-- CHOICE HINTS -->
+
+				<choiceField labelKey="LIST_DISPLAY_HINT" categoryName="CHOICE_CAT_1" description="list hint" />
+				<choiceField labelKey="NOT_LIST_DISPLAY_HINT" categoryName="CHOICE_CAT_1" description="box hint" />
+				<choiceField labelKey="MULTIVALUED_LIST_DISPLAY_HINT" categoryName="CHOICE_CAT_1" description="list hint" multivalued="true" />
+				<choiceField labelKey="MULTIVALUED_NOT_LIST_DISPLAY_HINT" categoryName="CHOICE_CAT_1" description="box hint" multivalued="true" />
+				<choiceField labelKey="TREE_DISPLAY_HINT" categoryName="CHOICE_TREE" description="tree hint" multivalued="false" />
+				<choiceField labelKey="MULTIVALUED_TREE_DISPLAY_HINT" categoryName="CHOICE_TREE" description="tree hint" multivalued="true" />
+
+				<simpleField labelKey="CHOICE_STRING_DISPLAY_HINT_STRICT" valueType="String" description="choice string hint STRICT" />
+				<simpleField labelKey="CHOICE_STRING_DISPLAY_HINT_NOT_STRICT" valueType="String" description="choice string hint NOT STRICT" />
+				<simpleField labelKey="MULTIVALUED_CHOICE_STRING_DISPLAY_HINT_STRICT" valueType="String" description="choice string hint STRICT" multivalued="true" />
+				<simpleField labelKey="MULTIVALUED_CHOICE_STRING_DISPLAY_HINT_NOT_STRICT" valueType="String" description="choice string hint NOT STRICT" multivalued="true" />
+
+				<!-- DATE HINTS -->
+
+				<simpleField labelKey="SHORT_DISPLAY_HINT" valueType="Date" description="short hint" />
+				<simpleField labelKey="MEDIUM_DISPLAY_HINT" valueType="Date" description="medium hint" />
+				<simpleField labelKey="LONG_DISPLAY_HINT" valueType="Date" description="long hint" />
+				<simpleField labelKey="FULL_DISPLAY_HINT" valueType="Date" description="full hint" />
+				<simpleField labelKey="MULTIVALUED_SHORT_DISPLAY_HINT" valueType="Date" description="short hint" multivalued="true" />
+				<simpleField labelKey="MULTIVALUED_MEDIUM_DISPLAY_HINT" valueType="Date" description="medium hint" multivalued="true" />
+				<simpleField labelKey="MULTIVALUED_LONG_DISPLAY_HINT" valueType="Date" description="long hint" multivalued="true" />
+				<simpleField labelKey="MULTIVALUED_FULL_DISPLAY_HINT" valueType="Date" description="full hint" multivalued="true" />
+
+				<!-- ATTACHED HINTS -->
+
+				<attachedField labelKey="ATTACHED_DISPLAY_HINT" description="attached hint" />
+				<attachedField labelKey="MULTIVALUED_ATTACHED_DISPLAY_HINT" description="attached hint" multivalued="true" />
+			</fields>
+			<displayHints>
+
+				<!-- TEXT HINTS -->
+
+				<textDisplayHint labelKey="SINGLE_LINE_DISPLAY_HINT" displayType="SINGLE_LINE" />
+				<textDisplayHint labelKey="MULTI_LINE_DISPLAY_HINT" displayType="MULTI_LINE" height="20" width="100" />
+				<textDisplayHint labelKey="URL_DISPLAY_HINT" displayType="URL" />
+				<textDisplayHint labelKey="EXTERNAL_WEB_CONTENT_DISPLAY_HINT" displayType="EXTERNAL_WEB_CONTENT" height="300" width="500" />
+				<textDisplayHint labelKey="RICH_TEXT_DISPLAY_HINT" displayType="RICH_TEXT" height="400" width="200" />
+				<textDisplayHint labelKey="INTERNAL_URL_DISPLAY_HINT" displayType="INTERNAL_URL" />
+				<textDisplayHint labelKey="MULTIVALUED_SINGLE_LINE_DISPLAY_HINT" displayType="SINGLE_LINE" />
+				<textDisplayHint labelKey="MULTIVALUED_MULTI_LINE_DISPLAY_HINT" displayType="MULTI_LINE" height="20" width="100" />
+				<textDisplayHint labelKey="MULTIVALUED_URL_DISPLAY_HINT" displayType="URL" />
+				<textDisplayHint labelKey="MULTIVALUED_EXTERNAL_WEB_CONTENT_DISPLAY_HINT" displayType="EXTERNAL_WEB_CONTENT" height="300" width="500" />
+				<textDisplayHint labelKey="MULTIVALUED_RICH_TEXT_DISPLAY_HINT" displayType="RICH_TEXT" height="400" width="200" />
+				<textDisplayHint labelKey="MULTIVALUED_INTERNAL_URL_DISPLAY_HINT" displayType="INTERNAL_URL" />
+
+				<!-- CHOICE HINTS -->
+
+				<choiceDisplayHint labelKey="LIST_DISPLAY_HINT" list="true" />
+				<choiceDisplayHint labelKey="NOT_LIST_DISPLAY_HINT" list="false" imageType="IMAGE_TEXT" />
+				<choiceDisplayHint labelKey="MULTIVALUED_LIST_DISPLAY_HINT" list="true" />
+				<choiceDisplayHint labelKey="MULTIVALUED_NOT_LIST_DISPLAY_HINT" list="false" />
+				<choiceTreeDisplayHint labelKey="TREE_DISPLAY_HINT" separator="/" />
+				<choiceTreeDisplayHint labelKey="MULTIVALUED_TREE_DISPLAY_HINT" separator="/" />
+
+				<choiceStringDisplayHint labelKey="CHOICE_STRING_DISPLAY_HINT_STRICT" strict="true" extensionPoint="extensionPointCSDH" />
+				<choiceStringDisplayHint labelKey="CHOICE_STRING_DISPLAY_HINT_NOT_STRICT" strict="false" extensionPoint="extensionPointCSDH" />
+				<choiceStringDisplayHint labelKey="MULTIVALUED_CHOICE_STRING_DISPLAY_HINT_STRICT" strict="true" extensionPoint="extensionPointCSDH" />
+				<choiceStringDisplayHint labelKey="MULTIVALUED_CHOICE_STRING_DISPLAY_HINT_NOT_STRICT" strict="false" extensionPoint="extensionPointCSDH" />
+
+				<!-- DATE HINTS -->
+
+				<dateDisplayHint labelKey="SHORT_DISPLAY_HINT" format="SHORT" />
+				<dateDisplayHint labelKey="MEDIUM_DISPLAY_HINT" format="MEDIUM" />
+				<dateDisplayHint labelKey="LONG_DISPLAY_HINT" format="LONG" includeTime="true" />
+				<dateDisplayHint labelKey="FULL_DISPLAY_HINT" format="FULL" includeTime="true" />
+				<dateDisplayHint labelKey="MULTIVALUED_SHORT_DISPLAY_HINT" format="SHORT" includeTime="true" />
+				<dateDisplayHint labelKey="MULTIVALUED_MEDIUM_DISPLAY_HINT" format="MEDIUM" includeTime="true" />
+				<dateDisplayHint labelKey="MULTIVALUED_LONG_DISPLAY_HINT" format="LONG" />
+				<dateDisplayHint labelKey="MULTIVALUED_FULL_DISPLAY_HINT" format="FULL" />
+
+				<!-- ATTACHED HINTS -->
+
+				<attachedDisplayHint labelKey="ATTACHED_DISPLAY_HINT" height="400" width="200" displayType="IMAGE" />
+				<attachedDisplayHint labelKey="MULTIVALUED_ATTACHED_DISPLAY_HINT" displayType="IMAGE" />
+			</displayHints>
+			<extensionPoints>
+				<extensionPoint name="postGetModel">
+					<command name="ExtensionPoints" />
+				</extensionPoint>
+				<extensionPoint name="preCreate">
+					<command name="ExtensionPoints" />
+				</extensionPoint>
+				<extensionPoint name="postCreate">
+					<command name="postCreateUpdateState" />
+				</extensionPoint>
+				<extensionPoint name="preUpdate">
+					<command name="CreatePointerFields" />
+					<command name="ExtensionPoints" />
+				</extensionPoint>
+				<extensionPoint name="ExtendedActionCREATE">
+					<command name="ExtendedActionCREATE" />
+				</extensionPoint>
+				<extensionPoint name="ExtendedActionEDIT">
+					<command name="ExtendedActionEDIT" />
+				</extensionPoint>
+				<extensionPoint name="ExtendedActionVIEW">
+					<command name="ExtendedActionVIEW" />
+				</extensionPoint>
+				<extensionPoint name="ExtendedActionLIST">
+					<command name="ExtendedActionLIST" />
+				</extensionPoint>
+				<extensionPoint name="ExtendedActionALWAYS">
+					<command name="ExtendedActionALWAYS" />
+				</extensionPoint>
+				<extensionPoint name="extensionPointCSDH">
+					<command name="extensionPointCSDH" />
+				</extensionPoint>
+			</extensionPoints>
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/sheet_1.par/processdefinition.xml
+			</lifecycleResource>
+			<!--			<states>-->
+<!---->
+			<!--			</states>-->
+<!---->
+			<extendedActions>
+				<extendedAction name="ExtendedActionALWAYS" extensionPointName="ExtendedActionALWAYS">
+					<menuEntry name="ExtendedActionALWAYS" parentName="Sheet" />
+					<guiContexts>
+						<guiContext name="ALWAYS" />
+					</guiContexts>
+					<inputDataType name="ExtendedActionALWAYS_INPUT_DATA">
+						<displayGroups>
+							<displayGroup name="TEXT DISPLAY HINT">
+								<fieldRef name="SINGLE_LINE_DISPLAY_HINT" />
+								<fieldRef name="MULTI_LINE_DISPLAY_HINT" />
+							</displayGroup>
+						</displayGroups>
+						<fields>
+							<simpleField labelKey="SINGLE_LINE_DISPLAY_HINT" valueType="String" description="Single line display hint" />
+							<simpleField labelKey="MULTI_LINE_DISPLAY_HINT" valueType="String" description="Multiline line display hint" />
+						</fields>
+						<displayHints>
+							<textDisplayHint labelKey="SINGLE_LINE_DISPLAY_HINT" displayType="SINGLE_LINE" />
+							<textDisplayHint labelKey="MULTI_LINE_DISPLAY_HINT" displayType="MULTI_LINE" height="20" width="100" />
+						</displayHints>
+					</inputDataType>
+				</extendedAction>
+				<extendedAction name="ExtendedActionCREATE" extensionPointName="ExtendedActionCREATE">
+					<menuEntry name="ExtendedActionCREATE" parentName="Sheet" />
+					<guiContexts>
+						<guiContext name="CTX_CREATE_SHEET" />
+					</guiContexts>
+				</extendedAction>
+				<extendedAction name="ExtendedActionEDIT" extensionPointName="ExtendedActionEDIT">
+					<menuEntry name="ExtendedActionEDIT" parentName="Sheet" />
+					<guiContexts>
+						<guiContext name="CTX_EDIT_SHEET" />
+					</guiContexts>
+				</extendedAction>
+				<extendedAction name="ExtendedActionVIEW" extensionPointName="ExtendedActionVIEW">
+					<menuEntry name="ExtendedActionVIEW" parentName="Sheet" />
+					<guiContexts>
+						<guiContext name="CTX_VIEW_SHEET" />
+					</guiContexts>
+					<inputDataType name="ExtendedActionALWAYS_INPUT_DATA">
+						<displayGroups>
+							<displayGroup name="TEXT DISPLAY HINT">
+								<fieldRef name="SINGLE_LINE_DISPLAY_HINT" />
+								<fieldRef name="MULTI_LINE_DISPLAY_HINT" />
+							</displayGroup>
+						</displayGroups>
+						<fields>
+							<simpleField labelKey="SINGLE_LINE_DISPLAY_HINT" valueType="String" description="Single line display hint" />
+							<simpleField labelKey="MULTI_LINE_DISPLAY_HINT" valueType="String" description="Multiline line display hint" />
+						</fields>
+						<displayHints>
+							<textDisplayHint labelKey="SINGLE_LINE_DISPLAY_HINT" displayType="SINGLE_LINE" />
+							<textDisplayHint labelKey="MULTI_LINE_DISPLAY_HINT" displayType="MULTI_LINE" height="20" width="100" />
+						</displayHints>
+					</inputDataType>
+				</extendedAction>
+				<extendedAction name="ExtendedActionLIST" extensionPointName="ExtendedActionLIST">
+					<menuEntry name="ExtendedActionLIST" parentName="Sheet" />
+					<guiContexts>
+						<guiContext name="SHEET_LIST" />
+					</guiContexts>
+				</extendedAction>
+			</extendedActions>
+		</sheetType>
+		<sheetType name="CONFIDENTIAL_SHEET">
+			<referenceField fieldSeparator="-">
+				<fields>
+					<simpleField labelKey="REF_id" valueType="String" maxSize="100" />
+				</fields>
+			</referenceField>
+			<fields>
+				<multipleField labelKey="CONFIDENTIAL_SHEET_MULTIPLE_FIELD">
+					<fields>
+						<simpleField labelKey="SUB_INTEGER_SIMPLE_FIELD" valueType="Integer" description="INTEGER simple field DEFAULT=843" defaultValue="843" />
+						<simpleField labelKey="SUB_REAL_SIMPLE_FIELD" valueType="Real" description="REAL simple field" />
+						<simpleField labelKey="SUB_BOOLEAN_SIMPLE_FIELD" valueType="Boolean" description="BOOLEAN simple field" />
+						<simpleField labelKey="SUB_DATE_SIMPLE_FIELD" valueType="Date" description="DATE simple field" />
+						<simpleField labelKey="SUB_STRING_SIMPLE_FIELD" valueType="String" description="STRING simple field MAX_SIZE=20" maxSize="20" />
+						<choiceField labelKey="SUB_CHOICE_FIELD" categoryName="CHOICE_CAT_1" description="CAT_1 choice field" />
+						<choiceField labelKey="SUB_MULTIVALUED_CHOICE_FIELD" categoryName="CHOICE_CAT_1" description="CAT_1 multivalued choice field" multivalued="true" />
+						<attachedField labelKey="SUB_ATTACHED_FIELD" description="attached field" />
+					</fields>
+				</multipleField>
+			</fields>
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/confidential_sheet.par/processdefinition.xml
+			</lifecycleResource>
+		</sheetType>
+	</sheetTypes>
+</gpm>

@@ -1,0 +1,18 @@
+import org.apache.commons.lang.StringUtils;
+
+void checkValue(String pValName) {
+  String val = context.get(pValName);
+  if (StringUtils.isBlank(val)) {
+    throw new RuntimeException(pValName + " is not defined in the execution context !");
+  }
+}
+   
+// Check the context values
+checkValue("fieldId");
+checkValue("fieldName");
+checkValue("fieldsContainerName");
+checkValue("fieldsContainerId");
+
+// Set the choices for a 'ChoiceString' display hint.
+context.set("choices", new String[] { "Computed Choice #1", "Computed Choice #2" } );
+context.set("choicesDefaultValue", "Computed Choice #2");

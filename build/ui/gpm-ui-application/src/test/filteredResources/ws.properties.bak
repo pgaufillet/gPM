@@ -1,0 +1,2 @@
+ws.url=http://localhost:8080
+ws.servlet=services

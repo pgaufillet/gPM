@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<process-definition
+  xmlns="http://jbpm.org/3/jpdl"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://jbpm.org/3/jpdl http://jbpm.org/xsd/jpdl-3.0.xsd"
+  name="Analysis">
+   <start-state name="In progress">
+      <transition name="Close" to="Closed"></transition>
+      <transition name="Reject" to="Rejected"></transition>
+   </start-state>
+   <state name="Closed">
+      <transition name="Send" to="Sent"/>
+   </state>
+   <state name="Rejected">
+      <transition name="Send" to="Sent"/>
+   </state>
+   <end-state name="Sent"></end-state>
+</process-definition>

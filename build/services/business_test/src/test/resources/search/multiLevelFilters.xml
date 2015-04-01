@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<gpm xmlns="http://www.airbus.com/topcased/gPM"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+	<version>1.2</version>
+
+	<options>
+		<filterFieldsMaxDepth>3</filterFieldsMaxDepth>
+	</options>
+	
+	<filters>
+		<!-- Used in test TestMultiLevelFilters.testSimpleFieldsResultsLevel2
+			Filter with :
+			- Linked sheet level2 simple fields
+		-->
+		<sheetFilter labelKey="SIMPLE_FIELDS_LEVEL2_RESULT">
+			<containers>
+				<sheetTypeRef name="Cat" />
+			</containers>
+			<resultSummary>
+				<fieldResult name="$SHEET_REFERENCE" sort="desc" />
+				<fieldResult
+					name="Cat-Cat|Cat|SHEETTYPE1_CAT|SheetType1|SHEETTYPE1_simpleInteger"
+					label="int" sort="asc" />
+				<fieldResult
+					name="Cat-Cat|Cat|SHEETTYPE1_CAT|SheetType1|SHEETTYPE1_simpleReal"
+					label="real" sort="desc" />
+				<fieldResult
+					name="Cat-Cat|Cat|SHEETTYPE1_CAT|SheetType1|SHEETTYPE1_simpleString"
+					label="string" sort="asc" />
+				<fieldResult
+					name="Cat-Cat|Cat|SHEETTYPE1_CAT|SheetType1|SHEETTYPE1_simpleDate"
+					label="date" sort="asc" />
+				<fieldResult
+					name="Cat-Cat|Cat|SHEETTYPE1_CAT|SheetType1|SHEETTYPE1_choice"
+					label="choice" sort="def_desc" />
+				<fieldResult
+					name="Cat-Cat|Cat|SHEETTYPE1_CAT|SheetType1|SHEETTYPE1_simpleBoolean"
+					label="boolean" sort="asc" />
+			</resultSummary>
+		</sheetFilter>
+
+		<sheetFilter labelKey="LEVEL2_PRODUCT_FIELD_FILTER">
+			<containers>
+				<sheetTypeRef name="Cat" />
+			</containers>
+			<resultSummary>
+				<fieldResult name="$SHEET_REFERENCE" sort="desc" />
+				<fieldResult
+					name="Cat-Cat|Cat|Store|product_location"
+					label="int" sort="asc" />
+			</resultSummary>
+		</sheetFilter>
+		
+		<sheetFilter labelKey="SEVERAL_PRODUCT_FIELDS_FILTER">
+			<containers>
+				<sheetTypeRef name="Cat" />
+			</containers>
+			<resultSummary>
+				<fieldResult
+					name="Store|product_location"
+					label="int" sort="asc" />
+				<fieldResult
+					name="Cat-Cat|Cat|Store|product_location"
+					label="int" sort="asc" />
+			</resultSummary>
+		</sheetFilter>
+		
+		<sheetFilter labelKey="MULTIVALUED_FIELDS">
+			<containers>
+				<sheetTypeRef name="Cat" />
+			</containers>
+			<resultSummary>
+				<fieldResult name="$SHEET_REFERENCE" sort="asc" />
+                <fieldResult
+                    name="CAT_color" sort="desc"/>
+				<fieldResult
+                    name="Cat-Cat|Cat|CAT_color" sort="desc"/>
+			</resultSummary>
+		</sheetFilter>
+
+        <sheetFilter labelKey="MORE_THAN_MAX_NB_FILTER">
+            <containers>
+                <sheetTypeRef name="Cat" />
+            </containers>
+            <resultSummary>
+                <fieldResult name="$SHEET_REFERENCE" sort="desc" />
+                <fieldResult
+                    name="Cat-Cat|Cat|SHEETTYPE1_CAT|SheetType1|SHEETTYPE1_simpleInteger"
+                    label="int" sort="asc" />
+                <fieldResult
+                    name="Cat-Cat|Cat|SHEETTYPE1_CAT|SheetType1|SHEETTYPE1_simpleReal"
+                    label="real" sort="desc" />
+                <fieldResult
+                    name="Cat-Cat|Cat|SHEETTYPE1_CAT|SheetType1|SHEETTYPE1_simpleString"
+                    label="string" sort="asc" />
+                <fieldResult
+                    name="Cat-Cat|Cat|SHEETTYPE1_CAT|SheetType1|SHEETTYPE1_simpleDate"
+                    label="date" sort="asc" />
+                <fieldResult
+                    name="Cat-Cat|Cat|SHEETTYPE1_CAT|SheetType1|SHEETTYPE1_choice"
+                    label="choice" sort="def_desc" />
+                <fieldResult
+                    name="Cat-Cat|Cat|SHEETTYPE1_CAT|SheetType1|SHEETTYPE1_simpleBoolean"
+                    label="boolean" sort="asc" />
+                <fieldResult
+                    name="Cat-Cat|Cat|$SHEET_REFERENCE" sort="asc"/>
+            </resultSummary>
+        </sheetFilter>
+
+		<sheetFilter labelKey="PRODUCT_LEVEL2_RESULT">
+			<containers>
+				<sheetTypeRef name="Cat" />
+			</containers>
+			<resultSummary>
+				<fieldResult name="$SHEET_REFERENCE" sort="desc" />
+				<fieldResult
+					name="Cat-Cat|Cat|SHEETTYPE1_CAT|SheetType1|SHEETTYPE1_simpleInteger"
+					label="int" sort="asc" />
+				<fieldResult
+					name="Cat-Cat|Cat|SHEETTYPE1_CAT|SheetType1|SHEETTYPE1_simpleReal"
+					label="real" sort="desc" />
+				<fieldResult
+					name="Cat-Cat|Cat|SHEETTYPE1_CAT|SheetType1|SHEETTYPE1_simpleString"
+					label="string" sort="asc" />
+				<fieldResult
+					name="Cat-Cat|Cat|SHEETTYPE1_CAT|SheetType1|SHEETTYPE1_simpleDate"
+					label="date" sort="asc" />
+				<fieldResult
+					name="Cat-Cat|Cat|SHEETTYPE1_CAT|SheetType1|SHEETTYPE1_choice"
+					label="choice" sort="def_desc" />
+				<fieldResult
+					name="Cat-Cat|Cat|SHEETTYPE1_CAT|SheetType1|SHEETTYPE1_simpleBoolean"
+					label="boolean" sort="asc" />
+			</resultSummary>
+		</sheetFilter>
+
+        <!-- Chez Mimoun Product Filters-->
+		<sheetFilter labelKey="LEVEL3_FILTER_RESULT">
+			<containers>
+				<sheetTypeRef name="Chief" />
+			</containers>
+			<resultSummary>
+				<fieldResult name="Chief_Name" label="string" sort="asc" />
+				<fieldResult
+					name="Chief-Chief|Chief|Chief_Name"
+					label="string" sort="asc" />
+				<fieldResult
+					name="Chief-Chief|Chief|Chief-Starter|Starter|Starter_Name"
+					label="string" sort="asc" />	
+				<fieldResult
+					name="Chief-Chief|Chief|Chief-MainDish|MainDish|MainDish_Name"
+					label="string" sort="asc" />	
+				<fieldResult
+					name="Chief-Chief|Chief|Chief-Dessert|Dessert|Dessert_Name"
+					label="string" sort="asc" />					
+			</resultSummary>
+		</sheetFilter>
+		<sheetFilter labelKey="LEVEL2_FILTER_WITH_LINK_PROPERTIES_RESULT">
+			<containers>
+				<sheetTypeRef name="Chief" />
+			</containers>
+			<resultSummary>
+				<fieldResult name="Chief_Name" label="string" sort="asc" />
+				<fieldResult
+					name="Chief-Chief|Chief|Chief_Name"
+					label="string" sort="asc" />
+				<fieldResult
+					name="Chief-Chief|comment"
+					label="string" sort="asc" />	
+			</resultSummary>
+		</sheetFilter>
+		
+		<!-- End product Chez Mimoun-->
+	
+	</filters>
+</gpm>

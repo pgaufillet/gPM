@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<import resource="classpath:applicationContext.xml" />
+
+	<!-- Facade Locator -->
+	<bean id="facadeLocator" class="org.topcased.gpm.ui.facade.server.FacadeLocator" autowire="byName" />
+    <bean id="abstractFacade" class="org.topcased.gpm.ui.facade.server.AbstractFacade" autowire="byName" />
+
+	<!-- Interceptor used to transform exceptions. -->
+	<bean id="exceptionInterceptor" class="org.topcased.gpm.business.exception.ExceptionInterceptor" />
+
+	<!-- Definition of facade interceptors -->
+	<!--  All facade interface must use this base definitions -->
+	<bean id="interceptedFacade" abstract="true">
+		<property name="interceptorNames">
+			<list>
+				<value>businessPerformanceInterceptor</value>
+				<value>exceptionInterceptor</value>
+				<value>serviceTransactionInterceptor</value>
+				<value>hibernateInterceptor</value>
+			</list>
+		</property>
+	</bean>
+
+	<!--	<import resource="classpath:org/topcased/gpm/business/cache.xml" />-->
+
+	<!-- Import the facade definitions -->
+	<import resource="classpath:org/topcased/gpm/ui/facade/server/attribute/impl/attributeFacadeDef.xml" />
+    <import resource="classpath:org/topcased/gpm/ui/facade/server/authorization/impl/authorizationFacadeDef.xml" />
+	<import resource="classpath:org/topcased/gpm/ui/facade/server/cache/impl/userCacheManagerDef.xml" />
+	<import resource="classpath:org/topcased/gpm/ui/facade/server/dictionary/impl/dictionaryFacadeDef.xml" />
+	<import resource="classpath:org/topcased/gpm/ui/facade/server/dictionary/impl/dictionaryFacadeDef.xml" />
+	<import resource="classpath:org/topcased/gpm/ui/facade/server/exportimport/impl/exportImportFacadeDef.xml" />
+	<import resource="classpath:org/topcased/gpm/ui/facade/server/extendedaction/impl/extendedActionFacadeDef.xml" />
+	<import resource="classpath:org/topcased/gpm/ui/facade/server/filter/impl/filterFacadeDef.xml" />
+	<import resource="classpath:org/topcased/gpm/ui/facade/server/i18n/impl/i18nFacadeDef.xml" />
+	<import resource="classpath:org/topcased/gpm/ui/facade/server/link/impl/linkFacadeDef.xml" />
+	<import resource="classpath:org/topcased/gpm/ui/facade/server/mail/impl/mailFacadeDef.xml" />
+	<import resource="classpath:org/topcased/gpm/ui/facade/server/product/impl/productFacadeDef.xml" />
+	<import resource="classpath:org/topcased/gpm/ui/facade/server/sheet/impl/sheetFacadeDef.xml" />
+	<import resource="classpath:org/topcased/gpm/ui/facade/server/user/impl/userFacadeDef.xml" />
+
+</beans>

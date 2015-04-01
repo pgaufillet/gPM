@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+	<version>1.2</version>
+
+	<users>
+        <user login="user bis" password="user" name="gPM User" forname="forname 2" mail="gpm-user@topcased.org">
+            <attributes>
+                <attribute name="defaultLanguage" value="en" />
+            </attributes>
+        </user>
+		<user login="admin" password="admin" name="gPM Administrator"
+			mail="gpm-administrator@topcased.org">
+			<attributes>
+				<attribute name="defaultLanguage" value="fr" />
+			</attributes>
+		</user>
+        <user login="user ter" password="user" name="gPM User" forname="forname 3" mail="gpm-user@topcased.org">
+            <attributes>
+                <attribute name="defaultLanguage" value="en" />
+            </attributes>
+        </user>
+		<user login="user" password="user" name="gPM User" forname="forname 1" mail="gpm-user@topcased.org">
+			<attributes>
+				<attribute name="defaultLanguage" value="en" />
+			</attributes>
+		</user>
+	</users>
+
+	<userRoles>
+		<userRole login="admin" roleName="admin" />
+		<userRole login="admin" roleName="user" />
+		<userRole login="user" roleName="user" productName="ROOT_PRODUCT" />
+		<userRole login="user" roleName="user" productName="EMPTY_CHILD_PRODUCT_2" />
+        <userRole login="user bis" roleName="user" />
+        <userRole login="user bis" roleName="role 2 (inst order 2)" />
+        <userRole login="user bis" roleName="role 4 (inst order 3)" />
+        <userRole login="user bis" roleName="role 1 (inst order 4)" />
+        <userRole login="user bis" roleName="user" productName="ROOT_PRODUCT"/>
+        <userRole login="user bis" roleName="role 2 (inst order 2)" productName="ROOT_PRODUCT"/>
+        <userRole login="user bis" roleName="role 1 (inst order 4)" productName="ROOT_PRODUCT"/>
+        <userRole login="user bis" roleName="role 4 (inst order 3)" productName="EMPTY_CHILD_PRODUCT_2"/>
+        <userRole login="user bis" roleName="role 1 (inst order 4)" productName="EMPTY_CHILD_PRODUCT_2"/>
+        <userRole login="user bis" roleName="user" productName="EMPTY_CHILD_PRODUCT_2"/>
+        <userRole login="user bis" roleName="role 4 (inst order 3)" productName="EMPTY_CHILD_PRODUCT_1"/>
+	</userRoles>
+</gpm>

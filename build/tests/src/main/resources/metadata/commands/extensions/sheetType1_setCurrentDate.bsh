@@ -1,0 +1,15 @@
+// Set the 'currentDate' field
+
+import org.topcased.gpm.business.sheet.service.sheetAccess.MultipleFieldDataAccess;
+import org.topcased.gpm.business.sheet.service.sheetAccess.SheetDataAccess;
+
+// Get the sheet data
+sheetData = context.get("sheetData");
+
+sheetDataAccess = new SheetDataAccess(sheetData);
+
+// get access to the 'currentDate' filed
+currentDateAccess = sheetDataAccess.getField("SHEETTYPE1_currentDate");
+
+// set field value  (current date)
+currentDateAccess.setValue("2007-08-08");

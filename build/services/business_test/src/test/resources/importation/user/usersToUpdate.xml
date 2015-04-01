@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF8"?>
+
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+
+<version>1.2</version>
+
+<users>
+    <user login="userImport_01" password="pwd" name="User import 01_UPDATED">
+        <attributes>
+            <attribute name="userAttribute_01" value="value01_UPDATED" />
+            <attribute name="userAttribute_02" value="value02_UPDATED" />
+        </attributes>
+    </user>
+    <user login="userImport_02" password="pwd" name="User import 02_UPDATED" passwordEncoding="clear">
+        <attributes>
+            <attribute name="userAttribute_01" value="value01_UPDATED" />
+            <attribute name="userAttribute_02" value="value02_UPDATED" />
+        </attributes>
+    </user>
+    <user login="userImport_03" password="pwd" name="User import 03_UPDATED">
+        <attributes>
+            <attribute name="userAttribute_01" value="value01_UPDATED" />
+            <attribute name="userAttribute_02" value="value02_UPDATED" />
+        </attributes>
+    </user>
+</users>
+</gpm>

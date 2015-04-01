@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!--
+        ExtendedAction Facade
+    -->
+
+	<!-- Implementation bean -->
+	<bean id="extendedActionFacadeImpl" parent="abstractFacade"
+		class="org.topcased.gpm.ui.facade.server.extendedaction.impl.ExtendedActionFacadeImpl"
+		autowire="byName" />
+
+	<!-- Visible interface of the service  -->
+	<bean id="extendedActionFacade" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedFacade">
+		<property name="target" ref="extendedActionFacadeImpl" />
+		<property name="proxyInterfaces"
+			value="org.topcased.gpm.ui.facade.server.extendedaction.ExtendedActionFacade" />
+	</bean>
+
+</beans>

@@ -1,0 +1,54 @@
+<!-- Ant build file used to compile the Jasper model and generate             -->
+<!-- a JAR file containing the compiled reports and the additional resources. -->
+
+<project name="commands" default="jar" basedir=".">
+  <description>
+     	Build a JAR file containing the extension points for the gPM-SUMO instance.
+  </description>
+
+  <!-- set global properties for this build -->
+  <property name="build" location="target" />
+  <property name="dist" location="dist" />
+
+  <property name="jar_name" value="gpm-ui-facade-test-instance_commands.jar" />
+    	
+  <property name="gpm_libs" location="D:\maven2_repository" />
+
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${build}" />
+  	<mkdir dir="${dist}" />
+  </target>
+
+  <target name="compile" depends="init"
+          description="Compile the extension points." >
+  	<javac srcdir="." destdir="${build}" target="1.6">
+  		<classpath>
+  			<fileset dir="${gpm_libs}">
+  			   <include name="**/*.jar"/>
+  			</fileset>
+	    </classpath>
+	</javac>
+  </target>
+
+  <target name="jar"
+          description="Generate the JAR containing the files required for the reports."
+          depends="compile">
+    <!-- Create the distribution directory -->
+    <mkdir dir="${dist}" />
+    <jar jarfile="${dist}/${jar_name}" >
+        <fileset dir="${build}" includes="**"/>
+    </jar>
+  	<!-- Delete the ${build} directory tree -->
+    <delete dir="${build}"/>
+  </target>
+
+  <target name="clean"
+          description="Clean up the dist trees." >
+    <!-- Delete the ${dist} directory tree -->
+    <delete dir="${dist}" />
+  </target>
+</project>

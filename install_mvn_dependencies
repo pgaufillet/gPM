@@ -1,0 +1,78 @@
+#!/bin/sh
+
+# Helper script to install the non-redistributable JAR in local Maven repository
+
+ACTIVATION_JAR=activation-1.1.jar
+MAIL_JAR=mail-1.4.jar
+JTA_JAR=jta-1.0.1B.jar
+OJDBC_JAR=ojdbc14-10.2.0.1.jar
+STRUTS_LAYOUT_JAR=struts-layout-${struts.layout.version}.jar
+
+cat << EOF
+---------------------------------------------------------
+This script installs some non-redistributable JAR in your
+local Maven repository.
+It is required to have the JAR files (which must
+be downloaded manually) available in this directory:
+
+** Sun libraries (required):
+JavaMail (v1.3.3, Java Activation Framework (v1.0.2),
+Java Transaction API (v1.0.1B)
+
+They can be downloaded at
+http://java.sun.com/products/javamail/downloads/index.html
+http://java.sun.com/products/javabeans/glasgow/jaf.html
+http://java.sun.com/products/jta
+
+The local files must be named: $MAIL_JAR, $ACTIVATION_JAR, $JTA_JAR
+
+** Struts layout (required):
+It can be downloaded at 
+http://struts.improve-technologies.com/download.html
+
+The local file must be named $STRUTS_LAYOUT_JAR
+
+** Oracle(tm) JDBC thin driver (optional):
+It can be downloaded at 
+http://www.oracle.com/technology/software/tech/java/sqlj_jdbc/index.html
+
+The local file must be named $OJDBC_JAR
+
+
+Note: This script requires the Maven2 tool installed and referenced in your path.
+---------------------------------------------------------
+
+Enter 'y' to continue, or any other key to stop now.
+EOF
+
+read CHOICE
+if [ "y" != "$CHOICE" ]; then
+  echo Cancelled !
+  exit 1
+fi
+
+mvn_install() {
+  JAR_FILE=$1
+  if [ ! -r $JAR_FILE ]; then
+    echo "$JAR_FILE is not present in this directory !"
+    echo "Please download it, and put it in this directory."
+    exit 2
+  fi
+  shift
+  mvn install:install-file $* -Dfile=$JAR_FILE
+
+  if [ $? -ne 0 ]; then
+    echo Error installing the file $JAR_FILE in the repository. Aborting.
+    exit 3
+  fi
+}
+
+mvn_install $MAIL_JAR -DgroupId=javax.mail -DartifactId=mail -Dversion=1.3.3 -Dpackaging=jar
+
+mvn_install $ACTIVATION_JAR -DgroupId=javax.activation -DartifactId=activation -Dversion=1.0.2 -Dpackaging=jar
+mvn_install $JTA_JAR -DgroupId=javax.transaction -DartifactId=jta -Dversion=1.0.1B -Dpackaging=jar
+mvn_install $STRUTS_LAYOUT_JAR -DgroupId=struts-layout -DartifactId=struts-layout -Dversion=1.2 -Dpackaging=jar -DgeneratePom=true
+
+if [ -r $OJDBC_JAR ]; then
+  mvn_install $OJDBC_JAR -DgroupId=oracle -DartifactId=ojdbc14 -Dversion=10.1.0.4 -Dpackaging=jar -DgeneratePom=true
+fi

@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# Helper script used to launch the tools
+
+if [ "x$GPM_HOME" = "x" ]; then
+    echo ERROR: GPM_HOME is not defined in your environment.
+    exit 1
+fi
+
+if [ ! -r $GPM_HOME/launch ]; then
+    echo ERROR: GPM_HOME seems to be defined to an invalid directory.
+    echo GPM_HOME = $GPM_HOME
+    exit 2
+fi
+
+exec $GPM_HOME/launch $GPM_HOME/lib/gPM-tools-serialization-${gpm.version}.jar Exportation $*
+

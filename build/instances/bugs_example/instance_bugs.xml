@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+
+	<version>1.2</version>
+
+	<options>
+		<contactUrl>http://www.google.fr</contactUrl>
+	</options>
+
+	<users>
+		<user login="jsmith" name="John SMITH" mail="john.smith@gpm-dev.com"
+			password="jsmith" />
+		<user login="mfisher" name="Mary FISHER" mail="mary.fisher@gpm-dev.com"
+			password="mfisher" />
+		<user login="aroberts" name="Alexander ROBERTS" mail="alexander.roberts@gpm-dev.com"
+			password="aroberts" />
+		<user login="pdaniels" name="Paul DANIELS" mail="paul.daniels@gpm-test.com"
+			password="pdaniels" />
+	</users>
+
+	<roles>
+		<role name="admin" />
+		<role name="reporter" />
+		<role name="developer" />
+		<role name="viewer" />
+	</roles>
+
+	<!-- I18n description  -->
+	<translations>
+		<translation lang="fr_FR">
+			<message key="BUG_detection_version">
+				Version de détection
+			</message>
+			<message key="BUG_detection_date">
+				Date de détection
+			</message>
+			<message key="BUG_submitter">Rapporteur</message>
+			<message key="BUG_priority">Priorité</message>
+			<message key="BUG_severity">Sévérité</message>
+			<message key="BUG_solving_version">
+				A résoudre dans la version
+			</message>
+			<message key="BUG_description">Description du bug</message>
+			<message key="BUG_attached_file">
+				Fichier(s) attaché(s)
+			</message>
+			<message key="ANALYSIS_reference">Référence</message>
+			<message key="ANALYSIS_description">
+				Description du bug
+			</message>
+			<message key="ANALYSIS_assignation_date">
+				Date d'affectation
+			</message>
+			<message key="ANALYSIS_assigned_to">Affecté à</message>
+			<message key="ANALYSIS_evolution">Evolution</message>
+			<message key="ANALYSIS_analysis">Analyse du bug</message>
+			<message key="ANALYSIS_attached_file">
+				Fichier(s) attaché(s)
+			</message>
+			<message key="ANALYSIS_costing">Chiffrage</message>
+			<message key="ANALYSIS_task">Tache</message>
+			<message key="ANALYSIS_cost">Chiffre</message>
+
+			<!-- Virtual fields label keys and translations  -->
+			<message key="$PRODUCT_NAME">Nom du produit</message>
+			<message key="$PRODUCT_HIERARCHY">
+				Hiérarchie de produits
+			</message>
+			<message key="$PRODUCT_FIELD_PREFIX">Produit.</message>
+			<message key="$LINKED_SHEET_FIELD_PREFIX">Fiche liée-</message>
+			<message key="$LINK_FIELD_PREFIX">Lien-</message>
+			<message key="$NOT_SPECIFIED">Non spécifié</message>
+			<message key="$CURRENT_PRODUCT">Produit courant</message>
+			<message key="$SHEET_REFERENCE">Référence de la fiche</message>
+			<message key="$SHEET_STATE">Etat de la fiche</message>
+			<message key="$SHEET_TYPE">Type de fiche</message>
+
+		</translation>
+		<translation lang="en_EN">
+			<message key="BUG_detection_version">
+				Detection version
+			</message>
+			<message key="BUG_detection_date">
+				Detection date
+			</message>
+			<message key="BUG_submitter">Submitted by</message>
+			<message key="BUG_priority">Priority</message>
+			<message key="BUG_severity">Severity</message>
+			<message key="BUG_solving_version">
+				To be solved in version
+			</message>
+			<message key="BUG_description">Bug description</message>
+			<message key="BUG_attached_file">
+				Attached file(s)
+			</message>
+			<message key="ANALYSIS_reference">Reference</message>
+			<message key="ANALYSIS_description">
+				Bug description
+			</message>
+			<message key="ANALYSIS_assignation_date">
+				Assignation date
+			</message>
+			<message key="ANALYSIS_assigned_to">Assigned to</message>
+			<message key="ANALYSIS_evolution">Evolution</message>
+			<message key="ANALYSIS_analysis">Bug analysis</message>
+			<message key="ANALYSIS_attached_file">
+				Attached file(s)
+			</message>
+			<message key="ANALYSIS_costing">Costing</message>
+			<message key="ANALYSIS_task">Task</message>
+			<message key="ANALYSIS_cost">Cost</message>
+
+			<!-- Virtual fields label keys and translations  -->
+			<message key="$PRODUCT_NAME">Product name</message>
+			<message key="$PRODUCT_HIERARCHY">
+				Product hierarchy
+			</message>
+			<message key="$PRODUCT_FIELD_PREFIX">Product.</message>
+			<message key="$LINKED_SHEET_FIELD_PREFIX">Linked-</message>
+			<message key="$LINK_FIELD_PREFIX">Link-</message>
+			<message key="$NOT_SPECIFIED">Not specified</message>
+			<message key="$CURRENT_PRODUCT">Current product</message>
+			<message key="$SHEET_REFERENCE">Sheet reference</message>
+			<message key="$SHEET_STATE">Sheet state</message>
+			<message key="$SHEET_TYPE">Sheet type</message>
+
+		</translation>
+	</translations>
+
+	<commands>
+		<script name="BUG_initRef" language="beanshell">
+			<code filename="extensions/initBugRef.bsh" />
+		</script>
+		<script name="BUG_initFields" language="beanshell">
+			<code filename="extensions/initBugFields.bsh" />
+		</script>
+		<script name="ANALYSIS_initRef" language="beanshell">
+			<code filename="extensions/initAnalysisRef.bsh" />
+		</script>
+		<script name="ANALYSIS_initFields" language="beanshell">
+			<code filename="extensions/initAnalysisFields.bsh" />
+		</script>
+	</commands>
+
+	<!-- Dictionnary description  -->
+	<dictionary>
+		<!-- Categories description  -->
+		<categories>
+			<category name="User">
+				<values>
+					<categoryValue value="---------------" />
+					<categoryValue value="John SMITH" />
+					<categoryValue value="Mary FISHER" />
+					<categoryValue value="Alexander ROBERTS" />
+				</values>
+			</category>
+
+			<category name="Priority">
+				<values>
+					<categoryValue value="High" />
+					<categoryValue value="Normal" />
+					<categoryValue value="Low" />
+				</values>
+			</category>
+
+			<category name="ProductVersion">
+				<values>
+					<categoryValue value="V1.0" />
+					<categoryValue value="V1.1" />
+					<categoryValue value="V1.2" />
+					<categoryValue value="V1.3" />
+					<categoryValue value="V1.4" />
+					<categoryValue value="V1.5" />
+					<categoryValue value="V1.6" />
+					<categoryValue value="V1.7" />
+				</values>
+			</category>
+
+			<category name="Severity">
+				<values>
+					<categoryValue value="Blocking" />
+					<categoryValue value="Major" />
+					<categoryValue value="Minor" />
+				</values>
+			</category>
+		</categories>
+
+		<!-- Environment description  -->
+		<environments>
+			<!-- Default Environment  -->
+			<environment name="Default">
+				<categories>
+					<category name="User">
+						<values>
+							<categoryValue value="---------------" />
+							<categoryValue value="John SMITH" />
+							<categoryValue value="Mary FISHER" />
+							<categoryValue value="Alexander ROBERTS" />
+						</values>
+					</category>
+
+					<category name="Priority">
+						<values>
+							<categoryValue value="High" />
+							<categoryValue value="Normal" />
+							<categoryValue value="Low" />
+						</values>
+					</category>
+
+					<category name="ProductVersion">
+						<values>
+							<categoryValue value="V1.0" />
+							<categoryValue value="V1.1" />
+							<categoryValue value="V1.2" />
+							<categoryValue value="V1.3" />
+							<categoryValue value="V1.4" />
+							<categoryValue value="V1.5" />
+							<categoryValue value="V1.6" />
+							<categoryValue value="V1.7" />
+						</values>
+					</category>
+
+					<category name="Severity">
+						<values>
+							<categoryValue value="Blocking" />
+							<categoryValue value="Major" />
+							<categoryValue value="Minor" />
+						</values>
+					</category>
+				</categories>
+			</environment>
+		</environments>
+	</dictionary>
+
+	<!-- Product Types's description  -->
+	<productTypes>
+		<!-- Store description  -->
+		<productType name="SoftwareVersion">
+			<description>Version</description>
+		</productType>
+	</productTypes>
+
+	<!-- Products's definition  -->
+	<products>
+		<!-- Product Bernard's store -->
+
+		<product name="V1.0" type="SoftwareVersion" envName="Default">
+		</product>
+
+		<product name="V1.1" type="SoftwareVersion" envName="Default">
+		</product>
+
+		<product name="V1.2" type="SoftwareVersion" envName="Default">
+		</product>
+
+		<product name="V1.3" type="SoftwareVersion" envName="Default">
+		</product>
+	</products>
+
+	<userRoles>
+		<userRole login="admin" roleName="admin" />
+		<userRole login="jsmith" roleName="reporter" />
+		<userRole login="jsmith" roleName="developer" />
+		<userRole login="jsmith" roleName="viewer" />
+		<userRole login="mfisher" roleName="reporter" />
+		<userRole login="mfisher" roleName="developer" />
+		<userRole login="mfisher" roleName="viewer" />
+		<userRole login="aroberts" roleName="reporter" />
+		<userRole login="aroberts" roleName="developer" />
+		<userRole login="aroberts" roleName="viewer" />
+		<userRole login="pdaniels" roleName="reporter" />
+		<userRole login="pdaniels" roleName="viewer" />
+	</userRoles>
+
+	<!-- Sheet Types's description  -->
+	<sheetTypes>
+		<!-- Sheet Type Cat -->
+		<sheetType name="Bug" description="Bug" selectable="true">
+
+			<displayGroups>
+				<displayGroup name="Detection">
+					<fieldRef name="BUG_detection_version" />
+					<fieldRef name="BUG_detection_date" />
+					<fieldRef name="BUG_submitter" />
+					<fieldRef name="BUG_priority" />
+					<fieldRef name="BUG_severity" />
+					<fieldRef name="BUG_solving_version" />
+				</displayGroup>
+
+				<displayGroup name="Description">
+					<fieldRef name="BUG_description" />
+					<fieldRef name="BUG_attached_file" />
+				</displayGroup>
+			</displayGroups>
+
+			<referenceField>
+				<fields>
+					<simpleField labelKey="BUG_ref" valueType="String" />
+				</fields>
+			</referenceField>
+
+			<fields>
+				<choiceField labelKey="BUG_detection_version"
+					categoryName="ProductVersion" multivalued="false" mandatory="false"
+					updatable="true" confidential="false" exportable="true" />
+				<simpleField labelKey="BUG_detection_date" valueType="Date"
+					mandatory="false" updatable="true" confidential="false" exportable="true" />
+				<choiceField labelKey="BUG_submitter" categoryName="User"
+					multivalued="false" mandatory="false" updatable="true"
+					confidential="false" exportable="true" />
+				<choiceField labelKey="BUG_priority" categoryName="Priority"
+					multivalued="false" mandatory="false" updatable="true"
+					confidential="false" exportable="true" />
+				<choiceField labelKey="BUG_severity" categoryName="Severity"
+					multivalued="false" mandatory="false" updatable="true"
+					confidential="false" exportable="true" />
+				<choiceField labelKey="BUG_solving_version"
+					categoryName="ProductVersion" multivalued="true" mandatory="false"
+					updatable="true" confidential="false" exportable="true" />
+				<simpleField labelKey="BUG_description" valueType="String"
+					mandatory="false" updatable="true" confidential="false" exportable="true" />
+				<attachedField labelKey="BUG_attached_file"
+					confidential="false" exportable="true" mandatory="false"
+					multivalued="true" updatable="true" />
+			</fields>
+
+			<displayHints>
+				<textDisplayHint labelKey="BUG_description" height="6"
+					width="50" multiline="false" displayType="MULTI_LINE" />
+				<choiceDisplayHint labelKey="BUG_detection_version"
+					list="true" />
+				<choiceDisplayHint labelKey="BUG_submitter" list="true" />
+				<choiceDisplayHint labelKey="BUG_priority" list="true" />
+				<choiceDisplayHint labelKey="BUG_severity" list="true" />
+				<choiceDisplayHint labelKey="BUG_solving_version"
+					list="true" />
+			</displayHints>
+
+			<extensionPoints>
+				<extensionPoint name="postGetSheetModel">
+					<command name="BUG_initFields" />
+				</extensionPoint>
+				<extensionPoint name="preCreate">
+					<command name="BUG_initRef" />
+				</extensionPoint>
+			</extensionPoints>
+
+			<lifecycleResource>
+				lifecycle/bug/processdefinition.xml
+			</lifecycleResource>
+
+		</sheetType>
+
+		<sheetType name="Analysis" selectable="true">
+
+			<displayGroups>
+				<displayGroup name="Reference">
+					<fieldRef name="ANALYSIS_reference" />
+				</displayGroup>
+				<displayGroup name="Bug">
+					<fieldRef name="ANALYSIS_description" />
+				</displayGroup>
+				<displayGroup name="Assignation">
+					<fieldRef name="ANALYSIS_assignation_date" />
+					<fieldRef name="ANALYSIS_assigned_to" />
+				</displayGroup>
+				<displayGroup name="Analysis">
+					<fieldRef name="ANALYSIS_evolution" />
+					<fieldRef name="ANALYSIS_analysis" />
+					<fieldRef name="ANALYSIS_attached_file" />
+					<fieldRef name="ANALYSIS_costing" />
+				</displayGroup>
+			</displayGroups>
+
+			<referenceField>
+				<fields>
+					<simpleField labelKey="ANALYSIS_ref" valueType="String" />
+				</fields>
+			</referenceField>
+
+			<fields>
+				<simpleField labelKey="ANALYSIS_reference" valueType="String"
+					mandatory="true" updatable="true" confidential="false" exportable="true" />
+				<simpleField labelKey="ANALYSIS_description" valueType="String"
+					mandatory="false" updatable="true" confidential="false" exportable="true" />
+				<simpleField labelKey="ANALYSIS_assignation_date"
+					valueType="Date" mandatory="false" updatable="true" confidential="false"
+					exportable="true" />
+				<choiceField labelKey="ANALYSIS_assigned_to"
+					categoryName="User" multivalued="false" mandatory="false"
+					updatable="true" confidential="false" exportable="true" />
+				<simpleField labelKey="ANALYSIS_evolution" valueType="Boolean"
+					mandatory="false" updatable="true" confidential="false" exportable="true" />
+				<simpleField labelKey="ANALYSIS_analysis" valueType="String"
+					mandatory="false" updatable="true" confidential="false" exportable="true" />
+				<attachedField labelKey="ANALYSIS_attached_file"
+					confidential="false" exportable="true" mandatory="false"
+					multivalued="true" updatable="true" />
+				<multipleField labelKey="ANALYSIS_costing"
+					confidential="false" exportable="true" mandatory="false"
+					multivalued="true" updatable="true">
+					<fields>
+						<simpleField labelKey="ANALYSIS_task" valueType="String"
+							confidential="false" exportable="true" mandatory="false"
+							multivalued="false" updatable="true" />
+						<simpleField labelKey="ANALYSIS_cost" valueType="Real"
+							confidential="false" exportable="true" mandatory="false"
+							multivalued="false" updatable="true" />
+					</fields>
+
+				</multipleField>
+
+			</fields>
+
+			<displayHints>
+				<textDisplayHint labelKey="ANALYSIS_description"
+					height="6" width="50" multiline="false" displayType="MULTI_LINE" />
+				<textDisplayHint labelKey="ANALYSIS_analysis"
+					height="8" width="50" multiline="false" displayType="MULTI_LINE" />
+				<choiceDisplayHint labelKey="ANALYSIS_assigned_to"
+					list="true" />
+			</displayHints>
+
+			<extensionPoints>
+				<extensionPoint name="postGetSheetModel">
+					<command name="ANALYSIS_initFields" />
+				</extensionPoint>
+				<extensionPoint name="preCreate">
+					<command name="ANALYSIS_initRef" />
+				</extensionPoint>
+			</extensionPoints>
+
+			<lifecycleResource>
+				lifecycle/analysis/processdefinition.xml
+			</lifecycleResource>
+
+		</sheetType>
+	</sheetTypes>
+
+	<sheetLinkTypes>
+		<sheetLinkType destinationType="Analysis" name="LINK"
+			originType="Bug"></sheetLinkType>
+	</sheetLinkTypes>
+
+	<accessControls>
+		<sheetTypeAccess sheetType="Analysis" creatable="false"
+			deletable="false" updatable="false" role="viewer" />
+		<sheetTypeAccess sheetType="Analysis" creatable="false"
+			deletable="false" updatable="false" role="reporter" />
+		<sheetTypeAccess sheetType="Bug" creatable="false"
+			deletable="false" updatable="false" role="viewer" />
+	</accessControls>
+
+	<filters>
+		<sheetFilter labelKey="OPEN_bugs" filterUsage="table"
+			description="All bugs">
+			<containers>
+				<sheetTypeRef name="Bug" />
+			</containers>
+			<criteria>
+				<criteriaGroup>
+					<criterion fieldKey="$SHEET_STATE" operator="=" value="Open" />
+				</criteriaGroup>
+			</criteria>
+			<resultSummary>
+				<fieldResult name="$SHEET_REFERENCE" />
+				<fieldResult name="$PRODUCT_NAME" />
+			</resultSummary>
+		</sheetFilter>
+	</filters>
+
+	<reports>
+		<reportModel name="BugsInPDF" path="report_models/bugs.jasper"
+			description="Can export a list of bugs in PDF Format">
+			<exportTypes>
+				<exportType exportFormat="PDF" />
+			</exportTypes>
+			<containers>
+				<sheetTypeRef name="Bug" />
+			</containers>
+		</reportModel>
+
+		<reportModel name="AllSheets" path="report_models/bugs1.jasper"
+			description="my PDF or XLS report for bugs or analysis.">
+			<exportTypes>
+				<exportType exportFormat="PDF" />
+				<exportType exportFormat="XLS" />
+			</exportTypes>
+			<containers>
+				<sheetTypeRef name="Bug" />
+				<sheetTypeRef name="Analysis" />
+			</containers>
+		</reportModel>
+
+		<reportModel name="PDF_for_a_bug" path="report_models/a_bug.jasper"
+			description="PDF report for a bug.">
+			<exportTypes>
+				<exportType exportFormat="PDF" />
+			</exportTypes>
+			<containers>
+				<sheetTypeRef name="Bug" />
+			</containers>
+		</reportModel>
+	</reports>
+
+</gpm>

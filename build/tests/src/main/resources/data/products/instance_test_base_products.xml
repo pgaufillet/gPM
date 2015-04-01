@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+	<version>1.2</version>
+
+	<!-- Products's definition  -->
+	<products>
+		<!-- Product Bernard's store -->
+		<product name="Bernard's store" type="Store"
+			productDescription="Chez Bernard">
+			<environmentNames>
+				<environmentName name="Professional" />
+			</environmentNames>
+			<fieldValues>
+				<fieldValue name="product_name" value="Bernard's store" />
+				<fieldValue name="product_location" value="Lyon" />
+				<fieldValue name="product_storetype" value="Police" />
+			</fieldValues>
+			<attributes>
+				<attribute name="product_url" value="http://www.google.fr">
+					<!--
+						example product's URL attribute
+					-->
+				</attribute>
+			</attributes>
+		</product>
+
+		<!-- SubProducts for Bernard's Store -->
+		<product name="store1" type="Store" envName="Professional" id="store1"
+			productDescription="Chez Store1">
+			<fieldValues>
+				<fieldValue name="product_name" value="store1" />
+				<fieldValue name="product_location" value="Lyon" />
+				<fieldValue name="product_storetype" value="Self Defense" />
+			</fieldValues>
+			<parents>
+				<parent name="Bernard's store" />
+			</parents>
+			<attributes>
+				<attribute name="productAttr1" value="val1" />
+				<!-- Multi value attribute -->
+				<attribute name="productAttr2">
+					<attributeValue>multi1</attributeValue>
+					<attributeValue>multi2</attributeValue>
+				</attribute>
+			</attributes>
+		</product>
+
+		<!-- SubProducts for Bernard's Store -->
+		<product name="store1_1" type="Store" envName="Professional"
+			id="store11" productDescription="Chez Store1_1">
+			<fieldValues>
+				<fieldValue name="product_name" value="store11" />
+				<fieldValue name="product_location" value="Lyon" />
+				<fieldValue name="product_storetype" value="Self Defense" />
+			</fieldValues>
+			<parents>
+				<parent name="store1" />
+			</parents>
+		</product>
+		<product name="store2" type="Store" envName="Professional" id="store2"
+			productDescription="Chez Store2">
+			<fieldValues>
+				<fieldValue name="product_name" value="store2" />
+				<fieldValue name="product_location" value="Lyon" />
+				<fieldValue name="product_storetype" value="Self Defense" />
+			</fieldValues>
+			<parents>
+				<parent name="Bernard's store" />
+			</parents>
+		</product>
+
+		<!-- Product Happy Mouse -->
+		<product name="Happy Mouse" type="Store">
+			<environmentNames>
+				<environmentName name="Classical_1" />
+				<environmentName name="Classical" />
+			</environmentNames>
+			<fieldValues>
+				<fieldValue name="product_location" value="Toulouse" />
+				<fieldValue name="product_location" value="Lund" />
+			</fieldValues>
+		</product>
+
+		<!-- Product environment test store -->
+		<product name="environment test store" type="Store" envName="Env1">
+			<fieldValues>
+				<fieldValue name="product_location" value="Toulouse" />
+			</fieldValues>
+		</product>
+
+		<!-- SubProducts for environment test store -->
+		<product name="substore" type="Store" envName="Env2">
+			<fieldValues>
+				<fieldValue name="product_location" value="Lyon" />
+			</fieldValues>
+			<parents>
+				<parent name="environment test store" />
+				<parent name="Bernard's store" />
+			</parents>
+		</product>
+		<product name="product1" type="Store" envName="Env2"></product>
+		<product name="product1_1" type="Store" envName="Env1">
+			<fieldValues>
+				<fieldValue name="product_name" value="name_1_1" />
+			</fieldValues>
+			<parents>
+				<parent name="product1" />
+			</parents>
+		</product>
+		<product name="product1_2" type="Store" envName="Env2">
+			<fieldValues>
+				<fieldValue name="product_name" value="name_1_2" />
+			</fieldValues>
+			<parents>
+				<parent name="product1" />
+			</parents>
+		</product>
+		<product name="product2" type="Store" envName="Env2"></product>
+		<product name="product3" type="Store" envName="Env1"></product>
+
+		<!-- No user should have any role on this product  -->
+		<product name="productWithNoUsers" type="Store" envName="Env2">
+		</product>
+		
+		<!-- Product4  -->
+        <product name="product4" type="Store">
+            <environmentNames>
+                <environmentName name="Professional" />
+            </environmentNames>
+            <fieldValues>
+                <fieldValue name="product_name" value="productTestImport" />
+                <fieldValue name="product_location" value="location" />
+                <fieldValue name="product_storetype" value="Police" />
+            </fieldValues>
+            <attributes>
+                <attribute name="productTestImport_02_attribute" value="value" />
+            </attributes>
+        </product>
+		
+		<!-- Product Restaurant -->
+		<product name="ChezMimoun" type="Store"
+			productDescription="A table">
+			<environmentNames>
+				<environmentName name="Professional" />
+			</environmentNames>
+			<fieldValues>
+				<fieldValue name="product_name" value="ChezMimoun" />
+				<fieldValue name="product_location" value="Paris" />
+				<fieldValue name="product_storetype" value="Self Defense" />
+			</fieldValues>
+			<attributes>
+				<attribute name="product_url" value="http://www.google.fr">
+					<!--
+						example product's URL attribute
+					-->
+				</attribute>
+			</attributes>
+		</product>
+		
+	</products>
+
+	<productLinks>
+		<productLink type="ProdLinkType" originId="store1"
+			destinationId="store2">
+			<fieldValues>
+				<fieldValue name="productLinkField1" value="value"></fieldValue>
+			</fieldValues>
+		</productLink>
+	</productLinks>
+</gpm>

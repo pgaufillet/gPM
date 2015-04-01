@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF8"?>
+
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+
+<version>1.2</version>
+
+<users>
+    <user login="userCategoryImport_01" password="pwd" name="User category 01" />
+</users>
+
+<roles>
+    <role name="categoryRoleImportTest"/>
+</roles>
+
+<dictionary>
+    <categories>
+        <category name="catTest_01" access="Process">
+            <values>
+                <categoryValue value="catTest_01_value_01"/>
+                <categoryValue value="catTest_01_value_02"/>
+                <categoryValue value="catTest_01_value_03"/>
+            </values>
+        </category>
+        <category name="catTest_02" access="Product">
+            <values>
+                <categoryValue value="catTest_02_value_01"/>
+                <categoryValue value="catTest_02_value_02"/>
+                <categoryValue value="catTest_02_value_03"/>
+            </values>
+        </category>
+        <category name="catTest_03" access="User">
+            <values>
+                <categoryValue value="catTest_03_value_01"/>
+                <categoryValue value="catTest_03_value_02"/>
+                <categoryValue value="catTest_03_value_03"/>
+            </values>
+        </category>
+    </categories>
+</dictionary>
+
+<userRoles>
+    <userRole roleName="categoryRoleImportTest" login="userCategoryImport_01"/>
+</userRoles>
+
+<accessControls>
+    <adminAccess actionKey="gpm.administration.dictionary.modify" role="categoryRoleImportTest" />
+</accessControls>
+</gpm>

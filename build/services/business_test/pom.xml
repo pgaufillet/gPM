@@ -1,0 +1,267 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <groupId>org.topcased.gpm</groupId>
+        <artifactId>gPM-services</artifactId>
+        <version>1</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>gPM-services-business-test</artifactId>
+    <packaging>jar</packaging>
+    <version>${gpm.version}</version>
+    <name>gPM-services business-test</name>
+    <url>/gPM-services/gPM-services-business-test/</url>
+
+    <build>
+        <defaultGoal>install</defaultGoal>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven.surefire.version}</version>
+
+                <configuration>
+                    <includes>
+                        <include>${gpm.unit-tests}</include>
+                        <include>${gpm.integration-tests}</include>
+                    </includes>
+			  <!-- 
+				Increase the max sire of the JVM because migration need 
+				more than 64 Mo
+                    -->
+                    <argLine>-Xmx128m</argLine>
+                    <systemProperties>
+                        <!-- Path of the benchmark file containing the reference execution times
+                            for the tests. The actual execution time is compared to
+                            theses references
+                        -->
+                        <property>
+                            <name>gPM.benchmark-file</name>
+                            <value>${gPM.benchmark-file}</value>
+                        </property>
+
+                        <!-- Needed to use the AWT library in 'headless' mode. The AWT is used
+                            by JaserReports when a report uses image  (as the AWT classes are used
+                            in this case). As no X server is setup (and none should be required),
+                            this property must be set.
+                        -->
+                        <property>
+                            <name>java.awt.headless</name>
+                            <value>true</value>
+                        </property>
+                        
+                        <!-- Specify if the DB must be re-initialized or not. -->
+                        <property>
+                            <name>gPM.disable-tests-db-init</name>
+                            <value>${gPM.no-tests-db-init}</value>
+                        </property>
+                        
+                    </systemProperties>
+                </configuration>
+            </plugin>
+
+            <!-- Reference the source of business module -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>${mojo.buildhelper.version}</version>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>
+                                    ${pom.basedir}/../business/src/main/java
+                                </source>
+                                <source>
+                                    ${pom.basedir}/../business/target/src
+                                </source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+        <resources>
+            <resource>
+                <filtering>true</filtering>
+                <directory>
+                    ${pom.basedir}/src/main/resources/
+                </directory>
+            </resource>
+
+            <resource>
+                <filtering>false</filtering>
+                <directory>
+                    ${pom.basedir}/../business/src/main/resources/
+                </directory>
+            </resource>
+            <resource>
+                <filtering>false</filtering>
+                <directory>
+                    ${pom.basedir}/../business/target/src/
+                </directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <filtering>false</filtering>
+                <directory>
+                    ${pom.basedir}/../business/src/main/java
+                </directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
+        </resources>
+    </build>
+    <reporting>
+        <plugins>
+            <!-- Unit test report -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>${maven.surefire.report.version}</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>cobertura-maven-plugin</artifactId>
+                <version>${mojo.cobertura.version}</version>
+                <configuration>
+                    <instrumentation>
+                        <excludes>
+                            <exclude>**/*Test.class</exclude>
+                            <exclude>**/Abstract*Test*.class</exclude>
+                            <exclude>**/dump/**/*.class</exclude>
+                        </excludes>
+                    </instrumentation>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
+
+    <dependencies>
+        <dependency>
+            <groupId>${groupId}</groupId>
+            <artifactId>gPM-tests-framework</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${groupId}</groupId>
+            <artifactId>gPM-tools-resetinstance</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>${groupId}</groupId>
+                    <artifactId>gPM-services-business</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>${groupId}</groupId>
+            <artifactId>gPM-services-dao</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.topcased.gpm.commons</groupId>
+            <artifactId>gpm-commons-bean</artifactId>
+        </dependency>
+		<!--
+		<dependency>
+			<groupId>org.topcased.gpm</groupId>
+			<artifactId>gPM-webservices-client-v2</artifactId>
+			<version>${gpm.version}</version>
+		</dependency>
+		-->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+        </dependency>
+
+        <!-- JBPM -->
+        <!--dependency>
+            <groupId>org.jbpm</groupId>
+            <artifactId>jbpm</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jbpm</groupId>
+            <artifactId>jbpm-identity</artifactId>
+        </dependency-->
+
+        <!-- Jung module -->
+        <dependency>
+            <groupId>jung</groupId>
+            <artifactId>jung</artifactId>
+        </dependency>
+
+        <!-- jasper reports : used for export -->
+        <dependency>
+            <groupId>jasperreports</groupId>
+            <artifactId>jasperreports</artifactId>
+        </dependency>
+
+        <!-- Used for legacy sheets export -->
+        <dependency>
+            <groupId>poi</groupId>
+            <artifactId>poi</artifactId>
+   	</dependency>
+   	<dependency>
+            <groupId>net.sf.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.lowagie</groupId>
+            <artifactId>itext</artifactId>
+        </dependency>
+
+        <!-- Beanshell Framework & Script engines impl. -->
+        <dependency>
+            <groupId>bsf</groupId>
+            <artifactId>bsf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>bsh</groupId>
+            <artifactId>bsh</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.activation</groupId>
+            <artifactId>activation</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>xpp3</groupId>
+            <artifactId>xpp3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.thoughtworks.xstream</groupId>
+            <artifactId>xstream</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>xalan</groupId>
+            <artifactId>xalan</artifactId>
+        </dependency>
+		<dependency>
+			<groupId>org.springframework.ldap</groupId>
+			<artifactId>spring-ldap</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.ldap</groupId>
+			<artifactId>spring-ldap-tiger</artifactId>
+		</dependency>
+    </dependencies>
+</project>

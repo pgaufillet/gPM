@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+	
+	<version>1.2</version>
+
+	<filters>
+		<sheetFilter labelKey="FilterOnSeveralLevel">
+			<containers>
+				<sheetTypeRef name="SheetWithSomeConfidentialFields" />
+			</containers>
+			<scope>
+				<productScope name="store1" includeSubProducts="true" />
+				<productScope name="store2"/>
+			</scope>
+			<criteria>
+				<criteriaGroup>
+				    <!-- LEVEL 1 - STRING -->
+					<criterion fieldKey="SheetWithSomeConfidentialFields_Field1"
+						operator="=" value="value1" caseSensitive="true" />
+				    <!-- LEVEL 1 - LINK - INTEGER -->
+					<criterion
+						fieldKey="SheetLinkWithSomeConfidentialFields|SheetLinkWithSomeConfidentialFields_Field3"
+						operator="=" value="0" caseSensitive="true" />
+				    <!-- LEVEL 2 - LINK - REAL -->
+				    <criterion
+                        fieldKey="SheetLinkWithSomeConfidentialFields|SheetMultipleWithSomeConfidentialFields|SheetLinkWithSomeConfidentialFields|SheetLinkWithSomeConfidentialFields_Field3"
+                        operator="=" value="1" caseSensitive="true" />
+                    <!-- LEVEL 1 - LINKED SHEET - BOOLEAN -->
+					<criterion
+						fieldKey="SheetLinkWithSomeConfidentialFields|SheetMultipleWithSomeConfidentialFields|SheetMultipleWithSomeConfidentialFields_multiple1_Field1"
+						operator="=" value="false" caseSensitive="true" />
+				    <!-- LEVEL 1 - LINKED SHEET - $SHEET_STATE - CHOICE -->
+				    <criterion
+                        fieldKey="SheetLinkWithSomeConfidentialFields|SheetMultipleWithSomeConfidentialFields|$SHEET_STATE"
+                        operator="=" value="Temporary" caseSensitive="true" />
+                    <!-- LEVEL 2 - LINKED SHEET - DATE -->
+                    <criterion
+						fieldKey="SheetLinkWithSomeConfidentialFields|SheetMultipleWithSomeConfidentialFields|SheetLinkWithSomeConfidentialFields|SheetWithSomeConfidentialFields|SheetWithSomeConfidentialFields_Field3"
+						operator="=" value="2009-04-04" caseSensitive="true" />
+				</criteriaGroup>
+			</criteria>
+			<resultSummary>
+				<fieldResult name="SheetWithSomeConfidentialFields_ref" />
+			</resultSummary>
+		</sheetFilter>
+		<sheetFilter labelKey="FilterOnSeveralLevel_ProductFields">
+            <containers>
+                <sheetTypeRef name="SheetWithSomeConfidentialFields" />
+            </containers>
+            <criteria>
+                <criteriaGroup>
+                    <criterion fieldKey="Store|product_name"
+                        operator="=" value="store1" caseSensitive="true" />
+                </criteriaGroup>
+            </criteria>
+            <resultSummary>
+                <fieldResult name="SheetWithSomeConfidentialFields_ref" />
+            </resultSummary>
+        </sheetFilter>
+	</filters>
+</gpm>

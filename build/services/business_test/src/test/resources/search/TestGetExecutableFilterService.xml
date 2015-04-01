@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+	<version>1.2</version>
+
+	<filterAccessControls>
+		<filterAccess typeName="Cat" editable="false" />
+
+		<filterAccess typeName="TestPointerFields1" executable="false" />
+
+		<filterAccess typeName="SheetType1" fieldName="SHEETTYPE1_currentDate"
+			editable="false" />
+
+		<filterAccess typeName="SheetWithSomeConfidentialFields"
+			fieldName="SheetWithSomeConfidentialFields_Field1" executable="false" />
+
+		<filterAccess typeName="type_vfd_01" fieldName="$SHEET_STATE"
+			editable="false" />
+
+		<filterAccess typeName="FILTER_TEST_SHEET_01" fieldName="$SHEET_REFERENCE"
+			executable="false" />
+	</filterAccessControls>
+
+</gpm>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition
+  xmlns="http://jbpm.org/3/jpdl"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://jbpm.org/3/jpdl http://jbpm.org/xsd/jpdl-3.0.xsd"
+  name="sameSheetTypeM_01">
+   <start-state name="Open">
+      <transition name="Close" to="Closed"></transition>
+   </start-state>
+   <end-state name="Closed"></end-state>
+</process-definition>

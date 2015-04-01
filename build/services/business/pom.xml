@@ -1,0 +1,331 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<parent>
+		<groupId>org.topcased.gpm</groupId>
+		<artifactId>gPM-services</artifactId>
+		<version>1</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>gPM-services-business</artifactId>
+	<packaging>jar</packaging>
+	<version>${gpm.version}</version>
+	<name>gPM-services business</name>
+	<url>/gPM-services/gPM-services-business/</url>
+	<build>
+		<defaultGoal>install</defaultGoal>
+		<plugins>
+			<!-- Just To deal with multiple source directories -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+                <version>${mojo.buildhelper.version}</version>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>target/src/</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<!-- hibernate ddl generation -->
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>hibernate3-maven-plugin</artifactId>
+                <version>${mojo.hibernate3.version}</version>
+				<configuration>
+					<components>
+						<component>
+							<name>hbm2ddl</name>
+							<outputDirectory>.</outputDirectory>
+						</component>
+					</components>
+					<componentProperties>
+                        <configurationfile>${pom.basedir}/../dao/src/main/java/hibernate.cfg.xml</configurationfile>
+                        <export>false</export>
+                        <format>true</format>
+                        <console>false</console>
+                    </componentProperties>
+                    <quiet>true</quiet>
+				</configuration>
+				<executions>
+					<execution>
+						<id>export-oracle-create-statements</id>
+						<phase>process-classes</phase>
+						<goals>
+							<goal>hbm2ddl</goal>
+						</goals>
+						<configuration>
+							<componentProperties>
+								<propertyfile>${pom.basedir}/src/main/resources/hbm2ddl_oracle.properties</propertyfile>
+								<outputfilename>target/ddl/oracle/CreateStatements.ddl</outputfilename>
+								<drop>false</drop>
+								<create>true</create>
+							</componentProperties>
+						</configuration>
+					</execution>
+					<execution>
+                        <id>export-oracle-drop-statements</id>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>hbm2ddl</goal>
+                        </goals>
+                        <configuration>
+                            <componentProperties>
+                                <propertyfile>${pom.basedir}/src/main/resources/hbm2ddl_oracle.properties</propertyfile>
+                                <outputfilename>target/ddl/oracle/DropStatements.ddl</outputfilename>
+                                <drop>true</drop>
+                                <create>false</create>
+                            </componentProperties>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>export-pgsql-create-statements</id>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>hbm2ddl</goal>
+                        </goals>
+                        <configuration>
+                            <componentProperties>
+                                <propertyfile>${pom.basedir}/src/main/resources/hbm2ddl_pgsql.properties</propertyfile>
+                                <outputfilename>target/ddl/pgsql/CreateStatements.ddl</outputfilename>
+                                <drop>false</drop>
+                                <create>true</create>
+                            </componentProperties>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>export-pgsql-drop-statements</id>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>hbm2ddl</goal>
+                        </goals>
+                        <configuration>
+                            <componentProperties>
+                                <propertyfile>${pom.basedir}/src/main/resources/hbm2ddl_pgsql.properties</propertyfile>
+                                <outputfilename>target/ddl/pgsql/DropStatements.ddl</outputfilename>
+                                <drop>true</drop>
+                                <create>false</create>
+                            </componentProperties>
+                        </configuration>
+                     </execution>
+				</executions>
+			</plugin>
+			<!--  Javadoc -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven.javadoc.version}</version>
+			</plugin>
+
+			<!-- SCM -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-scm-plugin</artifactId>
+				<version>${maven.scm.version}</version>
+				<configuration>
+					<goals>install</goals>
+				</configuration>
+			</plugin>
+		</plugins>
+
+		<!-- Otherwise no resource would be included in the JAR file -->
+		<resources>
+			<resource>
+				<filtering>false</filtering>
+				<directory> ${pom.basedir}/src/main/resources/</directory>
+			</resource>
+			<resource>
+				<filtering>false</filtering>
+				<directory>${pom.basedir}/target/src/</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				<filtering>false</filtering>
+				<directory>${pom.basedir}/src/main/java</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				<filtering>true</filtering>
+				<directory> ${pom.basedir}/src/test/resources/ 
+                </directory>
+			</resource>
+		</resources>
+	</build>
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<configuration>
+					<!--
+						Create the JavaDoc for both project source files & generated files
+						from the model.
+					-->
+					<sourcepath>
+						${basedir}/src/main/java;${basedir}/target/src 
+                    </sourcepath>
+
+					<!--  Hide author names in JavaDoc -->
+					<author>false</author>
+
+					<!-- Add gPM version in the doc title -->
+					<doctitle>gPM ${project.version} API</doctitle>
+					<linksource>true</linksource>
+
+					<!-- Add reference to external Javadoc to allow easier browsing -->
+					<links>
+						<link> http://java.sun.com/j2se/1.5.0/docs/api/ 
+                        </link>
+					</links>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
+	<dependencies>
+		<dependency>
+			<groupId>${groupId}</groupId>
+			<artifactId>gPM-services-dao</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.topcased.gpm.commons</groupId>
+			<artifactId>gpm-commons-bean</artifactId>
+		</dependency>
+
+		<!-- JBPM -->
+		<!--dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-identity</artifactId>
+		</dependency-->
+
+        <!-- Jakarta commons-IO -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+        </dependency>
+        
+		<!-- Jung module -->
+		<dependency>
+			<groupId>jung</groupId>
+			<artifactId>jung</artifactId>
+		</dependency>
+
+		<!-- jasper reports : used for export -->
+		<dependency>
+			<groupId>jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+		</dependency>
+		
+		<!-- jexcel api : used for excel report -->
+        <dependency>
+            <groupId>net.sourceforge.jexcelapi</groupId>
+            <artifactId>jxl</artifactId>
+            <version>${jxl.vesion}</version>
+        </dependency>
+
+		<!-- Used for legacy sheets export -->
+		<dependency>
+			<groupId>net.sf.opencsv</groupId>
+			<artifactId>opencsv</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>poi</groupId>
+			<artifactId>poi</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.lowagie</groupId>
+			<artifactId>itext</artifactId>
+		</dependency>
+
+		<!-- Beanshell Framework & Script engines impl. -->
+		<dependency>
+			<groupId>bsf</groupId>
+			<artifactId>bsf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>bsh</groupId>
+			<artifactId>bsh</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.activation</groupId>
+			<artifactId>activation</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>xpp3</groupId>
+			<artifactId>xpp3</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.thoughtworks.xstream</groupId>
+			<artifactId>xstream</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>xalan</groupId>
+			<artifactId>xalan</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.ldap</groupId>
+			<artifactId>spring-ldap</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.ldap</groupId>
+			<artifactId>spring-ldap-tiger</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jsr173_api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>xml-apis</groupId>
+			<artifactId>xml-apis</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.opensymphony.quartz</groupId>
+			<artifactId>quartz</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>asm</groupId>
+			<artifactId>asm</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-annotations</artifactId>
+		</dependency>
+		<dependency>
+    			<groupId>org.hibernate</groupId>
+    			<artifactId>hibernate-commons-annotations</artifactId>
+		</dependency>
+	</dependencies>
+</project>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+	<version>1.2</version>
+	<reports>
+		<reportModel name="SheetsInPDF_model_1" path="metadata/reports/src/reportModel_1.jasper" description="Export a list of sheets in PDF format ">
+			<exportTypes>
+				<exportType exportFormat="PDF" />
+                <exportType exportFormat="XLS" />
+			</exportTypes>
+			<containers>
+				<sheetTypeRef name="SHEET_1" />
+				<sheetTypeRef name="CONFIDENTIAL_SHEET" />
+			</containers>
+		</reportModel>
+        <reportModel name="SheetsInPDF_model_2" path="metadata/reports/src/reportModel_2.jasper" description="Export a list of sheets in PDF format ">
+            <exportTypes>
+                <exportType exportFormat="PDF" />
+                <exportType exportFormat="XLS" />
+            </exportTypes>
+            <containers>
+                <sheetTypeRef name="SHEET_1" />
+            </containers>
+        </reportModel>
+    </reports>
+</gpm>

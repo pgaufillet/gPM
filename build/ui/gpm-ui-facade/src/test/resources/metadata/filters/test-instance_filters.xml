@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+	<!-- edited with XMLSpy v2005 rel. 3 U (http://www.altova.com) by AIRBUS FRANCE (AIRBUS FRANCE)-->
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+	<version>1.2</version>
+	<filters>
+		<!-- PRODUCTS FILTER -->
+		<productFilter labelKey="PRODUCTS LIST TABLE/TREE" filterUsage="all">
+			<containers>
+				<productTypeRef name="PRODUCT" />
+			</containers>
+			<resultSummary>
+				<fieldResult name="PRODUCT_NAME" sort="none" displayed="true" />
+			</resultSummary>
+		</productFilter>
+		<productFilter labelKey="ProductProductLink_PRODUCT_PRODUCT" filterUsage="table"
+			hidden="true">
+			<containers>
+				<productTypeRef name="PRODUCT" />
+			</containers>
+			<resultSummary>
+				<fieldResult name="PRODUCT_NAME" sort="none" displayed="true" />
+			</resultSummary>
+		</productFilter>
+
+		<!-- SHEETS FILTER -->
+		<sheetFilter labelKey="SHEET_1 LIST TABLE" filterUsage="table"
+			description="SHEET_1 list for the current product ">
+			<containers>
+				<sheetTypeRef name="SHEET_1" />
+			</containers>
+			<resultSummary>
+				<fieldResult name="REF_id" sort="none" displayed="true" label="NEW_REF_Id" />
+				<fieldResult name="SHEET_NAME" sort="none" displayed="true" />
+				<fieldResult name="FILTER_RESULT_FIELD_1" sort="desc" displayed="true" />
+				<fieldResult name="FILTER_RESULT_FIELD_2" sort="none" displayed="true" label="NEW_FRF2" />
+			</resultSummary>
+			<criteria>
+				<criteriaGroup>
+					<criterion fieldKey="SHEET_NAME" operator="!=" caseSensitive="true" value="plop" />
+					<criterion fieldKey="INTEGER_SIMPLE_FIELD" operator="greaterOrEqual" value="158" />
+				</criteriaGroup>
+                <criteriaGroup>
+                    <criterion fieldKey="SHEET_NAME" operator="like" caseSensitive="true" value="LIKE*me" />
+                </criteriaGroup>
+                <criteriaGroup>
+                    <criterion fieldKey="SHEET_NAME" operator="notLike" value="NotLIKEmE" />
+                    <criterion fieldKey="BOOLEAN_SIMPLE_FIELD" operator="=" value="false" />
+                    <criterion fieldKey="URL_DISPLAY_HINT" operator="=" value="www.gPm.fr" />
+                </criteriaGroup>
+			</criteria>
+			<scope>
+				<productScope name="$CURRENT_PRODUCT" includeSubProducts="false" />
+				<productScope name="EMPTY_ROOT_PRODUCT" includeSubProducts="true" />
+			</scope>
+		</sheetFilter>
+		<sheetFilter labelKey="SHEET_1 LIST TREE" filterUsage="tree" description="SHEET_1 -> SHEET_1 link">
+			<containers>
+				<sheetTypeRef name="SHEET_1" />
+			</containers>
+			<resultSummary>
+				<fieldResult name="REF_id" sort="none" displayed="true" />
+				<fieldResult name="SHEET_NAME" sort="none" displayed="true" />
+				<fieldResult name="FILTER_RESULT_FIELD_1" sort="desc" displayed="true" />
+				<fieldResult name="FILTER_RESULT_FIELD_2" sort="none" displayed="true" />
+			</resultSummary>
+			<scope>
+				<productScope name="$CURRENT_PRODUCT" includeSubProducts="false" />
+			</scope>
+		</sheetFilter>
+
+		<!-- SHEET_1/SHEET_1 link -->
+		<sheetFilter labelKey="Sheet1Sheet1Link_SHEET_1_SHEET_1" filterUsage="table" hidden="true"
+			description="SHEET_1 list for the current product ">
+			<containers>
+				<sheetTypeRef name="SHEET_1" />
+			</containers>
+			<resultSummary>
+				<fieldResult name="REF_id" sort="none" displayed="true" />
+				<fieldResult name="SHEET_NAME" sort="none" displayed="true" />
+				<fieldResult name="FILTER_RESULT_FIELD_1" sort="desc" displayed="true" />
+				<fieldResult name="FILTER_RESULT_FIELD_2" sort="none" displayed="true" />
+			</resultSummary>
+			<scope>
+				<productScope name="$CURRENT_PRODUCT" includeSubProducts="false" />
+			</scope>
+		</sheetFilter>
+
+		<!-- SHEET_1/CONFIDENTIAL_SHEET link -->
+		<sheetFilter labelKey="Sheet1ConfidentialSheetLink_SHEET_1_CONFIDENTIAL_SHEET">
+			<containers>
+				<sheetTypeRef name="CONFIDENTIAL_SHEET" />
+			</containers>
+			<resultSummary>
+				<fieldResult name="REF_id" sort="none" displayed="true" />
+			</resultSummary>
+			<scope>
+				<productScope name="$CURRENT_PRODUCT" includeSubProducts="false" />
+			</scope>
+		</sheetFilter>
+
+		<!-- CONFIDENTIAL_SHEET/SHEET_1 link -->
+		<sheetFilter labelKey="Sheet1ConfidentialSheetLink_CONFIDENTIAL_SHEET_SHEET_1">
+			<containers>
+				<sheetTypeRef name="SHEET_1" />
+			</containers>
+			<resultSummary>
+				<fieldResult name="REF_id" sort="none" displayed="true" />
+			</resultSummary>
+			<scope>
+				<productScope name="$CURRENT_PRODUCT" includeSubProducts="false" />
+			</scope>
+		</sheetFilter>
+
+		<sheetFilter labelKey="SHEET_1_SHEET_1_initFilter" filterUsage="table" hidden="true"
+			description="Initialize a SHEET_1 from another SHEET_1">
+			<containers>
+				<sheetTypeRef name="SHEET_1" />
+			</containers>
+			<resultSummary>
+				<fieldResult name="REF_id" sort="none" displayed="true" />
+				<fieldResult name="SHEET_NAME" sort="none" displayed="true" />
+				<fieldResult name="FILTER_RESULT_FIELD_1" sort="desc" displayed="true" />
+				<fieldResult name="FILTER_RESULT_FIELD_2" sort="none" displayed="true" />
+			</resultSummary>
+			<scope>
+				<productScope name="$CURRENT_PRODUCT" includeSubProducts="false" />
+			</scope>
+		</sheetFilter>
+
+		<!-- LINKS FILTER -->
+		<sheetFilter labelKey="SHEET LINK TABLE/TREE" filterUsage="all">
+			<containers>
+				<sheetTypeRef name="SHEET_1" />
+			</containers>
+			<resultSummary>
+				<fieldResult name="SHEET_NAME" sort="none" displayed="true" />
+				<fieldResult name="Sheet1Sheet1Link|Sheet1Sheet1_F3" sort="none" displayed="true"
+					label="Link F3" />
+				<fieldResult name="Sheet1Sheet1Link|SHEET_1|SHEET_NAME" sort="none" displayed="true"
+					label="Destination Sheet" />
+			</resultSummary>
+		</sheetFilter>
+	</filters>
+</gpm>

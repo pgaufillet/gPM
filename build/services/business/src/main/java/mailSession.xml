@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <bean id="jndiMailSender"
+        class="org.springframework.mail.javamail.JavaMailSenderImpl"
+        lazy-init="true" >
+        <property name="session" ref="jndiMailSession" />
+    </bean>
+
+    <bean id="jndiMailSession"
+        class="org.springframework.jndi.JndiObjectFactoryBean"
+        lazy-init="true" >
+        <property name="jndiName" value="${jndiMailSessionName}" />
+    </bean>
+
+    <bean id="localMailSender"
+        class="org.springframework.mail.javamail.JavaMailSenderImpl"
+        lazy-init="true">
+        <property name="host" value="${smtp.host}" />
+        <property name="port" value="${smtp.port}" />
+    </bean>
+</beans>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <!-- Global configurer -->
+    <bean id="configurer"
+        class="org.topcased.gpm.util.config.Configurer">
+        <property name="ignoreResourceNotFound" value="true" />
+        <property name="systemPropertiesModeName"
+            value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+        <property name="locations">
+            <list>
+                <!-- Read default properties values -->
+                <value>classpath:defaultConfig.properties</value>
+
+                <!-- Read the properties values of the WEB UI (if any) -->
+                <value>classpath:webConfig.properties</value>
+
+                <!-- Read local site config
+                    (that may override the default values)
+                -->
+                <value>classpath:config.properties</value>
+
+                <value>classpath:dataSource.properties</value>
+
+                <value>classpath:ldap.properties</value>
+            </list>
+        </property>
+
+        <property name="localConfigDirProp" value="GPM_HOME" />
+
+        <property name="fileNames">
+            <list>
+                <value>config.properties</value>
+                <value>dataSource.properties</value>
+                <value>ldap.properties</value>
+            </list>
+        </property>
+    </bean>
+</beans>

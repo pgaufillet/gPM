@@ -1,0 +1,29 @@
+//      Initialize the costing field of an AM
+import org.topcased.gpm.business.sheet.service.SheetData;
+import org.topcased.gpm.business.sheet.service.sheetAccess.MultiLineFieldDataAccess;
+import org.topcased.gpm.business.sheet.service.sheetAccess.MultipleFieldDataAccess;
+import org.topcased.gpm.business.sheet.service.sheetAccess.SheetDataAccess;
+import org.topcased.gpm.business.sheet.service.sheetAccess.SimpleFieldDataAccess;
+
+//      get the sheetData
+     SheetData sheetData = context.get("sheetData");
+
+//      get the  sheetDataAccess(permettant d'accéder aux champs de la sheetdata)
+     SheetDataAccess sheetDataAccess = new SheetDataAccess(sheetData);
+
+//      initialize values for the multiple field costing 
+   MultiLineFieldDataAccess multipleFieldLines = (MultiLineFieldDataAccess)sheetDataAccess.getField("ANALYSIS_costing");
+   if( multipleFieldLines !=null ){
+       if(multipleFieldLines.getFields().size()>0){
+           int i=0;
+         ((SimpleFieldDataAccess)((MultipleFieldDataAccess)multipleFieldLines.get(i)).getField("ANALYSIS_task")).setValue("Specification");
+          i=multipleFieldLines.addLine();
+          ((SimpleFieldDataAccess)((MultipleFieldDataAccess)multipleFieldLines.get(i)).getField("ANALYSIS_task")).setValue("Architecture");
+          i=multipleFieldLines.addLine();
+          ((SimpleFieldDataAccess)((MultipleFieldDataAccess)multipleFieldLines.get(i)).getField("ANALYSIS_task")).setValue("Coding");
+          i=multipleFieldLines.addLine();
+          ((SimpleFieldDataAccess)((MultipleFieldDataAccess)multipleFieldLines.get(i)).getField("ANALYSIS_task")).setValue("Testing");
+          i=multipleFieldLines.addLine();
+          ((SimpleFieldDataAccess)((MultipleFieldDataAccess)multipleFieldLines.get(i)).getField("ANALYSIS_task")).setValue("Documentation");
+      }
+    }

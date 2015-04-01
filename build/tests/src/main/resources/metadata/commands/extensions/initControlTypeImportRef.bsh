@@ -1,0 +1,3 @@
+import org.topcased.gpm.business.exception.ImportException;
+
+throw new ImportException("Error", null);

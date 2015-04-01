@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<gpm xmlns="http://www.airbus.com/topcased/gPM"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+
+    <version>1.2</version>
+    
+     <accessControls>
+        <containerTypeAccess typeName="ControlType2" confidential="false">
+            <attributes>
+                <attribute name="type" value="product" />
+                <attribute name="fieldList">
+                    <attributeValue value="field1" />
+                    <attributeValue value="field2" />
+                </attribute>
+            </attributes>
+        </containerTypeAccess>
+     </accessControls>
+</gpm>

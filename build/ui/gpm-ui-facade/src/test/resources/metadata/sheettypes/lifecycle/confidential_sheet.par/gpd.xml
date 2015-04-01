@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root-container name="CONFIDENTIAL_SHEET" width="728" height="410">
+  <node name="INIT" x="61" y="198" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="CREATED" x="304" y="154" width="205" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="CLOSED" x="564" y="227" width="163" height="36"/>
+</root-container>

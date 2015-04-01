@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <!-- 
+        serialization service
+    -->
+
+    <bean id="serializationServiceImpl" parent="serviceImplBase" autowire="byName"
+        class="org.topcased.gpm.business.serialization.impl.SerializationServiceImpl">
+    </bean>
+
+    <bean id="serializationService"
+        class="org.springframework.aop.framework.ProxyFactoryBean"
+        parent="interceptedService">
+        <property name="target" ref="serializationServiceImpl" />
+
+        <property name="proxyInterfaces"
+            value="org.topcased.gpm.business.serialization.service.SerializationService" />
+    </bean>
+</beans>

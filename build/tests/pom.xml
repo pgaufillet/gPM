@@ -1,0 +1,39 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <groupId>org.topcased.gpm</groupId>
+        <artifactId>gPM</artifactId>
+        <version>1</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>gPM-tests-framework</artifactId>
+    <packaging>jar</packaging>
+    <version>${gpm.version}</version>
+    <name>gPM-tests-framework</name>
+    <url>/gPM-tests-framework/</url>
+
+    <build>
+        <defaultGoal>install</defaultGoal>
+        <resources>
+            <resource>
+                <filtering>true</filtering>
+                <directory>
+                    ${pom.basedir}/src/main/filtered-resources/
+                </directory>
+            </resource>
+            <resource>
+                <filtering>false</filtering>
+                <directory>
+                    ${pom.basedir}/src/main/resources/
+                </directory>
+            </resource>
+        </resources>
+    </build>
+    <dependencies>
+    	<dependency>
+    		<groupId>${groupId}</groupId>
+    		<artifactId>gPM-services-business</artifactId>
+    	</dependency>
+    </dependencies>
+</project>

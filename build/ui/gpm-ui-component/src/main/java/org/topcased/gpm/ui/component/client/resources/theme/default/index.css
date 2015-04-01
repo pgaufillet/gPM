@@ -1,0 +1,1173 @@
+/**
+ Default CSS theme
+ Base color:
+    #D3D3D3: Grey
+    #F3F3F3: Lighter grey
+    #F29200: Orange
+    #0072BC: Blue
+    #6AAEDD: Lighter blue
+*/
+body {
+	font-family: Verdana,Arial,Helvetica,sans-serif;
+	font-size: 11px;
+}
+
+/* GPM BUTTONS */
+.gpmImageButton {
+	cursor: pointer;
+	cursor: hand;
+	height: 16px;
+	width: 16px;
+	border: 1px solid;
+	border-color: #FFFFFF #D3D3D3 #D3D3D3 #FFFFFF;
+}
+
+.gpmImageButtonDisabled {
+	
+}
+
+.gpmMenuImageButton {
+	border: 1px solid #0072BC;
+}
+
+.gpmImageButton-hover {
+	border-top: 1px solid white;
+	border-left: 1px solid white;
+	border-bottom: 1px solid #000000;
+	border-right: 1px solid #000000;
+}
+
+.gpmImageButton-active {
+	border-top: 1px solid #000000;
+	border-left: 1px solid #000000;
+	border-bottom: 1px solid white;
+	border-right: 1px solid white;
+}
+
+.gpmDoubleImageButton {
+	cursor: pointer;
+	cursor: hand;
+	padding: 0px;
+	height: 16px;
+	width: 16px;
+}
+
+.gpmTabCloseButton {
+	margin-left: 6px;
+}
+
+.gpmTabAddButton {
+	
+}
+
+.gpmTextButton {
+	cursor: pointer;
+	cursor: hand;
+	color: black;
+	margin-left: 5px;
+}
+
+.gpmTextButton-hover {
+	color: #FF9200;
+}
+
+.gpmBannerContainer .gpmTextButton {
+	border: 1px solid #0072BC;
+	color: white;
+}
+
+.gpmBannerContainer .gpmTextButton-hover {
+	border: 1px solid;
+	border-color: white black black white;
+}
+
+.gpmRightAlignButton {
+	margin-left: 5px;
+}
+
+.gpmImageToggleButton {
+	padding: 0px 1px 0px 0px;
+	border: 1px solid;
+	border-color: #FFFFFF #D3D3D3 #D3D3D3 #FFFFFF;
+}
+
+.gpmImageToggleButtonUp {
+	
+}
+
+.gpmImageToggleButtonUpHover {
+	border-color: white #000000 #000000 white;
+}
+
+.gpmImageToggleButtonDown {
+	border-color: #000000 white white #000000;
+}
+
+.gpmImageToggleButtonDownHover {
+	border-color: white #000000 #000000 white;
+}
+
+/* MENUS */
+.gpmMenuFloat {
+	float: left;
+}
+
+.gpmMenu {
+	cursor: default;
+	background: #0072BC;
+	border-bottom: 1px solid #000000;
+	display: block;
+}
+
+.gpmRightAlignMenuBar {
+	cursor: default;
+	background: #0072BC;
+	float: left;
+}
+
+.gpmMenuItem {
+	cursor: pointer;
+	cursor: hand;
+	font-weight: bold;
+	font-size: 1.1em;
+	color: white;
+	background: #6AAEDD;
+	border-top: 1px solid white;
+	padding: 2px 4px;
+}
+
+.gpmMenuItem-selected {
+	background: #FF9200;
+}
+
+.gpmSubMenuIcon {
+	cursor: pointer;
+	cursor: hand;
+	font-weight: bold;
+	font-size: 1.1em;
+	color: white;
+	background: #6AAEDD;
+	border-top: 1px solid white;
+	padding: 2px 4px;
+}
+
+.gpmSubMenuIcon-selected {
+	background: #FF9200;
+}
+
+.gpmMenuButton {
+	cursor: pointer;
+	cursor: hand;
+	height: 16px;
+	width: 16px;
+	border: 1px solid #0072BC;
+}
+
+.gpmMenuButton-selected {
+	border-top: 1px solid white;
+	border-left: 1px solid white;
+	border-bottom: 1px solid #000000;
+	border-right: 1px solid #000000;
+}
+
+.gpmMenuButton-active {
+	border-top: 1px solid #000000;
+	border-left: 1px solid #000000;
+	border-bottom: 1px solid white;
+	border-right: 1px solid white;
+}
+
+.gpmMenuItemSeparator {
+	width: 1px;
+	padding: 0px;
+	margin: 0px;
+}
+
+.gpmMenuPopup {
+	border-bottom: 1px solid white;
+	border-left: 1px solid white;
+	border-right: 1px solid white;
+}
+
+.gpmMenuPopup table {
+	border-collapse: collapse;
+}
+
+.gpmToolBar {
+	cursor: default;
+	background: #0072BC;
+	border: 1px solid #0072BC;
+	float: left;
+}
+
+.gpmMenuTitles {
+	
+}
+
+.gpmDecoratedMenu {
+	cursor: default;
+	background: #0072BC;
+	border-bottom: 1px solid #000000;
+}
+
+.gpmDecoratedMenu .center {
+	border-top: 1px solid #000000;
+}
+
+@sprite .gpmDecoratedMenu .left {
+	gwt-image: "gpmMenuLeft";
+}
+
+@sprite .gpmDecoratedMenu .right {
+	gwt-image: "gpmMenuRight";
+}
+
+.gpmMenuTitle {
+	margin: 1px 4px 1px 4px;
+	float: left;
+	font-weight: bold;
+	font-size: 1.2em;
+	color: white;
+}
+
+.gpmMenuSubTitle {
+	margin: 4px 4px 1px 4px;
+	float: left;
+	font-weight: bold;
+	font-style: italic;
+	font-size: 1.1em;
+	color: white;
+}
+
+.gpmMinimizedMenu {
+	cursor: default;
+	background: #0072BC;
+	border: 1px solid #000000;
+	display: block;
+}
+
+/* VALUES CONTAINER */
+.gpmDisclosurePanel {
+	margin-top: 4px;
+	width: 100%;
+	clear: left;
+}
+
+.gpmLightDisclosurePanel {
+	margin-top: 4px;
+	width: 100%;
+	clear: left;
+}
+
+.gpmLightDisclosurePanelOpened {
+	border-style: solid;
+	border-color: #D3D3D3;
+	border-width: 0px 1px 1px 1px;
+	margin-left: 5px;
+	padding: 5px;
+}
+
+.gpmLightDisclosurePanelHeader {
+	background-color: white;
+	padding-right: 4px;
+}
+
+.gpmDisclosurePanel .content {
+	margin: 0px 10px 10px 10px;
+	width: auto;
+}
+
+.gpmDisclosurePanel .header {
+	cursor: default;
+	width: 100%;
+	height: 22px;
+	color: black;
+}
+
+@sprite .gpmDisclosurePanel .header .left {
+	gwt-image: "gpmDisclosurePanelHeaderLeft";
+	width: 9px;
+}
+
+@sprite .gpmDisclosurePanel .header .center {
+	gwt-image: "gpmDisclosurePanelHeaderCenter";
+}
+
+@sprite .gpmDisclosurePanel .header .right {
+	gwt-image: "gpmDisclosurePanelHeaderRight";
+	width: 9px;
+}
+
+.gpmLightDisclosurePanel .content {
+	margin: 0px 10px 10px 10px;
+	width: auto;
+}
+
+@sprite .gpmLightDisclosurePanelHeaderCenter {
+	gwt-image: "gpmDisclosurePanelLightHeaderCenter";
+}
+
+@sprite .gpmLightDisclosurePanelHeaderRight {
+	gwt-image: "gpmDisclosurePanelLightHeaderRight";
+	width: 5px;
+}
+
+.gpmValuesContainerPanel {
+	width: 100%;
+}
+
+.gpmGroupName {
+	cursor: pointer;
+	cursor: hand;
+	font-weight: bold;
+	font-size: 1.1em;
+	color: black;
+}
+
+.gpmGroupName-hover {
+	color: #FF9200;
+}
+
+.gpmFieldGrid {
+	width: 100%;
+}
+
+.gpmFieldGridField {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.gpmFieldGrid .evenRow {
+	background: white;
+}
+
+.gpmFieldGrid .oddRow {
+	background: #F3F3F3;
+}
+
+.gpmFieldLabel {
+	font-weight: bold;
+	color: black;
+}
+
+/* TABS */
+@sprite .gpmTabLayoutPanelTabs {
+	gwt-image: "gpmTabLayoutPanelTabBottom";
+	height: auto;
+}
+
+.gpmTabLayoutPanelContent {
+	border-color: #000000;
+	border-style: solid;
+	border-width: 0px 1px 1px 1px;
+	overflow: hidden;
+	padding: 6px;
+}
+
+.gpmTabHeader {
+	height: 22px;
+	cursor: pointer;
+	cursor: hand;
+	font-weight: bold;
+	text-align: center;
+}
+
+@sprite .gpmTabHeader .left {
+	gwt-image: "gpmTabHeaderLeft";
+	width: 5px;
+}
+
+@sprite .gpmTabHeader-selected .left {
+	gwt-image: "gpmTabHeaderLeftSelected";
+}
+
+@sprite .gpmTabHeader .center {
+	gwt-image: "gpmTabHeaderCenter";
+	color: black;
+}
+
+@sprite .gpmTabHeader-selected .center {
+	gwt-image: "gpmTabHeaderCenterSelected";
+	color: white;
+}
+
+@sprite .gpmTabHeader .right {
+	gwt-image: "gpmTabHeaderRight";
+	width: 7px;
+}
+
+@sprite .gpmTabHeader-selected .right {
+	gwt-image: "gpmTabHeaderRightSelected";
+}
+
+/* TABS */
+.gpmStackLayoutPanel {
+	border-bottom: 1px solid #000000;
+}
+
+.gpmStackContent {
+	border-left: 1px solid #000000;
+	border-right: 1px solid #000000;
+}
+
+.gpmStackHeader {
+	height: auto;
+	width: 100%;
+	cursor: pointer;
+	cursor: hand;
+	font-weight: bold;
+	text-align: center;
+	font-size: 1.2em;
+	color: white;
+}
+
+.gpmStackHeader .left {
+	background: #000000;
+	width: 1px;
+}
+
+@sprite .gpmStackHeader-first .left {
+	gwt-image: "gpmStackLeft";
+	width: 5px;
+}
+
+@sprite .gpmStackHeader .center {
+	gwt-image: "gpmStackCenter";
+}
+
+.gpmStackHeader .right {
+	background: #000000;
+	width: 1px;
+}
+
+@sprite .gpmStackHeader-first .right {
+	gwt-image: "gpmStackRight";
+}
+
+/* LAYOUT */
+.gpmHorizontalPanel {
+	float: left;
+	display: block;
+	clear: left;
+	width: 100%;
+}
+
+.gpmHorizontalPanelContent {
+	float: left;
+}
+
+/* POPUP */
+.gpmPopupPanel {
+	border: 1px solid #000000;
+	background: #F3F3F3;
+}
+
+@sprite .gpmPopupHeader {
+	gwt-image: "gpmPopup";
+	font-weight: bold;
+	color: white;
+	float: left;
+	border-bottom: 1px solid #000000;
+	width: 100%;
+}
+
+.gpmPopupHeaderTitle {
+	float: left;
+	padding: 5px;
+}
+
+.gpmPopupHeaderButton {
+	float: right;
+	padding: 5px;
+}
+
+.gpmPopupContent {
+	background-color: white;
+	border: 5px solid #F3F3F3;
+}
+
+.gpmPopupFooter {
+	text-align: center;
+}
+
+.gpmPopupGlass {
+	background-color: black;
+	opacity: 0.3;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+}
+
+.gpmBasicPopupPanel {
+	border: 3px solid #0072BC;
+	padding: 3px;
+	background: white;
+}
+
+.gpmPopupFooterButton {
+	background-color: white;
+	border: 1px solid black;
+	cursor: hand;
+	cursor: pointer;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.gpmPopupErrorMessage {
+	padding-left: 5px;
+	color: red;
+	font-style: italic;
+}
+
+/* TREE */
+.gpmTree {
+	border: white 3px solid;
+}
+
+.gpmTreeItem {
+	padding: 1px 0px;
+	margin: 0px;
+	white-space: nowrap;
+	border: white 1px solid;
+}
+
+.gpmTreeItem-selecteable {
+	cursor: hand;
+	cursor: pointer;
+}
+
+.gpmTreeItem-selected {
+	background-color: #FF9200;
+	border: #000000 1px solid;
+}
+
+.gpmTreeItem-hover {
+	bakckground-color: white;
+	color: #FF9200;
+	cursor: pointer;
+	cursor: hand;
+}
+
+.gpmTreeButton {
+	cursor: pointer;
+	cursor: hand;
+}
+
+/* DROPDOWN LIST */
+.gpmDropDownListBoxWidget {
+	
+}
+
+.gpmDropDownListBoxWidget .gpmDropDownText {
+	
+}
+
+.gpmDropDownTextReadOnly {
+	border: none;
+	border-right: 1px solid white;
+	cursor: default;
+	background-color: #0072BC;
+	color: white;
+	margin-left: 2px;
+	padding-right: 2px;
+}
+
+.gpmDropDownListBoxWidget .gpmDropDownButton {
+	height: 100%;
+	cursor: hand;
+	cursor: pointer;
+}
+
+.gpmDropDownListBoxWidget .gpmDropDownButtonReadOnly {
+	margin-left: 2px;
+}
+
+.gpmDropDownListPopup {
+	padding: 0px;
+	border: 1px solid black;
+	background: white;
+}
+
+.gpmDropDownListPopup .gpmPopupContent {
+	padding: 0px;
+	background: white;
+	overflow-x: auto;
+	overflow-y: auto;
+	height: auto;
+	max-height: 200px;
+	border: none;
+}
+
+.gpmListPopupElement {
+	-width: 100%;
+	cursor: pointer;
+}
+
+.gpmListPopupElement-hover {
+	background-color: #FF9200;
+}
+
+.gpmListPopupElement-selected {
+	background-color: #6AAEDD;
+}
+
+/* MENU LIST BOX */
+.gpmMenuListBox {
+	float: left;
+	display: inline;
+	margin-top: 3px;
+	margin-left: 4px;
+}
+
+/* DATE BOX */
+.gpmDateBox {
+	
+}
+
+.gpmDateBoxFormatError {
+	
+}
+
+/* GPM DATE PICKER */
+.gpmDatePickerPopup {
+	background-color: white;
+	border: solid 1px black;
+}
+
+/*** TIME PICKER ***/
+.gpmTimePicker {
+	width: 85px;
+}
+
+.gpmTimePickerPopup {
+	height: 200px;
+}
+
+.gpmTimePickerPopup .gpmPopupContent {
+	border: none;
+	background: white;
+	-height: 200px;
+}
+
+.gpmTimePickerPopupElement { /*width: auto;*/
+	text-align: center;
+	margin-right: 16px; /* To be centered with the y-scroll bar*/
+	-margin-right: 0px;
+}
+
+/* DATE PICKER CALENDAR VIEW */
+.gpmCalendarViewDay {
+	text-align: center;
+	padding: 4px;
+	outline: none;
+	cursor: hand;
+	cursor: pointer;
+	border-style: solid;
+	border-width: 0px 1px 1px 0px;
+	border-color: #D3D3D3;
+}
+
+.gpmCalendarViewDays {
+	font-weight: bold;
+	text-align: center;
+	padding: 4px;
+	outline: none;
+	cursor: hand;
+	cursor: pointer;
+	border-bottom: solid 1px #6AAEDD;
+}
+
+.gpmCalendarViewDayIsWeekend {
+	background: #D3D3D3;
+}
+
+.gpmCalendarViewDayIsFiller {
+	color: #D3D3D3;
+}
+
+.gpmCalendarViewDayIsHighlighted {
+	background: #6AAEDD;
+}
+
+.gpmCalendarViewDayIsDisabled {
+	color: #D3D3D3;
+	font-style: italic;
+}
+
+.gpmCalendarViewDayIsValueAndHighlighted {
+	background: #6AAEDD;
+}
+
+.gpmCalendarViewDayIsSelected {
+	background: #6AAEDD;
+	color: white;
+	font-weight: bold;
+}
+
+/* DATE PICKER MONTH SELECTOR */
+.gpmMonthSelectorPreviousButton .gpmMonthSelectorNextButton {
+	font-size: 120%;
+	/*line-height: 1em;*/
+	cursor: hand;
+	cursor: pointer;
+	padding: 0px 4px;
+	font-weight: bold;
+}
+
+.gpmMonthSelectorMonth {
+	text-align: center;
+	vertical-align: center;
+	white-space: nowrap;
+	font-weight: bold;
+}
+
+.gpmMonthSelector {
+	background: #6AAEDD;
+	color: white;
+	width: 100%;
+}
+
+/* Style herit from gpm-ListPopupElement */
+.gpmTimePickerPopupElement-tiny {
+	color: grey;
+	border-top: 1px solid #F3F3F3;
+	font-size: 5px;
+}
+
+.gpmTimePickerPopupElement-large {
+	color: black;
+	background-color: #D3D3D3;
+	border-top: 1px solid #F3F3F3;
+	font-size: large;
+}
+
+.gpmTimePickerPopupElement-active {
+	background-color: #6AAEDD;
+	color: white;
+	font-size: large;
+}
+
+.gpmTimePickerPopupElement-hover {
+	background-color: white;
+	color: black;
+	font-size: large;
+}
+
+/* SPLIT LAYOUT */
+.gpmSplitLayoutPanel {
+	
+}
+
+.gpmSplitLayoutHorizontalDragger {
+	background-color: #F3F3F3;
+	cursor: e-resize;
+	border: none;
+	height: auto;
+}
+
+.gpmSplitLayoutVerticalDragger {
+	background-color: #F3F3F3;
+	cursor: n-resize;
+	border: none;
+	width: auto;
+}
+
+/* WORKSPACE LAYOUT */
+.gpmWorkspaceLayout {
+	border: 3px solid #F3F3F3;
+	background: #F3F3F3;
+}
+
+.gpmWorkspaceLayoutChild {
+	background: white;
+}
+
+/* ERROR */
+.gpm-field-error {
+	border: 1px solid red;
+}
+
+.gpm-field-error-message {
+	border: 1px ridge #D3D3D3;
+	padding: 1px;
+	margin-left: 1%;
+	color: #1874b3;
+	background-color: #F3F3F3;
+	font-size: 0.8em;
+	font-style: italic;
+}
+
+/* MULTIVALUED WIDGET (and MULTIPLE MULTIVALUED) */
+.gpmMultivaluedWidget {
+	
+}
+
+.gpmMultivaluedWidgetButton {
+	margin: 0px 0px 0px 1px;
+	float: left;
+}
+
+.gpmMultivaluedWidgetLine {
+	padding: 0px 0px 2px 0px;
+	clear: left;
+	float: left;
+	width: 100%;
+}
+
+.gpmMultivaluedWidgetLineDeleted {
+	background-color: #ffbbbb;
+}
+
+/* MULTIPLE WIDGET */
+.gpmMultiple {
+	border-spacing: 0;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.gpmMultiple td {
+	padding: 1px 15px 1px 0px;
+}
+
+.gpmMultipleUnderline {
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+	border-color: lightgrey;
+}
+
+/* TABLE */
+.gpmTable {
+	width: 100%;
+}
+
+.gpmTable .cellTable {
+	
+}
+
+.gpmTable .cell {
+	padding: 1px 5px;
+	border-left: 1px solid #000000;
+}
+
+.gpmTable .loading {
+	
+}
+
+.gpmTable .evenRow {
+	background-color: #F3F3F3;
+}
+
+.gpmTable .oddRow {
+	background-color: white;
+}
+
+.gpmTable .hoveredRow {
+	background-color: #FF9200;
+}
+
+.gpmTable .selectedRow {
+	
+}
+
+.gpmTable .firstColumn {
+	border-left: none;
+	width: 60px;
+}
+
+.gpmPopupContent .gpmTable .firstColumn {
+	width: 20px;
+}
+
+.gpmTable .lastColumn {
+	
+}
+
+.gpmTable .header {
+	border-bottom: 1px solid #000000;
+	border-left: 1px solid #000000;
+	padding: 1px 5px;
+}
+
+.gpmTable .firstColumnHeader {
+	border-left: 0px;
+	border-bottom: 1px solid #000000;
+	text-align: left;
+}
+
+.gpmTable .lastColumnHeader {
+	
+}
+
+.gpmTable .footer {
+	
+}
+
+.gpmTable .firstColumnFooter {
+	
+}
+
+.gpmTable .lastColumnFooter {
+	
+}
+
+.gpmTableImage {
+	cursor: pointer;
+	cursor: hand;
+	margin-left: 2px;
+}
+
+.gpmTable .evenRow .gpmMultiple td {
+	border-right: solid white 10px;
+}
+
+.gpmTable .oddRow .gpmMultiple td {
+	border-right: solid #F3F3F3 10px;
+}
+
+.gpmTablePager {
+	width: 100%;
+	background: #0072BC;
+	border: 1px solid #000000;
+}
+
+.gpmTablePagerLabel {
+	margin-left: 4px;
+	margin-right: 4px;
+	font-weight: bold;
+	font-style: italic;
+	color: white;
+}
+
+.gpmTablePagerTextBox {
+	margin-left: 4px;
+	border-top: none;
+	border-bottom: none;
+	border-left: 1px solid #000000;
+	border-right: 1px solid #000000;
+	width: 40px;
+}
+
+/* FILTER TABLE */
+.gpmFilterTable {
+	width: 100%;
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+
+.gpmFilterTable .evenRow {
+	background-color: #F3F3F3;
+}
+
+.gpmFilterTable .oddRow {
+	background-color: white;
+}
+
+.gpmFilterTable td {
+	vertical-align: middle;
+}
+
+/* FILTER EDITION POPUP DOCK LAYOUT */
+.gpmFilterEditionDockTitle {
+	border-bottom: 1px solid black;
+	padding-left: 5px;
+	background-color: #F3F3F3;
+}
+
+.gpmFilterEditionDock {
+	border: 1px solid black;
+}
+
+.gpmFilterEditionCriteria {
+	padding: 2px;
+	width: 100%;
+}
+
+.gpmFilterEditionCriteriaLeft {
+	border: 1px solid black;
+	border-right: 0;
+}
+
+.gpmFilterEditionCriteriaRight {
+	border: 1px solid black;
+}
+
+/* GPM RICH TEXT BOX */
+.gpmRichTextBoxWidget {
+	margin: 2px;
+	border: 1px solid #D3D3D3;
+	width: auto;
+}
+
+.gpmRichTextArea {
+	width: auto;
+	background-color: white;
+	clear: left;
+}
+
+.gpmRichTextToolbar {
+	background-color: #F3F3F3;
+	border-bottom: 1px solid #D3D3D3;
+	float: left;
+}
+
+.gpmRichTextToolbarLine {
+	margin: 2px;
+	clear: left;
+	width: auto;
+}
+
+/* GPM BANNER */
+@sprite .gpmBanner {
+	gwt-image: "gpmBanner";
+	background-color: #0072BC;
+}
+
+.gpmBannerContainer {
+	background-color: #0072BC;
+	border: 1px solid #000000;
+	width: auto;
+}
+
+.gpmBannerElement {
+	padding-right: 20px;
+	padding-left: 20px;	
+}
+
+.gpmBannerVersion {
+	color: white;
+}
+
+.gpmBannerProcess {
+	color: white;
+	font-size: large;
+	font-weight: bold;
+}
+
+.gpmBannerLogin {
+	color: white;
+}
+
+/* GPM IFRAME */
+.gpmIFrame {
+	border: none;
+}
+
+/* GPM BORDER */
+.gpmSmallBorder {
+	border: 1px solid black;
+}
+
+.gpmBigBorder {
+	border: 5px solid white;
+}
+
+/* GPM LOADING */
+.gpmLoadingLabel {
+	border: 1px solid black;
+	background-color: #FF9200;
+	font-weight: bold;
+	padding: 5px;
+	position: absolute;
+	top: 5px;
+	left: 5px;
+}
+
+.gpmLoadingGlass {
+	background-color: blue;
+	opacity: 0;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+}
+
+/* GPM EXECUTION REPORT */
+.gpmExecutionReportContent {
+	border: 1px solid black;
+	padding: 5px;
+}
+
+.gpmExecutionReportTitle {
+	font-weight: bold;
+	padding-top: 10px;
+}
+
+.gpmExecutionReportTabLevel1 {
+	padding-left: 20px;
+}
+
+.gpmExecutionReportTabLevel2 {
+	padding-left: 40px;
+}
+
+/* GPM TREE CHOICE WIDGET */
+.gpmTreeChoiceField {
+	border: 1px solid #D3D3D3;
+	background-color: white;
+	padding: 0px 4px;
+	margin-right: 10px;
+	cursor: pointer;
+	cursor: hand;
+}
+
+.gpmTreeChoiceFieldPopup {
+	border: 1px solid black;
+	padding: 4px;
+	background-color: white;
+}
+
+.gpmTreeShifterSelectorItem {
+	clear: left;
+	position: relative;
+	padding: 0px 4px;
+}
+
+.gpmTreeShifterItemSelected {
+	background-color: #F29200;
+}
+
+.gpmTreeShifterItemNotSelected {
+}
+
+/* GPM LIST SHIFTER */
+.gpmListShifterSelector {
+	border: none;
+}
+
+.gpmListShifterSelectorList {
+	border: 1px solid black;
+	background-color: white;
+}
+
+.gpmListShifterSelectorListTitle {
+	border-style: solid;
+	border-color: black;
+	border-width: 1px 1px 0px 1px;
+	font-weight: bold;
+	background-color: #F3F3F3;
+}
+
+.gpmListShifterSelectorItem {
+	clear: left;
+	position: relative;
+}
+
+.gpmListShifterItemSelected {
+	border: 2px solid #0072BC;
+}
+
+.gpmListShifterItemNotSelected {
+	padding: 2px;
+}
+
+.transitionHistoryContent {
+	border: 1px solid #727272;
+}
+
+.gpmTextArea{
+	font-family: Verdana,Arial,Helvetica,sans-serif;
+	font-size:11px;
+}

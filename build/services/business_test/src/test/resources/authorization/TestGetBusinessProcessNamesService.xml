@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<gpm xmlns="http://www.airbus.com/topcased/gPM"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+
+    <version>1.2</version>
+	
+	<roles>
+		<role name="developer"/>
+	</roles>
+	
+	
+	
+	<!-- Dictionnary's description  -->
+	<dictionary>
+		<!-- Categories's description  -->
+		<categories>
+			<!-- Color Category  -->
+			<category name="Color">
+				<values>
+					<categoryValue value="WHITE" />
+					<categoryValue value="GREY" />
+					<categoryValue value="BLACK" />
+					<categoryValue value="RED" />
+					<categoryValue value="TRANSPARENT" />
+				</values>
+			</category>
+
+			<!-- Length Category  -->
+			<category name="Length">
+				<values>
+					<categoryValue value="SHORT" />
+					<categoryValue value="LONG" />
+				</values>
+			</category>
+
+			<!-- Usage Category  -->
+			<category name="Usage">
+				<values>
+					<categoryValue value="Self Defense" />
+					<categoryValue value="Police" />
+					<categoryValue value="Children" />
+				</values>
+			</category>
+
+
+
+		</categories>
+
+		<!-- Environment's description  -->
+		<environments>
+			<!-- Professional Environment  -->
+			<environment name="Professional">
+				<categories>
+					<category name="Color">
+						<values>
+							<categoryValue value="WHITE" />
+							<categoryValue value="GREY" />
+							<categoryValue value="BLACK" />
+							<categoryValue value="RED" />
+							<categoryValue value="TRANSPARENT" />
+						</values>
+					</category>
+					<category name="Length">
+						<values>
+							<categoryValue value="SHORT" />
+							<categoryValue value="LONG" />
+						</values>
+					</category>
+					<category name="Usage">
+						<values>
+							<categoryValue value="Self Defense" />
+							<categoryValue value="Police" />
+						</values>
+					</category>
+				</categories>
+			</environment>
+
+			<!-- Classical Environment  -->
+			<environment name="Classical">
+				<categories>
+					<category name="Color">
+						<values>
+							<categoryValue value="WHITE" />
+							<categoryValue value="GREY" />
+							<categoryValue value="BLACK" />
+							<categoryValue value="RED" />
+						</values>
+					</category>
+					<category name="Length">
+						<values>
+							<categoryValue value="SHORT" />
+							<categoryValue value="LONG" />
+						</values>
+					</category>
+					<category name="Usage">
+						<values>
+							<categoryValue value="Self Defense" />
+							<categoryValue value="Children" />
+						</values>
+					</category>
+				</categories>
+			</environment>
+		</environments>
+	</dictionary>
+	
+    <!-- Product Types's description  -->
+    <productTypes>
+        <productType name="Project"/>
+    </productTypes>
+</gpm>

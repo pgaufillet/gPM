@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+	<version>1.2</version>
+	<sheets>
+		<rule type="ControlTypeImport">
+			<transition originState="E0" name="e0->e1" finalState="E1" />
+			<transition originState="E1" name="e1->e2" finalState="E2" />
+			<transition originState="E2" name="e2->e5" finalState="E5" />
+		</rule>
+		<rule type="ControlTypeImport2">
+			<transition originState="E0" name="e0->e1" finalState="E1" />
+			<transition originState="E1" name="e1->e4" finalState="E4" />
+		</rule>
+		<rule type="ControlTypeImport3">
+			<transition originState="E0" name="e0->e1" finalState="E1" />
+			<transition originState="E1" name="e1->e4" finalState="E4" />
+			<transition originState="E2" name="e4->e3" finalState="E3" />
+		</rule>
+		<extensionPointsToExclude>
+			<exclude name="ControlTypeImportInitRef" />
+		</extensionPointsToExclude>
+		<sheet type="ControlTypeImport" productName="Bernard's store"
+			version="0" state="E5">
+			<rule>
+				<transition originState="E0" name="e0->e1" finalState="E1" />
+				<transition originState="E1" name="e1->e2" finalState="E2" />
+				<transition originState="E2" name="e2->e5" finalState="E5" />
+			</rule>
+			<fieldValues>
+				<fieldValue name="Field2" value="12" />
+				<fieldValue name="TEST_ID" value="12" />
+			</fieldValues>
+		</sheet>
+
+		<sheet type="ControlTypeImport2" productName="Bernard's store"
+			version="0" state="E4">
+			<rule>
+				<transition originState="E0" name="e0->e1" finalState="E1" />
+				<transition originState="E1" name="e1->e4" finalState="E4" />
+			</rule>
+			<fieldValues>
+				<fieldValue name="Field2" value="12" />
+				<fieldValue name="TEST_ID" value="12" />
+			</fieldValues>
+		</sheet>
+
+		<sheet type="ControlTypeImport3" productName="Bernard's store"
+			version="0" state="E3">
+			<rule>
+				<transition originState="E0" name="e0->e1" finalState="E1" />
+				<transition originState="E1" name="e1->e4" finalState="E4" />
+				<transition originState="E2" name="e4->e3" finalState="E3" />
+			</rule>
+			<fieldValues>
+				<fieldValue name="Field2" value="12" />
+				<fieldValue name="TEST_ID" value="12" />
+			</fieldValues>
+		</sheet>
+	</sheets>
+</gpm>

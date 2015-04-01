@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<process-definition
+  xmlns="http://jbpm.org/3/jpdl"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://jbpm.org/3/jpdl http://jbpm.org/xsd/jpdl-3.0.xsd"
+  name="Bug">
+   <start-state name="Créé">
+      <transition name="Affecter" to="Affecté"></transition>
+      
+   </start-state>
+   <state name="Affecté">
+      <transition name="Marquer comme résolu" to="Résolu"/>
+      <transition name="Contourner" to="Contourné"/>
+   </state>
+    <state name="Résolu">
+      <transition name="Fermer" to="Fermé"/>
+      <transition name="Réouvrir" to="Réouvert"/>
+   </state>
+   <state name="Contourné">
+      <transition name="Fermer" to="Fermé"/>
+      <transition name="Réouvrir" to="Réouvert"/>
+   </state>
+   <state name="Réouvert">
+     <transition name="Marquer comme résolu" to="Résolu"/>
+      <transition name="Contourner" to="Contourné"/>
+   </state>
+   <end-state name="Fermé"></end-state>
+</process-definition>

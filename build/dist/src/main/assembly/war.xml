@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<assembly>
+    <id>war</id>
+    <formats>
+        <format>dir</format>
+    </formats>
+    
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <includeSiteDirectory>false</includeSiteDirectory>
+
+    <fileSets>
+        <fileSet>
+            <directory>../ui/gpm-ui-application/target</directory>
+            <outputDirectory></outputDirectory>
+                       
+            <includes>
+                <include>**/*.war</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+</assembly>
+

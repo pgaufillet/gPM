@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF8"?>
+
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+
+<version>1.2</version>
+<products>
+    <product name="productTestImport_03" type="Store" parentName="productTestImport_04">
+            <environmentNames>
+                <environmentName name="Professional" />
+            </environmentNames>
+            <fieldValues>
+                <fieldValue name="product_name" value="productTestImport_UPDATED" />
+                <fieldValue name="product_location" value="location_UPDATED" />
+                <fieldValue name="product_storetype" value="Police" />
+                <fieldValue name="Store_Field3" value="productTestImport_conf_field_UPDATED" />
+            </fieldValues>
+            <attributes>
+                <attribute name="productTestImport_attribute" value="value_UPDATED" />
+            </attributes>
+    </product>
+</products>
+</gpm>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.airbus.com/topcased/gPM http://www.airbus.com/topcased/gPM ">
+  <version>1.2</version>
+  
+  <dictionary>
+    <categories>
+        <category name="Cat_01">
+            <values>
+                <categoryValue value="value_04"/>
+                <categoryValue value="value_05"/>
+                <categoryValue value="value_06"/>
+            </values>
+        </category>
+    </categories>
+  </dictionary>
+</gpm>

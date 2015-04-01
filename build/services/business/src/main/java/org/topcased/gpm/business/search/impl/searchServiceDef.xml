@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!--
+        Search service
+    -->
+
+
+
+	<!-- Implementation bean -->
+	<bean id="searchServiceImpl" class="org.topcased.gpm.business.search.impl.SearchServiceImpl"
+		parent="serviceImplBase" autowire="byName">
+	</bean>
+
+	<!-- Visible interface of the service  -->
+	<bean id="searchService" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedService">
+		<property name="target" ref="searchServiceImpl" />
+
+		<property name="proxyInterfaces"
+			value="org.topcased.gpm.business.search.service.SearchService" />
+	</bean>
+
+	<!-- Filter manager -->
+	<bean id="filterManager" parent="serviceImplBase" autowire="byName"
+		class="org.topcased.gpm.business.search.impl.FilterManager">
+		<property name="maxNbResults" value="${filterMaxResults}" />
+		<property name="caseSensitiveSqlFunction" value="${caseSensitiveSqlFunction}" />
+	</bean>
+
+	<!-- Filter data manager -->
+	<bean id="filterDataManager" parent="serviceImplBase" autowire="byName"
+		class="org.topcased.gpm.business.search.impl.filter.FilterDataManager" />
+
+	<!-- Usable fields manager -->
+	<bean id="usableFieldsManager" parent="serviceImplBase" autowire="byName"
+		class="org.topcased.gpm.business.search.impl.fields.UsableFieldsManager">
+	</bean>
+</beans>

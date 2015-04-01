@@ -1,0 +1,12 @@
+# Type of DB to use ('oracle' or 'pgsql')
+db.type=oracle
+
+# JDBC URL
+dataSource.url=jdbc:oracle:thin:@//**DB_server**:1521/**DB_name**
+
+# dataSource.url=jdbc:postgresql://**DB_server**:5432/**DB_name**
+
+dataSource.user=llatil
+dataSource.password=topgdm
+
+dataSource.schema=LLATIL

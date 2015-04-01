@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+	<version>1.2</version>
+
+	<options>
+		<filterFieldsMaxDepth>3</filterFieldsMaxDepth>
+		<autolocking>READ_WRITE</autolocking>
+		<loginCaseSensitive>true</loginCaseSensitive>
+	</options>
+</gpm>

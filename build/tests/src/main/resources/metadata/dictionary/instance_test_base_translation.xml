@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+	<version>1.2</version>
+	<translations>
+		<defaultTranslation>
+			<message key="DEFAULT_KEY">Default message</message>
+			<image key="DEFAULT_IMAGE">url/picture.jpg</image>
+		</defaultTranslation>
+		<translation lang="en">
+			<message key="SHEETTYPE1_simplerealm"> simple real field in M </message>
+			<message key="SHEETTYPE1_CAT_author">Author</message>
+			<message key="MOUSE_identification">Identification</message>
+			<message key="CAT_PRICE_justification"> Justification </message>
+			<message key="MOUSE_owner">Owner</message>
+			<message key="SHEETTYPE1_simplebooleanmm"> simple boolean field in MM </message>
+			<message key="SHEETTYPE1_simpledatem"> simple date field in M </message>
+			<message key="SHEETTYPE1_choicem"> choice field in M </message>
+			<message key="SHEETTYPE1_attachedmm"> attached field in MM </message>
+			<message key="MOUSE_reference">Reference</message>
+			<message key="MOUSE_name">Reference</message>
+			<message key="SHEETTYPE1_simplestringmm"> simple string field in MM </message>
+			<message key="PRICE_ref">Ref</message>
+			<message key="SHEETTYPE1_multiple1m"> multiple multi </message>
+			<message key="CAT_description">Pet Description</message>
+			<message key="PRICE_reference">Reference</message>
+			<message key="SHEETTYPE1_choicemul"> choice field Multi </message>
+			<message key="CAT_PRICE_officialreference"> OfficialReference </message>
+			<message key="SHEETTYPE1_simplebooleanmul"> simple boolean field Multi </message>
+			<message key="SHEETTYPE1_choicemm"> choice field in MM </message>
+			<message key="SHEETTYPE1_simpleinteger"> simple integer field </message>
+			<message key="SHEETTYPE1_CAT_multiple">multiple</message>
+			<message key="SHEETTYPE1_simplestring"> simple string field </message>
+			<message key="SHEETTYPE1_multiple1">multiple mono</message>
+			<message key="CAT_ishappy">In Good Conditions</message>
+			<message key="PRICE_name">Reference</message>
+			<message key="CAT_ref">Ref</message>
+			<message key="SHEETTYPE1_simplerealmul"> simple real field Multi </message>
+			<message key="SHEETTYPE1_name">Reference</message>
+			<message key="MOUSE_mousename">Name</message>
+			<message key="SHEETTYPE1_simpledatemul"> simple date field Multi </message>
+			<message key="SHEETTYPE1_CAT_officialreference"> OfficialReference </message>
+			<message key="MOUSE_numberofchilds"> Number Of Children </message>
+			<message key="SHEETTYPE1_simplestringm"> simple string field in M </message>
+			<message key="SHEETTYPE1_simpleintegermm"> simple integer field in MM </message>
+			<message key="SHEETTYPE1_ref">Ref</message>
+			<message key="SHEETTYPE1_choice">choice field</message>
+			<message key="DOG_name">Reference</message>
+			<message key="CAT_name">Reference</message>
+			<message key="CAT_PRICE_author">Author</message>
+			<message key="SHEETTYPE1_simpledate"> simple date field </message>
+			<message key="CAT_picture">Picture</message>
+			<message key="CAT_pedigre">Pedigre</message>
+			<message key="DOG_usage">Usage</message>
+			<message key="SHEETTYPE1_simplerealmm"> simple real field in MM </message>
+			<message key="DOG_reference">Reference</message>
+			<message key="SHEETTYPE1_simpleboolean"> simple boolean field </message>
+			<message key="SHEETTYPE1_simplestringmul"> simple string field Multi </message>
+			<message key="SHEETTYPE1_simpleintegerm"> simple integer field in M </message>
+			<message key="PRICE_credit">Credit available</message>
+			<message key="SHEETTYPE1_simpleintegermul"> simple integer field Multi </message>
+			<message key="DOG_pedigre">Pedigre</message>
+			<message key="SHEETTYPE1_attachedmul"> attached field Multi </message>
+			<message key="MOUSE_ref">Ref</message>
+			<message key="SHEETTYPE1_simplebooleanm"> simple boolean field in M </message>
+			<message key="DOG_ref">Ref</message>
+			<message key="DOG_birthdate">Birth Date</message>
+			<message key="SHEETTYPE1_simplereal"> simple real field </message>
+			<message key="SHEETTYPE1_attached">attached field</message>
+			<message key="CAT_color">Color</message>
+			<message key="CAT_furlength">Fur Length</message>
+			<message key="CAT_reference">Reference</message>
+			<message key="SHEETTYPE1_attachedm"> attached field in M </message>
+			<message key="SHEETTYPE1_CAT_textualjustification"> TextualJustification </message>
+			<message key="PRICE_price">Price</message>
+			<message key="CAT_PRICE_textualjustification"> TextualJustification </message>
+			<message key="CAT_birthdate">Birth Date</message>
+			<message key="SHEETTYPE1_reference">Reference</message>
+			<message key="SHEETTYPE1_simpledatemm"> simple date field in MM </message>
+			<message key="PRICE_creditlength">Credit Length</message>
+			<message key="MOUSE_lastname">Last Name</message>
+			<message key="MOUSE_firstname">Usage</message>
+			<message key="product_name">name</message>
+			<message key="product_location">Location</message>
+			<message key="product_storetype">Target clients</message>
+			<message key="Validate">Validate_by_Yntsama</message>
+			<message key="Delete">Delete_by_Yntsama</message>
+			<message key="Temporary">Temporary</message>
+
+			<!-- Virtual fields label keys and translations  -->
+			<message key="$PRODUCT_NAME">Product name</message>
+			<message key="$PRODUCT_DESCRIPTION">Product description</message>
+			<message key="$PRODUCT_HIERARCHY"> Product hierarchy </message>
+			<message key="$PRODUCT_FIELD_PREFIX">Product.</message>
+			<message key="$LINKED_SHEET_FIELD_PREFIX">Linked-</message>
+			<message key="$LINK_FIELD_PREFIX">Link-</message>
+			<message key="$NOT_SPECIFIED">Not specified</message>
+			<message key="$CURRENT_PRODUCT">Current product</message>
+			<message key="$SHEET_REFERENCE">Sheet reference</message>
+			<message key="$SHEET_STATE">Sheet state</message>
+			<message key="$SHEET_TYPE">Sheet type</message>
+			<message key="Cat">WildCats</message>
+			<message key="Dog">HotDogs</message>
+			<message key="Mouse">PCMice</message>
+			<message key="Price">Costs</message>
+			<message key="SheetType1">First Sheet Type</message>
+			<message key="Color">Color_by_Schwarzkopff
+			</message>
+			<message key="Happy Mouse">Happy Mouse by Disney</message>
+
+			<!-- Translations of color category values -->
+			<message key="WHITE">white</message>
+			<message key="GREY">grey</message>
+			<message key="GREEN">green</message>
+			<message key="YELLOW">yellow</message>
+			<message key="RED">red</message>
+			<message key="BLACK">black</message>
+			<message key="GRID_Column_LastName">Last Name</message>
+			<message key="GRID_Column_FirstName">First Name</message>
+			<message key="GRID_SINGLE_TEST_Column1">Column 1</message>
+			<message key="GRID_SINGLE_TEST_Column2">Column 2</message>
+			<message key="GRID_SINGLE_TEST_ColumnString">String column</message>
+			<message key="GRID_SINGLE_TEST_ColumnDate">Date column</message>
+			<message key="GRID_SINGLE_TEST_ColumnBoolean">Boolean column</message>
+			<message key="Bernard's store">Bernard's store</message>
+			<message key="CHOICE_01">CHOICE ONE</message>
+			<message key="CHOICE_02">CHOICE TWO</message>
+			<message key="CHOICE_03">CHOICE THREE</message>
+			<message key="SELECT_01">SELECT ONE</message>
+			<message key="SELECT_02">SELECT TWO</message>
+			<message key="SELECT_03">SELECT THREE</message>
+			<message key="FILTER_TEST_SHEET_01_GROUP">Filter_Test_Sheet_01_Group
+			</message>
+			<message key="FILTER_TEST_SHEET_01_STRING">Filter_Test_Sheet_01_String
+				field</message>
+			<message key="FILTER_TEST_SHEET_01_CHOICE">Filter_Test_Sheet_01_Choice
+				field</message>
+			<message key="FILTER_TEST_SHEET_02_CHOICE">Filter_Test_Sheet_02_Choice
+				field</message>
+			<message key="Test_description_01_Field1_description">Description of the field
+				Field 1 for
+				Sheet type Test_description_01</message>
+			<message key="testInputData_ChoiceString_Field1_description">Description of the field
+				Field 1 for
+				Input data choiceString</message>
+
+			<image key="image_text_01">images/uk.gif</image>
+			<image key="image_text_02">images/uk.gif</image>
+		</translation>
+		<translation lang="fr">
+			<message key="SHEETTYPE1_simplerealm"> champ simple dans M </message>
+			<message key="SHEETTYPE1_CAT_author">Auteur</message>
+			<message key="MOUSE_identification">Identification</message>
+			<message key="CAT_PRICE_justification"> Justification </message>
+			<message key="MOUSE_owner">Propritaire</message>
+			<message key="SHEETTYPE1_simplebooleanmm"> champ simple boolen dans MM
+            </message>
+			<message key="SHEETTYPE1_simpledatem"> champ simple date dans M </message>
+			<message key="SHEETTYPE1_choicem"> champ choix dans M </message>
+			<message key="SHEETTYPE1_attachedmm"> champ fichier attach dans MM
+            </message>
+			<message key="SHEETTYPE1_choicem">
+				champ choix dans M
+            </message>
+			<message key="SHEETTYPE1_attachedmm">
+				champ fichier attach dans MM
+            </message>
+			<message key="MOUSE_reference">Rfrence</message>
+			<message key="MOUSE_name">Rfrence</message>
+			<message key="SHEETTYPE1_simplestringmm"> champ simple texte dans MM </message>
+			<message key="PRICE_ref">Ref</message>
+			<message key="SHEETTYPE1_multiple1m"> multiple multi </message>
+			<message key="CAT_description">Description</message>
+			<message key="PRICE_reference">Rfrence</message>
+			<message key="SHEETTYPE1_choicemul"> champ choix Multi </message>
+			<message key="CAT_PRICE_officialreference"> Rfrence officielle </message>
+			<message key="SHEETTYPE1_simplebooleanmul"> champ simple boolen Multi </message>
+			<message key="SHEETTYPE1_choicemm"> champ choix dans MM </message>
+			<message key="SHEETTYPE1_simpleinteger"> champ entier </message>
+			<message key="SHEETTYPE1_CAT_multiple">multiple</message>
+			<message key="SHEETTYPE1_simplestring"> champ texte simple </message>
+			<message key="SHEETTYPE1_multiple1">multiple mono</message>
+			<message key="CAT_ishappy">bien trait?</message>
+			<message key="PRICE_name">Rfrence</message>
+			<message key="CAT_ref">Ref</message>
+			<message key="SHEETTYPE1_simplerealmul"> Champ simple rel multi </message>
+			<message key="SHEETTYPE1_name">Rfrence</message>
+			<message key="MOUSE_mousename">Nom</message>
+			<message key="SHEETTYPE1_simpledatemul"> champ simple date Multi </message>
+			<message key="SHEETTYPE1_CAT_officialreference"> Rfrence officielle </message>
+			<message key="MOUSE_numberofchilds">Nb d'enfants</message>
+			<message key="SHEETTYPE1_simplestringm"> simple texte m </message>
+			<message key="SHEETTYPE1_simpleintegermm"> simple entier MM </message>
+			<message key="SHEETTYPE1_ref">Ref</message>
+			<message key="SHEETTYPE1_choice">choix</message>
+			<message key="DOG_name">Rfrence</message>
+			<message key="CAT_name">Rfrence</message>
+			<message key="CAT_PRICE_author">Auteur</message>
+			<message key="SHEETTYPE1_simpledate">simple date</message>
+			<message key="CAT_picture">Image</message>
+			<message key="CAT_pedigre">Pedigre</message>
+			<message key="DOG_usage">Fonction</message>
+			<message key="SHEETTYPE1_simplerealmm"> simple rel MM </message>
+			<message key="DOG_reference">Reference</message>
+			<message key="SHEETTYPE1_simpleboolean"> simple boolen </message>
+			<message key="SHEETTYPE1_simplestringmul"> simple texte Multi </message>
+			<message key="SHEETTYPE1_simpleintegerm"> simple entier dans M </message>
+			<message key="PRICE_credit">Credit disponible</message>
+			<message key="SHEETTYPE1_simpleintegermul"> simple entier Multi </message>
+			<message key="DOG_pedigre">Pedigre</message>
+			<message key="SHEETTYPE1_attachedmul"> attach Multi </message>
+			<message key="MOUSE_ref">Ref</message>
+			<message key="SHEETTYPE1_simplebooleanm"> simple boolen M </message>
+			<message key="DOG_ref">Ref</message>
+			<message key="DOG_birthdate">Date de naissance</message>
+			<message key="SHEETTYPE1_simplereal">simple rel</message>
+			<message key="SHEETTYPE1_attached">fichier attach</message>
+			<message key="CAT_color">Couleur</message>
+			<message key="CAT_furlength">Longueur des poils</message>
+			<message key="CAT_reference">Reference</message>
+			<message key="SHEETTYPE1_attachedm"> fichier attach dans M </message>
+			<message key="SHEETTYPE1_CAT_textualjustification"> Justification </message>
+			<message key="PRICE_price">Prix</message>
+			<message key="CAT_PRICE_textualjustification"> Justification </message>
+			<message key="CAT_birthdate">Date de naissance</message>
+			<message key="SHEETTYPE1_reference">Reference</message>
+			<message key="SHEETTYPE1_simpledatemm"> simple date ds MM </message>
+			<message key="PRICE_creditlength">Dure du crdit</message>
+			<message key="MOUSE_lastname">Nom</message>
+			<message key="MOUSE_firstname">Fonction</message>
+			<message key="product_name">nom</message>
+			<message key="product_location">localisation</message>
+			<message key="product_storetype">cible</message>
+			<message key="Validate">Valider</message>
+			<message key="Delete">Supprimer</message>
+			<message key="Temporary">Temporaire</message>
+			<message key="Cat">Chat</message>
+			<message key="Dog">Chien</message>
+			<message key="Mouse">Souris</message>
+			<message key="Price">Prix</message>
+			<message key="SheetType1">Type de fiche N1</message>
+			<message key="Color">Couleur</message>
+			<message key="Happy Mouse">Souris Contente</message>
+
+			<!-- Virtual fields label keys and translations  -->
+			<message key="$PRODUCT_NAME">Nom du produit</message>
+			<message key="$PRODUCT_DESCRIPTION">Description du produit</message>
+			<message key="$PRODUCT_HIERARCHY">Hiérarchie produit</message>
+			<message key="$PRODUCT_FIELD_PREFIX">Produit.</message>
+			<message key="$LINKED_SHEET_FIELD_PREFIX"> Fiche lie- </message>
+			<message key="$LINK_FIELD_PREFIX">Lien-</message>
+			<message key="$NOT_SPECIFIED">Non spcifi</message>
+			<message key="$CURRENT_PRODUCT">Produit courant</message>
+			<message key="$SHEET_REFERENCE"> Rfrence de la fiche </message>
+			<message key="$SHEET_STATE">Etat de la fiche</message>
+			<message key="$SHEET_TYPE">Type de fiche</message>
+
+			<!-- Translations of color category values -->
+			<message key="WHITE">blanc</message>
+			<message key="GREY">gris</message>
+			<message key="GREEN">vert</message>
+			<message key="YELLOW">jaune</message>
+			<message key="RED">rouge</message>
+			<message key="BLACK">noir</message>
+			<message key="GRID_Column_LastName">Nom</message>
+			<message key="GRID_Column_FirstName">Prnom</message>
+			<message key="GRID_SINGLE_TEST_Column1">Colonne 1</message>
+			<message key="GRID_SINGLE_TEST_Column2">Colonne 2</message>
+			<message key="GRID_SINGLE_TEST_ColumnString">Colonne texte</message>
+			<message key="GRID_SINGLE_TEST_ColumnDate">Colonne date</message>
+			<message key="GRID_SINGLE_TEST_ColumnBoolean">Colonne (vrai/faux)</message>
+			<message key="Bernard's store">Magasin de Bernard</message>
+			<message key="CHOICE_01">CHOIX UN</message>
+			<message key="CHOICE_02">CHOIX DEUX</message>
+			<message key="CHOICE_03">CHOIX TROIS</message>
+			<message key="SELECT_01">SELECT UN</message>
+			<message key="SELECT_02">SELECT DEUX</message>
+			<message key="SELECT_03">SELECT TROIS</message>
+			<message key="FILTER_TEST_SHEET_01_GROUP">Filter_Test_Sheet_01_Groupe
+			</message>
+			<message key="FILTER_TEST_SHEET_01_STRING">Champ Filter_Test_Sheet_01_Text</message>
+			<message key="FILTER_TEST_SHEET_01_CHOICE">Champ Filter_Test_Sheet_01_Choix</message>
+			<message key="FILTER_TEST_SHEET_02_CHOICE">Champ Filter_Test_Sheet_02_Choix</message>
+			<message key="Test_description_01_Field1_description">Description du
+				champ Field 1 pour le
+				type de fiche Test_description_01</message>
+			<message key="testInputData_ChoiceString_Field1_description">Description du champ
+				Field 1 pour
+				Input data choiceString</message>
+
+			<image key="image_text_01">images/fr.gif</image>
+			<image key="image_text_02">images/fr.gif</image>
+		</translation>
+	</translations>
+</gpm>

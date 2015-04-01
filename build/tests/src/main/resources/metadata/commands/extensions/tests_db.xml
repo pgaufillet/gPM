@@ -1,0 +1,83 @@
+<extensions>
+<!--  Define commands -->
+  <commands>
+
+    <script>
+      <language>beanshell</language>
+      <name>InitCatRef</name>
+      <code file="extensions/initCatRef.bsh" />
+    </script>
+    
+    <script>
+      <language>beanshell</language>
+      <name>InitDogRef</name>
+      <code file="extensions/initDogRef.bsh" />
+    </script>
+    
+    <script>
+      <language>beanshell</language>
+      <name>InitPriceRef</name>
+      <code file="extensions/initPriceRef.bsh" />
+    </script>
+
+    <script>
+      <language>beanshell</language>
+      <name>InitMouseRef</name>
+      <code file="extensions/initMouseRef.bsh" />
+    </script>
+    
+    <script>
+      <language>beanshell</language>
+      <name>InitSheetType1Ref</name>
+      <code file="extensions/initSheetType1Ref.bsh" />
+    </script>
+
+  </commands>
+
+  <extensionPoints>
+    <sheetExtensionPoint>
+      <processName>PET STORE</processName>
+      <sheetTypeName>Cat</sheetTypeName>
+      <extensionPointName>preCreate</extensionPointName>
+      <commands>
+        <string>InitCatRef</string>
+      </commands>
+    </sheetExtensionPoint>
+    
+    <sheetExtensionPoint>
+      <processName>PET STORE</processName>
+      <sheetTypeName>Dog</sheetTypeName>
+      <extensionPointName>preCreate</extensionPointName>
+      <commands>
+        <string>InitDogRef</string>
+      </commands>
+    </sheetExtensionPoint>
+
+    <sheetExtensionPoint>
+      <processName>PET STORE</processName>
+      <sheetTypeName>Price</sheetTypeName>
+      <extensionPointName>preCreate</extensionPointName>
+      <commands>
+        <string>InitPriceRef</string>
+      </commands>
+    </sheetExtensionPoint>
+    
+    <sheetExtensionPoint>
+      <processName>PET STORE</processName>
+      <sheetTypeName>Mouse</sheetTypeName>
+      <extensionPointName>preCreate</extensionPointName>
+      <commands>
+        <string>InitMouseRef</string>
+      </commands>
+    </sheetExtensionPoint>
+    
+    <sheetExtensionPoint>
+      <processName>PET STORE</processName>
+      <sheetTypeName>SheetType1</sheetTypeName>
+      <extensionPointName>preCreate</extensionPointName>
+      <commands>
+        <string>InitSheetType1Ref</string>
+      </commands>
+    </sheetExtensionPoint>
+  </extensionPoints>
+</extensions>

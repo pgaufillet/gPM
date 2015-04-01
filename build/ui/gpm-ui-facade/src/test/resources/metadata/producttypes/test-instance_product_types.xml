@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- edited with XMLSpy v2005 rel. 3 U (http://www.altova.com) by _AIRBUS FRANCE (AIRBUS FRANCE) -->
+<gpm xmlns="http://www.airbus.com/topcased/gPM"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+    <version>1.2</version>
+    
+    <!-- Product Types's description  -->
+    <productTypes>
+        <!--products family description  -->
+        <productType name="PRODUCT" description="product_desc">
+            <fields>
+                <simpleField valueType="String" labelKey="PRODUCT_NAME" />
+                <multipleField labelKey="PRODUCT_MULTI" multivalued="true" description="multi field desc">
+                    <fields>
+                        <simpleField valueType="String" labelKey="PRODUCT_FIELD_1" />
+                        <simpleField valueType="Date" labelKey="PRODUCT_FIELD_2" />
+                    </fields>
+                </multipleField>
+            </fields>
+        </productType>
+    </productTypes>
+</gpm>

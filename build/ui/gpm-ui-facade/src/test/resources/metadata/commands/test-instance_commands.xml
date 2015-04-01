@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+  
+<gpm xmlns="http://www.airbus.com/topcased/gPM" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+    
+    <version>1.2</version>
+
+    <commands>
+        <action name="ExtensionPoints" classname="metadata.commands.java.ExtensionPoints" />
+        <action name="ExtendedActionCREATE" classname="metadata.commands.java.ExtendedActionCREATE" />
+        <action name="ExtendedActionEDIT" classname="metadata.commands.java.ExtendedActionEDIT" />
+        <action name="ExtendedActionVIEW" classname="metadata.commands.java.ExtendedActionVIEW" />
+        <action name="ExtendedActionALWAYS" classname="metadata.commands.java.ExtendedActionALWAYS" />
+        <action name="ExtendedActionLIST" classname="metadata.commands.java.ExtendedActionLIST" />
+        <action name="extensionPointCSDH" classname="metadata.commands.java.ExtensionPointCSDH" />
+        <action name="postCreateUpdateState" classname="metadata.commands.java.PostCreateUpdateState" />
+        <action name="CreatePointerFields" classname="metadata.commands.java.CreatePointerFields" />
+        <action name="preCreateSheetLink" classname="metadata.commands.java.PreCreateSheetLink" />
+        <action name="printMessage" classname="metadata.commands.java.PrintMessage" />
+    </commands>
+</gpm>

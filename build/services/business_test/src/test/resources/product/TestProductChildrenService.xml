@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.airbus.com/topcased/gPM http://www.airbus.com/topcased/gPM ">
+  <version>1.2</version>
+  
+  <products>
+    <product name="noChild" type="Store" envName="Env1" />
+    <product name="parent" type="Store" envName="Env1" />
+    <product name="child" type="Store" envName="Env1" parentName="parent" />
+  </products>
+</gpm>

@@ -1,0 +1,16 @@
+// Initialize the reference field of an AM
+
+import org.topcased.gpm.business.sheet.service.sheetAccess.MultipleFieldDataAccess;
+import org.topcased.gpm.business.sheet.service.sheetAccess.SheetDataAccess;
+
+// Récupération de la sheetData
+sheetData = context.get("sheetData");
+
+// récupération de la sheetDataAccess(permettant d'accéder aux champs de la sheetdata)
+sheetDataAccess = new SheetDataAccess(sheetData);
+
+// récupération de l'acces au champ multiple Reference
+referenceFieldDataAccess = new MultipleFieldDataAccess(sheetData.getReference());
+
+// reference.name <- ref
+referenceFieldDataAccess.getField("MOUSE_name").setValue(sheetDataAccess.getField("MOUSE_ref").getValue());

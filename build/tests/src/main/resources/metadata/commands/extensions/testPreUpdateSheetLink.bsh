@@ -1,0 +1,22 @@
+import org.topcased.gpm.business.ServiceLocator;
+import org.topcased.gpm.business.link.service.LinkData;
+import org.topcased.gpm.business.sheet.service.SheetData;
+import org.topcased.gpm.business.sheet.service.SheetService;
+import org.topcased.gpm.business.sheet.service.sheetAccess.SheetDataAccess;
+import org.topcased.gpm.business.sheet.service.sheetAccess.SimpleFieldData;
+
+ServiceLocator serviceLocator = context.get("serviceLocator");
+
+/** The Sheet service */
+SheetService sheetService = serviceLocator.getSheetService();
+    
+String roleToken = context.get("roleToken");
+LinkData linkData = context.get("linkData");
+
+SheetData sheetData = sheetService.getSheetByKey(roleToken, linkData.getDestinationId());
+
+if( sheetData !=null){
+	SheetDataAccess sheetDataAccess = new SheetDataAccess(sheetData);
+	((SimpleFieldData)sheetDataAccess.getField("SHEETTYPE1_simpleString")).setValue("PRE-UPDATE");
+	sheetService.updateSheet(roleToken, sheetData, null);
+}

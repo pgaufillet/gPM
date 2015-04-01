@@ -1,0 +1,73 @@
+<!-- Ant build file used to compile the Jasper model and generate             -->
+<!-- a JAR file containing the compiled reports and the additional resources. -->
+<project name="reports" default="jar" basedir=".">
+	<description>
+	    Build a JAR file containing the reports for the gPM-SUMO instance.
+    </description>
+
+	<!-- set global properties for this build -->
+	<property name="build" location="target" />
+	<property name="dist" location="dist" />
+
+	<property name="jar_name" value="gpm-ui-facade-test-instance_reports.jar" />
+	<property name="jasperreports_libs" 
+		location="D:\gPM\JasperReport\iReport-1.3.3\lib" />
+	
+	<!-- Definition of a new task used to compile the Jasper reports -->
+	<taskdef name="jrc" 
+			classname="net.sf.jasperreports.ant.JRAntCompileTask">
+		<classpath>
+			<fileset dir="${jasperreports_libs}">
+				<include name="*.jar" />
+			</fileset>
+		</classpath>
+	</taskdef>
+
+	<target name="init">
+		<!-- Create the time stamp -->
+		<tstamp />
+		<!-- Create the build directory structure used by compile -->
+		<mkdir dir="${build}" />
+		<mkdir dir="${build}/images" />
+	</target>
+
+	<target name="compileReports" depends="init" 
+			description="Compile the reports definition files.">
+		<!-- Compile the report definitions -->
+		<jrc destdir="${build}" srcdir=".">
+			<include name="**/*.jrxml" />
+		</jrc>
+	</target>
+
+	<target name="copyResources" 
+			description="Copy the resource files in the build directory." 
+			depends="init">
+		<copy todir="${build}">
+			<fileset dir=".">
+				<include name="*.properties" />
+			</fileset>
+		</copy>
+		<copy todir="${build}/images">
+			<fileset dir="images">
+				<include name="*" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="jar" 
+			description="Generate the JAR containing the files required for the reports." 
+			depends="compileReports,copyResources">
+		<!-- Create the distribution directory -->
+		<mkdir dir="${dist}" />
+		<jar jarfile="${dist}/${jar_name}">
+			<fileset dir="${build}" includes="**" />
+		</jar>
+		<!-- Delete the ${build} directory tree -->
+		<delete dir="${build}" />
+	</target>
+
+	<target name="clean" description="Clean up the dist trees.">
+		<!-- Delete the ${dist} directory tree -->
+		<delete dir="${dist}" />
+	</target>
+</project>

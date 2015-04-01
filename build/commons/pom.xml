@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!--  Header Part : project name, project module... -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<parent>
+		<groupId>org.topcased.gpm</groupId>
+		<artifactId>gPM</artifactId>
+		<version>1</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.topcased.gpm.commons</groupId>
+	<artifactId>gpm-commons</artifactId>
+	<packaging>pom</packaging>
+	<version>1</version>
+	<name>gPM Commons project</name>
+	<modules>
+		<module>gpm-commons-bean</module>
+	</modules>
+
+	<!-- Global JAR dependencies -->
+	<dependencies>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+		</dependency>
+	</dependencies>
+</project>

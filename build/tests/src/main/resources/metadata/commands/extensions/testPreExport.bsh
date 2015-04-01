@@ -1,0 +1,41 @@
+import java.text.SimpleDateFormat;
+
+import org.topcased.gpm.business.ServiceLocator;
+import org.topcased.gpm.business.sheet.service.SheetHistoryData;
+import org.topcased.gpm.business.sheet.service.SheetService;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+
+ServiceLocator serviceLocator = (ServiceLocator)context.get("serviceLocator");
+
+        /** The Sheet service */
+        SheetService sheetService = serviceLocator.getSheetService();
+            
+        String roleToken = (String)context.get("roleToken");
+        String sheetId = (String)context.get("valuesContainerId");
+        Node sheetNode = (Node)context.get("xmlSheetNode");
+        Document document = (Document)context.get("xmlDocument");
+                
+        
+        SheetHistoryData[] historyDatas = sheetService.getSheetHistory(roleToken, sheetId);
+        
+        Element sheetHistory = document.createElement("sheetHistory");
+               
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm");
+        for (SheetHistoryData historyData : historyDatas){
+            Element sheetHistoryData = document.createElement("sheetHistoryData");
+            sheetHistoryData.setAttribute("login", historyData.getLoginName());
+            sheetHistoryData.setAttribute("originState", historyData.getOriginState());
+            sheetHistoryData.setAttribute("destState", historyData.getDestinationState());
+            sheetHistoryData.setAttribute("date", dateFormat.format(historyData.getChangeDate()));
+            sheetHistory.appendChild(sheetHistoryData);
+        }
+        
+        
+         sheetNode.appendChild(sheetHistory);
+        
+       
+        

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF8"?>
+
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+
+	<version>1.2</version>
+	<products>
+		<product name="PRODUCT_TO_IMPORT" type="PRODUCT" envName="default" id="plop" parentName="" />
+	</products>
+    <userRoles>
+        <userRole login="userImportProduct" roleName="plop"/>
+    </userRoles>
+</gpm>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fileset-config file-format-version="1.2.0" simple-config="false">
+        <fileset name="all" enabled="true" check-config-name="gPM" local="false">
+            <file-match-pattern match-pattern="^src\\.*.java$" include-pattern="true"/>
+            <file-match-pattern match-pattern="^src\\main\\java\\com.*.java$" include-pattern="false"/>
+            <file-match-pattern match-pattern="^src\\main\\java\\org\\topcased\\gpm\\ui\\component\\client\\resources\\i18n\\GpmConstantsWithLookup.java$" include-pattern="false"/>
+        </fileset>
+</fileset-config>

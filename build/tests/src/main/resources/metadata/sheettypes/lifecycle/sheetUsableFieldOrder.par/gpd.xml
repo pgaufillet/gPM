@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-diagram name="DMD" width="778" height="705">
+  <node name="Deleted" x="352" y="43" width="140" height="40"/>
+  <node name="Open" x="96" y="157" width="140" height="40">
+    <transition name="Abort"/>
+    <transition name="Close"/>
+  </node>
+  <node name="Temporary" x="93" y="45" width="140" height="40">
+    <transition name="Delete"/>
+    <transition name="Validate"/>
+  </node>
+  <node name="Closed" x="360" y="160" width="140" height="40"/>
+  <node name="NoAction" x="362" y="259" width="140" height="40"/>
+</process-diagram>

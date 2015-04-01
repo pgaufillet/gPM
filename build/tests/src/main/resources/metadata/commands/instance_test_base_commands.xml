@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+	<version>1.2</version>
+	<commands>
+		<!--
+			<action name="extendedTestInputData" classname="TestInputData" />
+		-->
+		<script name="extendedTestInputData" language="beanshell">
+			<code filename="metadata/commands/extensions/testInputData.bsh" />
+		</script>
+		<script name="ControlTypeImportInitRef" language="beanshell">
+			<code filename="metadata/commands/extensions/initControlTypeImportRef.bsh" />
+		</script>
+		<script name="CAT_initRef" language="beanshell">
+			<code filename="metadata/commands/extensions/initCatRef.bsh" />
+		</script>
+		<script name="DOG_initRef" language="beanshell">
+			<code filename="metadata/commands/extensions/initDogRef.bsh" />
+		</script>
+		<script name="MOUSE_preCreateRev" language="beanshell">
+			<code filename="metadata/commands/extensions/testPreCreateRevision.bsh" />
+		</script>
+		<script name="MOUSE_postCreateRev" language="beanshell">
+			<code filename="metadata/commands/extensions/testPostCreateRevision.bsh" />
+		</script>
+		<script name="MOUSE_preDeleteRev" language="beanshell">
+			<code filename="metadata/commands/extensions/testPreDeleteRevision.bsh" />
+		</script>
+		<script name="MOUSE_initRef" language="beanshell">
+			<code filename="metadata/commands/extensions/initMouseRef.bsh" />
+		</script>
+		<script name="PRICE_initRef" language="beanshell">
+			<code filename="metadata/commands/extensions/initPriceRef.bsh" />
+		</script>
+		<script name="PRICE_postDeleteRev" language="beanshell">
+			<code filename="metadata/commands/extensions/testPostDeleteRevision.bsh" />
+		</script>
+		<script language="beanshell" name="testPreDelete">
+			<code filename="metadata/commands/extensions/testPreDelete.bsh" />
+		</script>
+		<script language="beanshell" name="testPostDelete">
+			<code filename="metadata/commands/extensions/testPostDelete.bsh" />
+		</script>
+		<script language="beanshell" name="testPreCreateSheetLink">
+			<code filename="metadata/commands/extensions/testPreCreateSheetLink.bsh" />
+		</script>
+		<script language="beanshell" name="testPostCreateSheetLink">
+			<code filename="metadata/commands/extensions/testPostCreateSheetLink.bsh" />
+		</script>
+		<script language="beanshell" name="testPreUpdateSheetLink">
+			<code filename="metadata/commands/extensions/testPreUpdateSheetLink.bsh" />
+		</script>
+		<script language="beanshell" name="testPostUpdateSheetLink">
+			<code filename="metadata/commands/extensions/testPostUpdateSheetLink.bsh" />
+		</script>
+		<script language="beanshell" name="testPreDeleteSheetLink">
+			<code filename="metadata/commands/extensions/testPreDeleteSheetLink.bsh" />
+		</script>
+		<script language="beanshell" name="testPostDeleteSheetLink">
+			<code filename="metadata/commands/extensions/testPostDeleteSheetLink.bsh" />
+		</script>
+		<script language="beanshell" name="testPreExport">
+			<code filename="metadata/commands/extensions/testPreExport.bsh" />
+		</script>
+
+		<script name="initRef_basic" language="beanshell">
+			<code filename="metadata/commands/extensions/sheetType1_initRef.bsh" />
+		</script>
+		<script name="SHEETTYPE1_setCurrentDate" language="beanshell">
+			<code filename="metadata/commands/extensions/sheetType1_setCurrentDate.bsh" />
+		</script>
+
+		<script name="getChoiceStrings" language="beanshell">
+			<code filename="metadata/commands/extensions/getChoiceStrings.bsh" />
+		</script>
+		<script name="getChoiceStrings2" language="beanshell">
+			<code filename="metadata/commands/extensions/getChoiceStrings2.bsh" />
+		</script>
+		<script name="getChoiceStrings3" language="beanshell">
+			<code filename="metadata/commands/extensions/getChoiceStrings3.bsh" />
+		</script>
+		<action name="ExtendedAction_CF_018"
+			classname="org.topcased.gpm.business.extensions.ExtendedActionCF018" />
+
+		<action name="productExtensionPointTest"
+			classname="org.topcased.gpm.business.extensions.product.ProductExtensionPointTest" />
+
+		<action name="mappingExtensionPointTest"
+			classname="org.topcased.gpm.business.extensions.values.MappingExtensionPointTest" />
+	</commands>
+</gpm>

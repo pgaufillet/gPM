@@ -1,0 +1,54 @@
+
+import org.topcased.gpm.business.ServiceLocator;
+import org.topcased.gpm.business.extensions.service.Context;
+import org.topcased.gpm.business.extensions.service.GDMExtension;
+import org.topcased.gpm.business.fields.FieldData;
+import org.topcased.gpm.business.fields.FieldValueData;
+import org.topcased.gpm.business.fields.MultipleLineFieldData;
+import org.topcased.gpm.business.link.service.LinkData;
+import org.topcased.gpm.business.sheet.service.SheetData;
+import org.topcased.gpm.business.sheet.service.SheetService;
+import org.topcased.gpm.business.sheet.service.sheetAccess.SheetDataAccess;
+import org.topcased.gpm.business.sheet.service.sheetAccess.SimpleFieldData;
+
+ServiceLocator serviceLocator = context.get("serviceLocator");
+
+/** The Sheet service */
+SheetService sheetService = serviceLocator.getSheetService();
+    
+String roleToken = context.get("roleToken");
+
+sheetData = context.get("sheetData");
+if( sheetData !=null){
+	SheetDataAccess sheetDataAccess = new SheetDataAccess(sheetData);
+	String previous = ((SimpleFieldData)sheetDataAccess.getField("CAT_description")).getValue();
+	((SimpleFieldData)sheetDataAccess.getField("CAT_description")).setValue(previous + " preCreateSheetLink");
+	sheetService.updateSheet(roleToken, sheetData, null);
+}
+
+
+        LinkData lLinkData = (LinkData) context.get("linkData");
+        String[] lNewValue = {"new value"};
+        String lFieldLabelKeyToUpdate = "cat-cat_description";
+        MultipleLineFieldData lMultipleLineFieldData = null;
+        boolean lFound = false;
+        int i = 0;
+        while((i < lLinkData.getMultipleLineFieldDatas().length) || (!lFound)) {
+            MultipleLineFieldData lMultipleLineFieldData2 = lLinkData.getMultipleLineFieldDatas()[i];
+            if(lMultipleLineFieldData2.getLabelKey().equals(lFieldLabelKeyToUpdate)) {
+                lMultipleLineFieldData = lMultipleLineFieldData2;
+                lFound = true;
+            }
+            i++;
+        }
+        
+        if(lFound) {
+            FieldData lFieldData = lMultipleLineFieldData.getLineFieldDatas()[0].getFieldDatas()[0];
+            FieldValueData lFieldValueData = lFieldData.getValues();
+            if(lFieldValueData == null) {
+                lFieldData.setValues(new FieldValueData(lNewValue));
+            }
+            else {
+                lFieldValueData.setValues(lNewValue);
+            }
+        }

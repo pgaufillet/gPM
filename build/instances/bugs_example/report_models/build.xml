@@ -1,0 +1,79 @@
+<!-- Ant build file used to compile the Jasper model and generate             -->
+<!-- a JAR file containing the compiled reports and the additional resources. -->
+
+<!--
+
+ The generation of reports requires: 
+  - Jakarta Ant (this script is tested with v1.7)
+  - The JasperReports libraries (v2.0.x) , used to run the report compiler.
+
+-->
+
+<!-- This file can be used as an example to build reports JAR files -->
+
+<project name="bugs_report" default="jar" basedir=".">
+  <description>
+     Build a JAR file containing the reports for the Bugs instance.
+  </description>
+
+  <!-- set global properties for this build -->
+  <property name="build" location="target" />
+  <property name="dist"  location="dist"   />
+
+  <!-- Path of the JaserReports libraries -->
+  <property name="jasperreports_libs" location="D:/appl/iReport-2.0.5/lib" />
+
+  <!-- Definition of a new task used to compile the Jasper reports -->
+  <taskdef name="jrc" classname="net.sf.jasperreports.ant.JRAntCompileTask">
+    <classpath>	
+	<fileset dir="${jasperreports_libs}" >
+	   <include name="*.jar" />
+        </fileset>
+    </classpath>
+  </taskdef>
+
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${build}/report_models" />
+  </target>
+
+  <target name="compileReports" depends="init"
+          description="Compile the reports definition files." >
+   
+    <!-- Compile the report definitions -->
+    <jrc destdir="${build}/report_models" srcdir=".">
+      <include name="**/*.jrxml" />
+    </jrc>
+  </target>
+
+  <target name="copyResources" 
+          description="Copy the resource files in the build directory."
+          depends="init" >
+    <copy todir="${build}/report_models">
+      <fileset dir=".">
+        <include name="*.properties"/>
+      </fileset>
+    </copy>    
+  </target>
+
+  <target name="jar" 
+          description="Generate the JAR containing the files required for the reports."
+          depends="compileReports,copyResources">
+    <!-- Create the distribution directory -->
+    <mkdir dir="${dist}" />
+   
+    <jar jarfile="${dist}/bugs_report.jar" >
+        <fileset dir="${build}" includes="**"/>
+    </jar>
+  </target>
+
+  <target name="clean"
+          description="Clean up the build and dist trees." >
+    <!-- Delete the ${dist} directory tree -->
+    <delete dir="${dist}" />
+    <delete dir="${build}"/>
+  </target>
+</project>

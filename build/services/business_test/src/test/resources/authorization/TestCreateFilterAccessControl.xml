@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<gpm xmlns="http://www.airbus.com/topcased/gPM"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+
+    <version>1.2</version>
+    
+    <filterAccessConstraints>
+        <filterAccessConstraint constraintName="constraint1">
+            <criteria>
+                <criteriaGroup>
+                    <criterion fieldKey="SheetWithSomeConfidentialFields_Field1" operator="=" value="field_value1"/>
+                    <criterion fieldKey="SheetLinkWithSomeConfidentialFields|SheetLinkWithSomeConfidentialFields_Field3" operator="like" value="0"/>
+                </criteriaGroup>
+                <criteriaGroup>
+                    <criterion fieldKey="SheetLinkWithSomeConfidentialFields|SheetMultipleWithSomeConfidentialFields|$SHEET_STATE" operator="!=" value="field_value3"/>
+                </criteriaGroup>
+            </criteria>
+        </filterAccessConstraint>
+        <filterAccessConstraint constraintName="constraint2">
+            <criteria>
+                <criteriaGroup>
+                    <criterion fieldKey="Store|product_name" operator="=" value="field_value4"/>
+                </criteriaGroup>
+            </criteria>
+        </filterAccessConstraint>
+    </filterAccessConstraints>
+    <filterAccessControls>
+        <filterAccess roleName="notadmin" visibility="User" typeName="Type1" fieldName="UsedField"
+            editable="false" executable="true">
+            <filterAccessConstraintName constraintName="constraint1"/>
+            <filterAccessConstraintName constraintName="constraint2"/>
+        </filterAccess>
+        
+        <filterAccess roleName="viewer" visibility="Product" typeName="Type2" fieldName="UsedField"
+            editable="true" executable="false">
+            <filterAccessConstraintName constraintName="constraint2"/>
+        </filterAccess>
+     </filterAccessControls>
+</gpm>

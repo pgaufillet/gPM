@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <!--
+        Mail service
+    -->
+
+    <!-- Implementation bean -->
+    <bean id="mailServiceImpl"
+        class="org.topcased.gpm.business.mail.impl.MailServiceImpl"
+        parent="serviceImplBase" lazy-init="true">
+        <property name="mailSender" ref="${mailSender}"/>
+        <property name="mailFrom" value="${smtp.from}"/>
+    </bean>
+
+    <!-- Visible interface of the service  -->
+    <bean id="mailService"
+        class="org.springframework.aop.framework.ProxyFactoryBean"
+        lazy-init="true"
+        parent="interceptedService">
+        <property name="target" ref="mailServiceImpl" />
+
+        <property name="proxyInterfaces"
+            value="org.topcased.gpm.business.mail.service.MailService" />
+    </bean>
+</beans>

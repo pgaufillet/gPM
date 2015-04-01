@@ -1,0 +1,11 @@
+import org.topcased.gpm.business.fields.*;
+
+/** The Name of a field. */
+private static final String FIELD_NAME = "Félix";
+
+LineFieldData lLFD = context.get("sheetData").getReference();
+String[] lValues = { FIELD_NAME };
+FieldData[] lFieldDatas = lLFD.getFieldDatas();
+lFieldDatas[0].setValues(new FieldValueData(lValues));
+lLFD.setFieldDatas(lFieldDatas);
+

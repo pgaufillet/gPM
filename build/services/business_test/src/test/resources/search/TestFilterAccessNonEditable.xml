@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+	<version>1.2</version>
+	
+	<filterAccessControls>
+		<filterAccess visibility="Process" editable="true" roleName="notadmin" />
+		<filterAccess visibility="Product" editable="true" roleName="notadmin" />
+		<filterAccess visibility="User"    editable="false" roleName="notadmin" />
+		
+		<filterAccess typeName="Dog" editable="false" />
+		
+		<filterAccess typeName="Cat" fieldName="CAT_pedigre" editable="false" />
+	</filterAccessControls>
+
+</gpm>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    instanceWithGlobalAttribute.xml
+
+    Instance defining the helpContentUrl global attribute
+-->
+
+<gpm xmlns="http://www.airbus.com/topcased/gPM"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+
+    <version>1.2</version>
+
+    <attributes>
+        <!-- helpContentUrl attribute -->
+        <attribute name="helpContentUrl" value="http://www.google.fr" />
+    </attributes>
+</gpm>

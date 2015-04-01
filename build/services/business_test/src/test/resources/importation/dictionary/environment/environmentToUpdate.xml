@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF8"?>
+
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+
+	<version>1.2</version>
+
+	<dictionary>
+		<environments>
+			<environment name="envTest_01" isPublic="false">
+				<categories>
+					<category name="envCatTest_01">
+						<values>
+							<categoryValue value="envCatTest_01_value_01" />
+							<categoryValue value="envCatTest_01_value_02" />
+						</values>
+					</category>
+					<category name="envCatTest_02">
+						<values>
+							<categoryValue value="envCatTest_02_value_01" />
+						</values>
+					</category>
+				</categories>
+			</environment>
+			<environment name="envTest_02" isPublic="true">
+				<categories>
+					<category name="envCatTest_01">
+						<values>
+							<categoryValue value="envCatTest_01_value_01" />
+						</values>
+					</category>
+					<category name="envCatTest_03">
+						<values>
+							<categoryValue value="envCatTest_03_value_01" />
+							<categoryValue value="envCatTest_03_value_02" />
+						</values>
+					</category>
+				</categories>
+			</environment>
+		</environments>
+	</dictionary>
+</gpm>

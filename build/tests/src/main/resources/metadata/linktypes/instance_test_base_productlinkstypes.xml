@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+	<version>1.2</version>
+
+	<productLinkTypes>
+		<productLinkType name="ProdLinkType" originType="Store"
+			destinationType="Store">
+			<fields>
+				<simpleField valueType="String" labelKey="productLinkField1" maxSize="10" />
+				<simpleField valueType="String" labelKey="productLinkField2" maxSize="5" />
+			</fields>
+			<displayHints>
+			 <textDisplayHint labelKey="productLinkField2" width="10" height="20" displayType="MULTI_LINE" />
+			</displayHints>
+		</productLinkType>
+		
+		<productLinkType destinationType="Store" name="testExportProductLink" originType="Store"
+            unidirectional="true">
+            <fields>
+                <simpleField valueType="String" labelKey="testExportProductLink_field1" maxSize="50" />
+	            <simpleField valueType="String" labelKey="testExportProductLink_field2" maxSize="50" confidential="true"/>
+	            <simpleField valueType="String" labelKey="testExportProductLink_field3" maxSize="50" exportable="true" />
+	            <simpleField valueType="String" labelKey="testExportProductLink_field4" maxSize="50" confidential="true" exportable="true"/>
+	            <simpleField valueType="String" labelKey="testExportProductLink_field5" maxSize="50" updatable="true"/>
+            </fields>
+        </productLinkType>
+	</productLinkTypes>
+</gpm>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<!--
+    GWT-Maven archetype generated POM
+    -->
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.topcased.gpm.ui</groupId>
+	<artifactId>gpm-ui-facade</artifactId>
+	<packaging>jar</packaging>
+	<version>${gpm.version}</version>
+	<name>gPM UI Facade</name>
+	<parent>
+		<groupId>org.topcased.gpm</groupId>
+		<artifactId>gpm-web</artifactId>
+		<version>1</version>
+	</parent>
+
+	<dependencies>
+		<!--  GWT dependencies (from central repo) -->
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-servlet</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-user</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<!-- jasper reports : used for export -->
+		<dependency>
+			<groupId>jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.topcased.gpm.commons</groupId>
+			<artifactId>gpm-commons-bean</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.topcased.gpm</groupId>
+			<artifactId>gPM-services-business</artifactId>
+		</dependency>
+
+		<!-- test -->
+		<dependency>
+			<groupId>org.topcased.gpm</groupId>
+			<artifactId>gPM-tools-resetinstance</artifactId>
+			<version>${gpm.version}</version>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.topcased.gpm</groupId>
+					<artifactId>gPM-services-business</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.topcased.gpm</groupId>
+			<artifactId>gPM-tools-dbUtils</artifactId>
+			<version>${gpm.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.topcased.gpm</groupId>
+			<artifactId>gPM-tools-instantiation</artifactId>
+			<version>${gpm.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<defaultGoal>install</defaultGoal>
+		<outputDirectory>war/WEB-INF/classes</outputDirectory>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+			</resource>
+		</resources>
+		<testResources>
+			<testResource>
+				<filtering>true</filtering>
+				<directory>
+					${pom.basedir}/src/test/filtered-resources/
+                </directory>
+			</testResource>
+			<testResource>
+				<filtering>false</filtering>
+				<directory>
+					${pom.basedir}/src/test/resources/
+                </directory>
+			</testResource>
+		</testResources>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>gwt-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>resources</goal>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<configuration>
+					<additionalProjectnatures>
+						<projectnature>com.google.gwt.eclipse.core.gwtNature</projectnature>
+						<projectnature>com.atlassw.tools.eclipse.checkstyle.CheckstyleNature</projectnature>
+					</additionalProjectnatures>
+					<additionalBuildcommands>
+						<buildcommand>com.google.gwt.eclipse.core.gwtProjectValidator</buildcommand>
+						<buildcommand>com.atlassw.tools.eclipse.checkstyle.CheckstyleBuilder</buildcommand>
+					</additionalBuildcommands>
+					<classpathContainers>
+						<classpathContainer>com.google.gwt.eclipse.core.GWT_CONTAINER</classpathContainer>
+					</classpathContainers>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven.surefire.version}</version>
+				<configuration>
+					<includes>
+						<include>${gpm.unit-tests}</include>
+					</includes>
+					<!--
+						Increase the max sire of the JVM because migration need more than 64 Mo
+					-->
+					<argLine>-Xmx128m</argLine>
+					<systemProperties>
+						<!--
+							Needed to use the AWT library in 'headless' mode. The AWT is used by JasperReports when a
+							report uses image (as the AWT classes are used in this case). As no X server is setup (and
+							none should be required), this property must be set.
+						-->
+						<property>
+							<name>java.awt.headless</name>
+							<value>true</value>
+						</property>
+					</systemProperties>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

@@ -1,0 +1,7 @@
+
+if( context.get("postUpdate") != null){
+    context.set("postUpdate", "passed");
+}
+
+
+

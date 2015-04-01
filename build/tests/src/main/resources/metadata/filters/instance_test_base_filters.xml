@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+	<version>1.2</version>
+	<filters>
+	
+	   <sheetFilter labelKey="long string value sheets">
+            <containers>
+                <sheetTypeRef name="excelSizeTest" />
+            </containers>
+            <resultSummary>
+                <fieldResult name="$SHEET_REFERENCE" sort="asc"
+                    displayed="true" />
+                <fieldResult name="EXCEL_STRING" displayed="true" />
+            </resultSummary>
+        </sheetFilter>
+	
+		<sheetFilter labelKey="OPENED_CATS">
+			<containers>
+				<sheetTypeRef name="Cat" />
+			</containers>
+			<criteria>
+				<criteriaGroup>
+					<criterion fieldKey="$SHEET_STATE" operator="=" value="Open" caseSensitive="true" />
+				</criteriaGroup>
+			</criteria>
+			<resultSummary>
+				<fieldResult name="$PRODUCT_NAME" sort="asc" displayed="true"
+					label="Produit associe" />
+				<fieldResult name="$SHEET_REFERENCE" sort="asc"
+					displayed="false" />
+				<fieldResult name="CAT_description" displayed="false" />
+				<fieldResult name="CAT_pedigre" displayed="true" />
+			</resultSummary>
+		</sheetFilter>
+		<sheetFilter labelKey="TEST_FILTER_1" filterUsage="table">
+			<productName>Bernard's store</productName>
+			<containers>
+				<sheetTypeRef name="Cat" />
+			</containers>
+			<resultSummary>
+				<fieldResult name="$PRODUCT_NAME" sort="asc" />
+				<fieldResult name="$SHEET_REFERENCE" sort="asc" />
+				<fieldResult name="CAT_description" />
+			</resultSummary>
+		</sheetFilter>
+		<sheetFilter labelKey="TEST_FILTER_2" hidden="true">
+			<containers>
+				<sheetTypeRef name="Cat" />
+			</containers>
+			<resultSummary>
+				<fieldResult name="$PRODUCT_NAME" sort="asc" />
+				<fieldResult name="$SHEET_REFERENCE" sort="asc" />
+				<fieldResult name="CAT_description" />
+			</resultSummary>
+		</sheetFilter>
+		<sheetFilter labelKey="SHEETTYPE1">
+			<containers>
+				<sheetTypeRef name="SheetType1" />
+			</containers>
+			<resultSummary>
+				<fieldResult name="$SHEET_REFERENCE" sort="asc" />
+				<fieldResult name="SHEETTYPE1_currentDate" />
+			</resultSummary>
+		</sheetFilter>
+		<sheetFilter labelKey="TEST_FILTER_WITH_SAME_NAME">
+			<!-- user's filter -->
+			<userLogin>admin</userLogin>
+			<containers>
+				<sheetTypeRef name="Cat" />
+			</containers>
+			<resultSummary>
+				<fieldResult name="CAT_description" sort="asc" />
+			</resultSummary>
+		</sheetFilter>
+		<sheetFilter labelKey="TEST_FILTER_WITH_SAME_NAME">
+			<!-- product's filter -->
+			<productName>Happy Mouse</productName>
+			<containers>
+				<sheetTypeRef name="Cat" />
+			</containers>
+			<resultSummary>
+				<fieldResult name="$PRODUCT_NAME" sort="asc" />
+			</resultSummary>
+		</sheetFilter>
+		<sheetFilter labelKey="TEST_FILTER_WITH_SAME_NAME">
+			<!-- instance's filter -->
+			<containers>
+				<sheetTypeRef name="Cat" />
+			</containers>
+			<resultSummary>
+				<fieldResult name="$SHEET_REFERENCE" sort="asc" />
+			</resultSummary>
+		</sheetFilter>
+		<sheetFilter labelKey="SHEETS_WITH_POINTERS">
+			<containers>
+				<sheetTypeRef name="TestPointerFields1" />
+			</containers>
+			<resultSummary>
+				<fieldResult name="$SHEET_REFERENCE" sort="asc" />
+			</resultSummary>
+		</sheetFilter>
+		<sheetFilter labelKey="HMI - FilterOnSeveralLevel">
+			<description>
+				Filter using criteria and result fields on several
+				level.
+				On 'SheetWithSomeConfidentialFields' fields container.
+				With
+				'store1', 'store1_1' and 'store2' as product scope.
+				Criteria:
+				'SheetWithSomeConfidentialFields_Field1',
+				'SheetLinkWithSomeConfidentialFields|SheetLinkWithSomeConfidentialFields_Field3',
+				'SheetLinkWithSomeConfidentialFields|SheetMultipleWithSomeConfidentialFields|SheetLinkWithSomeConfidentialFields|SheetLinkWithSomeConfidentialFields_Field3',
+				'SheetLinkWithSomeConfidentialFields|SheetMultipleWithSomeConfidentialFields|SheetMultipleWithSomeConfidentialFields_multiple1_Field1',
+				'SheetLinkWithSomeConfidentialFields|SheetMultipleWithSomeConfidentialFields|$SHEET_STATE',
+				'SheetLinkWithSomeConfidentialFields|SheetMultipleWithSomeConfidentialFields|SheetLinkWithSomeConfidentialFields|SheetWithSomeConfidentialFields|SheetWithSomeConfidentialFields_Field3'
+
+				Result field (for the moment):
+				'SheetWithSomeConfidentialFields_ref'
+			</description>
+			<containers>
+				<sheetTypeRef name="SheetWithSomeConfidentialFields" />
+			</containers>
+			<scope>
+				<productScope name="store1" />
+				<productScope name="store1_1" />
+				<productScope name="store2" />
+			</scope>
+			<criteria>
+				<criteriaGroup>
+					<!-- LEVEL 1 - STRING -->
+					<criterion fieldKey="SheetWithSomeConfidentialFields_Field1"
+						operator="=" value="value1" caseSensitive="true" />
+					<!-- LEVEL 1 - LINK - INTEGER -->
+					<criterion
+						fieldKey="SheetLinkWithSomeConfidentialFields|SheetLinkWithSomeConfidentialFields_Field3"
+						operator="=" value="0" caseSensitive="true" />
+					<!-- LEVEL 2 - LINK - REAL -->
+					<criterion
+						fieldKey="SheetLinkWithSomeConfidentialFields|SheetMultipleWithSomeConfidentialFields|SheetLinkWithSomeConfidentialFields|SheetLinkWithSomeConfidentialFields_Field3"
+						operator="=" value="1" caseSensitive="true" />
+					<!-- LEVEL 1 - LINKED SHEET - BOOLEAN -->
+					<criterion
+						fieldKey="SheetLinkWithSomeConfidentialFields|SheetMultipleWithSomeConfidentialFields|SheetMultipleWithSomeConfidentialFields_multiple1_Field1"
+						operator="=" value="false" caseSensitive="true" />
+					<!-- LEVEL 1 - LINKED SHEET - $SHEET_STATE - CHOICE -->
+					<criterion
+						fieldKey="SheetLinkWithSomeConfidentialFields|SheetMultipleWithSomeConfidentialFields|$SHEET_STATE"
+						operator="=" value="Temporary" caseSensitive="true" />
+					<!-- LEVEL 2 - LINKED SHEET - DATE -->
+					<criterion
+						fieldKey="SheetLinkWithSomeConfidentialFields|SheetMultipleWithSomeConfidentialFields|SheetLinkWithSomeConfidentialFields|SheetWithSomeConfidentialFields|SheetWithSomeConfidentialFields_Field3"
+						operator="=" value="2009-04-04" caseSensitive="true" />
+				</criteriaGroup>
+			</criteria>
+			<resultSummary>
+				<fieldResult name="SheetWithSomeConfidentialFields_ref" />
+			</resultSummary>
+		</sheetFilter>
+		<sheetFilter labelKey="ALL_SHEETS" filterUsage="table">
+			<description>Return all sheets of the instance</description>
+			<containers>
+				<sheetTypeRef name="Cat" />
+				<sheetTypeRef name="Dog" />
+				<sheetTypeRef name="Mouse" />
+				<sheetTypeRef name="Price" />
+				<sheetTypeRef name="SheetType1" />
+				<sheetTypeRef name="SheetType_withMandatoryValues" />
+				<sheetTypeRef name="SimpleSheetType1" />
+				<sheetTypeRef name="SimpleSheetType2" />
+				<sheetTypeRef name="DOJO_Test" />
+				<sheetTypeRef name="Grid_Single_Test" />
+				<sheetTypeRef name="Grid_Multivalue_Test" />
+				<sheetTypeRef name="Grid_StringDateBoolean_Test" />
+				<sheetTypeRef name="FILTER_TEST_SHEET_01" />
+				<sheetTypeRef name="Test_image_text_displayHint_01" />
+				<sheetTypeRef name="ControlType" />
+				<sheetTypeRef name="ControlType2" />
+				<sheetTypeRef name="Test_choicestring_displayHint_01" />
+				<sheetTypeRef name="SheetWithSomeConfidentialFields" />
+				<sheetTypeRef name="SheetMultipleWithSomeConfidentialFields" />
+				<sheetTypeRef name="Test_description_01" />
+				<sheetTypeRef name="OrderByCategorySheet" />
+				<sheetTypeRef name="Test_ChoiceMultiValued" />
+				<sheetTypeRef name="test_multivalued_field" />
+				<sheetTypeRef name="TestDateDisplayHint" />
+				<sheetTypeRef name="TestPointerFields1" />
+				<sheetTypeRef name="TestPointerFields2" />
+			</containers>
+			<resultSummary>
+				<fieldResult name="$SHEET_TYPE" />
+				<fieldResult name="$SHEET_REFERENCE" />
+			</resultSummary>
+		</sheetFilter>
+
+
+		<!--  Filters used in Validation tests -->
+		<sheetFilter labelKey="Test_CreateFilter_CF_001_SAVED">
+			<productName>product1</productName>
+			<userLogin>viewer3</userLogin>
+			<containers>
+				<sheetTypeRef name="FILTER_TEST_SHEET_01" />
+			</containers>
+			<criteria>
+				<criteriaGroup>
+					<criterion fieldKey="FILTER_TEST_SHEET_TEST_ID" operator="="
+						value="Test_CreateFilter_CF_001" caseSensitive="true" />
+				</criteriaGroup>
+			</criteria>
+			<resultSummary>
+				<fieldResult name="FILTER_TEST_SHEET_01_STRING" />
+				<fieldResult name="FILTER_TEST_SHEET_01_CHOICE" />
+				<fieldResult name="FILTER_TEST_SHEET_02_CHOICE" />
+				<fieldResult name="$SHEET_STATE" />
+				<fieldResult name="$SHEET_TYPE" label="Sheet type" />
+				<fieldResult name="$SHEET_REFERENCE" sort="asc" label="Ref" />
+				<fieldResult name="$PRODUCT_NAME" />
+				<fieldResult name="Store|product_location" />
+			</resultSummary>
+		</sheetFilter>
+
+		<sheetFilter labelKey="Test_RemoveFilter_CF_001_FILTER">
+			<userLogin>viewer3</userLogin>
+			<containers>
+				<sheetTypeRef name="FILTER_TEST_SHEET_01" />
+			</containers>
+			<resultSummary>
+				<fieldResult name="$SHEET_REFERENCE" sort="asc" label="Ref" />
+			</resultSummary>
+		</sheetFilter>
+		<sheetFilter labelKey="Test_RemoveFilter_CF_002_FILTER">
+			<userLogin>viewer3</userLogin>
+			<containers>
+				<sheetTypeRef name="FILTER_TEST_SHEET_01" />
+			</containers>
+			<resultSummary>
+				<fieldResult name="$SHEET_REFERENCE" sort="asc" label="Ref" />
+			</resultSummary>
+		</sheetFilter>
+		<sheetFilter labelKey="autolocking filter">
+			<containers>
+				<sheetTypeRef name="TestAutolockingSheet" />
+			</containers>
+			<productName>product1</productName>
+			<resultSummary>
+				<fieldResult name="field1" />
+			</resultSummary>
+		</sheetFilter>
+		<productFilter labelKey="Test_RemoveFilter_CF_003_FILTER">
+			<userLogin>viewer3</userLogin>
+			<containers>
+				<productTypeRef name="Store" />
+			</containers>
+			<resultSummary>
+				<fieldResult name="product_name" />
+			</resultSummary>
+		</productFilter>
+		<sheetFilter labelKey="Test_RemoveFilter_CF_004_FILTER_USER">
+			<userLogin>viewer3</userLogin>
+			<containers>
+				<sheetTypeRef name="FILTER_TEST_SHEET_01" />
+			</containers>
+			<resultSummary>
+				<fieldResult name="$SHEET_REFERENCE" sort="asc" label="Ref" />
+			</resultSummary>
+		</sheetFilter>
+		<sheetFilter labelKey="Test_RemoveFilter_CF_004_FILTER_PRODUCT">
+			<productName>product1</productName>
+			<containers>
+				<sheetTypeRef name="FILTER_TEST_SHEET_01" />
+			</containers>
+			<resultSummary>
+				<fieldResult name="$SHEET_REFERENCE" sort="asc" label="Ref" />
+			</resultSummary>
+		</sheetFilter>
+		<sheetFilter labelKey="Test_RemoveFilter_CF_004_FILTER_INSTANCE">
+			<containers>
+				<sheetTypeRef name="FILTER_TEST_SHEET_01" />
+			</containers>
+			<resultSummary>
+				<fieldResult name="$SHEET_REFERENCE" sort="asc" label="Ref" />
+			</resultSummary>
+		</sheetFilter>
+		<sheetFilter labelKey="TestMigration" description="Complete filter for migration test"
+            hidden="true" filterUsage="all">
+            <containers>
+                <sheetTypeRef name="SheetType1" />
+            </containers>
+            <criteria>
+                <criteriaGroup>
+                    <criterion fieldKey="SHEETTYPE1_currentDate" operator="lessThan" caseSensitive="true" />
+                    <criterion fieldKey="SHEETTYPE1_simpleInteger" operator="=" caseSensitive="true" />
+                    <criterion fieldKey="SHEETTYPE1_simpleReal" operator="greaterThan" caseSensitive="true" />
+                    <criterion fieldKey="SHEETTYPE1_simpleBoolean" operator="=" caseSensitive="true" />
+                    <criterion fieldKey="SHEETTYPE1_simpleString" operator="notLike" caseSensitive="true" />
+                    <criterion fieldKey="SHEETTYPE1_choice" operator="!=" caseSensitive="true" />
+                </criteriaGroup>
+                <criteriaGroup>
+                    <criterion fieldKey="SHEETTYPE1_simpleString" operator="like" value="%" caseSensitive="true" />
+                    <criterion fieldKey="SHEETTYPE1_simpleString" operator="notLike" value="%" caseSensitive="true" />
+                </criteriaGroup>
+                <criteriaGroup>
+                    <criterion fieldKey="SHEETTYPE1_currentDate" operator="lessOrEqual" value="2009-09-09" caseSensitive="true" />
+                    <criterion fieldKey="SHEETTYPE1_simpleInteger" operator="greaterOrEqual" value="5" caseSensitive="true" />
+                </criteriaGroup>
+            </criteria>
+            <resultSummary>
+                <fieldResult name="$SHEET_REFERENCE" label="Reference of the sheet" displayed="true" sort="asc" />
+                <fieldResult name="SHEETTYPE1_currentDate" displayed="false" sort="desc" />
+            </resultSummary>
+        </sheetFilter>
+        
+		<sheetFilter labelKey="TestMigration" description="Complete filter for migration test"
+            hidden="true" filterUsage="all">
+            <containers>
+                <sheetTypeRef name="SheetType1" />
+            </containers>
+            <criteria>
+                <criteriaGroup>
+                    <criterion fieldKey="SHEETTYPE1_currentDate" operator="lessThan" caseSensitive="true" />
+                    <criterion fieldKey="SHEETTYPE1_simpleInteger" operator="=" />
+                    <criterion fieldKey="SHEETTYPE1_simpleReal" operator="greaterThan" caseSensitive="true" />
+                    <criterion fieldKey="SHEETTYPE1_simpleBoolean" operator="=" caseSensitive="true" />
+                    <criterion fieldKey="SHEETTYPE1_simpleString" operator="notLike" caseSensitive="true" />
+                    <criterion fieldKey="SHEETTYPE1_choice" operator="!=" caseSensitive="true" />
+                </criteriaGroup>
+                <criteriaGroup>
+                    <criterion fieldKey="SHEETTYPE1_simpleString" operator="like" value="%" caseSensitive="true" />
+                    <criterion fieldKey="SHEETTYPE1_simpleString" operator="notLike" value="%" caseSensitive="true" />
+                </criteriaGroup>
+                <criteriaGroup>
+                    <criterion fieldKey="SHEETTYPE1_currentDate" operator="lessOrEqual" value="2009-09-09" caseSensitive="true" />
+                    <criterion fieldKey="SHEETTYPE1_simpleInteger" operator="greaterOrEqual" value="5" caseSensitive="true" />
+                </criteriaGroup>
+            </criteria>
+            <resultSummary>
+                <fieldResult name="$SHEET_REFERENCE" label="Reference of the sheet" displayed="true" sort="asc" />
+                <fieldResult name="SHEETTYPE1_currentDate" displayed="false" sort="desc" />
+            </resultSummary>
+        </sheetFilter>
+        <sheetFilter labelKey="type_vfd_sheet_state_Filter">
+            <containers>
+                <sheetTypeRef name="type_vfd_01" />
+            </containers>
+            <criteria>
+                <criteriaGroup>
+                    <criterion
+                        fieldKey="type_vfd_01-type_vfd_02|type_vfd_02|type_vfd_02-type_vfd_01|type_vfd_01|type_vfd_01-type_vfd_02|type_vfd_02|$SHEET_STATE"
+                        operator="=" value="Open" />
+                </criteriaGroup>
+            </criteria>
+            <resultSummary>
+                <fieldResult name="ref" />
+            </resultSummary>
+        </sheetFilter>
+
+        <sheetFilter labelKey="type_vfd_sheet_type_Filter">
+            <containers>
+                <sheetTypeRef name="type_vfd_02" />
+            </containers>
+            <criteria>
+                <criteriaGroup>
+                    <criterion fieldKey="type_vfd_02-type_vfd_01|type_vfd_01|$SHEET_TYPE"
+                        operator="=" value="type_vfd_01" />
+                </criteriaGroup>
+            </criteria>
+            <resultSummary>
+                <fieldResult name="ref" />
+            </resultSummary>
+        </sheetFilter>
+
+        <sheetFilter labelKey="type_vfd_sheet_reference_Filter">
+            <containers>
+                <sheetTypeRef name="type_vfd_01" />
+            </containers>
+            <criteria>
+                <criteriaGroup>
+                    <criterion
+                        fieldKey="type_vfd_01-type_vfd_02|type_vfd_02|type_vfd_02-type_vfd_01|type_vfd_01|type_vfd_01-type_vfd_02|type_vfd_02|$SHEET_REFERENCE"
+                        operator="=" value="type_vfd_02_02" />
+                </criteriaGroup>
+            </criteria>
+            <resultSummary>
+                <fieldResult name="ref" />
+            </resultSummary>
+        </sheetFilter>
+		<productFilter labelKey="ProductFilter01">
+			<containers>
+				<productTypeRef name="Store" />
+			</containers>
+			<description>Product filter with no criteria and
+				'product_name' as result field</description>
+			<resultSummary>
+				<fieldResult name="product_name" />
+			</resultSummary>
+		</productFilter>
+		<productFilter labelKey="ProductFilterWithSameName">
+			<!-- user's filter -->
+			<userLogin>admin</userLogin>
+			<containers>
+				<productTypeRef name="Store" />
+			</containers>
+			<resultSummary>
+				<fieldResult name="product_name" sort="asc" />
+			</resultSummary>
+		</productFilter>
+		<productFilter labelKey="ProductFilterWithSameName">
+			<!-- product's filter -->
+			<productName>Bernard's store</productName>
+			<containers>
+				<productTypeRef name="Store" />
+			</containers>
+			<resultSummary>
+				<fieldResult name="product_name" sort="asc" />
+				<fieldResult name="product_storetype" sort="asc" />
+			</resultSummary>
+		</productFilter>
+		<productFilter labelKey="ProductFilterWithSameName">
+			<!-- instance's filter -->
+			<containers>
+				<productTypeRef name="Store" />
+			</containers>
+			<resultSummary>
+				<fieldResult name="product_storetype" sort="asc" />
+			</resultSummary>
+		</productFilter>
+		
+		<!-- LINK FILTERS -->
+		<linkFilter labelKey="FILTER_TEST_1">
+			<containers>
+				<linkTypeRef name="LINK_TYPE_FOR_TEST_FILTER_1" />
+			</containers>
+			<criteria>
+				<criteriaGroup>
+					<criterion fieldKey="LINK_FIELD_1" operator="!=" value="A" caseSensitive="true" />
+				</criteriaGroup>
+			</criteria>
+			<resultSummary>
+				<fieldResult name="LINK_FIELD_1" sort="asc" />
+			</resultSummary>
+		</linkFilter>
+		<linkFilter labelKey="FILTER_TEST_2">
+			<containers>
+				<linkTypeRef name="LINK_TYPE_FOR_TEST_FILTER_1" />
+			</containers>
+			<criteria>
+				<criteriaGroup>
+					<criterion fieldKey="LINK_FIELD_1" operator="!=" value="D" caseSensitive="true" />
+				</criteriaGroup>
+			</criteria>
+			<resultSummary>
+				<fieldResult name="LINK_FIELD_1" sort="desc" />
+			</resultSummary>
+		</linkFilter>
+		<linkFilter labelKey="FILTER_TEST_UNIDIRECTIONNAL">
+			<containers>
+				<linkTypeRef name="LINK_TYPE_FOR_TEST_FILTER_UNIDIRECTIONNAL" />
+			</containers>
+			<criteria>
+				<criteriaGroup>
+					<criterion fieldKey="LINK_FIELD_1" operator="!=" value="A" caseSensitive="true" />
+				</criteriaGroup>
+			</criteria>
+			<resultSummary>
+				<fieldResult name="LINK_FIELD_1" sort="asc" />
+			</resultSummary>
+		</linkFilter>
+	</filters>
+</gpm>

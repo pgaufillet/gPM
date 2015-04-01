@@ -1,0 +1,64 @@
+## gPM Configuration ##
+
+# -- Data source & Mail server configuration --
+# The configuration of data source and mail sender can be defined as 'local'
+# (through properties files) or as a JNDI resource.
+
+# Use a locally defined data source (defined in the dataSource.properties file)
+# This is the default value
+# dataSource=localDataSource  (this is the default value)
+
+# Use a JNDI data source
+# dataSource=jndiDataSource
+
+# Name of the JNDI data source to use (default value)
+# jndiDataSourceName=java:comp/env/gPM/dataSource
+
+# Type of mailSender bean to use (localMailSender or jndiMailSender)
+# mailSender=localMailSender
+
+# Locally defined SMTP server default configuration
+# smtp.port=25
+# smtp.host=localhost
+# default mail adress for gPM generated e-mails
+# smtp.from=gpm@topcased.org
+
+
+# To use a SMTP host defined as JNDI resource
+# mailSender=jndiMailSender
+
+# Name of the JNDI mail session to use (default value)
+# jndiMailSessionName=java:comp/env/gPM/mailSession
+
+# -- Hibernate configuration
+
+hibernate.dialect=org.hibernate.dialect.OracleDialect
+# hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+
+# -- gPM parameters  (values specified in comments are the default ones)
+
+# Default max results returned by a filter
+# filterMaxResults=500
+
+# gPM Cache parameters
+
+# Time to live in cache (in seconds)
+# cache.timeToLive=600
+
+# Time to idle in cache (in seconds)
+# cache.timeToIdle=300
+
+# Parameters of the object caches in gPM
+# (max count of elements to keep in cache)
+# cache.sheets.maxElements=250
+# cache.filters.maxElements=40
+# cache.controlAccess.maxElements=500
+# cache.translations.maxElements=1000
+
+
+# Default dir containing all the extensions classes needed for the
+# instances. This directory may be used to store JAR files containing
+# report models or Java extension point commands.
+# Note: It is usually not useful to change the default value.
+
+# extLibsDir=${GPM_HOME}/extensions

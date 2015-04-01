@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+	<version>1.2</version>
+
+	<mapping>
+		<typeMapping originTypeName="SheetType1"
+			destinationTypeName="SheetType1">
+			<fieldMapping originLabelKey="SHEETTYPE1_ref"
+				destinationLabelKey="SHEETTYPE1_simpleString">
+				<valueMapping originValue="" destinationValue="NO_VALUE" />
+				<valueMapping originValue="Sheet24" destinationValue="Sheet25" />
+				<valueMapping originValue="Sheet25" destinationValue="Sheet26" />
+			</fieldMapping>
+			<fieldMapping originLabelKey="SHEETTYPE1_simpleStringMul"
+				destinationLabelKey="SHEETTYPE1_simpleChoiceStringMul">
+				<valueMapping originValue="" destinationValue="NO_VALUE" />
+				<valueMapping originValue="A" destinationValue="C" />
+				<valueMapping originValue="B" destinationValue="D" />
+			</fieldMapping>
+			<fieldMapping originLabelKey="SHEETTYPE1_choice"
+				destinationLabelKey="SHEETTYPE1_choice">
+				<valueMapping originValue="" destinationValue="NO_VALUE" />
+				<valueMapping originValue="GREY" destinationValue="RED" />
+				<valueMapping originValue="WHITE" destinationValue="GREEN" />
+			</fieldMapping>
+			<fieldMapping originLabelKey="SHEETTYPE1_choiceMul"
+				destinationLabelKey="SHEETTYPE1_choiceMul">
+				<valueMapping originValue="" destinationValue="NO_VALUE" />
+				<valueMapping originValue="GREY" destinationValue="RED" />
+				<valueMapping originValue="WHITE" destinationValue="GREEN" />
+			</fieldMapping>
+		</typeMapping>
+	</mapping>
+</gpm>

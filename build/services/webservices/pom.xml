@@ -1,0 +1,268 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <groupId>org.topcased.gpm</groupId>
+        <artifactId>gPM-services</artifactId>
+        <version>1</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>gPM-services-webservices</artifactId>
+    <packaging>jar</packaging>
+    <version>${gpm.version}</version>
+    <name>gPM-services webservices</name>
+    <url>/gPM-services/gPM-services-webservices/</url>
+
+
+	<build>
+		<defaultGoal>install</defaultGoal>
+		<plugins>
+			<!-- Just To deal with multiple source directories -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+                <version>${mojo.buildhelper.version}</version>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>target/src/</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>${maven.antrun.version}</version>
+                <!--
+                        This ANT task is used to create the 'src', 'classes', and 'wsdl' directories
+                        in 'webservices_client'. This is required as some files generated here are
+                        directly stored in the client dir.
+                -->
+                <executions> 
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <tasks>
+                                <echo
+                                    message="Create the required directories in 'client/webservices/v2'" />
+
+                                <mkdir
+                                    dir="${pom.basedir}/../../client/webservices/v2/target/src/" />
+                                <mkdir
+                                    dir="${pom.basedir}/../../client/webservices/v2/target/wsdl/" />
+                                <mkdir
+                                    dir="${pom.basedir}/../../client/webservices/v2/target/classes/" />
+                            </tasks>
+                            <sourceRoot>
+                                ${project.build.directory}/generated-sources/main/java
+                            </sourceRoot>
+                            <testSourceRoot>
+                                ${project.build.directory}/generated-sources/test/java
+                            </testSourceRoot>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+			<plugin>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-codegen-plugin</artifactId>
+				<version>${cxf.version}</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.cxf</groupId>
+						<artifactId>cxf-rt-frontend-jaxws</artifactId>
+						<version>${cxf.version}</version>
+					</dependency>
+				</dependencies>
+				<executions>
+					<execution>
+						<id>generate-wsdl-v2</id>
+						<phase>process-classes</phase>
+						<configuration>
+							<className>
+								org.topcased.gpm.ws.v2.ServicesImpl
+							</className>
+							<outputFile>
+								${pom.basedir}/../../client/webservices/v2/target/wsdl/v2/Services.wsdl
+							</outputFile>
+							<quiet>true</quiet>
+						</configuration>
+						<goals>
+							<goal>java2wsdl</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>generate-sources-v2</id>
+						<phase>process-classes</phase>
+						<configuration>
+							<sourceRoot>
+								${pom.basedir}/../../client/webservices/v2/target/src/
+							</sourceRoot>
+							<wsdlOptions>
+								<wsdlOption>
+									<wsdl>
+										${pom.basedir}/../../client/webservices/v2/target/wsdl/v2/Services.wsdl
+									</wsdl>
+									<extraargs>
+										<extraarg>-p</extraarg>
+										<extraarg>
+											org.topcased.gpm.ws.v2.client
+										</extraarg>
+										<extraarg>-client</extraarg>
+
+										<extraarg>-compile</extraarg>
+										<extraarg>-classdir</extraarg>
+										<extraarg>
+											${pom.basedir}/../../client/webservices/v2/target/classes/
+										</extraarg>
+									</extraargs>
+								</wsdlOption>
+							</wsdlOptions>
+							<verbose>false</verbose>
+
+						</configuration>
+						<goals>
+							<goal>wsdl2java</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+
+        <!-- Otherwise no resource would be included in the JAR file -->
+        <resources>
+            <resource>
+                <filtering>false</filtering>
+                <directory>
+                    ${pom.basedir}/src/main/resources/
+                </directory>
+            </resource>
+            <resource>
+                <filtering>false</filtering>
+                <directory>${pom.basedir}/target/src/</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <filtering>false</filtering>
+                <directory>${pom.basedir}/src/main/java</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
+
+            <resource>
+                <filtering>true</filtering>
+                <directory>
+                    ${pom.basedir}/src/test/resources/
+                </directory>
+            </resource>
+        </resources>
+    </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven.javadoc.version}</version>
+                <configuration>
+                    <!--
+                        Create the JavaDoc for both project
+                        source files & generated files from the model.
+                    -->
+                    <sourcepath>
+                        ${basedir}/src/main/java;${basedir}/target/src
+                    </sourcepath>
+
+                    <!--  Hide author names in JavaDoc -->
+                    <author>false</author>
+
+                    <!-- Add gPM version in the doc title -->
+                    <doctitle>gPM ${project.version} API</doctitle>
+
+                    <!-- Add reference to external Javadoc to allow easier browsing -->
+                    <links>
+                        <link>
+                            http://java.sun.com/j2se/1.5.0/docs/api/
+                        </link>
+                    </links>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
+
+   <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-core</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.geronimo.specs</groupId>
+                    <artifactId>geronimo-javamail_1.4_spec</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.geronimo.specs</groupId>
+                    <artifactId>
+                        geronimo-activation_1.1_spec
+                    </artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-databinding-jaxb</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.geronimo.specs</groupId>
+                    <artifactId>geronimo-javamail_1.4_spec</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.geronimo.specs</groupId>
+                    <artifactId>
+                        geronimo-activation_1.1_spec
+                    </artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.activation</groupId>
+            <artifactId>activation</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.topcased.gpm</groupId>
+            <artifactId>gPM-services-business</artifactId>
+        </dependency>
+    </dependencies>
+</project>

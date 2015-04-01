@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# Helper script used to launch the tools
+
+# default path for the 'java' launcher
+JAVA=java
+
+# Use the JAVA_HOME env. if defined
+if [ "x$JAVA_HOME" != "x" ]; then
+
+  if [ ! -x $JAVA_HOME/bin/java ]; then
+    cat << EOF
+ERROR: JAVA_HOME seems to be defined to an invalid directory.
+JAVA_HOME = $JAVA_HOME
+Please set the JAVA_HOME variable in your environment to match the
+location of your Java installation (JRE 1.5.0 minimum)
+EOF
+    exit 4
+  fi
+  
+  JAVA=$JAVA_HOME/bin/java
+fi
+
+if [ -s "$GPM_HOME/log4j.properties" ]; then
+exec $JAVA -DGPM_HOME=$GPM_HOME -Dlog4j.configuration=file:$GPM_HOME/log4j.properties -jar $*
+else
+exec $JAVA -DGPM_HOME=$GPM_HOME -jar $*
+fi

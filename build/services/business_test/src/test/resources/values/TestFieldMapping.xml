@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+	<version>1.2</version>
+
+	<mapping>
+		<typeMapping originTypeName="SheetType1"
+			destinationTypeName="SheetType1">
+			<!-- Simple String field -->
+			<fieldMapping originLabelKey="SHEETTYPE1_ref"
+				destinationLabelKey="SHEETTYPE1_simpleString" />
+			<!-- Simple String field multi valued -->
+			<fieldMapping originLabelKey="SHEETTYPE1_simpleStringMul"
+				destinationLabelKey="SHEETTYPE1_simpleChoiceStringMul" />
+
+			<!-- Simple Date field -->
+			<fieldMapping originLabelKey="SHEETTYPE1_currentDate"
+				destinationLabelKey="SHEETTYPE1_simpleDate" />
+			<!-- Simple Date field multi valued -->
+			<fieldMapping originLabelKey="SHEETTYPE1_simpleDateMul"
+				destinationLabelKey="SHEETTYPE1_simpleDateMul" />
+
+			<!-- Attached field -->
+			<fieldMapping originLabelKey="SHEETTYPE1_attached"
+				destinationLabelKey="SHEETTYPE1_attached" />
+			<!-- Attached field multi valued -->
+			<fieldMapping originLabelKey="SHEETTYPE1_attachedMul"
+				destinationLabelKey="SHEETTYPE1_attachedMul" />
+
+			<!-- Choice field -->
+			<fieldMapping originLabelKey="SHEETTYPE1_choice"
+				destinationLabelKey="SHEETTYPE1_choice" />
+			<!-- Choice field multi valued -->
+			<fieldMapping originLabelKey="SHEETTYPE1_choiceMul"
+				destinationLabelKey="SHEETTYPE1_choiceMul" />
+
+			<!-- Multiple field -->
+			<fieldMapping originLabelKey="SHEETTYPE1_multiple1"
+				destinationLabelKey="SHEETTYPE1_multiple1" />
+			<!-- Multiple field multi valued -->
+			<fieldMapping originLabelKey="SHEETTYPE1_multiple1M"
+				destinationLabelKey="SHEETTYPE1_multiple1M" />
+		</typeMapping>
+	</mapping>
+</gpm>

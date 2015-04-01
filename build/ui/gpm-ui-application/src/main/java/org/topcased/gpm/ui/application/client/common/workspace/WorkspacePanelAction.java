@@ -1,0 +1,30 @@
+/***************************************************************
+ * Copyright (c) 2010 AIRBUS FRANCE. All rights reserved. This 
+ * program and the accompanying materials are made available
+ * under the terms of the Lesser Gnu Public License (LGPL) which
+ * accompanies this distribution, and is available
+ * at http://www.gnu.org/licenses/lgpl.html
+ *
+ * Contributors: Thomas PANUEL (Atos Origin)
+ ******************************************************************/
+package org.topcased.gpm.ui.application.client.common.workspace;
+
+/**
+ * Action on workspace panels.
+ * 
+ * @author tpanuel
+ */
+public enum WorkspacePanelAction {
+    /** Minimize the panel */
+    MINIMIZE,
+    /** Maximize if shown, Restore if maximized or minimized */
+    MAXIMIZE_RESTORE,
+    /** Restore (un-minimize or un-maximize) */
+    RESTORE,
+    /** Completely hide the panel */
+    HIDE,
+    /** Cancel hide of the panel */
+    SHOW,
+    /** Make the panel visible (only for detail panel) */
+    MAKEVISIBLE;
+}

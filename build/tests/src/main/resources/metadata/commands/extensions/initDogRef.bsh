@@ -1,0 +1,33 @@
+// Initialize the reference field of an AM
+
+import org.topcased.gpm.business.sheet.service.sheetAccess.MultipleFieldDataAccess;
+import org.topcased.gpm.business.sheet.service.sheetAccess.SheetDataAccess;
+import org.topcased.gpm.util.bean.CacheProperties;
+
+// Récupération de la sheetData
+sheetData = context.get("sheetData");
+
+// récupération de la sheetDataAccess(permettant d'accéder aux champs de la sheetdata)
+sheetDataAccess = new SheetDataAccess(sheetData);
+
+// récupération de l'acces au champ multiple Reference
+referenceFieldDataAccess = new MultipleFieldDataAccess(sheetData.getReference());
+
+// reference.name <- ref
+referenceFieldDataAccess.getField("DOG_name").setValue(sheetDataAccess.getField("DOG_ref").getValue());
+
+// récupération du service de sheet
+sheetService = context.get("serviceLocator").getSheetService();
+
+// récupération du role token
+String roleToken = context.get("roleToken");
+
+// récupération de la fiche Garfield
+String id = sheetService.getSheetIdByReference("PET STORE", "Happy Mouse", "Garfield");
+garfieldData = sheetService.getCacheableSheet(roleToken, id, CacheProperties.MUTABLE);
+
+// récupération de l'acces au champ 'DOG_link'
+dogLinkAccess = sheetDataAccess.getField("DOG_link");
+
+// définition de la valeur du champ
+dogLinkAccess.setValue(garfieldData.getId()+"_");

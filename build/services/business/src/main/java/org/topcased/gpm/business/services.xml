@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- Service Locator -->
+	<bean id="serviceLocator" class="org.topcased.gpm.business.ServiceLocator"
+		autowire="byName" />
+
+	<!-- Transactional Interceptor for the services -->
+	<!--
+		The transaction parameters are specified through annotations in the
+		Java code.
+	-->
+	<bean id="serviceTransactionInterceptor"
+		class="org.springframework.transaction.interceptor.TransactionInterceptor">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributeSource">
+			<!--  Use the annotations in class for transaction behavior -->
+			<bean
+				class="org.springframework.transaction.annotation.AnnotationTransactionAttributeSource" />
+		</property>
+	</bean>
+
+	<!-- Service implementation base definitions -->
+	<!-- Common definitions used by all services impl. -->
+	<bean id="serviceImplBase" abstract="true">
+		<property name="cacheableObjectFactories" ref="cacheableObjectFactories" />
+	</bean>
+
+	<!-- Interceptor used to transform exceptions. -->
+	<bean id="exceptionInterceptor"
+		class="org.topcased.gpm.business.exception.ExceptionInterceptor" />
+
+	<!-- Definition of service's interceptors -->
+	<!--  All service interface must use this base definitions -->
+	<bean id="interceptedService" abstract="true">
+		<property name="interceptorNames">
+			<list>
+				<value>businessPerformanceInterceptor</value>
+				<value>exceptionInterceptor</value>
+				<value>serviceTransactionInterceptor</value>
+				<value>hibernateInterceptor</value>
+			</list>
+		</property>
+	</bean>
+
+	<import resource="classpath:org/topcased/gpm/business/cache.xml" />
+
+	<!-- Import shared beans definitions -->
+	<import resource="classpath:org/topcased/gpm/business/fields/fieldsManager.xml" />
+
+	<!-- Import the services definitions -->
+	<import
+		resource="classpath:org/topcased/gpm/business/attributes/impl/attributesServiceDef.xml" />
+	<import
+		resource="classpath:org/topcased/gpm/business/instance/impl/instanceServiceDef.xml" />
+	<import
+		resource="classpath:org/topcased/gpm/business/sheet/impl/sheetServiceDef.xml" />
+	<import
+		resource="classpath:org/topcased/gpm/business/revision/impl/revisionServiceDef.xml" />
+	<import
+		resource="classpath:org/topcased/gpm/business/link/impl/linkServiceDef.xml" />
+	<import
+		resource="classpath:org/topcased/gpm/business/lifecycle/impl/lifeCycleServiceDef.xml" />
+	<import
+		resource="classpath:org/topcased/gpm/business/authorization/impl/authorizationServiceDef.xml" />
+	<import
+		resource="classpath:org/topcased/gpm/business/mail/impl/mailServiceDef.xml" />
+	<import
+		resource="classpath:org/topcased/gpm/business/sheet/export/impl/sheetExportServiceDef.xml" />
+	<import
+		resource="classpath:org/topcased/gpm/business/i18n/impl/i18nServiceDef.xml" />
+	<import
+		resource="classpath:org/topcased/gpm/business/extensions/impl/extensionsServiceDef.xml" />
+	<import
+		resource="classpath:org/topcased/gpm/business/environment/impl/environmentServiceDef.xml" />
+	<import
+		resource="classpath:org/topcased/gpm/business/display/impl/displayServiceDef.xml" />
+	<import
+		resource="classpath:org/topcased/gpm/business/product/impl/productServiceDef.xml" />
+	<import
+		resource="classpath:org/topcased/gpm/business/search/impl/searchServiceDef.xml" />
+	<import
+		resource="classpath:org/topcased/gpm/business/fields/impl/fieldsServiceDef.xml" />
+	<import
+		resource="classpath:org/topcased/gpm/business/serialization/impl/serializationServiceDef.xml" />
+	<import
+		resource="classpath:org/topcased/gpm/business/report/impl/reportingServiceDef.xml" />
+	<import
+		resource="classpath:org/topcased/gpm/business/help/impl/helpServiceDef.xml" />
+	<import
+		resource="classpath:org/topcased/gpm/business/exportation/impl/exportServiceDef.xml" />
+	<import
+		resource="classpath:org/topcased/gpm/business/importation/impl/importServiceDef.xml" />
+	<import
+		resource="classpath:org/topcased/gpm/business/fieldscontainer/impl/fieldsContainerServiceDef.xml" />
+	<import
+		resource="classpath:org/topcased/gpm/business/transformation/impl/dataTransformationServiceDef.xml" />
+	<import
+		resource="classpath:org/topcased/gpm/business/atomic/impl/atomicServiceDef.xml" />
+	<import
+		resource="classpath:org/topcased/gpm/business/values/impl/valuesServiceDef.xml" />
+</beans>

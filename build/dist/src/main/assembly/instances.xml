@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<!-- Assembly descriptor for the 'instances' package -->
+<assembly>
+    <id>instances</id>
+    <formats>
+        <!-- <format>tar.gz</format>  -->
+        <format>zip</format>
+    </formats>
+
+    <includeBaseDirectory>false</includeBaseDirectory>    
+    <includeSiteDirectory>false</includeSiteDirectory>
+
+    <fileSets>
+        <fileSet>
+            <directory>../instances/</directory>
+            <outputDirectory>gPM-${gpm.version}/instances</outputDirectory>            
+            <lineEnding>unix</lineEnding>           
+        </fileSet>
+    </fileSets>
+</assembly>
+

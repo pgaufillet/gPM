@@ -1,0 +1,13 @@
+import org.topcased.gpm.business.extensions.service.Context;
+import org.topcased.gpm.business.extensions.service.GDMExtension;
+import org.topcased.gpm.business.fields.impl.CacheableInputData;
+import org.topcased.gpm.business.serialization.data.FieldValueData;
+import org.topcased.gpm.common.extensions.ResultingScreen;
+
+
+CacheableInputData cacheableInputData = (CacheableInputData)context.get("inputData");
+
+String lString = "";
+
+context.add("message", "InputData OK");
+context.add("resultScreen", ResultingScreen.MESSAGE);

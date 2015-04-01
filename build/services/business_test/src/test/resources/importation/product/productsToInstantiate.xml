@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF8"?>
+
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+
+<version>1.2</version>
+<users>
+    <user login="userImportProduct" password="pwd" name="User import product" />
+</users>
+
+<products>
+    <product name="productTestImport_01" type="Store">
+            <environmentNames>
+                <environmentName name="Professional" />
+            </environmentNames>
+            <fieldValues>
+                <fieldValue name="product_name" value="productTestImport" />
+                <fieldValue name="product_location" value="location" />
+                <fieldValue name="product_storetype" value="Police" />
+                <fieldValue name="Store_Field3" value="productTestImport_conf_field" />
+            </fieldValues>
+            <attributes>
+                <attribute name="productTestImport_02_attribute" value="value" />
+            </attributes>
+    </product>
+    <product name="productTestImport_02" type="Store">
+            <environmentNames>
+                <environmentName name="Professional" />
+            </environmentNames>
+            <fieldValues>
+                <fieldValue name="product_name" value="productTestImport" />
+                <fieldValue name="product_location" value="location" />
+                <fieldValue name="product_storetype" value="Police" />
+            </fieldValues>
+            <attributes>
+                <attribute name="productTestImport_02_attribute" value="value" />
+            </attributes>
+    </product>
+    <product name="productTestImport_03" type="Store">
+            <environmentNames>
+                <environmentName name="Professional" />
+            </environmentNames>
+            <fieldValues>
+                <fieldValue name="product_name" value="productTestImport" />
+                <fieldValue name="product_location" value="location" />
+                <fieldValue name="product_storetype" value="Police" />
+                <fieldValue name="Store_Field3" value="productTestImport_conf_field" />
+            </fieldValues>
+            <attributes>
+                <attribute name="productTestImport_attribute" value="value" />
+            </attributes>
+    </product>
+    <product name="productTestImport_04" type="Store">
+            <environmentNames>
+                <environmentName name="Professional" />
+            </environmentNames>
+            <fieldValues>
+                <fieldValue name="product_name" value="productTestImport" />
+                <fieldValue name="product_location" value="location" />
+                <fieldValue name="product_storetype" value="Police" />
+                <fieldValue name="Store_Field3" value="productTestImport_conf_field" />
+            </fieldValues>
+            <attributes>
+                <attribute name="productTestImport_attribute" value="value" />
+            </attributes>
+    </product>
+</products>
+
+<userRoles>
+    <userRole roleName="admin" login="userImportProduct" productName="productTestImport_03"/>
+</userRoles>
+
+<accessControls>
+    <adminAccess actionKey="gpm.administration.product.update" productName="productTestImport_03" role="admin" />
+</accessControls>
+</gpm>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!--
+        I18n Facade
+    -->
+
+	<!-- Implementation bean -->
+	<bean id="i18nFacadeImpl" parent="abstractFacade"
+		class="org.topcased.gpm.ui.facade.server.i18n.impl.I18nFacadeImpl"
+		autowire="byName" />
+
+	<!-- Visible interface of the service  -->
+	<bean id="i18nFacade" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedFacade">
+		<property name="target" ref="i18nFacadeImpl" />
+		<property name="proxyInterfaces"
+			value="org.topcased.gpm.ui.facade.server.i18n.I18nFacade" />
+	</bean>
+
+</beans>

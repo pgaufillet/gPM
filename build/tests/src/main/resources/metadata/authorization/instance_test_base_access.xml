@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+	<version>1.2</version>
+
+	<accessControls>
+		<fieldAccess sheetType="CAT_PRICE" fieldKey="CAT_PRICE_author"
+			role="viewer" updatable="false" />
+		<containerTypeAccess typeName="PRICE_PRICE"
+			confidential="true" />
+		<containerTypeAccess typeName="testExportSheet_2" role="notadmin" confidential="true" />
+
+		<!-- access controls useful for web interface tests -->
+		<sheetTypeAccess role="reporter" creatable="false"
+			confidential="true" sheetType="SimpleSheetType1" />
+		<sheetTypeAccess role="viewer" creatable="true"
+			updatable="false" sheetType="SheetType1" />
+		<containerTypeAccess typeName="CONTAINER_SHEET_TYPE_AC_1"
+			confidential="true" />
+		<fieldAccess typeName="ControlType" fieldKey="Field2"
+			role="normal" updatable="true" confidential="true" mandatory="false" />
+		<fieldAccess typeName="ControlType" fieldKey="Field2"
+			role="restricted" updatable="false" confidential="true" exportable="false" />
+		<fieldAccess typeName="ControlType2" fieldKey="Field2"
+			role="normal" updatable="false" confidential="true" exportable="false" />
+
+		<actionAccess actionKey="Interface.TestInputData"
+			enabled="false" stateName="Open" typeName="Cat" />
+
+		<fieldAccess fieldKey="CAT_PRICE_officialreference"
+			typeName="CAT_PRICE" visibleType="Cat" confidential="true" />
+		<fieldAccess fieldKey="CAT_PRICE_author" typeName="CAT_PRICE"
+			visibleType="Price" confidential="true" />
+
+		<!--
+			Non updatable fields for testing multivalued fields extensibility
+		-->
+		<fieldAccess sheetType="test_multivalued_field" fieldKey="Multivalued_simple_field"
+			stateName="Inextensible" updatable="false" />
+		<fieldAccess sheetType="test_multivalued_field" fieldKey="Multivalued_multiple_field"
+			stateName="Inextensible" updatable="false" />
+		<fieldAccess sheetType="test_multivalued_field" fieldKey="Multivalued_simple_field"
+			stateName="Un-updatable" updatable="false" />
+		<fieldAccess sheetType="test_multivalued_field" fieldKey="SubField"
+			stateName="Un-updatable" updatable="false" />
+		<fieldAccess typeName="SheetWithSomeConfidentialFields"
+			fieldKey="SheetWithSomeConfidentialFields_Field3" role="admin"
+			confidential="false" />
+
+		<fieldAccess typeName="TestPointerFields2" fieldKey="TestPointerFields2_field1"
+			role="notadmin" confidential="false" exportable="false" mandatory="false"
+			updatable="false" />
+		<fieldAccess typeName="TestPointerFields2"
+			fieldKey="TestPointerFields2_monovalued_choice" role="notadmin"
+			confidential="true" exportable="true" mandatory="true" updatable="true" />
+
+		<!-- Admin Access -->
+		<adminAccess role="administrator" actionKey="gpm.administration.user.create" />
+		<adminAccess role="administrator" actionKey="gpm.administration.user.modify" />
+		<adminAccess role="administrator" actionKey="gpm.administration.user.delete" />
+		<adminAccess role="administrator"
+			actionKey="gpm.administration.product.search.createAndEdit" />
+		<adminAccess role="administrator"
+			actionKey="gpm.administration.product.search.delete" />
+		<adminAccess role="administrator" actionKey="gpm.administration.product.update" />
+		<adminAccess role="administrator" actionKey="gpm.administration.dictionary.modify" />
+		<adminAccess role="administrator" actionKey="gpm.administration.environment.modify" />
+		<adminAccess role="administrator" actionKey="gpm.administration.environment.create" />
+	</accessControls>
+</gpm>

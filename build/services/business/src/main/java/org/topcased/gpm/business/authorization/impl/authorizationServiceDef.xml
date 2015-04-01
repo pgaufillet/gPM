@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="ldapContextSource" class="org.springframework.ldap.core.support.LdapContextSource"
+		lazy-init="true">
+		<property name="url" value="${ldap.url}" />
+		<property name="base" value="${ldap.base}" />
+		<property name="userDn" value="${ldap.userDn}" />
+		<property name="password" value="${ldap.password}" />
+		<property name="pooled" value="${ldap.pooled}" />
+	</bean>
+	<bean id="ldapTemplate" class="org.springframework.ldap.core.simple.SimpleLdapTemplate"
+		lazy-init="true">
+		<constructor-arg ref="ldapContextSource" />
+	</bean>
+	<bean id="endUserDataAttributesMapper"
+		class="org.topcased.gpm.business.authorization.impl.EndUserDataAttributesMapper"
+		lazy-init="true">
+		<property name="login" value="${ldap.login}" />
+		<property name="mailAddr" value="${ldap.mailAddr}" />
+		<property name="name" value="${ldap.name}" />
+		<property name="forename" value="${ldap.forename}" />
+	</bean>
+
+	<bean id="userCredentialsLDAP"
+		class="org.topcased.gpm.business.authorization.impl.UserCredentialsLDAP"
+		autowire="byName" lazy-init="true">
+	</bean>
+
+	<bean id="userCredentialsBD"
+		class="org.topcased.gpm.business.authorization.impl.UserCredentialsBD"
+		autowire="byName" lazy-init="true">
+	</bean>
+
+	<!--
+        Authorization service
+    -->
+	<bean id="authorizationServiceMethodCachePointCut"
+		class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+		<property name="advice" ref="constMethodCacheInterceptor" />
+		<property name="patterns">
+			<list>
+				<value>.*getApplicationActionAccessControl</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="accessControlCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean"
+		parent="cacheFactoryBase">
+		<property name="cacheName"
+			value="org.topcased.gpm.business.authorization.CONTROL_ACCESS_CACHE" />
+		<property name="maxElementsInMemory" value="${cache.controlAccess.maxElements}" />
+	</bean>
+
+	<bean id="filterAccessManager"
+		class="org.topcased.gpm.business.authorization.impl.filter.FilterAccessManager"
+		autowire="byName" />
+
+	<bean id="authorizationServiceImpl" parent="serviceImplBase"
+		autowire="byName"
+		class="org.topcased.gpm.business.authorization.impl.AuthorizationServiceImpl">
+		<property name="userCredentialsMgrDefinition" value="${userCredentialsMgr}" />
+		<property name="sessionMaxTime" value="${sessionMaxTime}" />
+		<property name="loginCaseSensitive" value="${loginCaseSensitive}" />
+	</bean>
+
+	<bean id="authorizationService" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedService">
+		<property name="target" ref="authorizationServiceImpl" />
+
+		<property name="proxyInterfaces"
+			value="org.topcased.gpm.business.authorization.service.AuthorizationService" />
+	</bean>
+
+	<!-- Session Logout with Quartz  -->
+	<bean id="autoLogout" class="org.topcased.gpm.util.job.JobAutoLogout"
+		autowire="byName" />
+
+	<bean id="autoLogoutProxy" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedService">
+		<property name="target" ref="autoLogout" />
+		<property name="proxyInterfaces" value="org.topcased.gpm.util.job.GpmJob" />
+	</bean>
+
+	<bean id="sessionLogoutJobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="autoLogoutProxy" />
+		</property>
+		<property name="targetMethod">
+			<value>execute</value>
+		</property>
+	</bean>
+
+	<bean id="sessionLogoutTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+		<property name="jobDetail">
+			<ref bean="sessionLogoutJobDetail" />
+		</property>
+		<property name="repeatInterval">
+			<value>${cleanSessionsTimeInterval}</value>
+		</property>
+	</bean>
+</beans>

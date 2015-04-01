@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF8"?>
+
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+
+<version>1.2</version>
+
+<users>
+    <user login="userImport_01" password="pwd" name="User import 01">
+        <attributes>
+            <attribute name="userAttribute_01" value="value01" />
+            <attribute name="userAttribute_02" value="value02" />
+        </attributes>
+    </user>
+    <user login="userImport_02" password="pwd" name="User import 02" passwordEncoding="clear">
+        <attributes>
+            <attribute name="userAttribute_01" value="value01" />
+            <attribute name="userAttribute_02" value="value02" />
+        </attributes>
+    </user>
+    <user login="userImport_03" password="pwd" name="User import 03">
+        <attributes>
+            <attribute name="userAttribute_01" value="value01" />
+            <attribute name="userAttribute_02" value="value02" />
+        </attributes>
+    </user>
+    <user login="userImportCreate" password="pwd" name="User import can create" />
+    <user login="userImportUpdate" password="pwd" name="User import can update" />
+    <user login="userImportDelete" password="pwd" name="User import can delete" />
+    <user login="userImportCreateDelete" password="pwd" name="User import can create and delete" />
+</users>
+
+<roles>
+    <role name="roleUserCreateImportTest"/>
+    <role name="roleUserUpdateImportTest"/>
+    <role name="roleUserDeleteImportTest"/>
+    <role name="roleUserCreateDeleteImportTest"/> 
+</roles>
+
+<userRoles>
+    <userRole roleName="roleUserCreateImportTest" login="userImportCreate"/>
+    <userRole roleName="roleUserUpdateImportTest" login="userImportUpdate"/>
+    <userRole roleName="roleUserDeleteImportTest" login="userImportDelete"/>
+    <userRole roleName="roleUserCreateDeleteImportTest" login="userImportCreateDelete"/>
+</userRoles>
+
+<accessControls>
+    <adminAccess actionKey="gpm.administration.user.create" role="roleUserCreateImportTest" />
+    <adminAccess actionKey="gpm.administration.user.modify" role="roleUserUpdateImportTest" />
+    <adminAccess actionKey="gpm.administration.user.delete" role="roleUserDeleteImportTest" />
+    <adminAccess actionKey="gpm.administration.user.create" role="roleUserCreateDeleteImportTest" />
+    <adminAccess actionKey="gpm.administration.user.delete" role="roleUserCreateDeleteImportTest" />
+</accessControls>
+</gpm>

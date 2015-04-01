@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!--
+        Atomic actions manager
+    -->
+	<bean id="atomicActionsManagerImpl" autowire="byName"
+		class="org.topcased.gpm.business.atomic.impl.AtomicActionsManagerImpl">
+	</bean>
+
+	<!-- Interceptor used to synchronized exceptions. -->
+	<bean id="synchronizedInterceptor"
+		class="org.topcased.gpm.business.atomic.SynchronizedInterceptor" />
+
+	<bean id="atomicActionsManager" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target" ref="atomicActionsManagerImpl" />
+		<property name="proxyInterfaces"
+			value="org.topcased.gpm.business.atomic.service.AtomicActionsManager" />
+		<property name="interceptorNames">
+			<list>
+				<value>synchronizedInterceptor</value>
+				<value>serviceTransactionInterceptor</value>
+				<value>hibernateInterceptor</value>
+			</list>
+		</property>
+	</bean>
+</beans>

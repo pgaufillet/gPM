@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+
+	<version>1.2</version>
+    
+    <extensionPoints>
+       <extensionPoint name="printMessage">
+           <command name="printMessage"/>
+       </extensionPoint>
+    </extensionPoints>
+
+	<extendedActions>
+		<extendedAction name="GLOBAL_Extended_Action_ALWAYS" extensionPointName="printMessage">
+			<guiContexts>
+				<guiContext name="ALWAYS" />
+			</guiContexts>
+			<menuEntry name="GLOBAL_ExtendedActionALWAYS" parentName="Sheet"/>
+		</extendedAction>
+        <extendedAction name="GLOBAL_Extended_Action_CTX_CREATE_SHEET" extensionPointName="printMessage">
+            <guiContexts>
+                <guiContext name="CTX_CREATE_SHEET" />
+            </guiContexts>
+            <menuEntry name="GLOBAL_ExtendedActionCREATE" parentName="Sheet" />
+        </extendedAction>
+                <extendedAction name="GLOBAL_Extended_Action_CTX_EDIT_SHEET" extensionPointName="printMessage">
+            <guiContexts>
+                <guiContext name="CTX_EDIT_SHEET" />
+            </guiContexts>
+            <menuEntry name="GLOBAL_ExtendedActionEDIT" parentName="Sheet" />
+        </extendedAction>
+                <extendedAction name="GLOBAL_Extended_Action_CTX_VIEW_SHEET" extensionPointName="printMessage">
+            <guiContexts>
+                <guiContext name="CTX_VIEW_SHEET" />
+            </guiContexts>
+            <menuEntry name="GLOBAL_ExtendedActionVIEW" parentName="Sheet" />
+        </extendedAction>
+                <extendedAction name="GLOBAL_Extended_Action_SHEET_LIST" extensionPointName="printMessage">
+            <guiContexts>
+                <guiContext name="SHEET_LIST" />
+            </guiContexts>
+            <menuEntry name="GLOBAL_ExtendedActionLIST" parentName="Sheet" />
+        </extendedAction>
+	</extendedActions>
+</gpm>

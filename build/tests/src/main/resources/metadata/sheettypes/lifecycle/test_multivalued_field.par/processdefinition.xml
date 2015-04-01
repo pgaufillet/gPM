@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition
+  xmlns="http://jbpm.org/3/jpdl"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://jbpm.org/3/jpdl http://jbpm.org/xsd/jpdl-3.0.xsd"
+  name="test_multivalued_field">
+   <start-state name="Udatable_Extensible">
+   	  <transition name="Inextensible" to="Inextensible"/>
+   </start-state>
+   <state name="Inextensible">
+      <transition name="Un-updatable" to="Un-updatable"/>
+   </state>
+   <end-state name="Un-updatable"/>
+</process-definition>

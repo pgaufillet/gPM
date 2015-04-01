@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<process-definition
+  xmlns="http://jbpm.org/3/jpdl"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://jbpm.org/3/jpdl http://jbpm.org/xsd/jpdl-3.0.xsd"
+  name="Bug">
+   <start-state name="Open">
+      <transition name="In progress" to="In progress"></transition>
+   </start-state>
+   <state name="In progress">
+      <transition name="Mark as solved" to="Solved"/>
+      <transition name="Reject" to="Rejected"/>
+   </state>
+    <state name="Solved">
+      <transition name="Close" to="Closed"/>
+      <transition name="Re-open" to="Re-opened"/>
+   </state>
+   <state name="Rejected">
+      <transition name="Close" to="Closed"/>
+      <transition name="Re-open" to="Re-opened"/>
+   </state>
+   <state name="Re-opened">
+      <transition name="Mark as solved" to="Solved"/>
+      <transition name="Reject" to="Rejected"/>
+   </state>
+   <end-state name="Closed"></end-state>
+</process-definition>

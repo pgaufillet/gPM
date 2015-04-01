@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <!--
+        Instance service
+    -->
+
+    <bean id="instanceServiceImpl" parent="serviceImplBase" autowire="byName"
+        class="org.topcased.gpm.business.instance.impl.InstanceServiceImpl"
+        lazy-init="true">
+    </bean>
+
+    <bean id="instanceService"
+        class="org.springframework.aop.framework.ProxyFactoryBean"
+        lazy-init="true"
+        parent="interceptedService">
+        <property name="target" ref="instanceServiceImpl" />
+
+        <property name="proxyInterfaces"
+            value="org.topcased.gpm.business.instance.service.InstanceService" />
+    </bean>
+</beans>

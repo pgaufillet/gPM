@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF8"?>
+
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+
+<version>1.2</version>
+
+<users>
+    <user login="userRoleImport_01" password="pwd" name="User role import 01">
+    </user>
+    <user login="userRoleImport_02" password="pwd" name="User role import 02" passwordEncoding="clear">
+    </user>
+    <user login="userRoleImportUpdate" password="pwd" name="User role import can update" />
+</users>
+
+<roles>
+    <role name="userRole_01"/>
+    <role name="userRole_02"/>
+    <role name="userRoleUserUpdateImportTest"/>
+</roles>
+
+<products>
+    <product name="userRoleProduct" type="Store" envName="env1"/>
+</products>
+
+<userRoles>
+    <userRole roleName="userRole_01" login="userRoleImport_01"/>
+    <userRole roleName="userRole_02" login="userRoleImport_02" productName="userRoleProduct" />
+    <userRole roleName="userRoleUserUpdateImportTest" login="userRoleImportUpdate" productName="userRoleProduct" />
+</userRoles>
+
+<accessControls>
+    <adminAccess actionKey="gpm.administration.user.modify" role="userRoleUserUpdateImportTest" />
+</accessControls>
+</gpm>

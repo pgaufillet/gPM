@@ -1,0 +1,81 @@
+<!-- Ant build file used to generate gPM-SUMO distribution  -->
+<!-- a ZIP file containing the complete gPM-SUMO resources. -->
+<project name="distribution" default="zip" basedir=".">
+	<description>
+     	Build a JAR file containing the reports for the gPM-SUMO instance.
+    </description>
+
+	<!-- Set global properties for this build -->
+	<property name="version" value="v2.0.x-SNAPSHOT" />
+	<property name="instance_name" value="gpm-ui-facade-test-instance" />
+
+	<!-- Reports and commands repositories -->
+	<property name="reports_dir" value="metadata/reports/src" />
+	<property name="commands_dir" value="metadata/commands/java" />
+	<property name="attached_files_dir" value="data/sheets/attachedfiles" />
+
+	<property name="build" location="target" />
+	<property name="dist" location="dist" />
+
+	<target name="init" depends="clean">
+		<!-- Create the time stamp -->
+		<tstamp />
+		<!-- Create the build directory structure used by compile -->
+		<mkdir dir="${build}" />
+	</target>
+
+	<target name="reports">
+		<ant antfile="${reports_dir}/build.xml" target="jar" inheritall="false">
+			<property name="jar_name" value="${instance_name}_reports_${version}.jar" />
+		</ant>
+	</target>
+
+	<target name="extensionPoints">
+		<ant antfile="${commands_dir}/build.xml" target="jar" inheritall="false">
+			<property name="jar_name" value="${instance_name}_commands_${version}.jar" />
+		</ant>
+	</target>
+
+	<target name="copyResources" description="Copy the resource files in the build directory." depends="init,reports,extensionPoints">
+		<copy todir="${build}">
+			<fileset dir=".">
+				<include name="${reports_dir}/*.jrxml" />
+				<include name="${reports_dir}/**/*.jpg" />
+				<include name="${commands_dir}/**/*.java" />
+				<include name="${attached_files_dir}/*.*" />
+				<include name="**/README.txt" />
+				<include name="**/*.xml" />
+				<include name="**/*.ddl" />
+				<exclude name="**/gpd.xml" />
+				<exclude name="**/build.xml" />
+			</fileset>
+		</copy>
+		<copy todir="${build}/lib">
+			<fileset dir="./${reports_dir}/dist">
+				<include name="*.jar" />
+			</fileset>
+			<fileset dir="./${commands_dir}/dist/">
+				<include name="*.jar" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="zip" description="Generate the ZIP containing the gPM-SUMO instance." depends="copyResources">
+		<!-- Create the distribution directory -->
+		<mkdir dir="${dist}" />
+		<!-- Zip the distribution -->
+		<zip destfile="${dist}/${instance_name}_${version}.zip">
+			<fileset dir="${build}" includes="**" />
+		</zip>
+		<!-- Delete the ${dist} directory tree of reports and commands -->
+		<ant antfile="./${reports_dir}/build.xml" target="clean" inheritall="false" />
+		<ant antfile="./${commands_dir}/build.xml" target="clean" inheritall="false" />
+		<!-- Delete the ${build} directory tree -->
+		<delete dir="${build}" />
+	</target>
+
+	<target name="clean" description="Clean up the build and dist trees.">
+		<!-- Delete the ${dist} directory tree -->
+		<delete dir="${dist}" />
+	</target>
+</project>

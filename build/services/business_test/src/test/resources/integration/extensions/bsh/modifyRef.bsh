@@ -1,0 +1,19 @@
+import org.topcased.gpm.business.extensions.service.Context;
+import org.topcased.gpm.business.extensions.service.GDMExtension;
+import org.topcased.gpm.business.sheet.service.sheetAccess.MultipleFieldDataAccess;
+import org.topcased.gpm.business.sheet.service.sheetAccess.SheetDataAccess;
+import org.topcased.gpm.business.sheet.service.sheetAccess.SimpleFieldData;
+
+import org.topcased.gpm.business.sheet.service.SheetData;
+
+// Récupération de la sheetData
+SheetData lSheetData = (SheetData) context.get("sheetData");
+
+// récupération de la sheetDataAccess(permettant d'accéder aux champs de la sheetdata)
+SheetDataAccess lSheetDataAccess = new SheetDataAccess(lSheetData);
+
+// récupération de l'acces au champ multiple Reference
+MultipleFieldDataAccess lReferenceFieldDataAccess = new MultipleFieldDataAccess(lSheetData.getReference());
+
+// reference.name : ref
+((SimpleFieldData) lReferenceFieldDataAccess.getField("CAT_name")).setValue("TEST");

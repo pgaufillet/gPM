@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <!--
+        LifeCycle service
+    -->
+
+    <bean id="lifeCycleServiceImpl" parent="serviceImplBase" autowire="byName"
+        class="org.topcased.gpm.business.lifecycle.impl.LifeCycleServiceImpl"
+        lazy-init="true">
+    </bean>
+
+    <bean id="lifeCycleService"
+        class="org.springframework.aop.framework.ProxyFactoryBean"
+        lazy-init="true"
+        parent="interceptedService">
+        <property name="target" ref="lifeCycleServiceImpl" />
+
+        <property name="proxyInterfaces"
+            value="org.topcased.gpm.business.lifecycle.service.LifeCycleService" />
+    </bean>
+</beans>

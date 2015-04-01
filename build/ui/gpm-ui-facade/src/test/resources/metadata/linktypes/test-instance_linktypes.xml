@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+	<!--
+		edited with XMLSpy v2005 rel. 3 U (http://www.altova.com) by _AIRBUS FRANCE (AIRBUS FRANCE)
+	-->
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+	<version>1.2</version>
+
+	<productLinkTypes>
+		<productLinkType name="ProductProductLink" originType="PRODUCT" destinationType="PRODUCT"
+			description="product_link_desc">
+			<fields>
+				<simpleField labelKey="ProductProduct_F" valueType="Date" description="product link field desc" />
+			</fields>
+		</productLinkType>
+	</productLinkTypes>
+	<sheetLinkTypes>
+		<sheetLinkType name="Sheet1Sheet1Link" originType="SHEET_1" destinationType="SHEET_1"
+			description="description">
+			<fields>
+				<multipleField labelKey="Sheet1Sheet1" multivalued="true">
+					<fields>
+						<simpleField labelKey="Sheet1Sheet1_F1" valueType="String" />
+						<choiceField labelKey="Sheet1Sheet1_F2" categoryName="CHOICE_CAT_1" />
+					</fields>
+				</multipleField>
+				<simpleField labelKey="Sheet1Sheet1_F3" valueType="Date" description="F3 Date FIELD" />
+			</fields>
+			<extensionPoints>
+				<extensionPoint name="preCreate">
+					<command name="preCreateSheetLink" />
+				</extensionPoint>
+			</extensionPoints>
+		</sheetLinkType>
+		<sheetLinkType name="Sheet1Sheet1Link_2" originType="SHEET_1" destinationType="SHEET_1"
+			description="description_2">
+			<fields>
+				<simpleField labelKey="Sheet1Sheet1_2_F" valueType="String" description="field desc" />
+                <simpleField labelKey="Sheet1Sheet1_2_F2" valueType="String" description="field desc" />
+                <simpleField labelKey="Sheet1Sheet1_2_F3" valueType="String" description="field desc" />
+			</fields>
+		</sheetLinkType>
+		<sheetLinkType name="Sheet1ConfidentialSheetLink" originType="SHEET_1"
+			destinationType="CONFIDENTIAL_SHEET" description="desc" unidirectional="true"/>
+	</sheetLinkTypes>
+
+</gpm>

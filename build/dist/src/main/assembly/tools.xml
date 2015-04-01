@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<assembly>
+    <id>tools</id>
+    <formats>
+        <format>zip</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+
+    <files>
+        <!-- Licence file -->
+        <file>
+            <source>../LICENSE.txt</source>
+            <outputDirectory>gPM-${gpm.version}</outputDirectory>
+            <lineEnding>unix</lineEnding>
+            <fileMode>0644</fileMode>
+        </file>
+
+        <!-- Changes file -->
+        <file>
+            <source>../CHANGES.txt</source>
+            <outputDirectory>gPM-${gpm.version}</outputDirectory>
+            <lineEnding>unix</lineEnding>
+            <fileMode>0644</fileMode>
+        </file>
+        
+        <!-- DDL files -->
+        <file>
+            <source>../services/business/target/ddl/oracle/CreateStatements.ddl</source>
+            <outputDirectory>gPM-${gpm.version}/ddl/oracle</outputDirectory>
+            <fileMode>0644</fileMode>
+        </file>
+         <file>
+            <source>../services/business/target/ddl/oracle/DropStatements.ddl</source>
+            <outputDirectory>gPM-${gpm.version}/ddl/oracle</outputDirectory>
+            <fileMode>0644</fileMode>
+        </file>
+        <file>
+            <source>../services/business/target/ddl/pgsql/CreateStatements.ddl</source>
+            <outputDirectory>gPM-${gpm.version}/ddl/pgsql</outputDirectory>
+            <fileMode>0644</fileMode>
+        </file>
+         <file>
+            <source>../services/business/target/ddl/pgsql/DropStatements.ddl</source>
+            <outputDirectory>gPM-${gpm.version}/ddl/pgsql</outputDirectory>
+            <fileMode>0644</fileMode>
+        </file>
+
+        <file>
+            <source>src/main/conf/config.properties.example</source>
+            <outputDirectory>gPM-${gpm.version}</outputDirectory>
+            <lineEnding>unix</lineEnding>
+            <filtered>true</filtered>
+        </file>
+        <file>
+            <source>src/main/conf/dataSource.properties.example</source>
+            <outputDirectory>gPM-${gpm.version}</outputDirectory>
+            <lineEnding>unix</lineEnding>
+            <filtered>true</filtered>
+        </file>
+        <file>
+            <source>src/main/conf/dropTables.properties.example</source>
+            <outputDirectory>gPM-${gpm.version}</outputDirectory>
+            <lineEnding>unix</lineEnding>
+            <filtered>true</filtered>
+        </file>
+        <file>
+            <source>src/main/conf/migration.properties.example</source>
+            <outputDirectory>gPM-${gpm.version}</outputDirectory>
+            <lineEnding>unix</lineEnding>
+            <filtered>true</filtered>
+        </file>
+        <file>
+            <source>src/main/conf/log4j.properties.example</source>
+            <outputDirectory>gPM-${gpm.version}</outputDirectory>
+            <lineEnding>unix</lineEnding>
+            <filtered>true</filtered>
+        </file>
+
+        <file>
+            <source>../services/business/src/main/resources/instantiation_model.xsd</source>
+            <outputDirectory>gPM-${gpm.version}</outputDirectory>
+            <destName>instantiation_schema.xsd</destName>
+            <lineEnding>unix</lineEnding>
+        </file>        
+    </files>
+
+    <fileSets>
+        <!-- The 'extensions' directory -->
+        <fileSet>
+            <directory>src/main/extensions</directory>
+            <outputDirectory>gPM-${gpm.version}/extensions</outputDirectory>
+        </fileSet>
+        
+        <!-- Windows launch scripts -->
+        <fileSet>
+            <directory>src/main/scripts/launchers/bat</directory>
+            <outputDirectory>gPM-${gpm.version}</outputDirectory>
+            <filtered>true</filtered>
+            <lineEnding>dos</lineEnding>
+        </fileSet>
+        
+        <!-- Unix launch scripts -->
+        <fileSet>
+            <directory>src/main/scripts/launchers/sh</directory>
+            <outputDirectory>gPM-${gpm.version}</outputDirectory>
+            <excludes>
+              <exclude>probeDaemon</exclude>
+            </excludes>
+            <filtered>true</filtered>
+            <lineEnding>unix</lineEnding>
+            <fileMode>0644</fileMode>
+        </fileSet>
+		
+		<!-- EHCache Dispatcher--> 
+		<fileSet>
+			<directory>../tools/gPMEHCacheDispatcher/target</directory>
+			<outputDirectory>gPM-${gpm.version}/external-tools/EHCacheDispatcher</outputDirectory>
+            <includes>
+                <include>**/*.war</include>
+            </includes>
+		</fileSet>
+    </fileSets>
+
+    <dependencySets>
+        <dependencySet>
+            <excludes>
+               <exclude>org.topcased.gpm:gPM-tools-resetinstance</exclude>
+            </excludes>
+            <outputDirectory>gPM-${gpm.version}/lib</outputDirectory>
+        </dependencySet>
+    </dependencySets>
+</assembly>

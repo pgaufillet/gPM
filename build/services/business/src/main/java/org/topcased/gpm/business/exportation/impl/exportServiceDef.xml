@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- Export service -->
+	<bean id="exportServiceImpl" parent="serviceImplBase"
+		class="org.topcased.gpm.business.exportation.impl.ExportServiceImpl"
+		autowire="byName" />
+	<bean id="exportService" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedService">
+		<property name="target" ref="exportServiceImpl" />
+		<property name="proxyInterfaces"
+			value="org.topcased.gpm.business.exportation.service.ExportService" />
+	</bean>
+
+	<!-- Export managers -->
+	<bean id="productExportManager" autowire="byName"
+		class="org.topcased.gpm.business.exportation.impl.ProductExportManager" />
+	<bean id="productLinkExportManager" autowire="byName"
+		class="org.topcased.gpm.business.exportation.impl.ProductLinkExportManager" />
+	<bean id="sheetExportManager" autowire="byName"
+		class="org.topcased.gpm.business.exportation.impl.SheetExportManager" />
+	<bean id="sheetLinkExportManager" autowire="byName"
+		class="org.topcased.gpm.business.exportation.impl.SheetLinkExportManager" />
+	<bean id="categoryExportManager" autowire="byName"
+		class="org.topcased.gpm.business.exportation.impl.CategoryExportManager" />
+	<bean id="environmentExportManager" autowire="byName"
+		class="org.topcased.gpm.business.exportation.impl.EnvironmentExportManager" />
+	<bean id="filterExportManager" autowire="byName"
+		class="org.topcased.gpm.business.exportation.impl.FilterExportManager" />
+	<bean id="userExportManager" autowire="byName"
+		class="org.topcased.gpm.business.exportation.impl.UserExportManager" />
+	<bean id="userRoleExportManager" autowire="byName"
+		class="org.topcased.gpm.business.exportation.impl.UserRoleExportManager" />
+</beans>

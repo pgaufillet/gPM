@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!--
+        Authorization Facade
+    -->
+
+	<!-- Implementation bean -->
+	<bean id="authorizationFacadeImpl" parent="abstractFacade"
+	class="org.topcased.gpm.ui.facade.server.authorization.impl.AuthorizationFacadeImpl"
+	autowire="byName">
+		<property name="version" value="${version}" />
+	</bean>
+
+	<!-- Visible interface of the service  -->
+	<bean id="authorizationFacade" class="org.springframework.aop.framework.ProxyFactoryBean" parent="interceptedFacade">
+		<property name="target" ref="authorizationFacadeImpl" />
+		<property name="proxyInterfaces" value="org.topcased.gpm.ui.facade.server.authorization.AuthorizationFacade" />
+	</bean>
+
+</beans>

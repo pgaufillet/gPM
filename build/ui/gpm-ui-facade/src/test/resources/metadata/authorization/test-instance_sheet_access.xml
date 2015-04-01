@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+	<!-- edited with XMLSpy v2005 rel. 3 U (http://www.altova.com) by _AIRBUS FRANCE (AIRBUS FRANCE) -->
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+	<version>1.2</version>
+	<accessControls>
+
+		<containerTypeAccess typeName="PRODUCT" confidential="true" role="user" />
+        <containerTypeAccess typeName="ProductProductLink" role="user" confidential="true"/>
+		<containerTypeAccess typeName="Sheet1Sheet1Link_2" role="user" creatable="false"
+			updatable="false" deletable="false" />
+
+		<sheetTypeAccess sheetType="CONFIDENTIAL_SHEET" confidential="true" role="user" />
+		<sheetTypeAccess sheetType="SHEET_1" deletable="false" updatable="false"
+			creatable="false" role="user" />
+		<sheetTypeAccess sheetType="SHEET_1" stateName="CLOSED" deletable="true"
+			updatable="false" creatable="false" />
+
+		<fieldAccess fieldKey="CONFIDENTIAL_FIELD_IN_AUTHORIZATION" sheetType="SHEET_1"
+			confidential="true" />
+
+		<transitionAccess enabled="false" transitionName="TO CLOSE" sheetType="SHEET_1"
+			role="user" />
+
+	</accessControls>
+	
+	<filterAccessControls>
+		<filterAccess typeName="CONFIDENTIAL_SHEET" roleName="user" editable="false" executable="true"/>
+		<filterAccess typeName="Sheet1Sheet1Link_2" roleName="user" editable="false" executable="true"/>
+	</filterAccessControls>
+</gpm>

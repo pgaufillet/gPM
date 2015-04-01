@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<import resource="classpath:configurer.xml" />
+	<import resource="classpath:cpAppender.xml" />
+
+	<import resource="classpath:dataSources.xml" />
+
+	<!-- For compatibility with previous versions -->
+	<import resource="classpath:dataSource.xml" />
+
+	<!-- Performance analyzer -->
+	<import
+		resource="classpath:org/topcased/gpm/business/performance/performanceDef.xml" />
+
+	<!-- Import the DAO definitions -->
+	<import resource="classpath:daoContext.xml" />
+
+	<import resource="classpath:mailSession.xml" />
+
+
+	<!-- Override the session factory bean -->
+	<bean id="sessionFactory" class="org.topcased.gpm.util.session.GpmSessionFactory"
+		parent="abstractSessionFactory">
+		<property name="dataSource" ref="${dataSource}" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.show_sql">
+					${hibernate.show_sql}
+                </prop>
+				<prop key="hibernate.dialect">
+					${hibernate.dialect}
+                </prop>
+				<prop key="hibernate.cache.provider_class">
+					org.hibernate.cache.EhCacheProvider
+                </prop>
+				<prop key="hibernate.cache.query_cache_factory">
+					org.hibernate.cache.StandardQueryCacheFactory
+                </prop>
+			</props>
+		</property>
+	</bean>
+
+	<!--
+		Our custom Hibernate interceptor used in all services. It is
+		overdefined here in order to use our Interceptor. This interceptor is
+		able to build a jbpm session.
+	-->
+	<bean id="hibernateInterceptor" class="org.springframework.orm.hibernate3.HibernateInterceptor">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<!-- Import the services definitions -->
+	<import resource="classpath:org/topcased/gpm/business/services.xml" />
+
+	<!-- Quartz scheduler -->
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<!-- Session auto logout via authorization service -->
+				<ref bean="sessionLogoutTrigger" />
+				<!-- Clean session lock via sheet service -->
+				<ref bean="cleanSessionLockTrigger" />
+			</list>
+		</property>
+		<property name="quartzProperties">
+			<props>
+				<prop key="org.quartz.threadPool.threadCount">1</prop>
+				<prop key="org.quartz.scheduler.makeSchedulerThreadDaemon">true</prop>
+				<prop key="org.quartz.threadPool.makeThreadsDaemons">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="hibernateStatistics" class="org.hibernate.jmx.StatisticsService">
+		<property name="sessionFactory" ref="sessionFactory" />
+		<property name="statisticsEnabled" value="true" />
+	</bean>
+
+	<bean id="exporter" class="org.springframework.jmx.export.MBeanExporter">
+		<property name="beans">
+			<map>
+				<entry key="bean:name=hibernateStatsMBean" value-ref="hibernateStatistics" />
+			</map>
+		</property>
+		<property name="assembler">
+			<bean id="assembler"
+				class="org.springframework.jmx.export.assembler.MethodNameBasedMBeanInfoAssembler">
+				<property name="methodMappings">
+					<props>
+						<prop key="bean:name=hibernateStatsMBean" />
+					</props>
+				</property>
+			</bean>
+		</property>
+	</bean>
+</beans>

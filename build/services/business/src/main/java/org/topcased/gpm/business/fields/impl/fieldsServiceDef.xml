@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <!--
+        Fields service
+    -->
+
+    <bean id="fieldsServiceImpl" parent="serviceImplBase" autowire="byName"
+        class="org.topcased.gpm.business.fields.impl.FieldsServiceImpl"
+        lazy-init="true">
+    </bean>
+
+    <bean id="fieldsService"
+        class="org.springframework.aop.framework.ProxyFactoryBean"
+        lazy-init="true"
+        parent="interceptedService">
+        <property name="target" ref="fieldsServiceImpl" />
+
+        <property name="proxyInterfaces"
+            value="org.topcased.gpm.business.fields.service.FieldsService" />
+    </bean>
+</beans>

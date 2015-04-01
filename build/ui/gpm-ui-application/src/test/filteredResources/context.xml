@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- The contents of this file will be loaded for each web application -->
+<Context pathname="/instance-ATOS">
+
+    <Resource
+      name="gPM/dataSource"
+      auth="Container"
+      type="javax.sql.DataSource"
+      driverClassName="${gPM.jdbcDriverClassName}"
+      maxIdle="2"
+      maxWait="5000"
+      username="${gPM.tests-db-username}"
+      password="${gPM.tests-db-password}"
+      url="${gPM.tests-db-url}"
+      maxActive="20"/>
+
+    <!-- The topgdm/mailSession resource requires a valid email adress -->
+    <Resource
+      name="gPM/mailSession"
+      auth="Container"
+      type="javax.mail.Session"
+      mail.smtp.host="${gPM.tests-smtp-host}"
+      mail.smtp.auth="false"
+      mail.transport.protocol="smtp"
+      mail.smtp.port="25"
+      mail.from="gPM@atosorigin.com"/>
+
+</Context>

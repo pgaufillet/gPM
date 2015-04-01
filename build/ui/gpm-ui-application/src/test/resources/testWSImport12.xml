@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+	<version>1.2</version>
+	<sheets>
+		<extensionPointsToExclude>
+			<exclude name="ControlTypeImportInitRef" />
+		</extensionPointsToExclude>
+		<sheet type="ControlTypeImport" productName="Bernard's store"
+			version="0" state="E4">
+			<fieldValues>
+				<fieldValue name="Field2" value="12" />
+				<fieldValue name="TEST_ID" value="12" />
+			</fieldValues>
+		</sheet>
+
+		<sheet type="ControlTypeImport2" productName="Bernard's store"
+			version="0" state="E4">
+			<fieldValues>
+				<fieldValue name="Field2" value="12" />
+				<fieldValue name="TEST_ID" value="12" />
+			</fieldValues>
+		</sheet>
+
+		<sheet type="ControlTypeImport3" productName="Bernard's store"
+			version="0" state="E4">
+			<fieldValues>
+				<fieldValue name="Field2" value="12" />
+				<fieldValue name="TEST_ID" value="12" />
+			</fieldValues>
+		</sheet>
+	</sheets>
+</gpm>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<gpm xmlns="http://www.airbus.com/topcased/gPM"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+
+    <version>1.2</version>
+    
+     <accessControls>
+        <transitionAccess enabled="false" transitionName="TestACTransition1" sheetType="ControlType2">
+            <attributes>
+                <attribute name="from" value="sheet1"/>
+                <attribute name="to" value="sheet2" />
+            </attributes>
+        </transitionAccess>
+        <transitionAccess enabled="false" transitionName="TestACTransition2" sheetType="ControlType1" />
+     </accessControls>
+</gpm>

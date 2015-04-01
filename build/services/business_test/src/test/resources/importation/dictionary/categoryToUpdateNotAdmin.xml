@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF8"?>
+
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+
+<version>1.2</version>
+
+<dictionary>
+    <categories>
+        <category name="catTest_01" access="User">
+            <values>
+                <categoryValue value="catTest_01_value_01"/>
+                <categoryValue value="catTest_01_value_02_UPDATED"/>
+            </values>
+        </category>
+        <category name="catTest_03" access="Product">
+            <values>
+                <categoryValue value="catTest_03_value_01_UPDATED"/>
+                <categoryValue value="catTest_03_value_03"/>
+            </values>
+        </category>
+    </categories>
+</dictionary>
+</gpm>

@@ -1,0 +1,110 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <groupId>org.topcased.gpm</groupId>
+        <artifactId>gPM-services</artifactId>
+        <version>1</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>gPM-services-dao</artifactId>
+    <packaging>jar</packaging>
+    <version>${gpm.version}</version>
+    <name>gPM-services DAO</name>
+    <url>/gPM-services/gPM-services-dao/ 
+    </url>
+    <build>
+        <defaultGoal>install</defaultGoal>
+        <plugins>
+          <!--   Just To deal with multiple source directories -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>${mojo.buildhelper.version}</version>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>target/src/</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+<!--         Otherwise no resource would be included in the JAR file -->
+        <resources>
+            <resource>
+                <filtering>false</filtering>
+                <directory>${pom.basedir}/target/src/ 
+                </directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <filtering>false</filtering>
+                <directory>${pom.basedir}/src/main/java 
+                </directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
+        </resources>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.bcel</groupId>
+            <artifactId>bcel</artifactId>
+        </dependency>    
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate</artifactId>
+        </dependency>
+	  <dependency>
+    		<groupId>org.hibernate</groupId>
+    		<artifactId>hibernate-annotations</artifactId>
+	  </dependency>
+	  <dependency>
+    		<groupId>org.hibernate</groupId>
+    		<artifactId>hibernate-commons-annotations</artifactId>
+	  </dependency>
+
+        <dependency>
+            <groupId>xpp3</groupId>
+            <artifactId>xpp3</artifactId>
+        </dependency>
+
+       <!--  JBPM -->
+        <!--dependency>
+            <groupId>org.jbpm</groupId>
+            <artifactId>jbpm</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jbpm</groupId>
+            <artifactId>jbpm-identity</artifactId>
+        </dependency-->
+
+	  <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>persistence-api</artifactId>
+        </dependency>
+
+<!--         Database JDBC drivers -->
+<!--         The PostgreSQL driver is required for compil. -->
+        <dependency>
+            <groupId>postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+</project>

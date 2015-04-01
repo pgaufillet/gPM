@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<gpm xmlns="http://www.airbus.com/topcased/gPM"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+
+    <version>1.2</version>
+
+    <roles>
+        <role name="full_access" />
+        <role name="normal_access" />
+        <role name="restricted_access" />
+    </roles>
+
+    <userRoles>
+        <userRole roleName="normal_access" login="admin" />
+        <userRole roleName="restricted_access" login="admin" />
+    </userRoles>
+
+    
+
+    <sheetTypes>
+        <sheetType name="CtlHierarchyType">
+            <referenceField>
+                <fields>
+                    <simpleField valueType="String" labelKey="ref" />
+                </fields>
+            </referenceField>
+            <fields>
+                <simpleField valueType="String" labelKey="field1" 
+                    exportable="false" confidential="true"/>
+                <simpleField valueType="String" labelKey="field2" />
+            </fields>
+            <lifecycleResource>
+                authorization/TestControlsHierarchy_lifecycle.xml
+            </lifecycleResource>
+        </sheetType>
+    </sheetTypes><accessControls>
+        <!-- normal_access role cannot edit field1 in any states -->
+        <fieldAccess fieldKey="field1" sheetType="CtlHierarchyType" confidential="false" updatable="false" role="normal_access" />
+
+        <!-- Override previous access to allow normal_access
+            edit field1 in 'Open' state
+         -->
+        <fieldAccess fieldKey="field1" sheetType="CtlHierarchyType" confidential="false" updatable="true" stateName="Open" role="normal_access" />
+
+        <!-- field1 is confidential for 'restricted_access' role -->
+        <fieldAccess fieldKey="field1" sheetType="CtlHierarchyType" confidential="true" updatable="false" role="restricted_access" />
+    </accessControls>
+</gpm>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- Values service -->
+	<bean id="valuesServiceImpl" class="org.topcased.gpm.business.values.impl.ValuesServiceImpl"
+		parent="serviceImplBase" autowire="byName" />
+	<bean id="valuesService" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedService">
+		<property name="target" ref="valuesServiceImpl" />
+		<property name="proxyInterfaces"
+			value="org.topcased.gpm.business.values.service.ValuesService" />
+	</bean>
+
+	<!-- Type mapping manager -->
+	<bean id="typeMappingManager" parent="serviceImplBase" autowire="byName"
+		class="org.topcased.gpm.business.values.impl.TypeMappingManager" />
+</beans>

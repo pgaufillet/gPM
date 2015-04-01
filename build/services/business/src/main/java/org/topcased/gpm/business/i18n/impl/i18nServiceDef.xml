@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <!--
+        I18N service
+    -->
+
+    <bean id="translationsCache"
+        class="org.springframework.cache.ehcache.EhCacheFactoryBean"
+        parent="cacheFactoryBase">
+        <property name="cacheName"
+            value="org.topcased.gpm.business.i18n.impl.TRANSLATIONS_CACHE" />
+        <property name="maxElementsInMemory" value="${cache.translations.maxElements}" />
+    </bean>
+
+    <!-- Implementation bean -->
+    <bean id="i18nServiceImpl"
+        class="org.topcased.gpm.business.i18n.impl.I18nServiceImpl"
+        autowire="byName"/>
+
+    <!-- Visible interface of the service  -->
+    <bean id="i18nService"
+        class="org.springframework.aop.framework.ProxyFactoryBean"
+        parent="interceptedService">
+        <property name="target" ref="i18nServiceImpl" />
+
+        <property name="proxyInterfaces"
+            value="org.topcased.gpm.business.i18n.service.I18nService" />
+    </bean>
+</beans>

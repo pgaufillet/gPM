@@ -1,0 +1,1721 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+	<version>1.2</version>
+
+	<!-- Sheet Types's description  -->
+
+	<sheetTypes>
+		<!-- Sheet Type Cat -->
+		<sheetType name="Cat" description="Cat" selectable="true">
+			<attributes>
+				<attribute name="revisionEnabled" value="false">
+				</attribute>
+			</attributes>
+			<displayGroups>
+				<displayGroup name="Identity">
+					<fieldRef name="CAT_ref" />
+					<fieldRef name="CAT_birthdate" />
+					<fieldRef name="CAT_color" />
+					<fieldRef name="CAT_furlength" />
+					<fieldRef name="CAT_picture" />
+					<fieldRef name="CAT_pedigre" />
+				</displayGroup>
+				<displayGroup name="Description">
+					<fieldRef name="CAT_description" />
+					<fieldRef name="CAT_ishappy" />
+				</displayGroup>
+			</displayGroups>
+			<referenceField>
+				<fields>
+					<simpleField labelKey="CAT_name" valueType="String" />
+				</fields>
+			</referenceField>
+			<fields>
+				<simpleField labelKey="CAT_ref" valueType="String" />
+				<simpleField labelKey="CAT_birthdate" valueType="Date" mandatory="false" updatable="true" confidential="false" exportable="true" />
+				<choiceField labelKey="CAT_color" categoryName="Color" multivalued="true" />
+				<choiceField labelKey="CAT_furlength" description="Fur Length" categoryName="Length" />
+				<attachedField labelKey="CAT_picture" mandatory="false" description="File with a picture of the pet" />
+				<simpleField labelKey="CAT_description" valueType="String" maxSize="Infinite" />
+				<simpleField labelKey="CAT_ishappy" valueType="Boolean" />
+				<choiceField labelKey="CAT_pedigre" description="pedigre" categoryName="CAT_pedigre" />
+			</fields>
+			<displayHints>
+				<textDisplayHint labelKey="CAT_description" height="250" width="800" displayType="RICH_TEXT" />
+				<choiceDisplayHint labelKey="CAT_color" list="true" />
+				<choiceTreeDisplayHint labelKey="CAT_furlength" separator="|" />
+				<displayHint labelKey="CAT_ref" type="myExternDisplayHint">
+					<attributes>
+						<attribute name="nameAttribute" value="attributeValue">
+						</attribute>
+					</attributes>
+				</displayHint>
+				<attachedDisplayHint labelKey="CAT_picture" displayType="IMAGE" height="200" width="200" />
+			</displayHints>
+			<extensionPoints>
+				<extensionPoint name="preCreate">
+					<command name="CAT_initRef" />
+				</extensionPoint>
+				<extensionPoint name="preDelete">
+					<command name="testPreDelete" />
+				</extensionPoint>
+				<extensionPoint name="postDelete">
+					<command name="testPostDelete" />
+				</extensionPoint>
+				<extensionPoint name="preExport">
+					<command name="testPreExport" />
+				</extensionPoint>
+			</extensionPoints>
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/cat.par/processdefinition.xml
+			</lifecycleResource>
+		</sheetType>
+		<sheetType name="Dog" description="sheetTypedog" selectable="true" versionable="true">
+			<displayGroups>
+				<displayGroup name="Identity">
+					<fieldRef name="DOG_ref" />
+					<fieldRef name="DOG_birthdate" />
+					<fieldRef name="DOG_pedigre" />
+					<fieldRef name="DOG_usage" />
+					<fieldRef name="DOG_link" />
+				</displayGroup>
+			</displayGroups>
+			<referenceField>
+				<fields>
+					<simpleField labelKey="DOG_name" valueType="String" />
+				</fields>
+			</referenceField>
+			<fields>
+				<simpleField labelKey="DOG_ref" valueType="String" />
+				<simpleField labelKey="DOG_link" valueType="String" />
+				<simpleField labelKey="DOG_birthdate" valueType="Date" />
+				<choiceField labelKey="DOG_pedigre" description="Pet pedigre" categoryName="Color" multivalued="true" />
+				<choiceField labelKey="DOG_usage" description="Pet primary usage" categoryName="Usage" multivalued="true" />
+			</fields>
+			<displayHints>
+				<dateDisplayHint labelKey="DOG_birthdate" format="LONG" />
+				<textDisplayHint labelKey="DOG_link" displayType="INTERNAL_URL" />
+			</displayHints>
+			<extensionPoints>
+				<extensionPoint name="preCreate">
+					<command name="DOG_initRef" />
+				</extensionPoint>
+			</extensionPoints>
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/dog.par/processdefinition.xml
+			</lifecycleResource>
+			<attributes>
+				<attribute name="attr1" value="val1" />
+				<attribute name="attr2">
+					<attributeValue value="val1" />
+					<attributeValue value="val2" />
+				</attribute>
+			</attributes>
+		</sheetType>
+		<sheetType name="Mouse" description="sheetTypeMouse" selectable="true" versionable="true">
+			<displayGroups>
+				<displayGroup name="Identity">
+					<fieldRef name="MOUSE_ref" />
+					<fieldRef name="MOUSE_identification" />
+					<fieldRef name="MOUSE_owner" />
+				</displayGroup>
+			</displayGroups>
+			<referenceField>
+				<fields>
+					<simpleField labelKey="MOUSE_name" valueType="String" />
+				</fields>
+			</referenceField>
+			<fields>
+				<simpleField labelKey="MOUSE_ref" valueType="String" description="Mouse_ref" />
+				<multipleField labelKey="MOUSE_identification" description="Mouse_identification">
+					<fields>
+						<simpleField labelKey="MOUSE_mousename" valueType="String" description="Mouse_mouseName" />
+					</fields>
+				</multipleField>
+				<multipleField labelKey="MOUSE_owner" confidential="false" multivalued="true" description="Mouse_owner">
+					<fields>
+						<simpleField valueType="String" labelKey="MOUSE_firstname" description="Mouse_firstName" />
+						<simpleField valueType="String" labelKey="MOUSE_lastname" description="Mouse_lastName" />
+						<simpleField valueType="Integer" labelKey="MOUSE_numberofchildren" description="Mouse_nbOfChild" />
+					</fields>
+				</multipleField>
+			</fields>
+			<extensionPoints>
+				<extensionPoint name="preCreate">
+					<command name="MOUSE_initRef" />
+				</extensionPoint>
+				<extensionPoint name="preCreateRevision">
+					<command name="MOUSE_preCreateRev" />
+				</extensionPoint>
+				<extensionPoint name="postCreateRevision">
+					<command name="MOUSE_postCreateRev" />
+				</extensionPoint>
+				<extensionPoint name="preDeleteRevision">
+					<command name="MOUSE_preDeleteRev" />
+				</extensionPoint>
+			</extensionPoints>
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/mouse.par/processdefinition.xml
+			</lifecycleResource>
+		</sheetType>
+		<sheetType name="Price" description="sheetTypePrice" selectable="true" versionable="true">
+			<displayGroups>
+				<displayGroup name="Identity">
+					<fieldRef name="PRICE_ref" />
+				</displayGroup>
+				<displayGroup name="Price">
+					<fieldRef name="PRICE_price" />
+				</displayGroup>
+				<displayGroup name="Payment option">
+					<fieldRef name="PRICE_credit" />
+					<fieldRef name="PRICE_creditlength" />
+				</displayGroup>
+			</displayGroups>
+			<referenceField>
+				<fields>
+					<simpleField labelKey="PRICE_name" valueType="String" />
+				</fields>
+			</referenceField>
+			<fields>
+				<simpleField labelKey="PRICE_ref" valueType="String" />
+				<simpleField labelKey="PRICE_price" valueType="Real" />
+				<simpleField labelKey="PRICE_credit" valueType="Boolean" />
+				<simpleField labelKey="PRICE_creditlength" valueType="String" multivalued="true" />
+			</fields>
+			<extensionPoints>
+				<extensionPoint name="preCreate">
+					<command name="PRICE_initRef" />
+				</extensionPoint>
+				<extensionPoint name="postDeleteRevision">
+					<command name="PRICE_postDeleteRev" />
+				</extensionPoint>
+			</extensionPoints>
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/price.par/processdefinition.xml
+			</lifecycleResource>
+		</sheetType>
+
+		<sheetType name="SheetType1" selectable="true">
+			<displayGroups>
+				<displayGroup name="Identity">
+					<fieldRef name="SHEETTYPE1_ref" />
+				</displayGroup>
+				<displayGroup name="Simple MonoValued">
+					<fieldRef name="SHEETTYPE1_currentDate" />
+					<fieldRef name="SHEETTYPE1_simpleInteger" />
+					<fieldRef name="SHEETTYPE1_simpleReal" />
+					<fieldRef name="SHEETTYPE1_simpleBoolean" />
+					<fieldRef name="SHEETTYPE1_simpleString" />
+					<fieldRef name="SHEETTYPE1_simpleDate" />
+					<fieldRef name="SHEETTYPE1_attached" />
+					<fieldRef name="SHEETTYPE1_choice" />
+					<fieldRef name="SHEETTYPE1_urlField" />
+				</displayGroup>
+				<displayGroup name="Simple MultiValued">
+					<fieldRef name="SHEETTYPE1_simpleDateMul" />
+					<fieldRef name="SHEETTYPE1_simpleIntegerMul" />
+					<fieldRef name="SHEETTYPE1_simpleRealMul" />
+					<fieldRef name="SHEETTYPE1_simpleBooleanMul" />
+					<fieldRef name="SHEETTYPE1_simpleStringMul" />
+					<fieldRef name="SHEETTYPE1_simpleChoiceStringMul" />
+					<fieldRef name="StrictChoiceStringMul" />
+					<fieldRef name="SHEETTYPE1_attachedMul" />
+					<fieldRef name="SHEETTYPE1_choiceMul" />
+					<fieldRef name="SHEETTYPE1_urlFieldMul" />
+				</displayGroup>
+				<displayGroup name="Multiple MonoValued">
+					<fieldRef name="SHEETTYPE1_multiple1" />
+				</displayGroup>
+				<displayGroup name="Multiple MultiValued">
+					<fieldRef name="SHEETTYPE1_multiple1M" />
+				</displayGroup>
+			</displayGroups>
+			<referenceField>
+				<fields>
+					<simpleField labelKey="typeName" valueType="String" />
+					<simpleField labelKey="ref" valueType="Integer" />
+				</fields>
+			</referenceField>
+			<fields>
+				<simpleField labelKey="SHEETTYPE1_ref" valueType="String" />
+				<simpleField labelKey="SHEETTYPE1_currentDate" description="This field is automatically valued to the current date" valueType="Date" />
+				<simpleField labelKey="SHEETTYPE1_simpleDate" valueType="Date" defaultValue="2007-12-31" />
+				<simpleField labelKey="SHEETTYPE1_simpleInteger" valueType="Integer" defaultValue="12" />
+				<simpleField labelKey="SHEETTYPE1_simpleReal" valueType="Real" defaultValue="12.0" />
+				<simpleField labelKey="SHEETTYPE1_simpleBoolean" valueType="Boolean" defaultValue="true" />
+				<simpleField labelKey="SHEETTYPE1_simpleString" valueType="String" defaultValue="Def_string" />
+				<attachedField labelKey="SHEETTYPE1_attached">
+					<attributes>
+						<attribute name="attachedFileFieldAttr1" value="val" />
+					</attributes>
+				</attachedField>
+				<choiceField labelKey="SHEETTYPE1_choice" categoryName="Color">
+					<attributes>
+						<attribute name="choiceFieldAttr1" value="val" />
+					</attributes>
+				</choiceField>
+				<simpleField labelKey="SHEETTYPE1_urlField" valueType="String" />
+				<simpleField labelKey="SHEETTYPE1_simpleDateMul" valueType="Date" multivalued="true" />
+				<simpleField labelKey="SHEETTYPE1_simpleIntegerMul" valueType="Integer" multivalued="true" />
+				<simpleField labelKey="SHEETTYPE1_simpleRealMul" valueType="Real" multivalued="true" />
+				<simpleField labelKey="SHEETTYPE1_simpleBooleanMul" valueType="Boolean" multivalued="true" />
+				<simpleField labelKey="SHEETTYPE1_simpleStringMul" valueType="String" multivalued="true" />
+				<simpleField labelKey="SHEETTYPE1_simpleChoiceStringMul" valueType="String" multivalued="true" />
+				<simpleField labelKey="StrictChoiceStringMul" valueType="String" multivalued="true" />
+				<attachedField labelKey="SHEETTYPE1_attachedMul" multivalued="true" />
+				<choiceField labelKey="SHEETTYPE1_choiceMul" categoryName="Color" multivalued="true" />
+				<simpleField labelKey="SHEETTYPE1_urlFieldMul" valueType="String" multivalued="true" />
+				<multipleField labelKey="SHEETTYPE1_multiple1">
+					<attributes>
+						<attribute name="multipleFieldAttr1" value="val" />
+					</attributes>
+					<fields>
+						<simpleField labelKey="SHEETTYPE1_simpleDateM" valueType="Date" />
+						<simpleField labelKey="SHEETTYPE1_simpleIntegerM" valueType="Integer" />
+						<simpleField labelKey="SHEETTYPE1_simpleRealM" valueType="Real" />
+						<simpleField labelKey="SHEETTYPE1_simpleBooleanM" valueType="Boolean" />
+						<simpleField labelKey="SHEETTYPE1_simpleStringM" valueType="String" />
+						<attachedField labelKey="SHEETTYPE1_attachedM" />
+						<choiceField labelKey="SHEETTYPE1_choiceM" categoryName="Color" />
+						<simpleField labelKey="SHEETTYPE1_urlFieldM" valueType="String" />
+					</fields>
+				</multipleField>
+				<multipleField labelKey="SHEETTYPE1_multiple1M" multivalued="true">
+					<fields>
+						<simpleField labelKey="SHEETTYPE1_simpleDateMM" valueType="Date" />
+						<simpleField labelKey="SHEETTYPE1_simpleIntegerMM" valueType="Integer" />
+						<simpleField labelKey="SHEETTYPE1_simpleRealMM" valueType="Real" />
+						<simpleField labelKey="SHEETTYPE1_simpleBooleanMM" valueType="Boolean" />
+						<simpleField labelKey="SHEETTYPE1_simpleStringMM" valueType="String" />
+						<attachedField labelKey="SHEETTYPE1_attachedMM" />
+						<choiceField labelKey="SHEETTYPE1_choiceMM" categoryName="Color" multivalued="true" />
+						<simpleField labelKey="SHEETTYPE1_urlFieldMM" valueType="String" />
+					</fields>
+				</multipleField>
+			</fields>
+			<displayHints>
+				<textDisplayHint labelKey="SHEETTYPE1_urlField" displayType="URL" />
+				<textDisplayHint labelKey="SHEETTYPE1_urlFieldMul" displayType="URL" />
+				<textDisplayHint labelKey="SHEETTYPE1_urlFieldM" displayType="URL" />
+				<textDisplayHint labelKey="SHEETTYPE1_urlFieldMM" displayType="URL" />
+				<choiceStringDisplayHint labelKey="SHEETTYPE1_simpleChoiceStringMul" extensionPoint="getChoiceStrings" />
+				<choiceStringDisplayHint labelKey="StrictChoiceStringMul" extensionPoint="getChoiceStrings" strict="true" />
+				<dateDisplayHint labelKey="SHEETTYPE1_simpleDate" format="FULL" includeTime="true" />
+			</displayHints>
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/sheettype1.par/processdefinition.xml
+			</lifecycleResource>
+			<extensionPoints>
+				<extensionPoint name="preCreate">
+					<command name="initRef_basic" />
+					<command name="SHEETTYPE1_setCurrentDate" />
+				</extensionPoint>
+				<extensionPoint name="getChoiceStrings">
+					<command name="getChoiceStrings" />
+				</extensionPoint>
+			</extensionPoints>
+		</sheetType>
+		<sheetType name="SheetType_withMandatoryValues" selectable="true">
+			<displayGroups>
+				<displayGroup name="Mandatory Values">
+					<fieldRef name="SHEETTYPE_MV_simpleInteger" />
+					<fieldRef name="SHEETTYPE_MV_simpleReal" />
+					<fieldRef name="SHEETTYPE_MV_simpleBoolean" />
+					<fieldRef name="SHEETTYPE_MV_simpleString" />
+					<fieldRef name="SHEETTYPE_MV_simpleDate" />
+					<fieldRef name="SHEETTYPE_MV_attached" />
+					<fieldRef name="SHEETTYPE_MV_choice" />
+					<fieldRef name="SHEETTYPE_MV_urlField" />
+				</displayGroup>
+			</displayGroups>
+			<referenceField>
+				<fields>
+					<simpleField labelKey="SHEETTYPE_MV_name" valueType="String" />
+				</fields>
+			</referenceField>
+			<fields>
+				<simpleField labelKey="SHEETTYPE_MV_simpleDate" valueType="Date" mandatory="true" />
+				<simpleField labelKey="SHEETTYPE_MV_simpleInteger" valueType="Integer" mandatory="true" />
+				<simpleField labelKey="SHEETTYPE_MV_simpleReal" valueType="Real" mandatory="true" />
+				<simpleField labelKey="SHEETTYPE_MV_simpleBoolean" valueType="Boolean" mandatory="true" />
+				<simpleField labelKey="SHEETTYPE_MV_simpleString" valueType="String" mandatory="true" />
+				<attachedField labelKey="SHEETTYPE_MV_attached" mandatory="true" />
+				<choiceField labelKey="SHEETTYPE_MV_choice" categoryName="Color" />
+				<simpleField labelKey="SHEETTYPE_MV_urlField" valueType="String" mandatory="true" />
+			</fields>
+			<displayHints>
+				<textDisplayHint labelKey="SHEETTYPE_MV_urlField" displayType="URL" />
+			</displayHints>
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/sheettype_mandatory_values.par/processdefinition.xml
+			</lifecycleResource>
+		</sheetType>
+		<sheetType name="SimpleSheetType1">
+			<displayGroups>
+				<displayGroup name="DefaultGroup">
+					<fieldRef name="STRING_VALUE" />
+				</displayGroup>
+			</displayGroups>
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/simplesheettype1.par/processdefinition.xml
+			</lifecycleResource>
+			<referenceField>
+				<fields>
+					<simpleField valueType="String" labelKey="Ref" />
+				</fields>
+			</referenceField>
+			<fields>
+				<simpleField valueType="String" labelKey="STRING_VALUE">
+					<attributes>
+						<attribute name="simpleFieldAttr1" value="val" />
+					</attributes>
+				</simpleField>
+			</fields>
+
+			<!-- Define sheet type extended attributes -->
+			<attributes>
+				<attribute name="sheetTypeAttr1" value="value1" />
+			</attributes>
+		</sheetType>
+		<sheetType name="SimpleSheetType2">
+			<displayGroups>
+				<displayGroup name="DefaultGroup">
+					<fieldRef name="STRING_VALUE" />
+				</displayGroup>
+			</displayGroups>
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/simplesheettype2.par/processdefinition.xml
+			</lifecycleResource>
+			<referenceField>
+				<fields>
+					<simpleField valueType="String" labelKey="Ref" />
+				</fields>
+			</referenceField>
+			<fields>
+				<simpleField valueType="String" labelKey="STRING_VALUE" />
+			</fields>
+		</sheetType>
+		<sheetType name="SimpleSheetType3">
+			<displayGroups>
+				<displayGroup name="DefaultGroup">
+					<fieldRef name="STRING_VALUE" />
+				</displayGroup>
+			</displayGroups>
+			<lifecycleResource>
+                metadata/sheettypes/lifecycle/simplesheettype3.par/processdefinition.xml
+            </lifecycleResource>
+			<referenceField>
+				<fields>
+					<simpleField valueType="String" labelKey="REF_1" />
+					<simpleField valueType="Integer" labelKey="REF_2" />
+					<simpleField valueType="Integer" labelKey="REF_3" />
+				</fields>
+			</referenceField>
+			<fields>
+				<simpleField valueType="String" labelKey="STRING_VALUE" />
+			</fields>
+		</sheetType>
+
+		<sheetType name="DOJO_Test" selectable="true">
+			<displayGroups>
+				<displayGroup name="Identity">
+					<fieldRef name="DOJO_Test_ref" />
+				</displayGroup>
+				<displayGroup name="Simple MonoValued">
+					<fieldRef name="DOJO_Test_simpleInteger" />
+					<fieldRef name="DOJO_Test_simpleReal" />
+					<fieldRef name="DOJO_Test_simpleDate" />
+					<fieldRef name="DOJO_Test_urlField" />
+					<fieldRef name="DOJO_Test_richText1" />
+					<fieldRef name="DOJO_Test_richText2" />
+					<fieldRef name="DOJO_Text_textarea_nosize" />
+					<fieldRef name="DOJO_Test_textarea_multiV" />
+					<fieldRef name="DOJO_Test_bool_multiVMono" />
+				</displayGroup>
+			</displayGroups>
+			<referenceField>
+				<fields>
+					<simpleField labelKey="DOJO_Test_name" valueType="String" />
+				</fields>
+			</referenceField>
+			<fields>
+				<simpleField labelKey="DOJO_Test_ref" valueType="String" mandatory="true" />
+				<simpleField labelKey="DOJO_Test_simpleDate" valueType="Date" mandatory="true" />
+				<simpleField labelKey="DOJO_Test_simpleInteger" valueType="Integer" mandatory="true" />
+				<simpleField labelKey="DOJO_Test_simpleReal" valueType="Real" mandatory="true" />
+				<simpleField labelKey="DOJO_Test_urlField" valueType="String" mandatory="true" />
+				<simpleField labelKey="DOJO_Test_richText1" valueType="String" mandatory="true" />
+				<simpleField labelKey="DOJO_Test_richText2" valueType="String" mandatory="true" multivalued="true" />
+				<simpleField valueType="String" labelKey="DOJO_Text_textarea_nosize" />
+				<multipleField labelKey="DOJO_Test_textarea_multiV">
+					<fields>
+						<simpleField labelKey="DOJO_Test_textarea1" valueType="String" mandatory="true" />
+						<simpleField labelKey="DOJO_Test_textarea2" valueType="String" mandatory="true" />
+					</fields>
+				</multipleField>
+				<multipleField labelKey="DOJO_Test_bool_multiVMono">
+					<fields>
+						<simpleField labelKey="DOJO_Test_bool" valueType="Boolean" />
+					</fields>
+				</multipleField>
+			</fields>
+			<displayHints>
+				<textDisplayHint labelKey="DOJO_Test_urlField" displayType="URL" />
+				<textDisplayHint labelKey="DOJO_Test_richText1" displayType="RICH_TEXT" width="600" height="200" />
+				<textDisplayHint labelKey="DOJO_Test_richText2" displayType="RICH_TEXT" />
+				<textDisplayHint labelKey="DOJO_Test_textarea1" displayType="MULTI_LINE" width="100" height="30" />
+				<textDisplayHint labelKey="DOJO_Text_textarea_nosize" displayType="MULTI_LINE" />
+			</displayHints>
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/dojo_test.par/processdefinition.xml
+			</lifecycleResource>
+		</sheetType>
+		<sheetType name="Grid_Single_Test" selectable="true">
+			<referenceField>
+				<fields>
+					<simpleField labelKey="Grid_Single_Test_name" valueType="String" />
+				</fields>
+			</referenceField>
+			<displayGroups>
+				<displayGroup name="Grille">
+					<fieldRef name="Grid_Single_Test_ref" />
+					<fieldRef name="Grid_Single_Test_Grille" />
+				</displayGroup>
+			</displayGroups>
+			<fields>
+				<simpleField valueType="String" labelKey="Grid_Single_Test_ref" />
+				<simpleField labelKey="Grid_Single_Test_Grille" valueType="String" mandatory="true" />
+			</fields>
+			<displayHints>
+				<gridDisplayHint labelKey="Grid_Single_Test_Grille" columnSeparator="::">
+					<gridColumn editorType="TEXT" name="GRID_SINGLE_TEST_Column1" />
+					<gridColumn editorType="TEXT" name="GRID_SINGLE_TEST_Column2" />
+				</gridDisplayHint>
+			</displayHints>
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/grid_single_test.par/processdefinition.xml
+			</lifecycleResource>
+		</sheetType>
+		<sheetType name="Grid_Multivalue_Test" selectable="true">
+			<referenceField>
+				<fields>
+					<simpleField labelKey="Grid_Multivalue_Test_name" valueType="String" />
+				</fields>
+			</referenceField>
+			<displayGroups>
+				<displayGroup name="Grille">
+					<fieldRef name="Grid_Multivalue" />
+				</displayGroup>
+			</displayGroups>
+			<fields>
+				<simpleField labelKey="Grid_Multivalue" valueType="String" mandatory="true" multivalued="true" />
+			</fields>
+			<displayHints>
+				<gridDisplayHint labelKey="Grid_Multivalue" columnSeparator="::">
+					<gridColumn editorType="TEXT" name="GRID_Column_LastName" />
+					<gridColumn editorType="TEXT" name="GRID_Column_FirstName" />
+				</gridDisplayHint>
+			</displayHints>
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/grid_multivalue_test.par/processdefinition.xml
+			</lifecycleResource>
+		</sheetType>
+		<sheetType name="Grid_StringDateBoolean_Test" selectable="true">
+			<referenceField>
+				<fields>
+					<simpleField labelKey="Grid_StringDateBoolean_Test_ref" valueType="String" />
+				</fields>
+			</referenceField>
+			<displayGroups>
+				<displayGroup name="Grille">
+					<fieldRef name="Grid_StringDateBoolean_Test_name" />
+					<fieldRef name="Grid_StringDateBoolean_Test_grille" />
+				</displayGroup>
+			</displayGroups>
+			<fields>
+				<simpleField valueType="String" labelKey="Grid_StringDateBoolean_Test_name" />
+				<simpleField labelKey="Grid_StringDateBoolean_Test_grille" valueType="String" mandatory="true" />
+			</fields>
+			<displayHints>
+				<gridDisplayHint labelKey="Grid_StringDateBoolean_Test_grille" columnSeparator="::">
+					<gridColumn editorType="TEXT" name="GRID_SINGLE_TEST_ColumnString" />
+					<gridColumn editorType="DATE" name="GRID_SINGLE_TEST_ColumnDate" />
+					<gridColumn editorType="BOOLEAN" name="GRID_SINGLE_TEST_ColumnBoolean" />
+				</gridDisplayHint>
+			</displayHints>
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/Grid_StringDateBoolean_Test.par/processdefinition.xml
+			</lifecycleResource>
+		</sheetType>
+		<sheetType name="FILTER_TEST_SHEET_01" selectable="true">
+			<referenceField>
+				<fields>
+					<simpleField labelKey="FILTER_TEST_SHEET_01_ref" valueType="String" />
+				</fields>
+			</referenceField>
+			<displayGroups>
+				<displayGroup name="FILTER_TEST_SHEET_01_GROUP">
+					<fieldRef name="FILTER_TEST_SHEET_01_STRING" />
+					<fieldRef name="FILTER_TEST_SHEET_01_CHOICE" />
+					<fieldRef name="FILTER_TEST_SHEET_02_CHOICE" />
+					<!--
+						Multivalued field containing IDs of (PTV) tests in which the sheet is used.
+					-->
+					<fieldRef name="FILTER_TEST_SHEET_TEST_ID" />
+
+				</displayGroup>
+			</displayGroups>
+			<fields>
+				<simpleField valueType="String" labelKey="FILTER_TEST_SHEET_01_STRING" />
+				<choiceField categoryName="FILTER_TEST_SHEET_01_CHOICE_CATEGORY" labelKey="FILTER_TEST_SHEET_01_CHOICE"></choiceField>
+				<choiceField categoryName="FILTER_TEST_SHEET_02_CHOICE_CATEGORY" labelKey="FILTER_TEST_SHEET_02_CHOICE"></choiceField>
+				<simpleField valueType="String" labelKey="FILTER_TEST_SHEET_TEST_ID" multivalued="true" />
+			</fields>
+			<displayHints>
+				<choiceDisplayHint labelKey="FILTER_TEST_SHEET_01_CHOICE" list="true" />
+			</displayHints>
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/filter_test_sheet_01.par/processdefinition.xml
+			</lifecycleResource>
+		</sheetType>
+		<sheetType name="Test_image_text_displayHint_01" selectable="true">
+			<referenceField>
+				<fields>
+					<simpleField labelKey="Test_image_text_displayHint_01_ref" valueType="String" />
+				</fields>
+			</referenceField>
+
+			<displayGroups>
+				<displayGroup name="Test_image_text_displayHint_01_GROUP">
+					<fieldRef name="Test_image_text_displayHint_01_CHOICE" />
+				</displayGroup>
+			</displayGroups>
+
+			<fields>
+				<choiceField categoryName="Test_image_text_displayHint_01_CATEGORY" labelKey="Test_image_text_displayHint_01_CHOICE"></choiceField>
+			</fields>
+			<displayHints>
+				<choiceDisplayHint labelKey="Test_image_text_displayHint_01_CHOICE" list="true" imageType="IMAGE_TEXT" />
+			</displayHints>
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/test_image_text_displayHint_01.par/processdefinition.xml
+			</lifecycleResource>
+		</sheetType>
+		<sheetType name="CONTAINER_SHEET_TYPE_AC_1">
+			<referenceField>
+				<fields>
+					<simpleField labelKey="CONTAINER_SHEET_TYPE_AC_1_ref" valueType="String" />
+				</fields>
+			</referenceField>
+
+			<displayGroups>
+				<displayGroup name="CONTAINER_SHEET_TYPE_AC_1_GROUP">
+					<fieldRef name="CONTAINER_SHEET_TYPE_AC_1_SIMPLEFIELD" />
+				</displayGroup>
+			</displayGroups>
+
+			<fields>
+				<simpleField valueType="String" labelKey="CONTAINER_SHEET_TYPE_AC_1_SIMPLEFIELD" />
+			</fields>
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/container_sheet_type_ac_1.par/processdefinition.xml
+			</lifecycleResource>
+		</sheetType>
+		<sheetType name="ControlType">
+			<referenceField>
+				<fields>
+					<simpleField labelKey="ControlType_ref" valueType="String" />
+				</fields>
+			</referenceField>
+
+			<displayGroups>
+				<displayGroup name="ControlType_GROUP">
+					<fieldRef name="ControlType_Field1" />
+					<fieldRef name="Field2" />
+					<!--
+						Multivalued field containing IDs of (PTV) tests in which the sheet is used.
+					-->
+					<fieldRef name="TEST_ID" />
+				</displayGroup>
+			</displayGroups>
+
+			<fields>
+				<simpleField valueType="String" labelKey="ControlType_Field1" mandatory="true" updatable="false" confidential="true" exportable="false" />
+				<simpleField valueType="String" labelKey="Field2" mandatory="true" updatable="true" confidential="false" exportable="true" />
+				<simpleField valueType="String" labelKey="TEST_ID" multivalued="true" />
+			</fields>
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/ControlType.par/processdefinition.xml
+			</lifecycleResource>
+		</sheetType>
+		<sheetType name="ControlTypeImport">
+			<referenceField>
+				<fields>
+					<simpleField labelKey="ControlType_ref" valueType="String" />
+				</fields>
+			</referenceField>
+
+			<displayGroups>
+				<displayGroup name="ControlType_GROUP">
+					<fieldRef name="ControlType_Field1" />
+					<fieldRef name="Field2" />
+					<!--
+						Multivalued field containing IDs of (PTV) tests in which the sheet is used.
+					-->
+					<fieldRef name="TEST_ID" />
+				</displayGroup>
+			</displayGroups>
+
+			<fields>
+				<simpleField valueType="String" labelKey="ControlType_Field1" mandatory="true" updatable="false" confidential="true" exportable="false" />
+				<simpleField valueType="String" labelKey="Field2" mandatory="true" updatable="true" confidential="false" exportable="true" />
+				<simpleField valueType="String" labelKey="TEST_ID" multivalued="true" />
+			</fields>
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/ControlTypeImport.par/processdefinition.xml
+			</lifecycleResource>
+			<extensionPoints>
+				<extensionPoint name="preCreate">
+					<command name="ControlTypeImportInitRef" />
+				</extensionPoint>
+			</extensionPoints>
+		</sheetType>
+		<sheetType name="ControlTypeImport2">
+			<referenceField>
+				<fields>
+					<simpleField labelKey="ControlType_ref" valueType="String" />
+				</fields>
+			</referenceField>
+
+			<displayGroups>
+				<displayGroup name="ControlType_GROUP">
+					<fieldRef name="ControlType_Field1" />
+					<fieldRef name="Field2" />
+					<!--
+						Multivalued field containing IDs of (PTV) tests in which the sheet is used.
+					-->
+					<fieldRef name="TEST_ID" />
+				</displayGroup>
+			</displayGroups>
+
+			<fields>
+				<simpleField valueType="String" labelKey="ControlType_Field1" mandatory="true" updatable="false" confidential="true" exportable="false" />
+				<simpleField valueType="String" labelKey="Field2" mandatory="true" updatable="true" confidential="false" exportable="true" />
+				<simpleField valueType="String" labelKey="TEST_ID" multivalued="true" />
+			</fields>
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/ControlTypeImport2.par/processdefinition.xml
+			</lifecycleResource>
+			<extensionPoints>
+				<extensionPoint name="preCreate">
+					<command name="ControlTypeImportInitRef" />
+				</extensionPoint>
+			</extensionPoints>
+		</sheetType>
+		<sheetType name="ControlTypeImport3">
+			<referenceField>
+				<fields>
+					<simpleField labelKey="ControlType_ref" valueType="String" />
+				</fields>
+			</referenceField>
+
+			<displayGroups>
+				<displayGroup name="ControlType_GROUP">
+					<fieldRef name="ControlType_Field1" />
+					<fieldRef name="Field2" />
+					<!--
+						Multivalued field containing IDs of (PTV) tests in which the sheet is used.
+					-->
+					<fieldRef name="TEST_ID" />
+				</displayGroup>
+			</displayGroups>
+
+			<fields>
+				<simpleField valueType="String" labelKey="ControlType_Field1" mandatory="true" updatable="false" confidential="true" exportable="false" />
+				<simpleField valueType="String" labelKey="Field2" mandatory="true" updatable="true" confidential="false" exportable="true" />
+				<simpleField valueType="String" labelKey="TEST_ID" multivalued="true" />
+			</fields>
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/ControlTypeImport3.par/processdefinition.xml
+			</lifecycleResource>
+			<extensionPoints>
+				<extensionPoint name="preCreate">
+					<command name="ControlTypeImportInitRef" />
+				</extensionPoint>
+			</extensionPoints>
+		</sheetType>
+		<sheetType name="ControlType2">
+			<referenceField>
+				<fields>
+					<simpleField labelKey="ControlType2_ref" valueType="String" />
+				</fields>
+			</referenceField>
+
+			<displayGroups>
+				<displayGroup name="ControlType2_GROUP">
+					<fieldRef name="ControlType2_Field1" />
+					<fieldRef name="Field2" />
+					<!--
+						Multivalued field containing IDs of (PTV) tests in which the sheet is used.
+					-->
+					<fieldRef name="TEST_ID" />
+				</displayGroup>
+			</displayGroups>
+
+			<fields>
+				<simpleField valueType="String" labelKey="ControlType2_Field1" mandatory="true" updatable="false" confidential="true" exportable="false" />
+				<simpleField valueType="String" labelKey="Field2" mandatory="false" updatable="false" confidential="false" exportable="false" />
+				<simpleField valueType="String" labelKey="TEST_ID" multivalued="true" />
+			</fields>
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/ControlType2.par/processdefinition.xml
+			</lifecycleResource>
+		</sheetType>
+		<sheetType name="Test_choicestring_displayHint_01" selectable="true">
+			<referenceField>
+				<fields>
+					<simpleField labelKey="Test_choicestring_displayHint_01_ref" valueType="String" />
+				</fields>
+			</referenceField>
+
+			<displayGroups>
+				<displayGroup name="Test_image_text_displayHint_01_GROUP">
+					<fieldRef name="Test_choicestring_displayHint_01_Field1" />
+					<fieldRef name="Test_choicestring_displayHint_01_Field2" />
+				</displayGroup>
+			</displayGroups>
+
+			<fields>
+				<simpleField valueType="String" labelKey="Test_choicestring_displayHint_01_Field1"></simpleField>
+				<simpleField valueType="String" labelKey="Test_choicestring_displayHint_01_Field2"></simpleField>
+			</fields>
+			<displayHints>
+				<choiceStringDisplayHint labelKey="Test_choicestring_displayHint_01_Field1" extensionPoint="getChoiceStrings2" strict="true" />
+				<choiceStringDisplayHint labelKey="Test_choicestring_displayHint_01_Field2" extensionPoint="getChoiceStrings2" strict="false" />
+			</displayHints>
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/test_choicestring_displayHint_01.par/processdefinition.xml
+			</lifecycleResource>
+			<extensionPoints>
+				<extensionPoint name="getChoiceStrings2">
+					<command name="getChoiceStrings2" />
+				</extensionPoint>
+			</extensionPoints>
+		</sheetType>
+		<sheetType name="SheetWithSomeConfidentialFields">
+			<referenceField>
+				<fields>
+					<simpleField valueType="String" labelKey="SheetWithSomeConfidentialFields_ref" />
+				</fields>
+			</referenceField>
+			<fields>
+				<simpleField valueType="String" labelKey="SheetWithSomeConfidentialFields_Field1" />
+				<attachedField labelKey="SheetWithSomeConfidentialFields_Field2" />
+				<simpleField valueType="Date" labelKey="SheetWithSomeConfidentialFields_Field3" confidential="true" />
+			</fields>
+			<displayGroups>
+				<displayGroup name="SheetWithSomeConfidentialFields_Group_01">
+					<fieldRef name="SheetWithSomeConfidentialFields_Field1" />
+					<fieldRef name="SheetWithSomeConfidentialFields_Field2" />
+					<fieldRef name="SheetWithSomeConfidentialFields_Field3" />
+				</displayGroup>
+			</displayGroups>
+			<displayHints>
+				<textDisplayHint labelKey="SheetWithSomeConfidentialFields_Field1" displayType="MULTI_LINE" multiline="true" />
+			</displayHints>
+
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/sheet_with_Some_Confidential_Fields.par/processdefinition.xml
+			</lifecycleResource>
+			<extendedActions>
+				<extendedAction name="SheetWithSomeConfidentialFields_ExtentedAction" extensionPointName="SheetWithSomeConfidentialFields_ExtentedAction">
+					<guiContexts>
+						<guiContext name="SHEET_LIST" />
+					</guiContexts>
+					<menuEntry name="SheetWithSomeConfidentialFields_ExtentedAction" parentName="Sheet" />
+					<inputDataType name="SheetWithSomeConfidentialFields_ExtentedAction_InputData">
+						<fields>
+							<simpleField valueType="String" labelKey="Field1" />
+							<simpleField valueType="Date" labelKey="Field2" />
+						</fields>
+						<displayGroups>
+							<displayGroup name="SheetWithSomeConfidentialFields_ExtentedAction_InputData_group_01">
+								<fieldRef name="Field1" />
+								<fieldRef name="Field2" />
+							</displayGroup>
+						</displayGroups>
+					</inputDataType>
+				</extendedAction>
+			</extendedActions>
+			<extensionPoints>
+				<extensionPoint name="SheetWithSomeConfidentialFields_ExtentedAction">
+					<command name="extendedTestInputData" />
+				</extensionPoint>
+			</extensionPoints>
+		</sheetType>
+		<sheetType name="SheetMultipleWithSomeConfidentialFields">
+			<referenceField>
+				<fields>
+					<simpleField valueType="String" labelKey="SheetMultipleWithSomeConfidentialFields_ref" />
+				</fields>
+			</referenceField>
+			<fields>
+				<multipleField labelKey="SheetMultipleWithSomeConfidentialFields_multiple1">
+					<fields>
+						<simpleField valueType="Boolean" labelKey="SheetMultipleWithSomeConfidentialFields_multiple1_Field1" />
+						<simpleField valueType="Date" labelKey="SheetMultipleWithSomeConfidentialFields_multiple1_Field2" confidential="true" />
+					</fields>
+				</multipleField>
+				<multipleField labelKey="SheetMultipleWithSomeConfidentialFields_multiple2" confidential="true">
+					<fields>
+						<simpleField valueType="Integer" labelKey="SheetMultipleWithSomeConfidentialFields_multiple2_Field1" />
+						<simpleField valueType="Real" labelKey="SheetMultipleWithSomeConfidentialFields_multiple2_Field2" />
+					</fields>
+				</multipleField>
+			</fields>
+			<displayGroups>
+				<displayGroup name="SheetMultipleWithSomeConfidentialFields_Group_01">
+					<fieldRef name="SheetMultipleWithSomeConfidentialFields_multiple1" />
+					<fieldRef name="SheetMultipleWithSomeConfidentialFields_multiple2" />
+				</displayGroup>
+			</displayGroups>
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/sheet_multiple_with_Some_Confidential_Fields.par/processdefinition.xml
+			</lifecycleResource>
+		</sheetType>
+		<sheetType name="Test_description_01" selectable="true">
+			<referenceField>
+				<fields>
+					<simpleField labelKey="Test_description_01_ref" valueType="String" />
+				</fields>
+			</referenceField>
+
+			<displayGroups>
+				<displayGroup name="Test_description_01_GROUP">
+					<fieldRef name="Test_description_01_Field1" />
+				</displayGroup>
+			</displayGroups>
+
+			<fields>
+				<simpleField valueType="String" labelKey="Test_description_01_Field1" description="Test_description_01_Field1_description" />
+			</fields>
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/test_description_01.par/processdefinition.xml
+			</lifecycleResource>
+		</sheetType>
+		<sheetType name="OrderByCategorySheet" selectable="true">
+			<referenceField>
+				<fields>
+					<simpleField labelKey="OrderByCategorySheet_ref" valueType="String" />
+				</fields>
+			</referenceField>
+			<displayGroups>
+				<displayGroup name="OrderByCategorySheet_GROUP">
+					<fieldRef name="OrderByCategorySheet_STRING" />
+					<fieldRef name="OrderByCategorySheet_CHOICE" />
+					<fieldRef name="OrderByCategorySheet_BOOLEAN" />
+					<fieldRef name="OrderByCategorySheet_INTEGER" />
+					<fieldRef name="OrderByCategorySheet_REAL" />
+					<fieldRef name="OrderByCategorySheet_DATE" />
+					<fieldRef name="OrderByCategorySheet_ATTACHEDFIELD" />
+				</displayGroup>
+				<displayGroup name="OrderByCategorySheet_MULTIVALUED_GROUP">
+					<fieldRef name="OrderByCategorySheet_MULTIPLE" />
+					<fieldRef name="OrderByCategorySheet_MULTIPLE_CHOICE" />
+					<fieldRef name="OrderByCategorySheet_MULTIVALUED_BOOLEAN" />
+					<fieldRef name="OrderByCategorySheet_MULTIVALUED_STRING" />
+					<fieldRef name="OrderByCategorySheet_MULTIVALUED_INTEGER" />
+					<fieldRef name="OrderByCategorySheet_MULTIVALUED_REAL" />
+					<fieldRef name="OrderByCategorySheet_MULTIVALUED_DATE" />
+					<fieldRef name="OrderByCategorySheet_MULTIVALUED_ATTACHEDFIELD" />
+				</displayGroup>
+			</displayGroups>
+			<fields>
+				<simpleField valueType="String" labelKey="OrderByCategorySheet_STRING" />
+				<simpleField valueType="Boolean" labelKey="OrderByCategorySheet_BOOLEAN" />
+				<simpleField valueType="Integer" labelKey="OrderByCategorySheet_INTEGER" />
+				<simpleField valueType="Real" labelKey="OrderByCategorySheet_REAL" />
+				<simpleField valueType="Date" labelKey="OrderByCategorySheet_DATE" />
+				<attachedField labelKey="OrderByCategorySheet_ATTACHEDFIELD" />
+				<choiceField categoryName="CategoryDefinition" labelKey="OrderByCategorySheet_CHOICE" />
+				<multipleField labelKey="OrderByCategorySheet_MULTIPLE">
+					<fields>
+						<choiceField categoryName="CategoryDefinition" labelKey="OrderByCategorySheet_MULTIPLE_CHOICE" multivalued="true" />
+					</fields>
+				</multipleField>
+				<simpleField valueType="Boolean" labelKey="OrderByCategorySheet_MULTIVALUED_BOOLEAN" multivalued="true" />
+				<simpleField valueType="Integer" labelKey="OrderByCategorySheet_MULTIVALUED_INTEGER" multivalued="true" />
+				<simpleField valueType="Real" labelKey="OrderByCategorySheet_MULTIVALUED_REAL" multivalued="true" />
+				<simpleField valueType="Date" labelKey="OrderByCategorySheet_MULTIVALUED_DATE" multivalued="true" />
+				<simpleField valueType="String" labelKey="OrderByCategorySheet_MULTIVALUED_STRING" multivalued="true" />
+				<attachedField labelKey="OrderByCategorySheet_MULTIVALUED_ATTACHEDFIELD" multivalued="true" />
+			</fields>
+			<displayHints>
+				<choiceDisplayHint labelKey="OrderByCategorySheet_CHOICE" list="true" />
+				<choiceDisplayHint labelKey="OrderByCategorySheet_MULTIPLE_CHOICE" list="false" />
+				<dateDisplayHint labelKey="OrderByCategorySheet_DATE" includeTime="true" />
+				<dateDisplayHint labelKey="OrderByCategorySheet_MULTIVALUED_DATE" includeTime="true" />
+			</displayHints>
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/OrderByCategorySheet.par/processdefinition.xml
+			</lifecycleResource>
+		</sheetType>
+		<sheetType name="Test_ChoiceMultiValued" selectable="true">
+			<displayGroups>
+				<displayGroup name="Simple MonoValued">
+					<fieldRef name="Test_ChoiceMultiValued_choice" />
+				</displayGroup>
+				<displayGroup name="Multiple MonoValued">
+					<fieldRef name="Test_ChoiceMultiValued_multiple1" />
+				</displayGroup>
+				<displayGroup name="Multiple MultiValued">
+					<fieldRef name="Test_ChoiceMultiValued_multiple1M" />
+				</displayGroup>
+			</displayGroups>
+			<referenceField>
+				<fields>
+					<simpleField labelKey="Test_ChoiceMultiValued_ref" valueType="String" />
+				</fields>
+			</referenceField>
+			<fields>
+				<choiceField labelKey="Test_ChoiceMultiValued_choice" categoryName="Color" multivalued="true" />
+				<multipleField labelKey="Test_ChoiceMultiValued_multiple1">
+					<fields>
+						<choiceField labelKey="Test_ChoiceMultiValued_choiceM" categoryName="Color" multivalued="true" />
+					</fields>
+				</multipleField>
+				<multipleField labelKey="Test_ChoiceMultiValued_multiple1M" multivalued="true">
+					<fields>
+						<choiceField labelKey="Test_ChoiceMultiValued_choiceMM" categoryName="Color" multivalued="true" />
+					</fields>
+				</multipleField>
+			</fields>
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/test_choice_multivalued.par/processdefinition.xml
+			</lifecycleResource>
+		</sheetType>
+		<!-- Sheet type used for testing multivalued fields -->
+		<sheetType name="test_multivalued_field">
+			<displayGroups>
+				<displayGroup name="G_Multivalued">
+					<fieldRef name="Multivalued_simple_field" />
+					<fieldRef name="Multivalued_multiple_field" />
+				</displayGroup>
+			</displayGroups>
+			<referenceField>
+				<fields>
+					<simpleField labelKey="Test_multivalued_field_ref" valueType="String" />
+				</fields>
+			</referenceField>
+			<fields>
+				<simpleField valueType="String" labelKey="Multivalued_simple_field" multivalued="true" />
+				<multipleField labelKey="Multivalued_multiple_field" multivalued="true">
+					<fields>
+						<simpleField valueType="String" labelKey="SubField" />
+					</fields>
+				</multipleField>
+			</fields>
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/test_multivalued_field.par/processdefinition.xml
+			</lifecycleResource>
+		</sheetType>
+		<sheetType name="TestDateDisplayHint">
+			<referenceField>
+				<fields>
+					<simpleField valueType="String" labelKey="date_ref" />
+				</fields>
+			</referenceField>
+			<fields>
+				<simpleField valueType="String" labelKey="NAME" />
+				<simpleField valueType="Date" labelKey="D1" />
+				<simpleField valueType="Date" labelKey="D2" multivalued="true" />
+				<simpleField valueType="Date" labelKey="D3" />
+				<simpleField valueType="Date" labelKey="D4" />
+				<multipleField labelKey="DM">
+					<fields>
+						<simpleField valueType="Date" labelKey="DM1" />
+						<simpleField valueType="Date" labelKey="DM2" multivalued="true" />
+					</fields>
+				</multipleField>
+			</fields>
+			<displayGroups>
+				<displayGroup name="TestDateDisplayHint_Group_01">
+					<fieldRef name="NAME" />
+					<fieldRef name="D1" />
+					<fieldRef name="D2" />
+					<fieldRef name="D3" />
+					<fieldRef name="D4" />
+					<fieldRef name="DM" />
+				</displayGroup>
+			</displayGroups>
+			<displayHints>
+				<dateDisplayHint labelKey="D1" format="MEDIUM" includeTime="true" />
+				<dateDisplayHint labelKey="D3" format="LONG" />
+				<dateDisplayHint labelKey="D4" format="FULL" />
+			</displayHints>
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/test_date_display_hint.par/processdefinition.xml
+			</lifecycleResource>
+		</sheetType>
+
+
+		<sheetType name="TestPointerFields1">
+
+			<referenceField>
+				<fields>
+					<simpleField labelKey="TestPointerFields1_ref1" valueType="String" />
+					<simpleField labelKey="TestPointerFields1_ref2" valueType="Integer" />
+
+				</fields>
+			</referenceField>
+			<displayGroups>
+				<displayGroup name="Group1">
+					<fieldRef name="TestPointerFields1_field1" />
+				</displayGroup>
+				<displayGroup name="Monovalued">
+					<!--
+						Warning : do not change field names, or update TestCreatePointerFieldService
+					-->
+					<fieldRef name="TestPointerFields1_monovalued_choice" />
+					<fieldRef name="TestPointerFields1_monovalued_attached" />
+					<fieldRef name="TestPointerFields1_monovalued_simple_string" />
+					<fieldRef name="TestPointerFields1_monovalued_simple_integer" />
+					<fieldRef name="TestPointerFields1_monovalued_simple_date" />
+					<fieldRef name="TestPointerFields1_monovalued_simple_real" />
+					<fieldRef name="TestPointerFields1_monovalued_simple_boolean" />
+				</displayGroup>
+
+				<displayGroup name="Multivalued">
+					<!--
+						Warning : do not change field names, or update TestCreatePointerFieldService
+					-->
+					<fieldRef name="TestPointerFields1_multivalued_choice" />
+					<fieldRef name="TestPointerFields1_multivalued_attached" />
+					<fieldRef name="TestPointerFields1_multivalued_simple_string" />
+					<fieldRef name="TestPointerFields1_multivalued_simple_integer" />
+					<fieldRef name="TestPointerFields1_multivalued_simple_date" />
+					<fieldRef name="TestPointerFields1_multivalued_simple_real" />
+					<fieldRef name="TestPointerFields1_multivalued_simple_boolean" />
+				</displayGroup>
+				<displayGroup name="Automatic-Monovalued">
+					<!--
+						Warning : do not change field names, or update TestCreatePointerFieldService
+					-->
+					<fieldRef name="TestPointerFields1_link_monovalued_choice" />
+					<fieldRef name="TestPointerFields1_link_monovalued_attached" />
+					<fieldRef name="TestPointerFields1_link_monovalued_simple_string" />
+					<fieldRef name="TestPointerFields1_link_monovalued_simple_integer" />
+					<fieldRef name="TestPointerFields1_link_monovalued_simple_date" />
+					<fieldRef name="TestPointerFields1_link_monovalued_simple_real" />
+					<fieldRef name="TestPointerFields1_link_monovalued_simple_boolean" />
+				</displayGroup>
+
+				<displayGroup name="Automatic-Multivalued">
+					<!--
+						Warning : do not change field names, or update TestCreatePointerFieldService
+					-->
+					<fieldRef name="TestPointerFields1_link_multivalued_choice" />
+					<fieldRef name="TestPointerFields1_link_multivalued_attached" />
+					<fieldRef name="TestPointerFields1_link_multivalued_simple_string" />
+					<fieldRef name="TestPointerFields1_link_multivalued_simple_integer" />
+					<fieldRef name="TestPointerFields1_link_multivalued_simple_date" />
+					<fieldRef name="TestPointerFields1_link_multivalued_simple_real" />
+					<fieldRef name="TestPointerFields1_link_multivalued_simple_boolean" />
+				</displayGroup>
+
+				<displayGroup name="Automatic-Monovalued/Multivalued">
+					<!--
+						Warning : do not change field names, or update TestCreatePointerFieldService
+					-->
+					<fieldRef name="TestPointerFields1_link_monovalued_to_monovalued" />
+					<fieldRef name="TestPointerFields1_link_monovalued_to_multivalued" />
+					<fieldRef name="TestPointerFields1_link_multivalued_to_multivalued" />
+					<fieldRef name="TestPointerFields1_link_multivalued_to_monovalued" />
+				</displayGroup>
+				<displayGroup name="AccessControls">
+					<!--
+						Warning : do not change field names, or update TestCreatePointerFieldService
+					-->
+					<fieldRef name="TestPointerFields1_link_updatable_to_not_updatable" />
+					<fieldRef name="TestPointerFields1_link_not_updatable_to_updatable" />
+					<fieldRef name="TestPointerFields1_link_confidential_to_not_confidential" />
+					<fieldRef name="TestPointerFields1_link_not_confidential_to_confidential" />
+					<fieldRef name="TestPointerFields1_link_exportable_to_not_exportable" />
+					<fieldRef name="TestPointerFields1_link_not_exportable_to_exportable" />
+				</displayGroup>
+				<displayGroup name="INSIDE_MULTIPLE">
+					<!--
+						Warning : do not change field names, or update TestCreatePointerFieldService
+					-->
+					<fieldRef name="TestPointerFields1_multiple" />
+					<fieldRef name="TestPointerFields1_simple_link_to_multiple" />
+				</displayGroup>
+				<displayGroup name="VirtualFields">
+					<fieldRef name="TestPointerFields1_sheetState" />
+					<fieldRef name="TestPointerFields1_sheetRef" />
+					<fieldRef name="TestPointerFields1_sheetType" />
+					<fieldRef name="TestPointerFields1_productName" />
+				</displayGroup>
+			</displayGroups>
+			<fields>
+				<!-- Group1 -->
+				<simpleField valueType="String" labelKey="TestPointerFields1_field1" multivalued="true" pointerField="true" referencedLinkType="TestPointerFieldLink" referencedFieldLabel="TestPointerFields2_field1" />
+
+				<!-- Monovalued pointer fields - each type of available field  -->
+				<choiceField labelKey="TestPointerFields1_monovalued_choice" categoryName="Color" pointerField="true" />
+				<attachedField labelKey="TestPointerFields1_monovalued_attached" pointerField="true" />
+				<simpleField labelKey="TestPointerFields1_monovalued_simple_string" valueType="String" pointerField="true" />
+				<simpleField labelKey="TestPointerFields1_monovalued_simple_integer" valueType="Integer" pointerField="true" />
+				<simpleField labelKey="TestPointerFields1_monovalued_simple_date" valueType="Date" pointerField="true" />
+				<simpleField labelKey="TestPointerFields1_monovalued_simple_real" valueType="Real" pointerField="true" />
+				<simpleField labelKey="TestPointerFields1_monovalued_simple_boolean" valueType="Boolean" pointerField="true" />
+
+				<!-- All types of pointer fields multivalued -->
+				<choiceField labelKey="TestPointerFields1_multivalued_choice" categoryName="Length" pointerField="true" multivalued="true" />
+				<attachedField labelKey="TestPointerFields1_multivalued_attached" pointerField="true" multivalued="true" />
+				<simpleField labelKey="TestPointerFields1_multivalued_simple_string" valueType="String" pointerField="true" multivalued="true" />
+				<simpleField labelKey="TestPointerFields1_multivalued_simple_integer" valueType="Integer" pointerField="true" multivalued="true" />
+				<simpleField labelKey="TestPointerFields1_multivalued_simple_date" valueType="Date" pointerField="true" multivalued="true" />
+				<simpleField labelKey="TestPointerFields1_multivalued_simple_real" valueType="Real" pointerField="true" multivalued="true" />
+				<simpleField labelKey="TestPointerFields1_multivalued_simple_boolean" valueType="Boolean" pointerField="true" multivalued="true" />
+
+
+
+				<!-- AUTOMATIC POINTER FIELDS -->
+				<!--
+					Monovalued pointer fields - each type of available field with link
+				-->
+				<choiceField labelKey="TestPointerFields1_link_monovalued_choice" categoryName="Color" pointerField="true" referencedLinkType="TestPointerFieldLink" referencedFieldLabel="TestPointerFields2_monovalued_choice" />
+				<attachedField labelKey="TestPointerFields1_link_monovalued_attached" pointerField="true" referencedLinkType="TestPointerFieldLink" referencedFieldLabel="TestPointerFields2_monovalued_attached" />
+				<simpleField labelKey="TestPointerFields1_link_monovalued_simple_string" valueType="String" pointerField="true" referencedLinkType="TestPointerFieldLink" referencedFieldLabel="TestPointerFields2_monovalued_simple_string" />
+				<simpleField labelKey="TestPointerFields1_link_monovalued_simple_integer" valueType="Integer" pointerField="true" referencedLinkType="TestPointerFieldLink" referencedFieldLabel="TestPointerFields2_monovalued_simple_integer" />
+				<simpleField labelKey="TestPointerFields1_link_monovalued_simple_date" valueType="Date" pointerField="true" referencedLinkType="TestPointerFieldLink" referencedFieldLabel="TestPointerFields2_monovalued_simple_date" />
+				<simpleField labelKey="TestPointerFields1_link_monovalued_simple_real" valueType="Real" pointerField="true" referencedLinkType="TestPointerFieldLink" referencedFieldLabel="TestPointerFields2_monovalued_simple_real" />
+				<simpleField labelKey="TestPointerFields1_link_monovalued_simple_boolean" valueType="Boolean" pointerField="true" referencedLinkType="TestPointerFieldLink" referencedFieldLabel="TestPointerFields2_monovalued_simple_boolean" />
+
+				<!-- All types of pointer fields multivalued with link -->
+				<choiceField labelKey="TestPointerFields1_link_multivalued_choice" categoryName="Color" pointerField="true" referencedLinkType="TestPointerFieldLink" referencedFieldLabel="TestPointerFields2_multivalued_choice"
+					multivalued="true" />
+				<attachedField labelKey="TestPointerFields1_link_multivalued_attached" pointerField="true" referencedLinkType="TestPointerFieldLink" referencedFieldLabel="TestPointerFields2_multivalued_attached"
+					multivalued="true" />
+				<simpleField labelKey="TestPointerFields1_link_multivalued_simple_string" valueType="String" pointerField="true" referencedLinkType="TestPointerFieldLink" referencedFieldLabel="TestPointerFields2_multivalued_simple_string"
+					multivalued="true" />
+				<simpleField labelKey="TestPointerFields1_link_multivalued_simple_integer" valueType="Integer" pointerField="true" referencedLinkType="TestPointerFieldLink" referencedFieldLabel="TestPointerFields2_multivalued_simple_integer"
+					multivalued="true" />
+				<simpleField labelKey="TestPointerFields1_link_multivalued_simple_date" valueType="Date" pointerField="true" referencedLinkType="TestPointerFieldLink" referencedFieldLabel="TestPointerFields2_multivalued_simple_date"
+					multivalued="true" />
+				<simpleField labelKey="TestPointerFields1_link_multivalued_simple_real" valueType="Real" pointerField="true" referencedLinkType="TestPointerFieldLink" referencedFieldLabel="TestPointerFields2_multivalued_simple_real"
+					multivalued="true" />
+				<simpleField labelKey="TestPointerFields1_link_multivalued_simple_boolean" valueType="Boolean" pointerField="true" referencedLinkType="TestPointerFieldLink" referencedFieldLabel="TestPointerFields2_multivalued_simple_boolean"
+					multivalued="true" />
+
+
+				<simpleField labelKey="TestPointerFields1_link_monovalued_to_monovalued" valueType="String" pointerField="true" referencedLinkType="TestPointerFieldLink" referencedFieldLabel="TestPointerFields2_monovalued_simple_string" />
+				<simpleField labelKey="TestPointerFields1_link_monovalued_to_multivalued" valueType="String" pointerField="true" referencedLinkType="TestPointerFieldLink" referencedFieldLabel="TestPointerFields2_multivalued_simple_string" />
+				<simpleField labelKey="TestPointerFields1_link_multivalued_to_multivalued" valueType="String" multivalued="true" pointerField="true" referencedLinkType="TestPointerFieldLink"
+					referencedFieldLabel="TestPointerFields2_multivalued_simple_string" />
+				<simpleField labelKey="TestPointerFields1_link_multivalued_to_monovalued" valueType="String" multivalued="true" pointerField="true" referencedLinkType="TestPointerFieldLink"
+					referencedFieldLabel="TestPointerFields2_monovalued_simple_string" />
+				<simpleField labelKey="TestPointerFields1_link_updatable_to_not_updatable" valueType="String" pointerField="true" referencedLinkType="TestPointerFieldLink" referencedFieldLabel="TestPointerFields2_access_controls" />
+				<simpleField labelKey="TestPointerFields1_link_not_updatable_to_updatable" valueType="String" updatable="false" pointerField="true" referencedLinkType="TestPointerFieldLink"
+					referencedFieldLabel="TestPointerFields2_monovalued_simple_string" />
+				<simpleField labelKey="TestPointerFields1_link_confidential_to_not_confidential" valueType="String" confidential="true" pointerField="true" referencedLinkType="TestPointerFieldLink"
+					referencedFieldLabel="TestPointerFields2_monovalued_simple_string" />
+				<simpleField labelKey="TestPointerFields1_link_not_confidential_to_confidential" valueType="String" pointerField="true" referencedLinkType="TestPointerFieldLink" referencedFieldLabel="TestPointerFields2_access_controls" />
+				<simpleField labelKey="TestPointerFields1_link_exportable_to_not_exportable" valueType="String" pointerField="true" referencedLinkType="TestPointerFieldLink" referencedFieldLabel="TestPointerFields2_access_controls" />
+				<simpleField labelKey="TestPointerFields1_link_not_exportable_to_exportable" valueType="String" exportable="false" pointerField="true" referencedLinkType="TestPointerFieldLink"
+					referencedFieldLabel="TestPointerFields2_monovalued_simple_string" />
+
+
+				<simpleField valueType="String" labelKey="TestPointerFields1_simple_link_to_multiple" pointerField="true" referencedFieldLabel="TestPointerFields2_in_multiple" referencedLinkType="TestPointerFieldLink">
+				</simpleField>
+				<multipleField labelKey="TestPointerFields1_multiple" multivalued="true">
+					<fields>
+						<simpleField labelKey="TestPointerFields1_link_in_multiple" valueType="String" exportable="false" pointerField="true" referencedLinkType="TestPointerFieldLink" referencedFieldLabel="TestPointerFields2_field1" />
+						<simpleField labelKey="TestPointerFields1_simple_in_multiple" valueType="String" defaultValue="DEFAULT" />
+
+						<simpleField labelKey="TestPointerFields1_integer_in_multiple" valueType="Integer" pointerField="true" referencedFieldLabel="TestPointerFields2_multivalued_simple_integer"
+							referencedLinkType="TestPointerFieldLink" />
+					</fields>
+
+				</multipleField>
+
+				<simpleField labelKey="TestPointerFields1_sheetState" valueType="String" pointerField="true" />
+				<simpleField labelKey="TestPointerFields1_sheetRef" valueType="String" pointerField="true" />
+				<simpleField labelKey="TestPointerFields1_sheetType" valueType="String" pointerField="true" />
+				<simpleField labelKey="TestPointerFields1_productName" valueType="String" pointerField="true" />
+
+			</fields>
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/TestPointerFields1.par/processdefinition.xml
+			</lifecycleResource>
+		</sheetType>
+		<sheetType name="TestPointerFields2">
+			<referenceField>
+				<fields>
+					<simpleField valueType="String" labelKey="TestPointerFields2_ref1" />
+					<simpleField valueType="Integer" labelKey="TestPointerFields2_ref2" />
+				</fields>
+			</referenceField>
+			<displayGroups>
+				<displayGroup name="Group1">
+					<fieldRef name="TestPointerFields2_field1" />
+					<fieldRef name="TestPointerFields2_access_controls" />
+				</displayGroup>
+				<displayGroup name="Monovalued">
+					<!--
+						Warning : do not change field names, or update TestCreatePointerFieldService
+					-->
+					<fieldRef name="TestPointerFields2_monovalued_choice" />
+					<fieldRef name="TestPointerFields2_monovalued_attached" />
+					<fieldRef name="TestPointerFields2_monovalued_simple_string" />
+					<fieldRef name="TestPointerFields2_monovalued_simple_integer" />
+					<fieldRef name="TestPointerFields2_monovalued_simple_date" />
+					<fieldRef name="TestPointerFields2_monovalued_simple_real" />
+					<fieldRef name="TestPointerFields2_monovalued_simple_boolean" />
+				</displayGroup>
+
+				<displayGroup name="Multivalued">
+					<!--
+						Warning : do not change field names, or update TestCreatePointerFieldService
+					-->
+					<fieldRef name="TestPointerFields2_multivalued_choice" />
+					<fieldRef name="TestPointerFields2_multivalued_attached" />
+					<fieldRef name="TestPointerFields2_multivalued_simple_string" />
+					<fieldRef name="TestPointerFields2_multivalued_simple_integer" />
+					<fieldRef name="TestPointerFields2_multivalued_simple_date" />
+					<fieldRef name="TestPointerFields2_multivalued_simple_real" />
+					<fieldRef name="TestPointerFields2_multivalued_simple_boolean" />
+				</displayGroup>
+				<displayGroup name="IN_MULTIPLE">
+					<fieldRef name="TestPointerFields2_multiple" />
+				</displayGroup>
+			</displayGroups>
+			<fields>
+				<simpleField valueType="String" labelKey="TestPointerFields2_field1" />
+
+				<!-- Monovalued pointer fields - each type of available field  -->
+				<choiceField labelKey="TestPointerFields2_monovalued_choice" categoryName="Color" />
+				<attachedField labelKey="TestPointerFields2_monovalued_attached" />
+				<simpleField labelKey="TestPointerFields2_monovalued_simple_string" valueType="String" />
+				<simpleField labelKey="TestPointerFields2_monovalued_simple_integer" valueType="Integer" />
+				<simpleField labelKey="TestPointerFields2_monovalued_simple_date" valueType="Date" />
+				<simpleField labelKey="TestPointerFields2_monovalued_simple_real" valueType="Real" />
+				<simpleField labelKey="TestPointerFields2_monovalued_simple_boolean" valueType="Boolean" />
+
+
+
+				<!-- All types of pointer fields multivalued -->
+				<choiceField labelKey="TestPointerFields2_multivalued_choice" categoryName="Length" multivalued="true" />
+				<attachedField labelKey="TestPointerFields2_multivalued_attached" multivalued="true" />
+				<simpleField labelKey="TestPointerFields2_multivalued_simple_string" valueType="String" multivalued="true" />
+				<simpleField labelKey="TestPointerFields2_multivalued_simple_integer" valueType="Integer" multivalued="true" />
+				<simpleField labelKey="TestPointerFields2_multivalued_simple_date" valueType="Date" multivalued="true" />
+				<simpleField labelKey="TestPointerFields2_multivalued_simple_real" valueType="Real" multivalued="true" />
+				<simpleField labelKey="TestPointerFields2_multivalued_simple_boolean" valueType="Boolean" multivalued="true" />
+				<simpleField labelKey="TestPointerFields2_access_controls" valueType="String" />
+				<!--
+					confidential="true" exportable="false" mandatory="true" updatable="false"
+					defaultValue="accessControls"/>
+				-->
+				<multipleField labelKey="TestPointerFields2_multiple">
+					<fields>
+						<simpleField labelKey="TestPointerFields2_in_multiple" valueType="String" />
+					</fields>
+				</multipleField>
+
+			</fields>
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/TestPointerFields2.par/processdefinition.xml
+			</lifecycleResource>
+		</sheetType>
+		<sheetType name="TestAutolockingSheet" autolocking="WRITE">
+			<referenceField>
+				<fields>
+					<simpleField labelKey="ref" valueType="String" />
+				</fields>
+			</referenceField>
+			<displayGroups>
+				<displayGroup name="Group">
+					<fieldRef name="field1" />
+				</displayGroup>
+			</displayGroups>
+			<fields>
+				<simpleField valueType="String" labelKey="field1" mandatory="true" />
+			</fields>
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/testAutolockingSheet.par/processdefinition.xml
+			</lifecycleResource>
+		</sheetType>
+		<sheetType name="FilterSheetTest" selectable="true">
+			<displayGroups>
+				<displayGroup name="Identity">
+					<fieldRef name="Simple1" />
+				</displayGroup>
+			</displayGroups>
+			<referenceField>
+				<fields>
+					<simpleField labelKey="SHEETTYPE1_name" valueType="String" />
+				</fields>
+			</referenceField>
+			<fields>
+				<simpleField labelKey="Simple1" valueType="String" />
+			</fields>
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/link_filter_test.par/processdefinition.xml
+			</lifecycleResource>
+		</sheetType>
+		<sheetType name="type_vfd_01">
+			<referenceField>
+				<fields>
+					<simpleField valueType="String" labelKey="ref" />
+				</fields>
+			</referenceField>
+			<displayGroups>
+				<displayGroup name="Group_01">
+					<fieldRef name="ref" />
+				</displayGroup>
+			</displayGroups>
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/type_vfd_01.par/processdefinition.xml
+			</lifecycleResource>
+		</sheetType>
+		<sheetType name="type_vfd_02">
+			<referenceField>
+				<fields>
+					<simpleField valueType="String" labelKey="ref" />
+				</fields>
+			</referenceField>
+			<fields>
+				<simpleField valueType="String" labelKey="field_01" />
+			</fields>
+			<displayGroups>
+				<displayGroup name="Group_01">
+					<fieldRef name="ref" />
+					<fieldRef name="field_01" />
+				</displayGroup>
+			</displayGroups>
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/type_vfd_02.par/processdefinition.xml
+			</lifecycleResource>
+		</sheetType>
+		<sheetType name="SheetTestWithDynamicCriteriaValue">
+			<referenceField>
+				<fields>
+					<simpleField valueType="String" labelKey="ref" />
+				</fields>
+			</referenceField>
+
+			<fields>
+				<simpleField valueType="String" labelKey="field1" />
+				<simpleField valueType="String" labelKey="author" />
+			</fields>
+
+			<lifecycleResource>
+				metadata/sheettypes/lifecycle/sheettestWithDynamicCriteriaValue.par/processdefinition.xml
+			</lifecycleResource>
+		</sheetType>
+		<sheetType name="SheetUsableFieldOrder">
+			<referenceField>
+				<fields>
+					<simpleField valueType="String" labelKey="ref" />
+				</fields>
+			</referenceField>
+			<fields>
+				<simpleField valueType="String" labelKey="field1" />
+				<multipleField labelKey="multiple">
+					<fields>
+						<simpleField valueType="String" labelKey="multiple_field1" />
+						<simpleField valueType="String" labelKey="multiple_field2" />
+					</fields>
+				</multipleField>
+			</fields>
+
+			<displayGroups>
+				<displayGroup name="group1">
+					<fieldRef name="field1" />
+					<fieldRef name="multiple" />
+				</displayGroup>
+			</displayGroups>
+
+			<lifecycleResource>
+               metadata/sheettypes/lifecycle/sheetUsableFieldOrder.par/processdefinition.xml
+           </lifecycleResource>
+		</sheetType>
+		<sheetType name="maxSize">
+			<referenceField>
+				<fields>
+					<simpleField valueType="String" labelKey="maxSize_ref" maxSize="3" description="Max size is 3" />
+				</fields>
+			</referenceField>
+			<fields>
+				<simpleField valueType="String" labelKey="maxSize_field1" maxSize="5" description="max size is 5" />
+				<simpleField valueType="String" labelKey="maxSize_field2" maxSize="6" description="max size is 6" />
+			</fields>
+			<displayGroups>
+				<displayGroup name="Group">
+					<fieldRef name="maxSize_ref" />
+					<fieldRef name="maxSize_field1" />
+					<fieldRef name="maxSize_field2" />
+				</displayGroup>
+			</displayGroups>
+			<displayHints>
+				<textDisplayHint labelKey="maxSize_field2" displayType="MULTI_LINE" width="10" height="10" />
+			</displayHints>
+			<lifecycleResource>
+            metadata/sheettypes/lifecycle/maxSize.par/processdefinition.xml
+        </lifecycleResource>
+		</sheetType>
+		<sheetType name="testExportSheet">
+			<referenceField>
+				<fields>
+					<simpleField valueType="String" labelKey="testExportSheet_ref" maxSize="50" />
+				</fields>
+			</referenceField>
+			<fields>
+				<simpleField valueType="String" labelKey="testExportSheet_field1" maxSize="50" />
+				<simpleField valueType="String" labelKey="testExportSheet_field2" maxSize="50" confidential="true" />
+				<simpleField valueType="String" labelKey="testExportSheet_field3" maxSize="50" exportable="true" />
+				<simpleField valueType="String" labelKey="testExportSheet_field4" maxSize="50" confidential="true" exportable="true" />
+				<simpleField valueType="String" labelKey="testExportSheet_field5" maxSize="50" updatable="false" />
+				<simpleField valueType="String" labelKey="testExportSheet_field6" maxSize="50" pointerField="true" />
+			</fields>
+			<lifecycleResource>
+            metadata/sheettypes/lifecycle/testExportSheet.par/processdefinition.xml
+        </lifecycleResource>
+		</sheetType>
+		<sheetType name="testExportSheet_2">
+			<referenceField>
+				<fields>
+					<simpleField valueType="String" labelKey="testExportSheet_2_ref" maxSize="50" />
+				</fields>
+			</referenceField>
+			<fields>
+				<simpleField valueType="String" labelKey="testExportSheet_2_field1" maxSize="50" />
+			</fields>
+			<lifecycleResource>
+            metadata/sheettypes/lifecycle/testExportSheet_2.par/processdefinition.xml
+        </lifecycleResource>
+		</sheetType>
+		<sheetType name="sameSheetType_01">
+			<referenceField>
+				<fields>
+					<simpleField valueType="String" labelKey="ref" maxSize="50" />
+				</fields>
+			</referenceField>
+			<fields>
+				<simpleField valueType="String" labelKey="stringField" maxSize="50" />
+				<simpleField valueType="Integer" labelKey="integerField" />
+				<simpleField valueType="Real" labelKey="realField" />
+				<simpleField valueType="Boolean" labelKey="booleanField" />
+				<simpleField valueType="Date" labelKey="dateField" />
+				<attachedField labelKey="attachedField" />
+				<choiceField categoryName="Usage" labelKey="choiceField" />
+			</fields>
+			<displayGroups>
+				<displayGroup name="ALL">
+					<fieldRef name="stringField" />
+					<fieldRef name="integerField" />
+					<fieldRef name="realField" />
+					<fieldRef name="booleanField" />
+					<fieldRef name="dateField" />
+					<fieldRef name="attachedField" />
+					<fieldRef name="choiceField" />
+				</displayGroup>
+			</displayGroups>
+			<lifecycleResource>
+            metadata/sheettypes/lifecycle/sameSheetType_01.par/processdefinition.xml
+        </lifecycleResource>
+		</sheetType>
+		<sheetType name="sameSheetType_02">
+			<referenceField>
+				<fields>
+					<simpleField valueType="String" labelKey="ref" maxSize="50" />
+				</fields>
+			</referenceField>
+			<fields>
+				<simpleField valueType="String" labelKey="stringField" maxSize="50" />
+				<simpleField valueType="Integer" labelKey="integerField" />
+				<simpleField valueType="Real" labelKey="realField" />
+				<simpleField valueType="Boolean" labelKey="booleanField" />
+				<simpleField valueType="Date" labelKey="dateField" />
+				<attachedField labelKey="attachedField" />
+				<choiceField categoryName="Usage" labelKey="choiceField" />
+			</fields>
+			<displayGroups>
+				<displayGroup name="ALL">
+					<fieldRef name="stringField" />
+					<fieldRef name="integerField" />
+					<fieldRef name="realField" />
+					<fieldRef name="booleanField" />
+					<fieldRef name="dateField" />
+					<fieldRef name="attachedField" />
+					<fieldRef name="choiceField" />
+				</displayGroup>
+			</displayGroups>
+			<lifecycleResource>
+            metadata/sheettypes/lifecycle/sameSheetType_02.par/processdefinition.xml
+        </lifecycleResource>
+		</sheetType>
+		<sheetType name="sameSheetTypeM_01">
+			<referenceField>
+				<fields>
+					<simpleField valueType="String" labelKey="ref" maxSize="50" />
+				</fields>
+			</referenceField>
+			<fields>
+				<simpleField valueType="String" labelKey="stringField" maxSize="50" multivalued="true" />
+				<simpleField valueType="Integer" labelKey="integerField" multivalued="true" />
+				<simpleField valueType="Real" labelKey="realField" multivalued="true" />
+				<simpleField valueType="Boolean" labelKey="booleanField" multivalued="true" />
+				<simpleField valueType="Date" labelKey="dateField" multivalued="true" />
+				<attachedField labelKey="attachedField" multivalued="true" />
+				<choiceField categoryName="Usage" labelKey="choiceField" multivalued="true" />
+			</fields>
+			<displayGroups>
+				<displayGroup name="ALL">
+					<fieldRef name="stringField" />
+					<fieldRef name="integerField" />
+					<fieldRef name="realField" />
+					<fieldRef name="booleanField" />
+					<fieldRef name="dateField" />
+					<fieldRef name="attachedField" />
+					<fieldRef name="choiceField" />
+				</displayGroup>
+			</displayGroups>
+			<lifecycleResource>
+            metadata/sheettypes/lifecycle/sameSheetTypeM_01.par/processdefinition.xml
+        </lifecycleResource>
+		</sheetType>
+		<sheetType name="sameSheetTypeM_02">
+			<referenceField>
+				<fields>
+					<simpleField valueType="String" labelKey="ref" maxSize="50" />
+				</fields>
+			</referenceField>
+			<fields>
+				<simpleField valueType="String" labelKey="stringField" maxSize="50" multivalued="true" />
+				<simpleField valueType="Integer" labelKey="integerField" multivalued="true" />
+				<simpleField valueType="Real" labelKey="realField" multivalued="true" />
+				<simpleField valueType="Boolean" labelKey="booleanField" multivalued="true" />
+				<simpleField valueType="Date" labelKey="dateField" multivalued="true" />
+				<attachedField labelKey="attachedField" multivalued="true" />
+				<choiceField categoryName="Usage" labelKey="choiceField" multivalued="true" />
+			</fields>
+			<displayGroups>
+				<displayGroup name="ALL">
+					<fieldRef name="stringField" />
+					<fieldRef name="integerField" />
+					<fieldRef name="realField" />
+					<fieldRef name="booleanField" />
+					<fieldRef name="dateField" />
+					<fieldRef name="attachedField" />
+					<fieldRef name="choiceField" />
+				</displayGroup>
+			</displayGroups>
+			<lifecycleResource>
+            metadata/sheettypes/lifecycle/sameSheetTypeM_02.par/processdefinition.xml
+        </lifecycleResource>
+		</sheetType>
+		<sheetType name="excelSizeTest">
+			<displayGroups>
+				<displayGroup name="ref">
+					<fieldRef name="excelSizeTest_ref" />
+					<fieldRef name="EXCEL_STRING" />
+				</displayGroup>
+			</displayGroups>
+			<lifecycleResource>
+                metadata/sheettypes/lifecycle/sheetTypeCellMaxSize.par/processdefinition.xml
+            </lifecycleResource>
+			<referenceField>
+				<fields>
+					<simpleField valueType="String" labelKey="excelSizeTest_ref" />
+				</fields>
+			</referenceField>
+			<fields>
+				<simpleField labelKey="EXCEL_STRING" valueType="String" maxSize="Infinite" />
+			</fields>
+		</sheetType>
+		
+		
+		<sheetType name="Chief" description="Chief" selectable="true">
+			<displayGroups>
+				<displayGroup name="Chief_Ref">
+					<fieldRef name="Chief_Ref" />
+					<fieldRef name="Chief_Name" />
+				</displayGroup>
+			</displayGroups>
+			<lifecycleResource>
+                metadata/sheettypes/lifecycle/chezMimoun_chief.par/processdefinition.xml
+            </lifecycleResource>
+			<referenceField>
+				<fields>
+					<simpleField valueType="String" labelKey="Chief_Ref" />
+				</fields>
+			</referenceField>
+				<fields>
+					<simpleField labelKey="Chief_Name" valueType="String" maxSize="Infinite" />
+				</fields>
+		</sheetType>
+		
+		<sheetType name="Starter" description="Starter">
+			<displayGroups>
+				<displayGroup name="Starter_Ref">
+					<fieldRef name="Starter_Ref" />
+					<fieldRef name="Starter_Name" />
+				</displayGroup>
+			</displayGroups>
+			<lifecycleResource>
+                metadata/sheettypes/lifecycle/chezMimoun_starter.par/processdefinition.xml
+            </lifecycleResource>
+			<referenceField>
+				<fields>
+					<simpleField valueType="String" labelKey="Starter_Ref" />
+				</fields>
+			</referenceField>
+				<fields>
+					<simpleField labelKey="Starter_Name" valueType="String" maxSize="Infinite" />
+				</fields>
+		</sheetType>
+		
+		<sheetType name="MainDish">
+			<displayGroups>
+				<displayGroup name="MainDish_Ref">
+					<fieldRef name="MainDish_Ref" />
+					<fieldRef name="MainDish_Name" />
+				</displayGroup>
+			</displayGroups>
+			<lifecycleResource>
+                metadata/sheettypes/lifecycle/chezMimoun_mainDish.par/processdefinition.xml
+            </lifecycleResource>
+			<referenceField>
+				<fields>
+					<simpleField valueType="String" labelKey="MainDish_Ref" />
+				</fields>
+			</referenceField>
+				<fields>
+					<simpleField labelKey="MainDish_Name" valueType="String" maxSize="Infinite" />
+				</fields>
+		</sheetType>
+		<sheetType name="Dessert" description ="Dessert">
+			<displayGroups>
+				<displayGroup name="Dessert_Ref">
+					<fieldRef name="Dessert_Ref" />
+					<fieldRef name="Dessert_Name" />
+				</displayGroup>
+			</displayGroups>
+			<lifecycleResource>
+                metadata/sheettypes/lifecycle/chezMimoun_dessert.par/processdefinition.xml
+            </lifecycleResource>
+			<referenceField>
+				<fields>
+					<simpleField valueType="String" labelKey="Dessert_Ref" />
+				</fields>
+			</referenceField>
+				<fields>
+					<simpleField labelKey="Dessert_Name" valueType="String" maxSize="Infinite" />
+				</fields>
+		</sheetType>
+		
+	</sheetTypes>
+</gpm>

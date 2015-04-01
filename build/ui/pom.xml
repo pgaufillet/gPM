@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!--  Header Part : project name, project module... -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<parent>
+        <groupId>org.topcased.gpm</groupId>
+        <artifactId>gPM</artifactId>
+        <version>1</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+	<groupId>org.topcased.gpm</groupId>
+	<artifactId>gpm-web</artifactId>
+	<packaging>pom</packaging>
+	<version>1</version>
+	<name>gPM Web project</name>
+	<modules>
+		<module>gpm-ui-component</module>
+		<module>gpm-ui-facade</module>
+		<module>gpm-ui-application</module>
+	</modules>
+
+	<!--
+        | Project properties
+    -->
+	<properties>
+		<!-- dependencies version -->
+		<gwt.version>2.0.3</gwt.version>
+		<junit.version>4.4</junit.version>
+		<gin.version>1.0</gin.version>
+		<presenter.version>1.0.0</presenter.version>
+		<dispatch.version>1.0.0</dispatch.version>
+		<guice.version>2.0</guice.version>
+		<guice.servlet.version>2.0</guice.servlet.version>
+
+		<!-- Plugins version -->
+		<maven.gwt.plugin.version>1.2</maven.gwt.plugin.version>
+		<maven.compiler.plugin.version>2.0.2</maven.compiler.plugin.version>
+		<maven.eclipse.plugin.version>2.8</maven.eclipse.plugin.version>
+		<maven.war.plugin.version>2.0.2</maven.war.plugin.version>
+
+		<!-- Maven plugin configuration -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.6</maven.compiler.source>
+		<maven.compiler.target>1.6</maven.compiler.target>
+
+	</properties>
+
+	<build>
+		<defaultGoal>install</defaultGoal>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>gwt-maven-plugin</artifactId>
+				<version>${maven.gwt.plugin.version}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.plugin.version}</version>
+				<configuration>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>${maven.eclipse.plugin.version}</version>
+				<configuration>
+					<addVersionToProjectName>true</addVersionToProjectName>
+					<additionalBuildcommands>
+						<buildcommand>com.atlassw.tools.eclipse.checkstyle.CheckstyleBuilder
+						</buildcommand>
+					</additionalBuildcommands>
+					<additionalProjectnatures>
+						<projectnature>com.atlassw.tools.eclipse.checkstyle.CheckstyleNature
+						</projectnature>
+					</additionalProjectnatures>
+					<additionalConfig>
+						<file>
+							<name>.checkstyle</name>
+							<content>
+                                    <![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+<fileset-config file-format-version="1.2.0" simple-config="false">
+        <fileset name="all" enabled="true" check-config-name="gPM" local="false">
+            <file-match-pattern match-pattern="^src\\.*.java$" include-pattern="true"/>
+            <file-match-pattern match-pattern="^src\\main\\java\\com.*.java$" include-pattern="false"/>
+            <file-match-pattern match-pattern="^src\\main\\java\\org\\topcased\\gpm\\ui\\component\\client\\resources\\i18n\\GpmConstantsWithLookup.java$" include-pattern="false"/>
+        </fileset>
+</fileset-config>
+                                    ]]>
+							</content>
+						</file>
+					</additionalConfig>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<!-- State the version of the module that are required -->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.topcased.gpm.ui</groupId>
+				<artifactId>gpm-ui-component</artifactId>
+				<version>${gpm.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.topcased.gpm.ui</groupId>
+				<artifactId>gpm-ui-facade</artifactId>
+				<version>${gpm.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.topcased.gpm.ui</groupId>
+				<artifactId>gpm-ui-application</artifactId>
+				<version>${gpm.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.topcased.gpm.commons</groupId>
+				<artifactId>gpm-commons-bean</artifactId>
+				<version>${gpm.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.topcased.gpm</groupId>
+				<artifactId>gPM-services-business</artifactId>
+				<version>${gpm.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.topcased.gpm</groupId>
+				<artifactId>gPM-webservices-client-v2</artifactId>
+				<version>${gpm.version}</version>
+			</dependency>
+
+			<!--  GWT dependencies (from central repo) -->
+			<dependency>
+				<groupId>com.google.gwt</groupId>
+				<artifactId>gwt-servlet</artifactId>
+				<version>${gwt.version}</version>
+				<scope>runtime</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.google.gwt</groupId>
+				<artifactId>gwt-user</artifactId>
+				<version>${gwt.version}</version>
+				<scope>provided</scope>
+			</dependency> 
+			<dependency>
+				<groupId>com.google.gwt.inject</groupId>
+				<artifactId>gin</artifactId>
+				<version>${gin.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>net.customware.gwt.presenter</groupId>
+				<artifactId>gwt-presenter</artifactId>
+				<version>${presenter.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>net.customware.gwt.dispatch</groupId>
+				<artifactId>gwt-dispatch</artifactId>
+				<version>${dispatch.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.inject</groupId>
+				<artifactId>guice</artifactId>
+				<version>${guice.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.inject.extensions</groupId>
+				<artifactId>guice-servlet</artifactId>
+				<version>${guice.servlet.version}</version>
+			</dependency>
+
+
+			<!-- test -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+</project>

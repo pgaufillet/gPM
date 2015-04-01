@@ -1,0 +1,17 @@
+// Initialize the date field of a Bug
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import org.topcased.gpm.business.sheet.service.SheetData;
+import org.topcased.gpm.business.sheet.service.sheetAccess.SheetDataAccess;
+import org.topcased.gpm.business.sheet.service.sheetAccess.SimpleFieldDataAccess;
+
+// Récupération de la sheetData
+SheetData sheetData = context.get("sheetData");
+
+// récupération de la sheetDataAccess(permettant d'accéder aux champs de la sheetdata)
+SheetDataAccess sheetDataAccess = new SheetDataAccess(sheetData);
+
+//initialize date to current date
+SimpleDateFormat lDateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+((SimpleFieldDataAccess)sheetDataAccess.getField("BUG_detection_date")).setValue(lDateFormatter.format(new Date()));
+       

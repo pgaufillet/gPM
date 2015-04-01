@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+	<version>1.2</version>
+	<!--	 Filter Access -->
+	<filterAccessConstraints>
+		<filterAccessConstraint constraintName="DOJO_TestCriteriaOnDate1">
+			<criteria>
+				<criteriaGroup>
+					<criterion fieldKey="DOJO_Test_simpleDate" operator="greaterThan"
+						value="2012-03-19" />
+						
+						<criterion fieldKey="DOJO_Test_richText1" operator="="
+						value="ggg" />
+						
+						<criterion fieldKey="DOJO_Test_richText2" operator="like"
+						value="ggf%" />
+						
+						<criterion fieldKey="DOJO_Test_simpleInteger" operator="greaterOrEqual"
+						value="1" />
+						
+						<criterion fieldKey="DOJO_Test_simpleInteger" operator="lessOrEqual"
+						value="1" />
+						
+						<criterion fieldKey="DOJO_Test_simpleInteger" operator="="
+						value="1" />
+						
+						<criterion fieldKey="DOJO_Test_urlField" operator="="
+						value="www.google.com" />
+						
+						<criterion fieldKey="DOJO_Test_urlField" operator="notLike"
+						value="www.google.com" />
+				</criteriaGroup>
+			</criteria>
+		</filterAccessConstraint>
+	</filterAccessConstraints>
+
+	<filterAccessControls>
+		<filterAccess typeName="DOJO_Test" roleName="admin"
+			editable="true" executable="true">
+			<filterAccessConstraintName
+				constraintName="DOJO_TestCriteriaOnDate1" />
+		</filterAccess>
+	</filterAccessControls>
+	<!--	Filter-->
+	<filters>
+		<sheetFilter labelKey="Filter with additional constraints with out result">
+			<containers>
+				<sheetTypeRef name="DOJO_Test" />
+			</containers>
+			<scope>
+				<productScope name="product2"
+					includeSubProducts="true" />
+			</scope>
+			<criteria>
+				<criteriaGroup>
+					<criterion fieldKey="$SHEET_STATE" operator="=" value="Temporary" />
+				</criteriaGroup>
+			</criteria>
+			<resultSummary>
+				<fieldResult name="$SHEET_REFERENCE" />
+			</resultSummary>
+		</sheetFilter>
+	</filters>
+</gpm>

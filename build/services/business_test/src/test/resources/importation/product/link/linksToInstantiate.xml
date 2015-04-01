@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF8"?>
+
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+
+	<version>1.2</version>
+	<products>
+		<product name="productTestImport_03" type="Store">
+			<environmentNames>
+				<environmentName name="Professional" />
+			</environmentNames>
+		</product>
+		<product name="productTestImport_04" type="Store">
+			<environmentNames>
+				<environmentName name="Professional" />
+			</environmentNames>
+		</product>
+	</products>
+	<productLinks>
+		<productLink type="testExportProductLink" originId="productTestImport_03"
+			destinationId="productTestImport_04">
+			<fieldValues>
+				<fieldValue name="testExportProductLink_field1" value="testExportProductLink_field1" />
+				<fieldValue name="testExportProductLink_field2" value="testExportProductLink_field2" />
+				<fieldValue name="testExportProductLink_field3" value="testExportProductLink_field3" />
+				<fieldValue name="testExportProductLink_field4" value="testExportProductLink_field4" />
+				<fieldValue name="testExportProductLink_field5" value="testExportProductLink_field5" />
+			</fieldValues>
+		</productLink>
+		<productLink type="testExportProductLink" originId="productTestImport_04"
+			destinationId="productTestImport_03">
+			<fieldValues>
+				<fieldValue name="testExportProductLink_field1" value="testExportProductLink_field1" />
+				<fieldValue name="testExportProductLink_field2" value="testExportProductLink_field2" />
+				<fieldValue name="testExportProductLink_field3" value="testExportProductLink_field3" />
+				<fieldValue name="testExportProductLink_field4" value="testExportProductLink_field4" />
+				<fieldValue name="testExportProductLink_field5" value="testExportProductLink_field5" />
+			</fieldValues>
+		</productLink>
+	</productLinks>
+	<userRoles>
+		<userRole login="user2" roleName="notadmin" productName="productTestImport_03" />
+	</userRoles>
+</gpm>

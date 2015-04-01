@@ -1,0 +1,1445 @@
+  gPM changes log
+ =================
+
+Changes in v2.0
+-------------------
+
+New features :
+
+Major bug fixes :
+
+* Method ExtensionsService#getAvailableExtendedActions return only the extended
+actions concern the extension container in parameter and not the process extended
+actions.
+
+ 
+Changes in v1.8.4.1
+-------------------
+
+New features :
+
+* WebServices features (DM 465):
+	- Add states on sheet types object
+	- Add menu entry name on extended actions object
+	- Bug on get excel reports models
+	- Bug on filter result export on excel
+
+Changes in v1.8.4
+-------------------
+
+New features :
+
+* Rewriting the serialization tool (DM 285):
+	- Depreciation of Serialize script
+	- Creation of two new scripts: Export and Import
+ 
+Changes in v1.8.3
+-------------------
+
+New features :
+
+* Add Web Services methods (DMs 325, 331):
+	- createOrUpdateExecutableFilter
+	- deleteExecutableFilter
+	- executeExtendedAction
+	- executeFilterData
+	- getActionAccessControls
+	- getAvailableExtendedActions
+	- getAvailableReportModels
+	- getCategoryValues
+	- getEditableFilterScope
+	- getExecutableFilter
+	- getExecutableFilterByName
+	- getExecutableFilterScope
+	- getFilterFieldsMaxDepth
+	- getInputDataType
+	- getInputDataModel
+	- getLinkType
+	- getSearcheableContainers
+	- getSearcheableFieldsLabel
+	
+Major bug fixes :
+
+* Deletion of multivalued fields when update sheet with 'instantiate' tools
+
+* Filter export with one criteria group : create one new group for each criterion
+
+Changes in v1.8.2
+-------------------
+
+New features :
+
+* Export/ Import improvement (DM 264)
+    - All data elements (category, environment, user, user's role, product, 
+    sheet, links and filters) can be exported and imported according to available 
+    exportation properties and importation mode.
+    - Errors during importation can be raise as exception or handle in a execution
+    report.
+    - WebServices: Add support for attached file importation.
+
+* Add support of overridden roles feature for links on HMI.
+
+* Add two methods 'getFilterAccessControl' on AuthorizationService
+
+* Improved return of the extended action as a result of filter (DM 291):
+    - add filter's result's screen buttons
+
+Major bug fixes :
+
+* Deselection of all values of a multivalued choice field.
+
+* Hide the change filter type feature when the user cannot use filter on product
+
+* Fix filter's execution with criteria containing quotes in their value.
+
+* Environment contaning categories values can be deleted.
+
+* Password encoding is now support for user's instantiation.
+
+* HMI allow filter's saving with empty criteria
+
+* Improve performance for attached fields.
+
+* Mandatory fields have been checked on input screen.
+
+Changes in v1.8
+-------------------
+
+New features :
+
+* Product Breakdown structure (DM 192): This evolution enable:
+		 1. An administrator to manage products (creation, update, deletion).
+		 2. An administrator to export/import products (XML format).
+		 3. A user to change the type of filters displayed by the filter's tabs.
+    -> Update UI Themes
+
+* ProductsUtils class has been removed : 
+	ProductService must be used instead of this class
+
+* New service DataTransformationService :
+	Used to convert CacheableValueContainer from/to old datra structures
+
+* Add method atomicTestAndSet to the AttributesService
+
+* Add method getSheetTypes to the SheetService
+
+* Update links displaying
+
+* Take account of the user selected language when the admin update a user.
+
+* Add the cacheableSheet (valuesContainer) on 'postDelete' extension point context.
+
+* Some extension points has been renamed. The old names can be used but they are
+deprecated and will removed on v2.0.
+    - postGetSheetModel -> postGetModel
+    - cloneFromSheet -> postGetDuplicationModel
+    - copyFromSheet -> postGetInitializationModel
+    - preCreateSheetLink -> preCreate
+    - postCreateSheetLink -> postCreate
+    - preUpdateSheetLink -> preUpdate
+    - postUpdateSheetLink -> postUpdate
+    - preDeleteSheetLink -> preDelete
+    - postDeleteSheetLink -> postDelete
+
+* Some extension points parameters has been renamed. The old names can be used 
+but they are deprecated and will removed on v2.0.
+    - sheetId -> valuesContainerId
+    - sheetValues -> valuesContainer
+    - sheetType -> fieldsContainer
+    - linkId -> valuesContainerId
+    - linkValues -> valuesContainer
+
+* Extension points has been added for products.
+    - postGetModel
+    - preCreate
+    - postCreate
+    - preUpdate
+    - postUpdate
+    - preDelete
+    - postDelete
+
+* Add pointer fields to virtual fields:
+	$SHEET_STATE, $SHEET_REFERENCE, $PRODUCT_NAME, $SHEET_TYPE
+
+* Add class "cursorHand" in CSS theme.
+.cursorHand {
+    cursor : pointer;
+}
+
+* Add container id, product name on extension point context of 
+ChoiceStringDisplayHint
+
+* The new attribute 'maxSize' of the tag 'simpleField' can be used to limit the
+size of String fields used by sheet types, link types and product types.
+
+* The part of the data base schema used to store sheets, products and links has
+been modified. For each type, gPM generates specific tables to store elements
+of this type.
+
+* The new option -G, of the Instantiate tool, must be used to generated the
+specific schema part for the different types defined by an instance.
+
+* The new option -E, of the Instantiate tool, can be used to export the data
+base schema.
+
+* By default, on visualization or edition of sheet, the links are sorted using 
+the functional reference of the linked sheets.
+
+* Add parameter reportModelName on report generation
+
+* Add the case sensibility to the filter's criteria.
+Possibility to redefine the SQL function of the case sensibility. The method 'lower'
+is used by default to compare SQL terms.
+
+* Support for access control on filter, called 'FilterAccess':
+     defines control for a role, a type and/or a field
+     defines control for a role and a visibility
+     adding additionnal constraints (criteria) to the filter
+     Reporting the filter's execution
+    
+* Many methods have been deprecated (see RELEASE NOTE file)
+
+Major bug fixes :
+
+* (Bug 955): Problem on gPM's options instantiation : at each instantiation
+the options authentication and autoloking were updated with default values
+
+* User's "Forename" field traductions (English and French)
+
+* New attribute on DisplayGroup tag (on instantiation file) : isOpened. 
+This attribute is used on sheet creation page.
+
+* Filters criteria : It is possible to define empty criteria on simple string fields. 
+
+* Include seconds in date-time format
+
+* Problem with concurrence are fixed : the lock management becomes atomic and are 
+out of transaction. So it's not possible to store it on cache, and method using
+cache are removde of CacheableValuesContainer objects. The method
+SheetService#getLock can be used instead.
+
+* Improvement of Filter construction (retrieving usable fields)
+
+* Filter instantiation: add operator validation at criteria and results fields creation
+
+* Fix extended actions refreshing on the HMI.
+
+
+Changes in v1.7.4
+-------------------
+
+Major bug fixes :
+
+* Default language with external authentification
+
+* Handling correctly \n and \t during export
+
+* Navigation access between products through sheet links.
+
+* Attached file support on SSL protocole.
+
+* Link export
+
+* User connection with one role on one product with external authentification
+
+
+Changes in v1.7.3
+-------------------
+
+Major bug fixes :
+
+* (Bug 957): Empty attribute is saved null in DB.
+
+* Bug on sheet creation for PostGreSQL
+
+* Problem of compatibility with Firefox 3.5.2
+
+* Export (Serialization tools) :
+    - Operator 'not like' is not exported
+    - Impossible to export a filter with date, real or boolean in criteria
+    - Impossible to export a filter with empty date in criteria
+    - Impossible to export an empty attached file
+
+
+Changes in v1.7.2
+-------------------
+
+New features :
+
+* IE 7 compatibility (DM 191):
+    Menu is now correctly aligned.
+    The zoom feature works for multiline fields.
+
+* Serialize tool improvement (DM 188):
+    Now the serialize tool can export and import users, roles allocation,
+    filters and dictionary (category and environment).
+
+* Serialize tool (DM 121):
+    New tool to export and import data as sheets, products, links,
+    revision.
+
+* 2 link items: view/modification (DM 193) : 
+    The HMI provides access to the linked sheet in visualization or
+	modification mode.
+	The link zone style can be customize.
+    
+
+Major bug fixes :
+
+* (Bug 901): On "Choose field(s)" filter's screen, all sub-fields of multiple
+fields refers to their multiple fields. No more duplication.
+
+* (Bug 904 - DM 179): Results for a filter that retrieve elements on two linked 
+sheet types have been repeat for each linked sheets.
+
+* (DM 49): At the selection of product or sheet by the URL, the breadcrumb is
+updated and the user can select another product.
+
+* (Bug 910): During the instanciation, the attributes of sheets are now stored
+in database.
+
+* (Bug 925): The API of the 'CacheableRevision' object has been changed.
+It may break source code.
+
+* (Bug 926): Add the import of 'Revision' object.
+
+ 
+Changes in v1.7.1
+-------------------
+
+New features :
+
+* Dynamic List for link fields ( DM 150) : 
+    Dynamic list can now be used for link fields.
+
+* Attached file's field value (DM 158)
+	The value of field "attached file" is no more the full path but	its name.
+
+* IE 7 compatibility (DM 166) : 
+    Some modification have been done to enable the use of IE 7 with gPM.
+    This feature has not been fully validated . A full validation will 
+    be done for the next version of gPM
+
+* Help configuration :
+    It is now possible to configure an URL to be used as the help entry of the menu.
+    This feature was actually available in the 1.7 version of gPM (But not 
+    documented).
+    
+Fonctionnal modification : 
+
+* Filter's results (DM 135)
+  - No more cross product between results for a filter on several level:
+		Each results of a line corresponds to the searched container.
+
+		
+Major bug fixes :
+
+* (Bug 614): Each link fields have a unique identifier (HMI).
+
+* (Bug 642): For extended action, the fields value into the input screen are
+			persistent when the user comes 'back' to the screen.
+            
+* (Bug 853 - DM 155): Problem on category suppression through the HMI.
+            All the category values can now be updated through the HMI.
+
+* (Bug 859) : Problem on pointer fields.
+            An exception was raised when using pointer fields to linked 
+            sheet (unless for links fields). 
+            
+* (Bug 872-874): Update product deletion capability. All links and
+			access control over the deleted product have been removed.
+			            
+* (Bug 879 - DM 168) : Mandatory field problem.
+            An exception was raised when a mandatory field value was not filled.
+            Now a warning message is displayed.
+
+* Mandatory sub-field not enforced.
+            Now the mandatory sub-field are fully checked (value filled).
+            
+* (Bug 882): At the instantiation, the character encoding defined in the instance
+            definition file is now respected.
+
+* (Bug 884 - DM 171): Problem with exported value through Excel export.
+            All field's values was not correctly exported to Excel reports. 
+            The fields that do not have a known Excel type are represented 
+            thorugh a string value.           
+
+* (Bug 888): The links defined as 'unidirectional for creation' are now fully useable 
+            in filter definition.            
+ 
+
+Changes in v1.7
+-------------------
+
+New features :
+
+* Login case sensitive/insensitive (DM 118)
+  - The system must be configured to be "case sensitive" or "case insensitive"
+    for the login.
+  - It can be defined on the config.properties or/and on the instance options.
+* Administration Access (DM 124)
+  All roles - different from administrator role - can have access to administration actions 
+  (Update a user, update an environment etc ...) thanks to administration access.
+  An administration access can be set through instantiation file, in the accessControls part : 
+  <adminAccess role="roleName" action="actionKey" />
+  This administration access can be set only on product (in case roleName is defined only on one product), 
+  on on global instance (if roleName is defined on global instance). 
+  (Some administration actions behaviour will be different in function of this definition.)
+* Message of ExtensionCheckException thrown from sheet edition by an extensionPoint is now 
+  display above the sheet form without lost of typed data. (DM142)
+* Overridden roles (DM 105)
+  Now overridden role can be specified for a specific scope : user, role, and values container.
+
+* New webServices methods:
+  - getLinkableSheetTypes
+  - getVisibleFilterNamesBySheetType
+
+* API:
+  - New method getVisibleFilterDatasBySheetType in searchService
+
+Bug fixes :
+
+* (Bug 830): Raised exception in some cases when export limitation is reached. 
+
+
+Changes in v1.7-rc3
+-------------------
+
+Updated features :
+
+* Context update :
+  Replacement of GUI contexts for extended actions : 
+    . CTX_VIEW_SHEET : Extended action visible only in sheet visualization. 
+    . CTX_EDIT_SHEET : Extended action visible only in sheet edition. 
+    . CTX_CREATE_SHEET : Extended action visible only in sheet creation. 
+  Old contexts VIEW_SHEET and EDIT_SHEET do not exist anymore. 
+  (Note : Old context VIEW_SHEET is replaced by following contexts 
+               {CTX_VIEW_SHEET, CTX_EDIT_SHEET}
+          Old context EDIT_SHEET is replaced by following contexts 
+               {CTX_EDIT_SHEET, CTX_CREATE_SHEET})
+  This update impacts instance files. 
+
+New features :
+
+* Link and group of link scheduling (DM 100):
+  - Filters can be executed on links
+  - Link filters can be used to display links on sheet visualization or edition
+    page
+  
+* Export limitation (DM 111):
+  - A new attribute maxExportableSheets has been defined to set the value of
+    maximum exportable sheets count. This limit is applicable during standard
+    export and reporting.
+  - It can be defined on the config.properties or/and on the instance options.
+  
+* Instantiation tool (DM 120, DM 141):
+  - New '-o' option to specify extended options to the instantiation.
+    It accepts options:
+		- 'delete_acl', used to erase *all* access controls of the given instance
+		- 'delete_catValues', used to erase values that are not redefined in the
+		instantiation definition file.
+  - The '-f' option now accepts a list of instance definition files.
+  - Update of display groups is now available (expected for a display group 
+    deletion).
+  - Update of extended actions is now available (expected for a input data 
+    deletion).
+  - By default, the instantiation tool update the values of the category if 
+    it exists.
+
+* API: 
+  - Add method to add role to several users in AuthorizationService
+  - Add method to get all users of an instance in AuthorizationService
+  - Add method to delete product in the ProductService
+  - Add method to update parent products in the ProductService
+  - Add method getRevisionLabels(String roleToken, String containerId, int pLastItems) 
+    in the revisionService
+  - Add methods using OutputStream for export and reporting
+  - Add method getRevisionLabels(String pRoleToken,String pContainerId, int pLastItems) 
+    in RevisionService
+  - Add method getCacheableSheetModel to initialize a CaheableSheet from this
+    type in SheetService 
+  
+== User interface
+
+* On product modification screen, new feature to update parent products list
+  (DM107). 
+
+* Sheet lock management (DM 112):
+  An automatic lock can be added when a sheet is opened in edition. This lock
+  is automatically released on save.  
+  Moreover, these locks are released also when user session is closed. 
+
+* Choice of report model before mail sending (DM107):
+  If reports exist for an expected sheet type, the UI allows the user to choose
+  between these report models to generate attached file of mail.
+  
+  
+== Web Services
+
+* New methods added to the WS API v2(DM95, DM101):
+    - add/remove a specific role for several users
+    - get all users
+    - get the list of users with a given role on a given product
+    - get a sheet type filled with access controls
+    - get a user from its login
+    - get a sheet state from its ID
+    - get list of choiceString 
+    - execute a filter from this name
+    - get list of linked elements identifiers.
+    - get a role name from this token.
+    - get list of available roles for a product and a process scope.         
+
+
+Bug fixes :
+
+* (Bug 602): Filters : missing results with sort orders DEF_ASC or DEF_DESC on 
+             choice result fields
+
+* (Bug 640): An user without admin role can access to administration menu.
+
+* (Bug 684): Cannot use sheet's state as criterion on several levels for filters.
+
+* (Bug 707): The method getFieldAccessControl of the authorizationService 
+             returns false information.
+
+* (Bug 718): Field access not refresh during duplication action.
+
+* (Bug 732): Correct size of filter help screen to allow users to close this. 
+
+* (Bug 734): Unable to Problem to delete join document.
+
+* (Bug 738): Unable to update link if linked sheet is locked.
+
+* (Bug 766): criteria fields are now ordered on filter parameter edition.
+
+* (Bug 774): Execution of an extended action which has a Filter Result as 
+             resulting screen, if this filter is an instance filter and it is
+             executed in a given product, an exception was thrown. 
+  
+* (Bug 776): Refresh of extended action access through sub-menus fails. 
+
+* (Bug 791): No 'fieldName' value set in execution context for
+             'choiceDisplayHint' extension point.
+
+* (Bug 794): Correct of handle of virtual field $CUREENT_PRODUCT as criteria
+            during filter execution.
+
+* (Bug 799): Save of a sheet is corrected to allow save of a choice Field
+             without value even if a defaultValue is specified.
+             (defaultValue is filled through HMI)
+
+
+Changes in v1.7-rc2
+-------------------
+
+New features :
+
+* Use of pointer fields (DM 57) :
+  - A sheet or link field can be defined as a pointer on the value of another field belonging to
+    a different element. Definition of pointer can be set to be automatically updated on a link
+    creation/deletion (for sheet field pointing on a linked sheet field) or updated by the way
+    of extension point commands, via business services API.
+
+* Possibility to save filters with same name at different visibility levels (DM 97) :
+  - Filters defined for different users or in different products or in business processes can
+    now have the same name and be saved with the same name. New methods have been exposed to
+    get the appropriate filter.
+  - Filter related elements such as ResultSorterData and ResultSummaryData follow this same
+    behavior.
+    - A filter can now be executed from it's name and visibility scope without recovering it first.
+    - Note that the semantic of the SearchService.getExecutableFilterByName(String, String, String)
+      method has changed as it returns a user's filter or a product's filter only if the
+      current user / product is the one where the filter is. If no filter is found by this way,
+      an existing instance filter is returned, or null otherwise (even if there is a filter with
+      this name for another product/user). This method has also become deprecated.
+
+* Execution context can be specified from the caller (DM 79)
+  - This context is specified through an additional parameter in some gPM API methods,
+  - It can be used to specify additional context parameters used in extension point commands,
+  - The context can also be used to disable the execution of extension points (all of them or
+    a list of extension points).    
+    
+== User interface
+
+* Non updatable multiple field values  (DM 98)
+  - On field defined both as multiple & multivalued, "updatable" attribute is used to enable
+    or disable the addition or removal of values in the list (graphically the +/- buttons are
+    removed).
+
+* Improvements of the messages translation in the WEB UI  (DM 99)
+
+
+== Web Services
+
+* New methods added to get product data  (DM 102): 
+  - Methods added to the WS API v1:
+       getProduct(), getProductByKey(), updateProduct(), updateProducts()
+  - The following methods have been added to the WS API v2:
+       getProduct(), getProductByKey() 
+
+* Support of the execution context parameter   (DM 79):
+  - Added on methods:  createSheet(), updateSheet(), deleteSheet(), changeState(), 
+                       createSheetLink(), updateLink(), deleteLink()
+
+Bug fixes :
+
+* (Bug 627): Bad display of link groups when a sheet contained different link types. 
+
+* (Bug 646): Problem when a sheet type and a sheet of this type are created in a same database
+             transaction.
+
+* (Bug 647): Cannot add new lines on text area and rich text fields. 
+
+* (Bug 672): Direct access in fullscreen sheet display is broken  (JSP error)
+
+* (Bug 674): Redefined filters columns names are lost when filter definition is read back from
+             database
+
+* (Bug 677): Problem when Delete / Edit buttons are used when no filter selected.
+
+* (Bug 681): Error in filter execution when filter results include a field (non choice field) with
+             ascending or descending sort order.
+
+
+Changes in v1.7-rc1
+-------------------
+
+New features :
+
+== Filters
+
+* Using fields from link and linked sheets on several level depth (DM 53) :
+  - Criteria and results fields can use fields from links and linked sheets on several
+  level depth under the selected sheet's type.
+
+* Using multivalued fields into results criteria (DM 56) :
+  - Criteria and results fields can use multivalued fields.
+
+
+* Export of filter results (DM 55) :
+  - table of filter results can be exported to these supported format files: CSV, XML, XSL and PDF.
+  This export does not take into account access controls, it consists on export basically filter
+  results.
+
+
+== User interface
+
+* On fields defined as both multivalued & multiple, the "Updatable" attribute is used
+  to enable / disable the addition / removal of values in the list  (the values
+  themselves are still editable).
+
+* Add the URL application in the extended actions context.
+  (key for this additional context value is "applicationURL" ).
+
+Bug fixes :
+
+* (Bug 605) Specify a default sender mail address in configuration file.
+            (default value set to 'gpm@topcased.org')
+
+* (Bug 600) The origin type of a link type may not match with a current origin: type are not verify
+            when a link is creating. Solution: The business inverts the origin and destination
+            according to the definition of the link type.
+
+* (Bug 517) Translation of 'CURRENT_PRODUCT' and 'NOT_SPECIFIED' values have been
+            stored by Business. (Only HMI must translate those values)
+
+* (Bug 498) Exception when the user try to add second criterion on a choice field.
+
+
+Changes in v1.7-beta1
+---------------------
+
+This release is an intermediate delivery before a more feature-complete version
+(V1.7 release candidate).
+
+It includes only partial features planned for the gPM v1.7 release. Particularly, the V1.7 release
+will include some large changes regarding the filters management, providing both improved
+functionalities and better execution performances.
+
+Please note that this release, while having been used successfully to
+develop and deploy gPM instances, will be considered as a beta version.
+
+
+New features :
+
+== Filters
+
+* Names columns customizable (DM 54):
+  - Add a field "label" on filter summary results to customize the names columns.
+    If this label is not null, its replace the name or the internationalization name
+    in the table filter result.
+
+* New help box available for the filter creation / edition screen (DM 27)
+
+* In filter creation & edition screen, the list of choice field values is now restricted to the
+  environment available, according to the selected containers for the filter.  (DM 76)
+
+* Button 'execute' is removed from the filter edition screen for "Tree only" filters. (DM 35)
+
+* Add a small help message in the filter definition screen to remember the use of '%' character
+  with 'like' operator. (DM 35)
+
+* New sort option in filter results for choice field to sort them according to the dictionary order.
+  (DM 35)
+
+== User interface
+
+* The user can now export the content of a sheet in case of concurrent modification (DM 39).
+  This feature works for a sheet modification only. A link modification is still performed
+  separately and not taken in account in the sheet modification.
+
+* Add a description (as tooltip) on fields display groups. (DM 35)
+
+* All descriptions can be localized  (use the I18N label key as description text)
+
+* The filter list displayed in the 'filter edition' screen can be used to open a filter for edition
+  (similar to previous behavior), or execute it directly.
+
+* The IMAGE_TEXT display hint is modified to display the image on the left of the text.
+
+* Add time support for the date fields. A time part is added to any date fields through the new
+  'includeTime' attribute on the 'dateDisplayHint'. See the Instantiation Guide document for
+  additional infos regarding this attribute. (DM 90)
+
+== gPM kernel
+
+* New access controls.  (DM 38)
+  - An actionAccess control can be restricted to a given sheet type. This allows a specific action
+    to be usable for one sheet type only.
+
+  - Access controls defined for link fields can now optionally include the type of the currently
+    visible sheet (as link data are displayed on the sheet display screen), allowing to apply
+    different access controls for link fields depending on the currently displayed sheet type.
+
+* Private environment definition. Product can now have a public environment and a private one.
+  The categories defined in the private environment supersedes the one defined in the public
+  environment.
+  An administrator privilege is required to update a private environment  (public ones can be
+  modified by any user's role) (DM 46)
+
+* New extension points : PreUpdateSheetLink and PostUpdateSheetLink. (DM 63)
+
+* Add support for global attributes in the instance definition format. (DM 87)
+  (cf. Instantiation Guide document for additional infos)
+
+== Web Services
+
+New methods exported as Web Services:
+
+ - getAllUSers()
+ - getSheetState()
+ - getUserFromLogin()
+ - getUsersWithRole()
+ - addRoleForUsers()
+
+Notes:
+- These methods have been added to the v2 Web Services interface
+- Consult the gPM Web Services JavaDoc for more infiormation regarding theese new methods.
+
+
+Bug fixes :
+
+* (Bug 563) Support of multivalued 'string' fields using a choiceStringDisplay is broken.
+
+* (Bug 543) Extended user interface actions associated to a specific sheet type and applicable to
+            a 'SHEET_LIST' context are not available in filters results (while they should be
+            made available when all filter results belong to the action sheet type).
+
+* (Bug 564) Problem in sheet duplication when the duplicated sheet contains attached files.
+            In this case, both origin and duplicated sheets cannot be updated in the same transaction.
+
+* (Bug 575) A non updatable (read-only) 'date' field in a multivalued multiple field prevents
+            adding new lines for this field in the UI.
+
+* (Bug 578) LinkData's modification done on PreCreateSheetLink are not persisted
+
+* (Bug 582) A simple field of a link cannot be updated  (no matter its actual access control)
+
+
+Changes in v1.6.4
+-----------------
+
+This release fixes a nasty bug introduced in v1.6.3 that sometimes prevent any update of a sheet.
+(no error reported, but the sheet data is not updated in database).
+It features also additional methods added to WS API.
+
+This release is fully compatible with the v1.6.2 & v1.6.3 releases.
+
+New features :
+
+* Web Services API :
+  - New methods available to get & update products data.
+
+Bug fixes :
+
+* (Bug 609) Sheet update ineffective on some occasions  (no error displayed, but the sheet content
+            is not updated). Pbm caused by a 'lazy' relationship between Fields container & Field
+            (Field objects sometimes returned as proxies by Hibernate).
+
+* (Bug 618) Product service methods may raise a class cast exception.
+
+
+Changes in v1.6.3
+-----------------
+
+This release is a bug fixes release.
+
+It provides also a fix for major execution performance problems with instances defining a
+large number of dictionary category values.
+
+This release is fully compatible with the v1.6.2 release.
+
+
+Bug fixes :
+
+* Using product hierarchy as visibility in a filter raises an error.
+
+* Read-only fields used in input parameter screens definition are modifiable in the UI.
+
+* (Bug 568) No pre/post create extension points called during the call of
+            SheetService.createSheet(final String pRoleToken, CacheableSheet pCacheableSheetData)
+            method
+
+* (Bug 559) Problem in execution / edition of filters using link fields. The problem is currently
+            only circumvented for v1.6.x branch (link fields are not usable any more on filters).
+            A real fix will be provided in v1.7 release.
+
+* (Bug 576) The roles list is not correctly updated in the WEB UI when a user selects a sheet
+            belonging to a diffrent product.  (this case happens, for example, in multi-products
+            filters).
+
+
+Changes in v1.6.2
+-----------------
+
+This release is a bug fixes release.  It fixes some serious bugs present in v1.6.1, so it is
+advised to upgrade to this version.
+
+Bug fixes :
+
+* Sheet and product tree views were shared between several users, they are now stored in the
+  user session.
+
+* Sheet duplication failed when it was executed from results screen of first sheet filter.
+
+* Javascript error on timeout screen is now fixed.
+
+* Filter execution raised an error if this filter contained a field for criteria or result with
+  the 'confidential' attribute in its definition.
+
+* (Bug 559) Workaround: Limitation of field data for criteria on sheet filter. Linked field and
+  link field can no more be use for criteria.
+
+* (Bug 558) Exception on sheet creation via WebServices.
+
+* (Bug 557) Allow removal of extension point using the 'instantiate' tool.
+
+* (Bug 554) Exception when an user try to add a choice field as a criteria on filter edition.
+
+
+New features :
+
+* Support for global attributes in the instance definition files (DM87).
+
+* Add two extensionPoints support: PreUpdateSheetLink and PostUpdateSheetLink (DM 63).
+
+* Add two internal method allowing to get administrator privilege when needed.
+
+
+
+Changes in v1.6.1
+-----------------
+
+This release is a bug fixes release.  It fixes some serious bugs present in v1.6, so it is
+advised to upgrade to this version.
+
+
+UI Changes:
+
+* Sheet duplication is moved on "Sheet > Duplicate > In the same product" menu item.
+
+
+Bug fixes :
+
+* (Bug 532) Field access control for search edition and search result.
+   Fields having the 'confidential' attribute in definition are not selectable for filters
+   criteria and results (DM 80)
+
+* (Bug 541) Fix multivalued choice field contained in multiple field update.
+
+* Criteria edition for an existing filter now preserve the selected choice field values.
+
+* PDF export on filter result screen fixed in case of several report models.
+
+* Excel export: Localize the cell titles in generated spreadsheet.
+
+* Fix the selection of fields to export in selection screen for XML and Excel.
+
+* (Bug 550) Fix the retrieval of multivalued choice fields on sheet modification.
+
+* (Bug 526) Exception raised on product filter creation
+
+* gPM-tools-instantiation : instantiate over an existing database functionality
+   with GridDisplayHint and ChoiceStringDisplayHint is corrected.
+
+
+
+Changes in v1.6
+---------------
+
+First stable v1.6 version.
+
+This release fixes some execution performances introduced in the 'rc1' release.
+
+New features :
+* New grid component (DM 2) :
+  - New display hint 'gridDisplayHint' is added to the list of supported displays
+    applicable to a String field. In this case the field content is displayed using a
+    grid graphical component.
+
+* Mail address editable (DM 23) :
+  The system enables a user to fill a mail address and to select a list of
+  predefined mail addresses.
+
+* Cancel button on link creation (DM 24) :
+  Cancel button added on the link creation screen.
+
+* Export configuration (DM 25) :
+  The system allows the user to select the fields that will be exported in XML
+  and XLS format.
+
+* Filter Results Display Evolutions (DM26)
+  Some fields may be tagged as hidden in a filter result. This can be used to sort the results
+  according to a given criterium (field), not actually displayed.
+
+* Filter creation help (DM 27)
+  - Update of the help on filter creation
+  - The name of the container selected is displayed into the filter edition screen.
+
+* Add of css into the display of a filter (DM 28).
+
+* New 'get' URLs (DM 29) :
+  - See the gPM Specification Document for the description of the new 'get' URLs.
+
+* New Combo Box with category name for sheets links (DM 36) :
+  For sheets links, a new functionality enable to get a combo box with categoryName.
+
+* Date format update (DM 43 - 4) :
+  A 'dateDisplayHint' is added, and can be applied on date fields.
+  This display hint is used to specify a display format for the date.
+  Availbale date formats include :
+  - SHORT, displays a date in the shortest string representation (ex: 09/18/08).
+    This format is the default format applied if no dateFormat display hint is specified.
+  - MEDIUM, displays a date with a shortcut of the month name (ex: Sep 18, 2008)
+  - LONG, displays a date with the full month's name (ex: September 18, 2008)
+  - FULL, displays the full day and month names   (ex: Thursday, September 18, 2008)
+
+* Acces Controls Generalization (DM47)
+  - Full applicability context (role, product, type, state) is now available on every kind of
+    access control.
+  - Any access control definition can optioanlly define a set of attributes.
+
+* Dynamic string list (DM 48)
+  It is avaible to get a string list that depend of the context.
+  Ex : The product list that the current user can get access to instead of the
+  whole existing products.
+
+* Product Selection (DM 50)
+  After a connection, a modal window enable the user to select a produc before
+  getting access to the sheets management application.
+
+
+Bug fixes :
+
+* Problem on mandatory fields management (Ref DM 13) :
+  - Homogenization of the display of Mandatory fields.
+  - If a field of a MultipleField is set to mandatory, the fields is tagged as
+  mandatory, but is is able to save the sheet even if the fields is not filled.
+
+* Problem on menu Traduction (Ref DM 17) :
+  - At the build of the menu, the traduction is done with the loginToken and no
+  more with the roleToken.
+  - A new method is implemented to translate the menu from the loginToken.
+
+* multiplefields toolTips not displayed (Ref DM 18)
+
+* Problem with role selection if no product selected (Ref DM 20) :
+
+* Problem on access to sheet creation menu when not availabe (DM 31 - 13) :
+  - Add a check on acces control at the beginning of a sheet creation.
+
+* User profile modification restricted to the administrator role only. (DM 31 - 24)
+
+* (Bug 476) Invalid access restriction on the delete button into the filter editor
+  The "Delete" button into the filter editor does not take into account the user role.
+
+* (Bug 443)  Problem on combo box display (DM 45)
+  When integer type or real type fields are used in the filter criteria editing screen,
+  any 'list' fields displayed below is rendered incorrectly.
+
+* (Bug 476) Problem on delete button into the filter editor (DM 58)
+  The "Delete" button into the filter editor does not take into account the user role.
+
+* (Bug 477) Deconnection picture not translated (DM 59)
+  The deconnection picture is not translated automaticaly.
+  Update the deconnection picture.
+
+Changes in v1.6 rc1
+-------------------
+
+New features :
+
+* Update Web Services API
+  CXF API updated with the 2.0.6 version.
+
+  A second version is designed, based on the serialization API.
+  This new version does not replace the first one, the choice between both
+  versions depends on your needs.
+  The new version offers new features too :
+  - sheet lock and sheet revision management
+  - extended actions and attributes support
+
+  The web services servlet allows to support both versions (to support web
+  services requests and to get web services description for each version)
+
+* RichText editors grafical representation (Ref: OM2-DM3) :
+	Rich text editor is replaced by the FCKeditor because of an existing
+	bug with this widget.
+
+* Modal popup for text field (Ref: OM2-DM4) :
+	Add of widgets popup type that enable to display full edited text of a text
+	field. The display of all text fields into this popup is available by
+	clicking on a "zoom" icon type.
+
+* Modification of links display (Ref: OM2-DM5) :
+	The "Sheet links" information block at the bottom of a sheet must be placed
+	into an openable or a not openable group, as done for the "fieldgroups".
+	The existing link must be arranged by link type.
+
+* Add a GET mode url to access directly to a sheet view (Ref: OM2-DM6).
+
+* Partial display option of the Tree view (Ref: OM2-DM7).
+	Tree view option : Only branches, that the role of the user enable to get
+	access, are displayed. Either on the branch node or on a sheet of the tree.
+
+* IHM WEB Evolution (OM2-DM8) :
+	Evol1 : Default set to the sheet FILTERS and not to the sheet EXPLORER,
+			following a product selection
+	Evol2 : Main zone is updated either to the choice of the product or to the
+	        click on the product into the navigation path.
+	Evol3 : In modification mode, Add of a button into the tag describing the
+			URL type objects, to enable to access to the URL.
+	Evol4 : Changes into the tree result of a filter.
+
+* Full internationalization of the user interface (Ref: OM2-DM9)
+
+* New type of result screen (FILE_OPENING) available for extended actions
+
+Changes in v1.5.5
+------------------
+
+This release is a bug fixes release.
+
+Bug fixes :
+* (BUG 390) : Exception raised when modifying  a user that has no admin role.
+
+* (BUG 385) : Exception raised while using an extended UI command with resulting
+screen FILTER_RESULT.
+
+* (BUG 387) : Null values are displayed for fields that are not filled in
+Excel export files.
+
+* (BUG 389) : Oracle exception when creating a translation with an empty string
+value, via the instantiation tool.
+
+
+Changes in v1.5.4
+---------------
+
+This release is a bug fixes release. It fixes notably some bugs related to
+extended UI commands support.
+
+
+Bug fixes :
+
+* (BUG 366) : Exception raised in some cases when an existing search filter
+  definition is modified and saved.
+
+* (BUG 369) : In the parameters editing screen (used for extended UI commands
+  defining options), the multi-valued fields in the HTML form are not managed
+  properly:  the same 'id' is used for various form widgets.
+
+* (BUG 370) : Problem when an extended UI command with no parameters is run
+  after another extended UI command including a parameters definition.
+
+* (BUG 371) : On extended UI commands applied on a search filter selection, the
+  actual selection is ignored, and the full list of results is passed as
+  parameter of the extended action. So, the action receives the search filter
+  result while only the sheets checked by the end user must be passed.
+
+* (BUG 376) : Exception 'ConcurrentModificationException' raised after the
+  product selection screen on an instance defining a confidential sheet type.
+
+* (BUG 377) : Extended UI commands are displayed in the main menu for
+  the "SHEET_LIST" context, even in cases were no result are available.
+
+* (BUG 378) : Selection of a new role, or selection of another product in the
+  UI throws an exception for any users having only roles on specific products
+  (and no global roles)
+
+* (BUG 379) : Multi-valued field values not handled properly in extended UI
+  commands parameters.
+
+
+Changes in v1.5.3
+---------------
+
+New features :
+
+* WEB Services: Add a new method (getSheetHistory() ) to get a sheet transitions
+  history.
+
+* Instantiation tool: Add a new feature to identify the sheets to be linked
+  using the 'id:' prefix followed by the technical identifier of the sheet.
+  This feature is not yet documented in the 'Intantiation Guide'.
+
+
+Bug fixes :
+
+* Remove the inheritance from WebServicesStub class (Web service client) to the
+  ServicesImplService class. This inheritance was useless and incorrect.
+
+* (BUG 367) : Access controls defined on lifecycle transitions are not handled
+  correctly. Any type of 'transitionAccess' defined in an instance is considered
+  as disabled, no matter the actual value of 'enable' attribute.
+
+
+Changes in v1.5.2
+---------------
+
+This release features WEB Services remote access, allowing to call the
+gPM services API remotely, through WS SOAP protocol.
+
+
+New features :
+
+* WEB Services support. The WAR file (gPM-application-1.5.2.war), once deployed,
+  provides the WEB user interface feature, and the web services feature (a new
+  servlet is available to support web services requests and to get web
+  services description).
+
+  A library (gPM-webservices_client-1.5.2.jar) is provided to ease the
+  development of web services client written in Java. The gPM Tutorial document
+  provides some information on the WEB services feature.
+
+
+Bug fixes :
+
+* (BUG 316) : Rich text editor control do not send the field value in the
+  request data during the form submit. This prevents any update of text fields
+  edited as 'rich text' from the WEB user interface.
+
+  Note: This bug was actually a problem in the 'dijit.Editor' component of the
+  DOJO library. This component has been replaced by the 'FCKEditor' component
+  (cf. http://www.fckeditor.net/).
+
+
+Changes in v1.5.1
+---------------
+
+This release is mainly a bug fixes release.
+
+The v1.5 release had a bug in tools initilialisation, preventing the tool
+to locate the configuration files.
+So this release must be used over the v1.5 release.
+
+Bug fixes :
+
+* (BUG 358) : Update of sheets containing mandatory fields reports an error on
+    field values as beeing not filled  (even if they contain an actual value).
+* (BUG 360) : The sheet links are still displayed on the result screen after a
+    sheet deletion
+* (BUG 361) : On IE6, a sheet update request is submitted twice on a sheet
+    update, raising an error of  'another user modified the sheet...'.
+    However, the sheet update was done properly (actually, the second, and
+    incorrect, data submission caused the error message)
+* (BUG 362) : The configuration files (dataSources.properties,config.properties)
+    are not properly located during tools initialization (ie: instantiate).
+    This raises the exception message ".... Cannot load JDBC driver class '**' "
+    when the tool is run from the command line.
+
+
+Changes in v1.5
+---------------
+
+New features :
+
+* Access levels on categories allowing non admin users to modify the content
+  of some environment categories  (if permitted by the cegory definition).
+
+* Add link support between products. For this purpose, link types can be
+  defined in gPM instances.
+
+* Support of 'extended actions', used to define new menu entries to run
+  script / action commands.
+
+
+Bug fixes :
+
+* (BUG 334) : Tooltip texts containing the field's descriptions are not
+    displayed.
+* (BUG 356) : Replace some UI exceptions by expected exceptions.
+
+
+Changes in v1.5 RC5
+--------------------
+
+This new release fixes many bugs related to product filters management and
+execution.
+
+
+New features :
+
+* User interface improvements:
+  - Add collapse support for sheet links
+
+* Initial implementation of automatic tests of the WEB user interface.
+  The test framework is based on the Selenium tool  (cf. www.openqa.org),
+  allowing to test a WEB user interface running directly in the WEB browser.
+  Note: This new feature is still not documented at all. The documentation will
+        be included in the v1.5 final release.
+
+Bug fixes :
+
+* (BUG 343) : Cannot display product edition screen
+
+* (BUG 348) : Field values on a link are saved only for the first link. If a
+    sheet includes several links, only values of the first one in the list are
+    correctly saved / updated.
+
+* (BUG 345) : NPE raised when a product filter is saved
+
+* (BUG 349) : JSP execuition error in 'chooseField.jsp' when adding a new
+    criteria group on a product filter.
+
+* (BUG 351) : Exception when adding a filter criterium on a multiple field.
+
+
+Changes in v1.5 RC4b
+--------------------
+
+This release is a bug fixes release
+
+Bug fixes :
+
+* Sheet references removed on a sheet update
+
+* Sheet links do not display the linked sheet reference
+
+
+Changes in v1.5 RC4
+-------------------
+
+This release fixes a backward compatibility problem introduced in the v1.5-rc3:
+The sheet update extension point was not providing the 'SheetData' structure in
+the execution context (replacing it with a newer and more optimized structure).
+
+As this feature brake existing extension commands, and did not provide any way
+to restore old behavior (to be compatible with existing extension point
+commands), this new release reverts to the old execution context content used in
+ sheet update extension points.
+
+Note:  The 1.5 final release will provide a way for gPM instance definitions to
+specify if the old context content must be preserved or not, in order to allow
+instances developpers a smooth transition to the new sheet structure.
+
+
+Bug fixes :
+
+* (BUG 332) : The exception raised in AddSheetLink action when trying to add an
+    already existing link is not specific enough. This prevents the caller to
+    differentiate this error from any other ones (like an extension point error
+    report).
+    -> Fix: Raised exception changed in a ConstraintException
+
+* (BUG 342) : Change of the list of sheet types during an update of a filter was
+    not stored correctly in the database.
+
+
+Changes in v1.5 RC3
+-------------------
+
+New features :
+
+* User interface improvements:
+  - Support of images definition in the category values. Image associated with
+    the category value is displayed in place of (or alongside) the category text
+    value.
+
+* Search filters:
+  - Support of 'like' operator on choice fields.
+  - Modification of method signatures in searchService: use of the roleToken
+    instead of userToken in filter execution methods from searchService.
+
+* Translation support:
+  - New 'default' translation allowing to define fallback translation entries
+    (used when no actual definition exists for the current user locale).
+  - Translation support for the dictionary/category values. Category values are
+    translated when displayed in the user interface.
+
+* Unidirectional links support
+  - Link types can be defined as unidirectional for creation or navigation
+    (or both). An unidirectional link is only visible / creatable from the
+    source element.
+
+* Speed improvements in sheet access / update service. The sheet update process
+  has been optimized and can be now much faster  (particularly for cases where
+  only few field values are actually changed during the sheet update).
+
+Bug fixes :
+
+* (BUG 328) : Fix: Errors raised during application startup are now reported on
+              the initial WEB page.
+
+* (BUG 339) : Exception raised on export when several reports templates are
+              available from the menu.
+
+* (BUG 338) : Confidential access control defined on a sub-field of multiple
+              field are not handled correctly in the user interface.
+
+* (BUG 334) : Field descriptions popups are not displayed in the user interface.
+
+* (BUG 326) : 'Updatable' access control defined on a field are not always
+              handled correctly.
+
+* (BUG 327) : Exception raised in some cases after a sheet update during
+              treeview refresh.
+
+* During filter execution, the sheets present in filter results are restricted
+    to those contained in the products available for the current user.
+
+
+
+Changes in v1.5 RC2
+-------------------
+
+This release is mainly a bug fixes release, closing a major problem when the
+user interface is used on IE 6.
+
+
+New features :
+
+* The gPM version is displayed in the user interface on top of the screen.
+
+
+Bug fixes :
+
+* A spurious error message 'Operation aborted' may be displayed on Internet
+  Explorer 6 on some screens. This problem, which occurs only on IE6 browsers
+  (it does not appear on Firefox 2.0), makes the gPM user interface almost
+  unusable on Internet Explorer 6.0 browsers.
+
+* The hierchical product selection screen allows the selection of any product
+  defined in the database. If the user selected a product not available
+  according to his roles, an authorization exception was raised.
+
+* Incomplete results in search filters
+  - Sheets containing an empty choice field (no values selected for the field)
+    are not present in the search results
+  - Sheets containing an empty attached file field (no file attached in the
+    field) are not present in the search results
+
+* The 'About' screen displays incorrect product version, and the text of
+  software licences is not scrollable.
+
+
+Changes in v1.5 RC1
+-------------------
+
+[EDIT: This version introduced a major regression in the user interface when
+used on Internet Explorer 6 browsers. The problem has been fixed in v1.5-RC2,
+so this newer version should be used in place of the v1.5-RC1]
+
+New features :
+
+* User interface improvements
+  - Toggle button to hide the left panel of the interface
+  - Add collapse support for sheet field groups and history
+  - New product selection screen, displaying the products hierarchically in a
+    tree widget (this new view supplements the existing 'flat' products list
+    view)
+
+  - The DOJO toolkit version is updated (0.4.1 replaced by 0.9)
+
+* Large string support: the limitation of the database backend for strings
+  (limited to 4000 characters on Oracle for example) is fixed. Strings larger
+  than database VARCHAR max. size are stored in CLOB.
+
+* Multiple parent support on product hierarchy.
+
+
+API changes :
+
+* The authorization service API has been changed to add the session token
+  parameter in all methods, allowing to check the privilege level of the caller.
+
+
+Bug fixes :
+
+* (BUG 318) The authorization API service does use session token, and is open to
+    all users
+
+* (BUG 317) Removing a role which is currently used raises a database constraint
+
+* (BUG 320) Some messages are not internationalized properly in the user
+    interface
+
+* An exception may be raised during the login of users having only roles on
+  products
+
+
+
+Changes in v1.4.1
+-----------------
+
+New features :
+
+* Display automatically a sheet in visualization mode (if allowed) if a user
+  does not have privilege to edit the sheet.
+
+* Add some preformance improvements in the filter API used to get the visible
+  filters.
+
+* Add new extension points:
+  - preDeleteSheet & postDeleteSheet
+  - preCreateSheetLink & postCreateSheetLink
+  - preDeleteSheetLink & postDeleteSheetLink
+
+* Extension points commands can abort safely in case of 'controlled' errors
+  and report an error message to the end user.
+
+
+Bug fixes :
+
+* (BUG 308) Problem with the menu bar display on Firefox.
+
+* (BUG 309) NullPointerException on the duplication of a sheet
+  from a sheet type without any defined SheetTypeAccessControl.
+
+* During link creation phase, invalid filter results when the filter
+  defined for the link contains the product visibility "current product".
+
+* (BUG 310) After user language modification, the sheet field labels
+  translations are not updated.
+
+* (BUG 311) Exception at login if the user has only roles on products
+  and no "global" roles.
+
+* (BUG 312) No ordering applied in filter results display
+
+* (BUG 313) Table view filters erroneously displayed in the treeview
+  filter selection.
+
+* (BUG 314) Filters defined on "current product", created during instantiation
+  give no result.
+

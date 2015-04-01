@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition xmlns="http://jbpm.org/3/jpdl"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://jbpm.org/3/jpdl http://jbpm.org/xsd/jpdl-3.0.xsd"
+	name="ControlTypeImport">
+
+
+	<start-state name="E0">
+		<transition to="E1" name="e0-&gt;e1"></transition>
+	</start-state>
+
+
+	<state name="E1">
+		<transition to="E2" name="e1-&gt;e2"></transition>
+		<transition to="E5" name="e1-&gt;e5"></transition>
+		<transition to="E4" name="e1-&gt;e4"></transition>
+	</state>
+
+	<state name="E2">
+		<transition to="E5" name="e2-&gt;e5"></transition>
+	</state>
+
+	<state name="E3">
+		<transition to="E1" name="e3-&gt;e1"></transition>
+	</state>
+
+	<state name="E4">
+		<transition to="E3" name="e4-&gt;e3"></transition>
+	</state>
+
+	<state name="E5">
+		<transition to="E3" name="e5-&gt;e3"></transition>
+	</state>
+
+
+</process-definition>

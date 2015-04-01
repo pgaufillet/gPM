@@ -1,0 +1,12 @@
+<!-- edited with XMLSpy v2005 rel. 3 U (http://www.altova.com) by _AIRBUS FRANCE (AIRBUS FRANCE) -->
+<gpm xmlns="http://www.airbus.com/topcased/gPM"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+    <version>1.2</version>
+    <roles>
+        <role name="user" />
+        <role name="role 2 (inst order 2)" />
+        <role name="role 4 (inst order 3)" />
+        <role name="role 1 (inst order 4)" />
+    </roles>
+</gpm>

@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<assembly>
+    <id>src</id>
+    <formats>
+        <!-- <format>tar.gz</format>  -->
+        <format>zip</format>
+    </formats>
+    
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <includeSiteDirectory>false</includeSiteDirectory>
+
+    <files>
+        <file>
+            <source>src/main/scripts/install_mvn_dependencies.bat</source>
+            <outputDirectory>gPM-${gpm.version}/</outputDirectory>
+            <filtered>true</filtered>
+        </file>
+        <file>
+            <source>src/main/scripts/install_mvn_dependencies</source>
+            <outputDirectory>gPM-${gpm.version}/</outputDirectory>
+            <filtered>true</filtered>
+            <lineEnding>unix</lineEnding>
+        </file>
+    </files>
+    <fileSets>
+        <fileSet>
+            <directory>../</directory>
+            <outputDirectory>gPM-${gpm.version}/build</outputDirectory>            
+            <!--  <lineEnding>unix</lineEnding>   -->
+            <excludes>
+                <exclude>**/target/**</exclude>
+                <exclude>**/site/**</exclude>
+                <exclude>**/perf/**</exclude>
+                <exclude>/services/src</exclude>
+                <exclude>**/*.log</exclude>
+                <exclude>**/theme/atos/**</exclude>
+                <exclude>**/theme/airbus/**</exclude>
+                <exclude>application/src/main/resources/project.properties</exclude>
+            </excludes>
+        </fileSet>
+    </fileSets>
+</assembly>
+

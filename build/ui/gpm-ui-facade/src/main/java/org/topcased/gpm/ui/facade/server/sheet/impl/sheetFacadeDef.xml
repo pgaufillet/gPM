@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!--
+        Sheet Facade
+    -->
+
+	<!-- Implementation bean -->
+	<bean id="sheetFacadeImpl" parent="abstractFacade"
+		class="org.topcased.gpm.ui.facade.server.sheet.impl.SheetFacadeImpl"
+		autowire="byName" />
+
+	<!-- Visible interface of the service  -->
+	<bean id="sheetFacade" class="org.springframework.aop.framework.ProxyFactoryBean"
+		parent="interceptedFacade">
+		<property name="target" ref="sheetFacadeImpl" />
+		<property name="proxyInterfaces"
+			value="org.topcased.gpm.ui.facade.server.sheet.SheetFacade" />
+	</bean>
+
+</beans>

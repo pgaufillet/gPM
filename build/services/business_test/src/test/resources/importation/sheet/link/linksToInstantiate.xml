@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF8"?>
+
+<gpm xmlns="http://www.airbus.com/topcased/gPM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.airbus.com/topcased/gPM">
+
+<version>1.2</version>
+<sheets>
+  <sheet type="testExportSheet" productName="product1" reference="testExportSheet_12" version="0" state="Temporary" id="testExportSheet_12">
+    <referenceValues>
+      <fieldValue name="testExportSheet_ref" value="testExportSheet_12"/>
+    </referenceValues>
+  </sheet>
+  <sheet type="testExportSheet" productName="product1" reference="testExportSheet_13" version="0" state="Temporary" id="testExportSheet_13">
+    <referenceValues>
+      <fieldValue name="testExportSheet_ref" value="testExportSheet_13"/>
+    </referenceValues>
+  </sheet>
+</sheets>
+<sheetLinks>
+    <sheetLink type="testExportLink" originId="testExportSheet_12" destinationId="testExportSheet_13">
+        <fieldValues>
+            <fieldValue name="testExportLink_field1" value="testExportLink_field1"/>
+            <fieldValue name="testExportLink_field2" value="testExportLink_field2"/>
+            <fieldValue name="testExportLink_field3" value="testExportLink_field3"/>
+            <fieldValue name="testExportLink_field4" value="testExportLink_field4"/>
+            <fieldValue name="testExportLink_field5" value="testExportLink_field5"/>
+        </fieldValues>
+    </sheetLink>
+    <sheetLink type="testExportLink" originId="testExportSheet_13" destinationId="testExportSheet_12">
+        <fieldValues>
+            <fieldValue name="testExportLink_field1" value="testExportLink_field1"/>
+            <fieldValue name="testExportLink_field2" value="testExportLink_field2"/>
+            <fieldValue name="testExportLink_field3" value="testExportLink_field3"/>
+            <fieldValue name="testExportLink_field4" value="testExportLink_field4"/>
+            <fieldValue name="testExportLink_field5" value="testExportLink_field5"/>
+        </fieldValues>
+    </sheetLink>
+</sheetLinks>
+</gpm>

@@ -1,0 +1,159 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <groupId>org.topcased.gpm</groupId>
+        <artifactId>gPM-tools</artifactId>
+        <version>1</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>gPM-tools-serialization
+    </artifactId>
+    <packaging>jar</packaging>
+    <version>${gpm.version}</version>
+    <name>gPM-tools serialization</name>
+    <url>/gPM-tools/gPM-tools-serialization/
+    </url>
+    <build>
+        <defaultGoal>install</defaultGoal>
+        <plugins>
+        
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven.surefire.version}</version>
+
+                <configuration>
+                    <includes>
+                        <include>${gpm.unit-tests}</include>
+                    </includes>
+			  <!-- 
+				Increase the max sire of the JVM because migration need 
+				more than 64 Mo
+                    -->
+                    <argLine>-Xmx128m</argLine>
+                    <systemProperties>
+                        <!-- Path of the benchmark file containing the reference execution times
+                            for the tests. The actual execution time is compared to
+                            theses references
+                        -->
+                        <property>
+                            <name>gPM.benchmark-file</name>
+                            <value>${gPM.benchmark-file}</value>
+                        </property>
+
+                        <!-- Needed to use the AWT library in 'headless' mode. The AWT is used
+                            by JaserReports when a report uses image  (as the AWT classes are used
+                            in this case). As no X server is setup (and none should be required),
+                            this property must be set.
+                        -->
+                        <property>
+                            <name>java.awt.headless</name>
+                            <value>true</value>
+                        </property>
+                        
+                        <!-- Specify if the DB must be re-initialized or not. -->
+                        <property>
+                            <name>gPM.disable-tests-db-init</name>
+                            <value>${gPM.no-tests-db-init}</value>
+                        </property>
+                    </systemProperties>
+                </configuration>
+            </plugin>       
+        
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${maven.jar.version}</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>
+                                org.topcased.gpm.serialization.Migrate
+                            </mainClass>
+                            <addClasspath>true</addClasspath>
+                        </manifest>
+                        <!--
+                            <manifestEntries>
+                            <Built-By>${gpm.jar.BuiltBy}</Built-By>
+                            </manifestEntries>
+                        -->
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+        
+        <testResources>
+            <testResource>
+                <filtering>true</filtering>
+                <directory>
+                    ${pom.basedir}/src/test/filtered-resources/
+                </directory>
+            </testResource>
+            <testResource>
+                <filtering>false</filtering>
+                <directory>
+                    ${pom.basedir}/src/test/resources/
+                </directory>
+            </testResource>
+        </testResources>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>${groupId}</groupId>
+            <artifactId>gPM-services-business</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-cli</groupId>
+            <artifactId>commons-cli</artifactId>           
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.thoughtworks.xstream</groupId>
+            <artifactId>xstream</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>xml-apis</groupId>
+            <artifactId>xml-apis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${groupId}</groupId>
+            <artifactId>gPM-tools-dbUtils</artifactId>
+            <scope>test</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>${groupId}</groupId>
+            <artifactId>gPM-tools-instantiation</artifactId>
+            <scope>test</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>${groupId}</groupId>
+            <artifactId>gPM-tests-framework</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>${groupId}</groupId>
+            <artifactId>gPM-tools-resetinstance</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>${groupId}</groupId>
+                    <artifactId>gPM-services-business</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        
+        <dependency>
+            <groupId>${groupId}</groupId>
+            <artifactId>gPM-services-dao</artifactId>
+        </dependency>
+    </dependencies>
+</project>

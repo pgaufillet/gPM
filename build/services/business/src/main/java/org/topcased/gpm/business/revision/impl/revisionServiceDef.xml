@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <!--
+        Revision service
+    -->
+
+    <bean id="revisionServiceImpl" parent="serviceImplBase" autowire="byName"
+        class="org.topcased.gpm.business.revision.impl.RevisionServiceImpl">
+    </bean>
+
+    <bean id="revisionService"
+        class="org.springframework.aop.framework.ProxyFactoryBean"
+        parent="interceptedService">
+        <property name="target" ref="revisionServiceImpl" />
+
+        <property name="proxyInterfaces"
+            value="org.topcased.gpm.business.revision.service.RevisionService" />
+    </bean>
+</beans>

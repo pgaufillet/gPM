@@ -1,0 +1,14 @@
+// Initialize the reference field of a CAT
+
+import org.topcased.gpm.business.sheet.service.sheetAccess.MultipleFieldDataAccess;
+
+// Create an access wrapper for the sheet reference
+sheetData = context.get("sheetData");
+dataAccess = new MultipleFieldDataAccess(sheetData.getReference());
+
+dataAccess.getField("Ref_type").setValue("CAT");
+
+int id = (Integer) (context.get("sheetsCount"));
+id++;
+
+dataAccess.getField("Ref_id").setValue((new Integer(id)).toString());

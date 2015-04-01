@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <!--
+        Export service
+    -->
+
+    <!-- Implementation bean -->
+    <bean id="sheetExportServiceImpl"
+        class="org.topcased.gpm.business.sheet.export.impl.SheetExportServiceImpl"
+        parent="serviceImplBase" lazy-init="true" autowire="byName" >
+        
+        <property name="maxExportableSheets" value="${maxExportableSheets}" />
+    </bean>
+
+    <!-- Visible interface of the service  -->
+    <bean id="sheetExportService"
+        class="org.springframework.aop.framework.ProxyFactoryBean"
+        lazy-init="true"
+        parent="interceptedService">
+
+        <property name="target" ref="sheetExportServiceImpl" />
+
+        <property name="proxyInterfaces"
+            value="org.topcased.gpm.business.sheet.export.service.SheetExportService" />
+    </bean>
+</beans>

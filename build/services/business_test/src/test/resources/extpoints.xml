@@ -1,0 +1,112 @@
+<extensions>
+<!--  Define commands -->
+  <commands>
+   <script>
+      <language>beanshell</language>
+      <name>Milou</name>
+      <code file="MilouFieldNameTest.bsh" />
+    </script>
+   <script>
+      <language>beanshell</language>
+      <name>AdvancedMilou</name>
+      <code file="AdvancedMilouFieldNameTest.bsh" />
+    </script>
+    
+   <script>
+      <language>beanshell</language>
+      <name>Felix</name>
+      <code file="FelixFieldNameTest.bsh" />
+    </script>
+   <script>
+      <language>beanshell</language>
+      <name>AdvancedFelix</name>
+      <code file="AdvancedFelixFieldNameTest.bsh" />
+    </script>
+    
+  </commands>
+
+  <extensionPoints>
+  
+    <sheetExtensionPoint>
+      <processName>PET STORE</processName>
+      <sheetTypeName>Dog</sheetTypeName>
+      <extensionPointName>preCreate</extensionPointName>
+      <commands>
+        <string>Milou</string>
+      </commands>
+    </sheetExtensionPoint>
+    
+    <sheetExtensionPoint>
+      <processName>PET STORE</processName>
+      <sheetTypeName>Cat</sheetTypeName>
+      <extensionPointName>postCreate</extensionPointName>
+      <commands>
+        <string>Felix</string>
+      </commands>
+    </sheetExtensionPoint>
+    
+    <sheetExtensionPoint>
+      <processName>PET STORE</processName>
+      <sheetTypeName>Cat</sheetTypeName>
+      <extensionPointName>postGetModel</extensionPointName>
+      <commands>
+        <string>Felix</string>
+      </commands>
+    </sheetExtensionPoint>
+    
+    <sheetExtensionPoint>
+      <processName>PET STORE</processName>
+      <sheetTypeName>Dog</sheetTypeName>
+      <extensionPointName>postGetDuplicationModel</extensionPointName>
+      <commands>
+        <string>Milou</string>
+      </commands>
+    </sheetExtensionPoint>
+    
+    <sheetExtensionPoint>
+      <processName>PET STORE</processName>
+      <sheetTypeName>Dog</sheetTypeName>
+      <extensionPointName>postGetInitializationModel</extensionPointName>
+      <commands>
+        <string>Milou</string>
+      </commands>
+    </sheetExtensionPoint>
+    
+    <sheetExtensionPoint>
+      <processName>PET STORE</processName>
+      <sheetTypeName>Dog</sheetTypeName>
+      <extensionPointName>preUpdate</extensionPointName>
+      <commands>
+        <string>Milou</string>
+      </commands>
+    </sheetExtensionPoint>
+    
+    <sheetExtensionPoint>
+      <processName>PET STORE</processName>
+      <sheetTypeName>Cat</sheetTypeName>
+      <extensionPointName>postUpdate</extensionPointName>
+      <commands>
+        <string>Felix</string>
+      </commands>
+    </sheetExtensionPoint>
+    
+    <sheetExtensionPoint>
+      <processName>PET STORE</processName>
+      <sheetTypeName>Dog</sheetTypeName>
+      <extensionPointName>preChangeState</extensionPointName>
+      <commands>
+        <string>AdvancedMilou</string>
+      </commands>
+    </sheetExtensionPoint>
+    
+    <sheetExtensionPoint>
+      <processName>PET STORE</processName>
+      <sheetTypeName>Cat</sheetTypeName>
+      <extensionPointName>postChangeState</extensionPointName>
+      <commands>
+        <string>AdvancedFelix</string>
+      </commands>
+    </sheetExtensionPoint>
+    
+  </extensionPoints>
+</extensions>
